@@ -7,10 +7,6 @@
     <i class="fas fa-search <%= 'nav-active' if params[:section] == 'discover' %>"></i>
   <% end %>
 
-  <%= link_to add_index_path(section: 'add') do %>
-    <i class="fas fa-plus <%= 'nav-active' if params[:section] == 'add' %>"></i>
-  <% end %>
-
   <%= link_to lists_path(section: 'lists') do %>
     <i class="fas fa-list-ul <%= 'nav-active' if params[:section] == 'lists' %>"></i>
   <% end %>

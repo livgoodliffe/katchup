@@ -13,3 +13,13 @@
 @import "components/index";
 @import "pages/index";
 @import "spots/index";
+
+
+h1 {
+  color: $dark-grey;
+  font-size: 20px;
+  font-family: "Century Gothic";
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-weight: bold;
+}

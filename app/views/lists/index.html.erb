@@ -1,7 +1,25 @@
-<h1>My lists:</h1>
+<%= render "shared/lists_navbar" %>
 
-<%= link_to favourites_path do %>
-  <h3>Favourites</h3>
-<% end %>
+<div class="container">
 
-<a href="">Wishlist</a>
+  <h2>Add a spot</h2>
+
+  <!-- Search -->
+
+  <%= form_tag(spots_path, method: :get) do %>
+    <form class="form-inline" >
+      <div class="md-form my-0 mr-3">
+        <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search"%>
+      </div>
+    </form>
+  <% end %>
+
+  <%= link_to spots_path do %>
+    <h3>See all spots</h3>
+  <% end %>
+
+  <h4>Add to favourites</h4>
+  <h4>Add to wishlist</h4>
+
+</div>
+

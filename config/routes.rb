@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :favourites, only: [:index, :create, :update]
 
+  resources :wishlists, only: [:index, :create, :update]
+
   resources :reviews, only: [:index, :show, :create, :update, :edit, :destroy]
 
   resources :spots, only: [:show, :index]
@@ -14,8 +16,6 @@ Rails.application.routes.draw do
   resources :lists, only: [:index]
 
   resources :discover, only: [:index]
-
-  resources :add, only: [:index]
 
   resources :catchups, only: [:index]
 end
