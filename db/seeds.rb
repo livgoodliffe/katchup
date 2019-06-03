@@ -25,11 +25,10 @@ BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/res
 results =  Nokogiri::HTML(open(BASE_RESTAURANT_URL)).css(BASE_SELECTOR)
 
 def getImageSrc(src)
-  p src.class
   src.gsub('Small','Large')
 end
 
-results.each do |result|
+results.each_with_index do |result, index|
   restaurant = {
     name: result.css(NAME_SELECTOR).text.strip,
     location: result.css(LOCATION_SELECTOR).text.strip,
@@ -37,9 +36,7 @@ results.each do |result|
     image: "#{BASE_URL}#{getImageSrc(result.css(IMAGE_SELECTOR).attr('src').text)}"
 
   }
-
-  p restaurant
-
+  puts "Adding restaurant #{index+1}"
   RESTAURANTS << restaurant
 end
 
