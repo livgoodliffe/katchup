@@ -34,4 +34,28 @@
   .card {
     background-color: inherit;
   }
+
+  .fa-star {
+    margin: 0 4px;
+    font-size: 18px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .review-content {
+    align-items: center;
+  }
+
+  .container {
+    .card {
+      border-radius: 20px;
+      .review-image {
+        border-radius: 20px 20px 0 0;
+      }
+    }
+  }
 }
