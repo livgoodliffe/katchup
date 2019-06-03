@@ -4,9 +4,9 @@ $restaurant-card-border-radius: 1rem;
 $restaurant-card-width: calc($available-display-width - 2 * $restaurant-card-margin);
 
 $restaurant-card-shadow-x: 0;
-$restaurant-card-shadow-y: 4px;
-$restaurant-card-shadow-blur: 2px;
-$restaurant-card-shadow-spread: -2px;
+$restaurant-card-shadow-y: 6px;
+$restaurant-card-shadow-blur: 3px;
+$restaurant-card-shadow-spread: -3px;
 
 $restaurant-card-shadow-colour: gray;
 $restaurant-card-background-colour: white;
@@ -20,7 +20,6 @@ $restaurant-image-left-border-radius: 1rem;
 // details css spec
 $restaurant-details-width: calc($restaurant-card-width - $restaurant-image-width);
 $restaurant-details-left-padding: 1rem;
-
 
 .restaurant-card {
   display: flex;
@@ -49,9 +48,13 @@ $restaurant-details-left-padding: 1rem;
       font-weight: bold;
     }
 
-    .restaurant-location {}
+    .restaurant-location {
+      font-size: 0.75rem;
+    }
 
-    .restaurant-description {}
+    .restaurant-description {
+      font-size: 0.75rem;
+    }
 
   }
 }
