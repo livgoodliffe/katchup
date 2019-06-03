@@ -1,7 +1,7 @@
 // card css spec
 $restaurant-card-margin: 1rem;
 $restaurant-card-border-radius: 1rem;
-$restaurant-card-width: calc($available-display-width - 2 * $restaurant-card-margin);
+$restaurant-card-width: calc(#{$available-display-width} - 2 * #{$restaurant-card-margin});
 
 $restaurant-card-shadow-x: 0;
 $restaurant-card-shadow-y: 6px;
@@ -18,7 +18,7 @@ $restaurant-image-width: 100px;
 $restaurant-image-left-border-radius: 1rem;
 
 // details css spec
-$restaurant-details-width: calc($restaurant-card-width - $restaurant-image-width);
+$restaurant-details-width: calc(#{$restaurant-card-width} - #{$restaurant-image-width});
 $restaurant-details-left-padding: 1rem;
 
 .restaurant-card {
