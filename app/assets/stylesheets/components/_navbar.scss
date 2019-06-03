@@ -1,14 +1,29 @@
-.navbar-lewagon {
+.top-navbar {
   justify-content: space-between;
-  background: white;
+  background: $dark-grey;
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-brand {
+  font-style: "Century Gothic";
+  font-weight: bold;
+  align-self: center;
+  p {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.menu-bars {
+  color: white;
+}
+
+.navbar-toggler {
+  border: none;
 }
 
 .bottom-navbar {
