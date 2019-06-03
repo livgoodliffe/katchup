@@ -10,10 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_045024) do
+ActiveRecord::Schema.define(version: 2019_06_03_050455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "catch_up_users", force: :cascade do |t|
+    t.bigint "catchup_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["catchup_id"], name: "index_catch_up_users_on_catchup_id"
+    t.index ["user_id"], name: "index_catch_up_users_on_user_id"
+  end
+
+  create_table "catchups", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "spot_id"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_catchups_on_spot_id"
+    t.index ["user_id"], name: "index_catchups_on_user_id"
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_favourites_on_spot_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friends_on_friend_id"
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "spot_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_images_on_spot_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "image"
+    t.text "notes"
+    t.bigint "user_id"
+    t.bigint "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_reviews_on_spot_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "spots", force: :cascade do |t|
     t.string "name"
@@ -36,4 +93,26 @@ ActiveRecord::Schema.define(version: 2019_06_03_045024) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_wishlists_on_spot_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
+  add_foreign_key "catch_up_users", "catchups"
+  add_foreign_key "catch_up_users", "users"
+  add_foreign_key "catchups", "spots"
+  add_foreign_key "catchups", "users"
+  add_foreign_key "favourites", "spots"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "friends", "friends"
+  add_foreign_key "friends", "users"
+  add_foreign_key "images", "spots"
+  add_foreign_key "reviews", "spots"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "wishlists", "spots"
+  add_foreign_key "wishlists", "users"
 end

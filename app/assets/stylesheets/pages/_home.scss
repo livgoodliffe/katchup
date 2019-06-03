@@ -1,1 +1,27 @@
-// Specific CSS for your home-page
+.home {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://cdn.dribbble.com/users/94006/screenshots/5960692/pikachu-2.gif');
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  h1 {
+    font-size: 70px;
+    color: white;
+    font-weight: bold;
+    font-style: "Century Gothic";
+    text-shadow: 2px 2px 5px black;
+  }
+  h4 {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  font-style: "Century Gothic";
+  text-shadow: 2px 2px 5px black;
+  }
+}
