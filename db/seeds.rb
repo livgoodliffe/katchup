@@ -5,3 +5,43 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'open-uri'
+require 'nokogiri'
+
+return unless Rails.env.development?
+
+RESTAURANTS = []
+
+BASE_SELECTOR='.result'
+NAME_SELECTOR='.detail a h4'
+LOCATION_SELECTOR='.detail .subTitle'
+DESCRIPTION_SELECTOR='.detail .snippet'
+IMAGE_SELECTOR='img'
+
+BASE_URL='https://whatson.melbourne.vic.gov.au'
+
+BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/restaurants/allrestaurants/pages/allrestaurants.aspx'
+results =  Nokogiri::HTML(open(BASE_RESTAURANT_URL)).css(BASE_SELECTOR)
+
+def getImageSrc(src)
+  p src.class
+  src.gsub('Small','Large')
+end
+
+results.each do |result|
+  restaurant = {
+    name: result.css(NAME_SELECTOR).text.strip,
+    location: result.css(LOCATION_SELECTOR).text.strip,
+    description: result.css(DESCRIPTION_SELECTOR).text.strip,
+    image: "#{BASE_URL}#{getImageSrc(result.css(IMAGE_SELECTOR).attr('src').text)}"
+
+  }
+
+  p restaurant
+
+  RESTAURANTS << restaurant
+end
+
+Spot.destroy_all
+Spot.create(RESTAURANTS)
