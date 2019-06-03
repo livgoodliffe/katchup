@@ -1,14 +1,57 @@
+// card css spec
+$restaurant-card-margin: 1rem;
+$restaurant-card-border-radius: 1rem;
+$restaurant-card-width: calc($available-display-width - 2 * $restaurant-card-margin);
+
+$restaurant-card-shadow-x: 0;
+$restaurant-card-shadow-y: 4px;
+$restaurant-card-shadow-blur: 2px;
+$restaurant-card-shadow-spread: -2px;
+
+$restaurant-card-shadow-colour: gray;
+$restaurant-card-background-colour: white;
+
+
+// image css spec
+$restaurant-image-height: 75px;
+$restaurant-image-width: 100px;
+$restaurant-image-left-border-radius: 1rem;
+
+// details css spec
+$restaurant-details-width: calc($restaurant-card-width - $restaurant-image-width);
+$restaurant-details-left-padding: 1rem;
+
+
 .restaurant-card {
-  width: 375px;
-  border-rounded: 0.25rem;
-  margin: 1rem;
-  box-shadow: 0 4px 2px -2px gray;
+  display: flex;
+  width: $restaurant-card-width;
+  border-radius: $restaurant-card-border-radius;
+  margin: $restaurant-card-margin;
+  box-shadow: $restaurant-card-shadow-x $restaurant-card-shadow-y $restaurant-card-shadow-blur $restaurant-card-shadow-spread $restaurant-card-shadow-colour;
+  background-color: $restaurant-card-background-colour;
 
-  .restaurant-name {}
+  .restaurant-image img {
+    width: $restaurant-image-width;
+    height: $restaurant-image-height;
+    object-fit: cover;
+    border-top-left-radius: $restaurant-image-left-border-radius;
+    border-bottom-left-radius: $restaurant-image-left-border-radius;
+  }
 
-  .restaurant-location {}
+  .restaurant-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: $restaurant-details-left-padding;
+    width: $restaurant-details-width;
 
-  .restaurant-description {}
+    .restaurant-name {
+      font-weight: bold;
+    }
 
-  .restaurant-image {}
+    .restaurant-location {}
+
+    .restaurant-description {}
+
+  }
 }
