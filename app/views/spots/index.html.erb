@@ -1,14 +1,18 @@
-<% @spots.each do |spot| %>
-  <div>
-    <%= spot.name %>
-  </div>
-  <div>
-    <%= spot.location %>
-  </div>
-  <div>
-    <%= spot.description %>
-  </div>
-  <div>
-    <img src="<%= spot.image %>">
-  </div>
-<% end %>
+<div class="spots-index-wrapper">
+  <% @spots.each do |spot| %>
+    <div class="restaurant-card">
+      <div class="restaurant-name">
+        <%= spot.name %>
+      </div>
+      <div class=restaurant-location>
+        <%= spot.location %>
+      </div>
+      <div class=restaurant-description>
+        <%= spot.description %>
+      </div>
+      <div class=restaurant-image>
+        <%= image_tag("#{spot.image}")%>
+      </div>
+    </div>
+  <% end %>
+</div>
