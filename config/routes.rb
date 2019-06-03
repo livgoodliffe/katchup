@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :spots, only: [:show, :index]
 
-  resources :feed, only: [:index]
+  resources :feeds, only: [:index]
 
   resources :lists, only: [:index]
 end
