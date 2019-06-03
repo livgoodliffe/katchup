@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :spots, only: [:index]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :spots, only: [:show, :index]
+
+  resources :feed, only: [:index]
+
+  resources :lists, only: [:index]
 end
