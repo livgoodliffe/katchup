@@ -3,7 +3,7 @@ class CreateCatchups < ActiveRecord::Migration[5.2]
     create_table :catchups do |t|
       t.references :user, foreign_key: true
       t.references :spot, foreign_key: true
-      t.DateTime :time
+      t.datetime :time
 
       t.timestamps
     end
