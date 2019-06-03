@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   resources :spots, only: [:show, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :feed, only: [:index]
+  resources :feeds, only: [:index]
 end
