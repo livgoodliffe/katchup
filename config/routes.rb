@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :feeds, only: [:index]
 
   resources :lists, only: [:index]
+
+  resources :discover, only: [:index]
 end

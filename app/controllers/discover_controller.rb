@@ -1,4 +1,4 @@
-class ListsController < ApplicationController
+class DiscoverController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
