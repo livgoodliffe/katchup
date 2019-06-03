@@ -1,0 +1,14 @@
+<% @spots.each do |spot| %>
+  <div>
+    <%= spot.name %>
+  </div>
+  <div>
+    <%= spot.location %>
+  </div>
+  <div>
+    <%= spot.description %>
+  </div>
+  <div>
+    <img src="<%= spot.image %>">
+  </div>
+<% end %>
