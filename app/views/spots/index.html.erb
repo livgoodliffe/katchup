@@ -9,10 +9,10 @@
           <%= spot.name %>
         </div>
         <div class=restaurant-location>
-          <%#= spot.location %>
+          <%#= spot.location[0..20] %>
         </div>
         <div class=restaurant-description>
-          <%#= spot.description %>
+          <%= "#{spot.description[0..20]}..." %>
         </div>
       </div>
     </div>
