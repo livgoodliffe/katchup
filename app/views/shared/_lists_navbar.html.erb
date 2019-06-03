@@ -1,0 +1,16 @@
+<div class="navbar navbar-expand-sm navbar-light lists-navbar fixed-top" style="height: 61px; padding: 0">
+
+
+  <div class="navbar-label">
+    <%= link_to favourites_path(list_type: 'favourites') do %>
+      <p class="m-0 <%= 'active' if params[:list_type] == 'favourites' %>">Favourites</p>
+    <% end %>
+  </div>
+
+  <div class="navbar-label">
+    <%= link_to wishlists_path(list_type: 'wishlists') do %>
+      <p class="m-0 <%= 'active' if params[:list_type] == 'wishlists' %>">Wishlist</p>
+    <% end %>
+  </div>
+
+</div>
