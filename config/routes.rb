@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :spots, only: [:show, :index]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :feeds, only: [:index]
+
+  resources :feed, only: [:index]
+
+  resources :lists, only: [:index]
 end
