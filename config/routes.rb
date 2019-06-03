@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :lists, only: [:index]
 
   resources :discover, only: [:index]
+
+  resources :add, only: [:index]
+
+  resources :catchups, only: [:index]
 end

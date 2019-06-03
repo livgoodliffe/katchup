@@ -1,21 +1,21 @@
 <nav class="navbar fixed-bottom navbar-light bg-light bottom-navbar">
   <%= link_to feeds_path(section: 'feeds') do %>
-    <i class="fas fa-home <%= 'nav-active' if params[:section] == 'lists' %>"></i>
+    <i class="fas fa-home <%= 'nav-active' if params[:section] == 'feeds' %>"></i>
   <% end %>
 
   <%= link_to discover_index_path(section: 'discover') do %>
     <i class="fas fa-search <%= 'nav-active' if params[:section] == 'discover' %>"></i>
   <% end %>
 
-  <%= link_to '' do %>
-    <i class="fas fa-plus"></i>
+  <%= link_to add_index_path(section: 'add') do %>
+    <i class="fas fa-plus <%= 'nav-active' if params[:section] == 'add' %>"></i>
   <% end %>
 
   <%= link_to lists_path(section: 'lists') do %>
     <i class="fas fa-list-ul <%= 'nav-active' if params[:section] == 'lists' %>"></i>
   <% end %>
 
-  <%= link_to '' do %>
-    <i class="far fa-calendar"></i>
+  <%= link_to catchups_path(section: 'catchups') do %>
+    <i class="far fa-calendar <%= 'nav-active' if params[:section] == 'catchups' %>"></i>
   <% end %>
 </nav>
