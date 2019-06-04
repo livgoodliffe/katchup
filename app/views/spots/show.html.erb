@@ -9,7 +9,6 @@
   </div>
 
   <div class="container">
-    <!-- average ratings -->
 
     <div class="book-rating">
       <span class="review-count">
@@ -19,10 +18,14 @@
           <span class="no-rating">no reviews</span>
         <% end %>
       </span>
+      <div id="reviews-anchor"></div>
     </div>
+
+    <!-- showing reviews -->
 
     <div id="reviews-container">
       <h5>Reviews</h5>
+      <div id="reviews"></div>
       <% if @spot.reviews.any? %>
           <%= render @spot.reviews %>
       <% else %>
@@ -30,7 +33,7 @@
       <% end %>
     </div>
 
-    <!-- Showing reviews -->
+    <!-- Showing form -->
     <section class="spot-section">
       <% if user_signed_in? %>
         <%= render 'reviews/form' %>
