@@ -30,3 +30,4 @@ group :development, :test do
 end
 
 gem 'nokogiri'
+gem 'geocoder'
