@@ -1,0 +1,15 @@
+function clearResults() {
+  const resultsContainer = document.getElementById('spots-list')
+  resultsContainer.innerHTML = ""
+}
+
+function addResults(resultHTML) {
+  const resultsContainer = document.getElementById('spots-list')
+  resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
+}
+
+clearResults();
+
+<% @spots.each do |spot| %>
+addResults(`<%=render("result", spot:spot)%>`)
+<% end %>

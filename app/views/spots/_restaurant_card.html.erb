@@ -1,0 +1,16 @@
+<div class="restaurant-card">
+  <div class="restaurant-image">
+    <%= image_tag("#{spot.image}")%>
+  </div>
+  <div class="restaurant-details">
+    <div class="restaurant-name">
+      <%= spot.name %>
+    </div>
+    <div class="restaurant-location">
+      <%#= spot.location[0..20] %>
+    </div>
+    <div class="restaurant-description">
+      <%= "#{spot.description[0..20]}..." %>
+    </div>
+  </div>
+</div>
