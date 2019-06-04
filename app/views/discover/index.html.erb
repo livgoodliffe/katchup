@@ -10,5 +10,8 @@
     </form>
   <% end %>
   <div id="spots-discover" class="spots-discover">
+    <% @spots.each do |spot| %>
+      <%= render('search_result', spot:spot) %>
+    <% end %>
   </div>
 </div>
