@@ -12,15 +12,7 @@ class User < ApplicationRecord
     favourites.where(spot: spot).any?
   end
 
-  def wishlisted_spot?(spot)
-    wishlists.where(spot: spot).any?
-  end
-
-  def find_favorite(spot)
+  def find_favourite(spot)
     favourites.where(spot: spot).first
-  end
-
-  def find_wishlist(spot)
-    wishlists.where(spot: spot).first
   end
 end

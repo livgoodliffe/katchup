@@ -32,16 +32,10 @@
 
         <!-- Icons -->
 
-        <% if user_signed_in? %>
-          <div class="d-flex m-3">
-            <div class="m-2">
-              <%= render 'favourites/favourites_heart', spot: spot %>
-            </div>
-            <div class="m-2">
-              <%= render 'wishlists/wishlist_bookmark', spot: spot %>
-            </div>
-          </div>
-        <% end %>
+      <div class="heart-icon" id="<%= spot.id %>" >
+        <%= render 'favourites/favourites_heart', spot: spot %>
+      </div>
+
 
 
       </div>
