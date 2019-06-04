@@ -3,7 +3,29 @@
   <%= render 'spots/show/spot-show-banner' %>
   <div class="info d-flex justify-content-around p-3 m-3">
     <%= link_to "Menu" %>
-    <%= link_to "Information" %>
+    <%= link_to "Information", "#", data: { toggle: "modal", target: "#infoModal" } %>
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Opening Hours</h3>
+            <p>Mon - Thur: 11am - 9pm</p>
+            <p>Fri - Sat: 10am - 12pm</p>
+            <p>Sun: 10am - 9pm</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= link_to "Photos" %>
   </div>
 
@@ -13,3 +35,5 @@
     <%= render 'spots/show/spot-show-reviews' %>
   </div>
 </div>
+
+
