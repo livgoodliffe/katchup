@@ -1,0 +1,9 @@
+<% if current_user.wishlisted_spot?(spot) %>
+  <%= link_to wishlist_path(current_user.find_wishlist(spot)), method: :delete, remote: true do %>
+    <i class="fas fa-bookmark small-bookmark-icon"></i>
+  <% end %>
+<% else %>
+  <%= link_to spot_wishlists_path(spot), method: :post, remote: true do %>
+    <i class="far fa-bookmark small-bookmark-icon"></i>
+  <% end %>
+<% end %>
