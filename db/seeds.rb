@@ -42,3 +42,11 @@ end
 
 Spot.destroy_all
 Spot.create(RESTAURANTS)
+
+# Note from Joel for feed requirements
+# Need users
+
+# Need friends
+
+# Need Users to have added a few things to wishlist
+# Need Users to have added a few things to favourites
