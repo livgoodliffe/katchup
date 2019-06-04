@@ -32,12 +32,12 @@
 
         <!-- Icons -->
 
-      <div class="heart-icon" id="<%= spot.id %>" >
-        <%= render 'favourites/favourites_heart', spot: spot %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="heart-icon" id="<%= spot.id %>" >
+          <%= render 'favourites/favourites_heart', spot: spot %>
+        </div>
+      <% end %>
 
-
-
-      </div>
+    </div>
   <% end %>
 </div>

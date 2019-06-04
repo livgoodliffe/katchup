@@ -1,4 +1,11 @@
 class FavouritesController < ApplicationController
+  before_action :set_favourite, only: :destroy
+  before_action :set_spot, only: :create
+
+  def index
+    @wishlist = Wishlist.where(user: current_user)
+  end
+
   def create
     @spot = Spot.find(params[:spot_id])
     current_user.favourites.create(spot: @spot)
@@ -16,7 +23,21 @@ class FavouritesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @spot }
-      format.js { render :create }
+      format.js
     end
+  end
+
+  private
+
+  def set_favourite
+    @favourite = Favourite.find(params[:id])
+  end
+
+  def set_spot
+    @spot = Spot.find(params[:spot_id])
+  end
+
+  def favourite_params
+    params.require(:favourite).permit(:spot_id)
   end
 end
