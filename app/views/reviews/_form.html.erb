@@ -1,0 +1,8 @@
+<div class="form-wrapper">
+  <%= simple_form_for [@spot, @review], remote: true do |f| %>
+    <%= f.input :rating, collection: (1..5) %>
+    <%= f.input :notes %>
+    <%= f.input :image %>
+    <%= f.button :submit, class: "btn btn-default btn-success" %>
+  <% end %>
+</div>

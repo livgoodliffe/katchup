@@ -8,10 +8,35 @@
     <%= link_to "Photos" %>
   </div>
 
-  <div class="container" style="height: 500px">
-    <%= render 'spots/show/spot-show-reviews' %>
-    <%= render 'spots/show/spot-show-reviews' %>
-    <%= render 'spots/show/spot-show-reviews' %>
+  <div class="container">
+    <!-- average ratings -->
+
+    <div class="book-rating">
+      <span class="review-count">
+        <% if @spot.reviews.any? %>
+          <%= link_to pluralize(@spot.reviews.count, 'review'), "#reviews"  %>
+        <% else %>
+          <span class="no-rating">no reviews</span>
+        <% end %>
+      </span>
+    </div>
+
+    <div id="reviews-container">
+      <h5>Reviews</h5>
+      <% if @spot.reviews.any? %>
+          <%= render @spot.reviews %>
+      <% else %>
+        <p>This book doesn't have any reviews yet.</p>
+      <% end %>
+    </div>
+
+    <!-- Showing reviews -->
+    <section class="spot-section">
+      <% if user_signed_in? %>
+        <%= render 'reviews/form' %>
+      <% end %>
+
+    </section>
   </div>
 </div>
 

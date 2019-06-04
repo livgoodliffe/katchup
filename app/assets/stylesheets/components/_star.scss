@@ -1,0 +1,19 @@
+.star-icon {
+    position: relative;
+}
+
+.star-icon.full:before {
+    content: '\2605'; /* Full star in UTF8 */
+    position: absolute;
+    left: 0;
+    text-shadow: 0 0 2px $orange;
+ }
+
+.star-icon.half:before {
+    content: '\2605'; /* Full star in UTF8 */
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    text-shadow: 0 0 2px $orange;
+}

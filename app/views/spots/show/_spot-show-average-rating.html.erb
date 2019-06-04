@@ -1,10 +1,13 @@
 <div class="mx-auto">
   <p class="text-center">Average Rating</p>
   <div class="stars d-flex justify-content-center">
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="far fa-star"></i>
+    <% if @spot.average_rating.nil? %>
+      <span class="no-rating">not rated</span>
+    <% else %>
+      <%= set_stars(@spot.average_rating) %>
+    <% end %>
   </div>
 </div>
+
+
+
