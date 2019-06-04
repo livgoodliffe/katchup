@@ -6,8 +6,8 @@ function refreshForm(innerHTML) {
 function addReview(reviewHTML) {
   const reviews = document.getElementById('reviews');
   reviews.insertAdjacentHTML('afterbegin', reviewHTML);
-  var elmnt = document.getElementById("reviews-anchor");
-  elmnt.scrollIntoView()
+  var elmnt = document.getElementById("reviews-container");
+  elmnt.scrollIntoView();
 }
 
 <% if @review.errors.any? %>
