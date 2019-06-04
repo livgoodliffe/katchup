@@ -1,5 +1,5 @@
 <div class="card m-3 shadow">
-  <% unless review.image == nil %>
+  <% unless review.image == "" %>
     <%= image_tag(review.image, class: "review-image") %>
   <% end %>
   <div class="review-content d-flex ">
