@@ -1,54 +1,17 @@
 <%= render "shared/navbar" %>
-
 <div class="container">
-
   <h1>Discover</h1>
-
   <br>
-
-  <% @spots.each do |spot| %>
-    <div class="restaurant-card">
-
-      <!-- Image -->
-
-      <div class=restaurant-image>
-        <%= image_tag("#{spot.image}")%>
+  <%= form_tag(discover_index_path, method: :get, remote: true) do %>
+    <form class="form-inline" >
+      <div class="md-form my-0 mr-3">
+        <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search"%>
       </div>
-
-      <div class="restaurant-details">
-
-        <div class="restaurant-name">
-          <%= spot.name %>
-        </div>
-
-        <div class=restaurant-location>
-          <%#= spot.location[0..20] %>
-        </div>
-
-        <div class=restaurant-description>
-          <%= "#{spot.description[0..20]}..." %>
-        </div>
-      </div>
-
-      <!-- Icons -->
-
-      <% if user_signed_in? %>
-
-      <div class="d-flex flex-column">
-
-        <div class="m-2" id="<%= spot.id %>" >
-          <%= render 'favourites/heart', spot: spot %>
-        </div>
-
-        <div class="m-2" id="w<%= spot.id %>" >
-          <%= render 'wishlists/bookmark', spot: spot %>
-        </div>
-
-      </div>
-
-
-      <% end %>
-
-    </div>
+    </form>
   <% end %>
+  <div id="spots-discover" class="spots-discover">
+    <% @spots.each do |spot| %>
+      <%= render('search_result', spot:spot) %>
+    <% end %>
+  </div>
 </div>
