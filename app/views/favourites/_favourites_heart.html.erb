@@ -1,0 +1,11 @@
+<% if current_user.favourited_spot?(spot) %>
+  <%= link_to favourite_path(current_user.find_favorite(spot)), method: :delete, remote: true do %>
+    <i class="fas fa-star small-heart-icon"></i>
+  <% end %>
+<% else %>
+  <%= link_to favourite_path(spot), method: :post, remote: true do %>
+    <i class="far fa-star small-heart-icon"></i>
+  <% end %>
+<% end %>
+
+

@@ -5,11 +5,13 @@ Rails.application.routes.draw do
 
   resources :favourites, only: [:index, :create, :update]
 
-  resources :wishlists, only: [:index, :create, :update]
+  resources :wishlists
 
   resources :reviews, only: [:index, :show, :create, :update, :edit, :destroy]
 
-  resources :spots, only: [:show, :index]
+  resources :spots, only: [:show, :index] do
+    resources :wishlists, only: :create
+  end
 
   resources :feeds, only: [:index]
 
@@ -18,4 +20,5 @@ Rails.application.routes.draw do
   resources :discover, only: [:index]
 
   resources :catchups, only: [:index]
+
 end

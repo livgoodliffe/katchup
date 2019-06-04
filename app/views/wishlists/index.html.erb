@@ -4,4 +4,35 @@
 
   <h1>Wishlist</h1>
 
+  <% @wishlist.each do |wish| %>
+
+    <div class="restaurant-card">
+
+      <!-- Image -->
+
+      <div class=restaurant-image>
+        <%= image_tag("#{spot.image}")%>
+      </div>
+
+      <!-- Text -->
+
+      <div class="restaurant-details">
+
+        <div class="restaurant-name">
+          <%= spot.name %>
+        </div>
+
+        <div class=restaurant-location>
+          <%#= spot.location[0..20] %>
+        </div>
+
+        <div class=restaurant-description>
+          <%= "#{spot.description[0..20]}..." %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+
 </div>

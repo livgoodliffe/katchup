@@ -4,5 +4,46 @@
 
   <h1>Discover</h1>
 
-</div>
+  <br>
 
+  <% @spots.each do |spot| %>
+    <div class="restaurant-card">
+
+      <!-- Image -->
+
+      <div class=restaurant-image>
+        <%= image_tag("#{spot.image}")%>
+      </div>
+
+      <div class="restaurant-details">
+
+        <div class="restaurant-name">
+          <%= spot.name %>
+        </div>
+
+        <div class=restaurant-location>
+          <%#= spot.location[0..20] %>
+        </div>
+
+        <div class=restaurant-description>
+          <%= "#{spot.description[0..20]}..." %>
+        </div>
+      </div>
+
+        <!-- Icons -->
+
+        <% if user_signed_in? %>
+          <div class="d-flex m-3">
+            <div class="m-2">
+              <%= render 'favourites/favourites_heart', spot: spot %>
+            </div>
+            <div class="m-2">
+              <%= render 'wishlists/wishlist_bookmark', spot: spot %>
+            </div>
+          </div>
+        <% end %>
+
+
+      </div>
+  <% end %>
+</div>
