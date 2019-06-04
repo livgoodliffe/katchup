@@ -13,9 +13,12 @@ require 'nokogiri'
 
 BASE_SELECTOR='.result'
 NAME_SELECTOR='.detail a h4'
-LOCATION_SELECTOR='.detail .subTitle'
+# LOCATION_SELECTOR='.detail .subTitle'
 DESCRIPTION_SELECTOR='.detail .snippet'
 IMAGE_SELECTOR='img'
+
+DETAIL_LINK_SELECTOR='.detail a'
+DETAIL_LOCATION_SELECTOR='.detailsContainer h2+p'
 
 BASE_URL='https://whatson.melbourne.vic.gov.au'
 
@@ -31,14 +34,27 @@ end
   results =  Nokogiri::HTML(open("#{BASE_RESTAURANT_URL}?start=#{n*10}")).css(BASE_SELECTOR)
 
   results.each_with_index do |result, index|
+    restaurant_detail_url = result.css(DETAIL_LINK_SELECTOR).attr('href')
+
+    restaurant_detail_location_initial = Nokogiri::HTML(open("#{BASE_URL}#{restaurant_detail_url}")).css(DETAIL_LOCATION_SELECTOR).text.gsub(/([^ ]{1})Melbourne/,'\1 Melbourne')
+    puts restaurant_detail_location_initial
+    restaurant_detail_location_cleaned_up = restaurant_detail_location_initial
+    .gsub("\n"," ")
+    .gsub(/(\(.*\))/,'')
+    .gsub(/([a-z])([A-Z])/,'\1 \2')
+    .gsub(/([a-z])(\d)/,'\1 \2')
+    .gsub(/(\d)([A-Z])/,'\1 \2')
+    .gsub('  ', ' ').strip
+
+
     restaurant = {
       name: result.css(NAME_SELECTOR).text.strip,
-      location: "#{result.css(LOCATION_SELECTOR).text.strip} Victoria Australia",
+      location: restaurant_detail_location_cleaned_up,
       description: result.css(DESCRIPTION_SELECTOR).text.strip,
       image: "#{BASE_URL}#{getImageSrc(result.css(IMAGE_SELECTOR).attr('src').text)}"
 
     }
-    puts "Adding restaurant #{n * 10 + index+1}"
+    puts "Adding #{n * 10 + index+1}: #{result.css(NAME_SELECTOR).text.strip} @ #{restaurant_detail_location_cleaned_up}"
     Spot.create(restaurant)
   end
 end
