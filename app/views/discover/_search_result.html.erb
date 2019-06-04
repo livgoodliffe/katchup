@@ -1,0 +1,28 @@
+<div class="restaurant-card">
+  <!-- Image -->
+  <div class=restaurant-image>
+    <%= image_tag("#{spot.image}")%>
+  </div>
+  <div class="restaurant-details">
+    <div class="restaurant-name">
+      <%= spot.name %>
+    </div>
+    <div class=restaurant-location>
+      <%#= spot.location[0..20] %>
+    </div>
+    <div class=restaurant-description>
+      <%= "#{spot.description[0..20]}..." %>
+    </div>
+  </div>
+  <!-- Icons -->
+  <% if user_signed_in? %>
+    <div class="d-flex flex-column">
+      <div class="m-2" id="<%= spot.id %>" >
+        <%= render 'favourites/heart', spot: spot %>
+      </div>
+      <div class="m-2" id="w<%= spot.id %>" >
+        <%= render 'wishlists/bookmark', spot: spot %>
+      </div>
+    </div>
+  <% end %>
+</div>
