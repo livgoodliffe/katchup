@@ -1,7 +1,7 @@
 <div class="book-rating">
   <span class="review-count">
     <% if @spot.reviews.any? %>
-      <%= link_to pluralize(@spot.reviews.count, 'review'), "#reviews"  %>
+      <p class="num-reviews"><%= pluralize(@spot.reviews.count, 'review') %></p>
     <% else %>
       <span class="no-rating">no reviews</span>
     <% end %>
