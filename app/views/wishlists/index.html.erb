@@ -1,17 +1,19 @@
 <%= render "shared/lists_navbar" %>
 
+
 <div class="container">
 
   <h1>Wishlist</h1>
 
-  <% @wishlist.each do |wish| %>
+
+  <% @wishlist.each do |wishlist| %>
 
     <div class="restaurant-card">
 
       <!-- Image -->
 
       <div class=restaurant-image>
-        <%= image_tag("#{spot.image}")%>
+        <%= image_tag("#{wishlist.spot.image}")%>
       </div>
 
       <!-- Text -->
@@ -19,7 +21,7 @@
       <div class="restaurant-details">
 
         <div class="restaurant-name">
-          <%= spot.name %>
+          <%= wishlist.spot.name %>
         </div>
 
         <div class=restaurant-location>
@@ -27,10 +29,12 @@
         </div>
 
         <div class=restaurant-description>
-          <%= "#{spot.description[0..20]}..." %>
+          <%= "#{wishlist.spot.description[0..20]}..." %>
         </div>
       </div>
+
     </div>
+
   <% end %>
 
 

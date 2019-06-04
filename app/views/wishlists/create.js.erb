@@ -1,2 +1,2 @@
-var spotWish = document.getElementById("<%= @spot.id %>");
+var spotWish = document.getElementById("w<%= @spot.id %>");
 spotWish.innerHTML = '<%= j render "wishlists/bookmark", spot: @spot %>'
