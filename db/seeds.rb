@@ -11,8 +11,6 @@ require 'nokogiri'
 
 # return unless Rails.env.development?
 
-RESTAURANTS = []
-
 BASE_SELECTOR='.result'
 NAME_SELECTOR='.detail a h4'
 LOCATION_SELECTOR='.detail .subTitle'
@@ -22,23 +20,25 @@ IMAGE_SELECTOR='img'
 BASE_URL='https://whatson.melbourne.vic.gov.au'
 
 BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/restaurants/allrestaurants/pages/allrestaurants.aspx'
-results =  Nokogiri::HTML(open(BASE_RESTAURANT_URL)).css(BASE_SELECTOR)
+
+Spot.destroy_all
 
 def getImageSrc(src)
   src.gsub('Small','Large')
 end
 
-results.each_with_index do |result, index|
-  restaurant = {
-    name: result.css(NAME_SELECTOR).text.strip,
-    location: result.css(LOCATION_SELECTOR).text.strip,
-    description: result.css(DESCRIPTION_SELECTOR).text.strip,
-    image: "#{BASE_URL}#{getImageSrc(result.css(IMAGE_SELECTOR).attr('src').text)}"
+70.times do |n|
+  results =  Nokogiri::HTML(open("#{BASE_RESTAURANT_URL}?start=#{n*10}")).css(BASE_SELECTOR)
 
-  }
-  puts "Adding restaurant #{index+1}"
-  RESTAURANTS << restaurant
+  results.each_with_index do |result, index|
+    restaurant = {
+      name: result.css(NAME_SELECTOR).text.strip,
+      location: "#{result.css(LOCATION_SELECTOR).text.strip} Victoria Australia",
+      description: result.css(DESCRIPTION_SELECTOR).text.strip,
+      image: "#{BASE_URL}#{getImageSrc(result.css(IMAGE_SELECTOR).attr('src').text)}"
+
+    }
+    puts "Adding restaurant #{n * 10 + index+1}"
+    Spot.create(restaurant)
+  end
 end
-
-Spot.destroy_all
-Spot.create(RESTAURANTS)
