@@ -1,17 +1,11 @@
-.feed-review-container {
-/*   width: 100vw; */
-  height: 100vh;
-  background: gray;
-  display: flex;
-  justify-content: center;
-/*   flex-wrap: wrap; */
-
-  .feed-review-card-container {
+ .feed-review-card-container {
     height: 400px;
     width: 90%;
     background: white;
     border-radius: 24px;
     margin: 8px;
+    box-shadow: 3px 4px 6px rgba(30, 30, 30, 0.3);
+
 
       .img-bkg {
         position: relative;
@@ -42,15 +36,24 @@
       .body-text {
         // display: inline;
         margin-left: 8px;
+        p {
+          margin: 8px 0;
+          color: rgba(30, 30, 30, 0.3);
+          font-size: 15px;
+        }
+        h2 {
+          font-size: 24px;
+        }
       }
 
       span.name {
+        color: black;
         font-weight: bold;
       }
 
       .line-break {
         height: 2px;
-        background-color: green;
+        background-color: rgba(199, 0, 57, 0.4);
       }
 
       .review-card-review {
@@ -59,31 +62,21 @@
         align-items: center;
         p {
           margin: 0;
+          font-size: 15px;
         }
       }
-
-      i {
-        font-size: 24px;
-        margin: 0;
-        color: white;
-        text-shadow: 1px 1px $light-grey;
-      }
-      .fa-heart {
+      .review-card-heart {
         position: absolute;
         top: 12px;
-        right: 56px
+        right: 56px;
       }
-      .fa-bookmark {
+      .review-card-bookmark {
         position: absolute;
         top: 12px;
-        right: 21px
+        right: 21px;
       }
-      .fa-star {
+      .review-card-star {
         margin-top: 12px;
-        color: black;
+
       }
-  }
-
-
-
 }
