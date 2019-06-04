@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_many :reviews
 
   def reviewed_spot?(spot)
@@ -21,6 +20,13 @@ class User < ApplicationRecord
 
   def find_favourite(spot)
     favourites.where(spot: spot).first
+  end
 
+  def wishlisted_spot?(spot)
+    wishlists.where(spot: spot).any?
+  end
+
+  def find_wishlist(spot)
+    wishlists.where(spot: spot).first
   end
 end
