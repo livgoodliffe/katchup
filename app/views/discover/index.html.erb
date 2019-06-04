@@ -34,7 +34,10 @@
 
       <% if user_signed_in? %>
         <div class="heart-icon" id="<%= spot.id %>" >
-          <%= render 'favourites/favourites_heart', spot: spot %>
+          <%= render 'favourites/heart', spot: spot %>
+        </div>
+        <div class="bookmark-icon" id="<%= spot.id %>" >
+          <%= render 'wishlists/bookmark', spot: spot %>
         </div>
       <% end %>
 
