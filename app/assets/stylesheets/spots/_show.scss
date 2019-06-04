@@ -21,6 +21,7 @@
       }
       p {
         padding: 8px;
+        margin-bottom: 4px;
       }
 
     }
@@ -38,7 +39,7 @@
 
   .fa-star {
     margin: 0 4px;
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .avatar {
@@ -57,6 +58,13 @@
       .review-image {
         border-radius: 20px 20px 0 0;
       }
+    }
+  }
+
+  .info {
+    a {
+      color: $dark-grey;
+      text-decoration: none;
     }
   }
 }
