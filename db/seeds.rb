@@ -9,7 +9,7 @@
 require 'open-uri'
 require 'nokogiri'
 
-return unless Rails.env.development?
+# return unless Rails.env.development?
 
 RESTAURANTS = []
 
