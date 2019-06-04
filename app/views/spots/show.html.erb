@@ -1,6 +1,6 @@
 <div class="spot-show-wrapper">
   <%= render 'spots/show/spot-show-banner' %>
-  <div class="info d-flex justify-content-around p-3 m-3">
+  <div class="info d-flex justify-content-around px-3 m-3">
     <%= link_to "Menu" %>
     <%= link_to "Information", "#", data: { toggle: "modal", target: "#infoModal" } %>
     <!-- Modal -->
@@ -8,38 +8,16 @@
     <%= link_to "Photos" %>
   </div>
 
+  <%= render 'spots/show/spot-show-map' %>
+
   <div class="container">
+    <!-- Number of reviews -->
+    <%= render 'spots/show/spot-show-num-reviews' %>
+    <!-- Listing reviews -->
+    <%= render 'spots/show/spot-show-reviews-list' %>
+    <!-- Review form -->
+    <%= render 'spots/show/spots-show-review-form' %>
 
-    <div class="book-rating">
-      <span class="review-count">
-        <% if @spot.reviews.any? %>
-          <%= link_to pluralize(@spot.reviews.count, 'review'), "#reviews"  %>
-        <% else %>
-          <span class="no-rating">no reviews</span>
-        <% end %>
-      </span>
-      <div id="reviews-anchor"></div>
-    </div>
-
-    <!-- showing reviews -->
-
-    <div id="reviews-container">
-      <h5>Reviews</h5>
-      <div id="reviews"></div>
-      <% if @spot.reviews.any? %>
-          <%= render @spot.reviews %>
-      <% else %>
-        <p>This book doesn't have any reviews yet.</p>
-      <% end %>
-    </div>
-
-    <!-- Showing form -->
-    <section class="spot-section">
-      <% if user_signed_in? %>
-        <%= render 'reviews/form' %>
-      <% end %>
-
-    </section>
   </div>
 </div>
 
