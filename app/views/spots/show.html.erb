@@ -2,13 +2,17 @@
   <%= render 'spots/show/spot-show-banner' %>
   <div class="info d-flex justify-content-around p-3 m-3">
     <%= link_to "Menu" %>
-    <%= link_to "Information" %>
+    <%= link_to "Information", "#", data: { toggle: "modal", target: "#infoModal" } %>
+    <!-- Modal -->
+    <%= render 'spots/show/spot-show-modal' %>
     <%= link_to "Photos" %>
   </div>
-  <%= render 'spots/show/spot-show-average-rating' %>
+
   <div class="container" style="height: 500px">
     <%= render 'spots/show/spot-show-reviews' %>
     <%= render 'spots/show/spot-show-reviews' %>
     <%= render 'spots/show/spot-show-reviews' %>
   </div>
 </div>
+
+

@@ -1,5 +1,5 @@
 <div class="card border-0">
-  <div class="show-banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @spot.image %>);">
+  <div class="show-banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= @spot.image %>);">
     <div class="show-banner-content d-flex flex-column align-items-center">
 
       <h1 ><%= @spot.name %></h1>
@@ -8,6 +8,7 @@
         <p><i class="far fa-heart"></i></p>
         <p><i class="far fa-bookmark"></i></p>
       </div>
+      <%= render 'spots/show/spot-show-average-rating' %>
     </div>
   </div>
 </div>
