@@ -7,7 +7,7 @@ class WishlistsController < ApplicationController
   end
 
   def create
-    @spot = Spot.find(params[:item_id])
+    @spot = Spot.find(params[:spot_id])
     current_user.wishlists.create(spot: @spot)
 
     respond_to do |format|
@@ -23,7 +23,7 @@ class WishlistsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @spot }
-      format.js { render :create }
+      format.js
     end
   end
 
