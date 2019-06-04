@@ -2,8 +2,9 @@ class ListsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    # byebug
+
     if params[:search].present?
+      # byebug
       search = params[:search]
       @spots = Spot.where('name ILIKE ?', "%#{search}%")
       respond_to do |format|
