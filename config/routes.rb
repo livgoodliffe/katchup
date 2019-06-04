@@ -3,14 +3,14 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :favourites, only: [:index, :create, :update]
-
-  resources :wishlists
+  resources :favourites, only: [:index, :destroy]
+  resources :wishlists, only: [:index, :destroy]
 
   resources :reviews, only: [:index, :show, :create, :update, :edit, :destroy]
 
   resources :spots, only: [:show, :index] do
     resources :wishlists, only: :create
+    resources :favourites, only: :create
   end
 
   resources :feeds, only: [:index]
