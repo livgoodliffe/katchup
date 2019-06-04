@@ -1,6 +1,41 @@
 <%= render "shared/lists_navbar" %>
 
 <div class="container">
-  <h1>Favourites</h1>
-</div>
 
+  <h1>Favourites</h1>
+
+
+  <% @favourites.each do |favourite| %>
+
+    <div class="restaurant-card">
+
+      <!-- Image -->
+
+      <div class=restaurant-image>
+        <%= image_tag("#{favourite.spot.image}")%>
+      </div>
+
+      <!-- Text -->
+
+      <div class="restaurant-details">
+
+        <div class="restaurant-name">
+          <%= favourite.spot.name %>
+        </div>
+
+        <div class=restaurant-location>
+          <%#= spot.location[0..20] %>
+        </div>
+
+        <div class=restaurant-description>
+          <%= "#{favourite.spot.description[0..20]}..." %>
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+
+
+
+</div>
