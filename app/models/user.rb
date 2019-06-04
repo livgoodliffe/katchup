@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   def reviewed_spot?(spot)
     reviews.where(spot: spot).any?
+  end
 
   has_many :spots
   has_many :favourites
