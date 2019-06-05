@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_025112) do
+ActiveRecord::Schema.define(version: 2019_06_05_033510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,12 +63,32 @@ ActiveRecord::Schema.define(version: 2019_06_05_025112) do
     t.index ["user_id"], name: "index_friend_requests_on_user_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
   create_table "images", force: :cascade do |t|
     t.bigint "spot_id"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spot_id"], name: "index_images_on_spot_id"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.bigint "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_menu_items_on_spot_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -126,7 +146,10 @@ ActiveRecord::Schema.define(version: 2019_06_05_025112) do
   add_foreign_key "favourites", "spots"
   add_foreign_key "favourites", "users"
   add_foreign_key "friend_requests", "users"
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "images", "spots"
+  add_foreign_key "menu_items", "spots"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
   add_foreign_key "wishlists", "spots"
