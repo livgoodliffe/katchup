@@ -8,26 +8,46 @@
 
 require 'open-uri'
 require 'nokogiri'
+require 'faker'
 
 # return unless Rails.env.development?
 
 BASE_SELECTOR='.result'
 NAME_SELECTOR='.detail a h4'
-IMAGE_SELECTOR='img'
 
 DETAIL_LINK_SELECTOR='.detail a'
 DETAIL_LOCATION_SELECTOR='.detailsContainer h2+p'
 DETAIL_DESCRIPTION_SELECTOR='.detailsContainer h4+p'
 DETAIL_HOURS_SELECTOR='.detailsContainer .hanging.noindex'
+DETAIL_IMAGES_SELECTOR='.nivoSlider img'
 
 BASE_URL='https://whatson.melbourne.vic.gov.au'
 
 BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/restaurants/allrestaurants/pages/allrestaurants.aspx'
 
+Image.destroy_all
 Spot.destroy_all
 
-def get_image_src(src)
-  src.gsub('Small','Large')
+def create_menu_item(spot)
+  menuitem = { spot_id:spot.id,
+               name: Faker::Food.dish,
+               description: Faker::Food.description,
+               price: 100 + rand(2901) }
+
+  puts menuitem
+
+  menuitem
+end
+
+def get_image_urls(result_detail_doc)
+  image_urls = []
+  result_detail_doc.css(DETAIL_IMAGES_SELECTOR).each_with_index do |element, index|
+    image_url = "#{BASE_URL}#{element.attr('src')}"
+    puts "Image #{index}: #{image_url}"
+    image_urls << image_url
+  end
+
+  image_urls
 end
 
 def get_location(result_detail_doc)
@@ -42,7 +62,7 @@ def get_location(result_detail_doc)
 
   spot_detail_address = spot_detail_location
   .gsub(/(\(.*\))/,'')              # remove (*)
-  .match(/[\d]+[^\d]+VIC( \d{4})?$/)[0]  # keep: street number followed by .*
+  .match(/([\d]+)?[^\d]+VIC( \d{4})?$/)[0] # # keep: street number (if exists) followed by .*
   .gsub('  ', ' ')
 
   puts
@@ -82,6 +102,7 @@ end
     location = get_location(result_detail_doc)
     description = get_description(result_detail_doc)
     hours = get_hours(result_detail_doc)
+    image_urls = get_image_urls(result_detail_doc)
 
     spot = {
       name: result.css(NAME_SELECTOR).text.strip,
@@ -89,10 +110,18 @@ end
       address: location[:address],
       description: description,
       hours: hours,
-      image: "#{BASE_URL}#{get_image_src(result.css(IMAGE_SELECTOR).attr('src').text)}"
-
     }
+
     puts "Adding #{n * 10 + index+1}: #{spot[:name]}"
-    Spot.create(spot)
+
+    spot = Spot.create(spot)
+
+    image_urls.each do |image_url|
+      Image.create(spot_id: spot.id, image: image_url)
+    end
+
+    (3+rand(6)).times do
+      MenuItem.create(create_menu_item(spot))
+    end
   end
 end
