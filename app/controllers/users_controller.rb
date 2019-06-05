@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     @params = params
   end
 
+  def create
+  end
+
   def index
     @params = params
     @users = User.all.where.not(id: current_user.id)

@@ -2,7 +2,7 @@
   <h5>Reviews</h5>
   <div id="reviews"></div>
   <% if @spot.reviews.any? %>
-      <%= render @spot.reviews %>
+      <%= render @spot.reviews.ordered_by_date %>
   <% else %>
     <p>This book doesn't have any reviews yet.</p>
   <% end %>
