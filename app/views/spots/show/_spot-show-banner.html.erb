@@ -4,10 +4,16 @@
 
       <h1 ><%= @spot.name %></h1>
       <div id="show-underline"></div>
-      <div class="heart-book d-flex justify-content-center">
-        <p><i class="far fa-heart"></i></p>
-        <p><i class="far fa-bookmark"></i></p>
-      </div>
+        <% if user_signed_in? %>
+          <div class="heart-book d-flex justify-content-center">
+            <div class="m-2" id="<%= @spot.id %>" >
+              <%= render 'favourites/heart', spot: @spot %>
+            </div>
+            <div class="m-2" id="w<%= @spot.id %>" >
+              <%= render 'wishlists/bookmark', spot: @spot %>
+            </div>
+          </div>
+        <% end %>
       <div id="average-rating">
         <%= render 'spots/show/spot-show-average-rating', average: @spot.average_rating %>
       </div>
