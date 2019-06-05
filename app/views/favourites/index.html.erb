@@ -1,31 +1,15 @@
 <%= render "shared/navbar" %>
-
 <!-- Buttons -->
-
 <%= render "lists/list_type" %>
-
 <!-- Search bar -->
-
 <div class="grey-search-bar">
-    <%= form_tag(lists_path, method: :get, remote: true) do %>
-      <form class="form-inline search-bar" >
-        <div>
-          <%= text_field_tag :search, params[:search], class: "search-bar",
-          placeholder: "Search through your favourites"%>
-        </div>
-      </form>
-    <% end %>
+  <%= render('search/search_form', search_type: 'favourite_spots', placeholder: 'Search My Favourites') %>
 </div>
-
 <!-- Cards -->
-
 <div class="d-flex flex-column justify-content-center">
-  <% @favourites.each do |favourite| %>
-
-
-  <%= render "spots/spot_card", spot: favourite.spot %>
-
-  <% end %>
-
-
+  <div id="search-results" class="search-results">
+    <% @favourite_spots.each do |spot| %>
+      <%= render "spots/spot_card", spot: spot %>
+    <% end %>
+  </div>
 </div>

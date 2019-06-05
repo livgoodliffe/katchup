@@ -2,13 +2,11 @@
 <h1>Discover</h1>
 <!-- Search bar -->
 <div class="grey-search-bar">
-  <%= form_tag(search_index_path, method: :get, remote: true) do %>
-    <%= hidden_field_tag :search_type, 'all_spots' %>
-    <%= text_field_tag :search, nil, class: "search-bar", placeholder: "Search"%>
-  <% end %>
+  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search All Spots') %>
 </div>
 <div id="search-results" class="search-results">
+  <!-- this content only exists so that full spot list exists before any search is carried out -->
   <% @spots.each do |spot| %>
-    <%= render'search_result', spot: spot %>
+    <%= render "spots/spot_card", spot: spot %>
   <% end %>
 </div>

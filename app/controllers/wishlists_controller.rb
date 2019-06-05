@@ -3,7 +3,8 @@ class WishlistsController < ApplicationController
   before_action :set_spot, only: :create
 
   def index
-    @wishlist = Wishlist.where(user: current_user)
+    @wishlist = current_user.wishlists
+    @wishlist_spots = current_user.wishlist_spots.sort_by(&:name)
   end
 
   def create
