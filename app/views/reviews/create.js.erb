@@ -14,4 +14,8 @@ function addReview(reviewHTML) {
   refreshForm('<%= j render "reviews/form" %>');
 <% else %>
   addReview('<%= j render "reviews/review", review: @review %>');
+  var reviewNum = document.getElementById('num-review');
+  reviewNum.innerHTML = '<%= j render("spots/show/spot-show-num-reviews", total: @spot.reviews.count) %>';
+  var averageRating = document.getElementById('average-rating');
+  averageRating.innerHTML = '<%= j render("spots/show/spot-show-average-rating", average: @spot.average_rating) %>';
 <% end %>
