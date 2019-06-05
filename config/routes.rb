@@ -25,4 +25,11 @@ Rails.application.routes.draw do
 
   resources :catchups, only: [:index]
 
+  resources :users, only: [:index] do
+    member do
+      post :follow
+      post :unfollow
+    end
+ end
+
 end

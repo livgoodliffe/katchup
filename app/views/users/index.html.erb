@@ -1,0 +1,12 @@
+<div class="users-page-wrapper">
+  <div class="search-wrapper" style="height: ">
+    <input type="search" class="search-placeholder" placeholder="remove me when search is ready" style="width: 100%">
+  </div>
+
+    <% @users.each do |user| %>
+      <%= render 'user', user: user %>
+    <% end %>
+  </ul>
+
+
+</div>

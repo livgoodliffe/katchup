@@ -1,0 +1,14 @@
+<li data-user=<%= user.id %>>
+  <%= user.first_name %>
+  <% if current_user.is_following?(user.id) %>
+    <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
+  <% else %>
+    <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
+  <% end %>
+</li>
+
+
+
+<div class="user-card">
+  Make a user card here
+</div>
