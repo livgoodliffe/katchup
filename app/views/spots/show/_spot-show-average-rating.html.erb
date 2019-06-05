@@ -4,7 +4,7 @@
     <% if @spot.average_rating.nil? %>
       <span class="no-rating">not rated</span>
     <% else %>
-      <%= set_stars(@spot.average_rating) %>
+      <%= set_stars(average) %>
     <% end %>
   </div>
 </div>

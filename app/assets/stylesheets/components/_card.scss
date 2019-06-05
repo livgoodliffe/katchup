@@ -1,0 +1,30 @@
+.spot-card {
+  display: flex;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0,0,0,.3);
+
+  img {
+    width: 100px;
+    height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .spot-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    .spot-name {
+      font-weight: bold;
+    }
+    .spot-location {
+      font-size: 0.75rem;
+    }
+    .spot-description {
+      font-size: 0.75rem;
+    }
+  }
+}

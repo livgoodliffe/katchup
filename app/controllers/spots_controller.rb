@@ -16,5 +16,10 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @review = Review.new
+    @marker = [{
+      lat: @spot.latitude,
+      lng: @spot.longitude,
+      infoWindow: render_to_string(partial: "map_marker_info", locals: { spot: @spot })
+    }]
   end
 end
