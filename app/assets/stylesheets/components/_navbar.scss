@@ -1,7 +1,6 @@
 // Main Navbar
 
-.top-navbar {
-  justify-content: space-between;
+.navbar {
   background: $dark-grey;
   box-shadow: 0px 0px 5px rgba(0,0,0,.5);
   .navbar-collapse {
@@ -10,15 +9,15 @@
 }
 
 .navbar-brand {
-  font-style: "Century Gothic";
   font-weight: bold;
   align-self: center;
   padding: 0;
   p {
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     margin: 0;
-    font-family: $logo-font;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: normal;
   }
 }
 
@@ -30,25 +29,6 @@
   border: none;
 }
 
-// Lists Navbar
-
-.lists-navbar {
-  justify-content: space-around;
-  align-items: flex-end;
-  background: $dark-grey;
-  box-shadow: 0px 0px 5px rgba(0,0,0,.5);
-  .navbar-label {
-    p {
-      color: white;
-      font-weight: lighter;
-      padding-bottom: 8px;
-    }
-    p.active {
-      border-bottom: 5px solid white;
-      font-weight: bold;
-    }
-  }
-}
 
 .bottom-navbar {
   display: flex;

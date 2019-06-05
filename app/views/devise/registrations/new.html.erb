@@ -1,36 +1,58 @@
 <div class="container">
-  <h2>Sign up</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+  <div class="sign-up-form">
 
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :first_name,
-                  required: true,
-                  input_html: { autocomplete: "first name" }%>
-      <%= f.input :last_name,
-                  required: true,
-                  input_html: { autocomplete: "last name" }%>
-      <%= f.input :avatar,
-                  required: false,
-                  input_html: { autocomplete: "avatar" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-    </div>
+    <h5 class="sign-up-form-heading">Join the Katchup club</h5>
 
-    <div class="form-actions btn btn-primary">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
-  <br>
-  <%= render "devise/shared/links" %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" },
+                    placeholder: "email",
+                    label: false %>
+        <%= f.input :first_name,
+                    required: true,
+                    input_html: { autocomplete: "first name" },
+                    placeholder: "first name",
+                    label: false %>
+        <%= f.input :last_name,
+                    required: true,
+                    input_html: { autocomplete: "last name" },
+                    placeholder: "last name",
+                    label: false %>
+        <%= f.input :avatar,
+                    required: false,
+                    input_html: { autocomplete: "avatar" },
+                    placeholder: "upload your avatar",
+                    label: false %>
+        <%= f.input :password,
+                    required: true,
+                    input_html: { autocomplete: "new-password" },
+                    placeholder: "password",
+                    label: false %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" },
+                    placeholder: "password confirmation",
+                    label: false %>
+      </div>
+
+      <div class="form-actions btn red-button">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+
+    <% end %>
+
+    <br>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+
+
+
 </div>
