@@ -1,7 +1,13 @@
 <%= render "shared/navbar" %>
 
-<div class="container">
-  <h1>My katchups</h1>
+  <%= link_to new_catchup_path do %>
+    <div class="red-band-button" style="padding-top: 70px">Create a Katchup</div>
+  <% end %>
+
+  <div class="container">
+    <h1>My upcoming katchups:</h1>
+  </div>
+
 </div>
 
 

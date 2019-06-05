@@ -1,0 +1,36 @@
+
+
+<div style="padding-top: 54px">
+
+
+  <!-- Add friends -->
+
+  <%= link_to new_catchup_path(function: 'add_friends') do %>
+    <p class="red-band-button">Add friends</p>
+  <% end %>
+  <% if params[:function] == 'add_friends' %>
+    <%= render "add_friends" %>
+  <% end %>
+
+
+  <!-- Choose spot -->
+
+  <%= link_to new_catchup_path(function: 'choose_spot') do %>
+    <p class="red-band-button">Choose Spot</p>
+  <% end %>
+  <% if params[:function] == 'choose_spot' %>
+    <%= render "choose_spot" %>
+  <% end %>
+
+
+  <!-- Choose Time -->
+
+  <%= link_to new_catchup_path(function: 'choose_time') do %>
+    <p class="red-band-button">Choose Time</p>
+  <% end %>
+  <% if params[:function] == 'choose_time' %>
+    <%= render "choose_time" %>
+  <% end %>
+
+
+</div>
