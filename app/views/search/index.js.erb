@@ -1,15 +1,15 @@
 function clearResults() {
-  const resultsContainer = document.getElementById('spots-discover')
+  const resultsContainer = document.getElementById('search-results')
   resultsContainer.innerHTML = ""
 }
 
 function addResults(resultHTML) {
-  const resultsContainer = document.getElementById('spots-discover')
+  const resultsContainer = document.getElementById('search-results')
   resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
 }
 
 clearResults();
 
 <% @spots.each do |spot| %>
-addResults(`<%=render("search_result", spot:spot)%>`)
+addResults(`<%= render("search_result", spot:spot) %>`)
 <% end %>

@@ -1,28 +1,14 @@
 <%= render "shared/navbar" %>
 <%= render "lists/list_type" %>
-
 <!-- Search bar -->
-
 <div class="grey-search-bar">
-    <%= form_tag(lists_path, method: :get, remote: true) do %>
-      <form class="form-inline search-bar" >
-        <div>
-          <%= text_field_tag :search, params[:search], class: "search-bar",
-          placeholder: "Search through your wishlist"%>
-        </div>
-      </form>
-    <% end %>
+  <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: 'Search My Wishlist') %>
 </div>
-
 <!-- Cards -->
-
-
 <div class="d-flex flex-column justify-content-center">
-
-  <% @wishlist.each do |wishlist| %>
-
-    <%= render "spots/spot_card", spot: wishlist.spot %>
-
-  <% end %>
-
+  <div id="search-results" class="search-results">
+    <% @wishlist_spots.each do |spot| %>
+      <%= render "spots/spot_card", spot: spot %>
+    <% end %>
+  </div>
 </div>
