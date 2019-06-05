@@ -1,22 +1,11 @@
 <%= render "shared/navbar" %>
-  <!-- Search bar -->
-
-  <div class="grey-search-bar" style="padding-top: 70px;">
-      <%= form_tag(lists_path, method: :get, remote: true) do %>
-        <form class="form-inline search-bar" >
-          <div>
-            <%= text_field_tag :search, params[:search], class: "search-bar",
-            placeholder: "Search"%>
-          </div>
-        </form>
-      <% end %>
-  </div>
-
-  <div id="spots-discover" class="spots-discover">
-    <% @spots.each do |spot| %>
-
-      <%= render'search_result', spot: spot %>
-
-    <% end %>
-  </div>
+<!-- Search bar -->
+<div class="grey-search-bar" style="padding-top: 70px">
+  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search All Spots') %>
+</div>
+<div id="search-results" class="search-results">
+  <!-- this content only exists so that full spot list exists before any search is carried out -->
+  <% @spots.each do |spot| %>
+    <%= render "spots/spot_card", spot: spot %>
+  <% end %>
 </div>

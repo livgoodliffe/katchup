@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :favourites, only: [:index, :destroy]
+
   resources :wishlists, only: [:index, :destroy]
 
   resources :reviews, only: [:index, :show, :create, :update, :edit, :destroy]
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   resources :spots, only: [:show, :index] do
 
     resources :reviews, only: [:create]
-
     resources :wishlists, only: :create
     resources :favourites, only: :create
 
@@ -25,12 +25,14 @@ Rails.application.routes.draw do
 
   resources :catchups, only: [:index]
 
+  resources :search, only: [:index]
+
   resources :users, only: [:index] do
     member do
       post :follow
       post :unfollow
     end
- end
+  end
 
   resources :friend_requests, only: [:index, :create, :destroy]
 

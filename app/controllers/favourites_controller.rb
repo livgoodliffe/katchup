@@ -3,7 +3,8 @@ class FavouritesController < ApplicationController
   before_action :set_spot, only: :create
 
   def index
-    @favourites = Favourite.where(user: current_user)
+    @favourites = current_user.favourites
+    @favourite_spots = current_user.favourite_spots.sort_by(&:name)
   end
 
   def create
