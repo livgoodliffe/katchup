@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :spots
   has_many :favourites
   has_many :wishlists
+  has_many :friends, dependent: :destroy
+  has_many :pending_friends, through: :friends, source: :friend
 
   def favourited_spot?(spot)
     favourites.where(spot: spot).any?

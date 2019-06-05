@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_034813) do
+ActiveRecord::Schema.define(version: 2019_06_05_001116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,15 +41,6 @@ ActiveRecord::Schema.define(version: 2019_06_04_034813) do
     t.datetime "updated_at", null: false
     t.index ["spot_id"], name: "index_favourites_on_spot_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friends_on_friend_id"
-    t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -113,8 +104,6 @@ ActiveRecord::Schema.define(version: 2019_06_04_034813) do
   add_foreign_key "catchups", "users"
   add_foreign_key "favourites", "spots"
   add_foreign_key "favourites", "users"
-  add_foreign_key "friends", "friends"
-  add_foreign_key "friends", "users"
   add_foreign_key "images", "spots"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
