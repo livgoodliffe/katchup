@@ -8,7 +8,9 @@
         <p><i class="far fa-heart"></i></p>
         <p><i class="far fa-bookmark"></i></p>
       </div>
-      <%= render 'spots/show/spot-show-average-rating' %>
+      <div id="average-rating">
+        <%= render 'spots/show/spot-show-average-rating', average: @spot.average_rating %>
+      </div>
     </div>
   </div>
 </div>

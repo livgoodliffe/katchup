@@ -1,7 +1,7 @@
 <div class="book-rating">
   <span class="review-count">
-    <% if @spot.reviews.any? %>
-      <p class="num-reviews"><%= pluralize(@spot.reviews.count, 'review') %></p>
+    <% if total.positive? %>
+      <p class="num-reviews"><%= pluralize(total, 'review') %></p>
     <% else %>
       <span class="no-rating">no reviews</span>
     <% end %>
