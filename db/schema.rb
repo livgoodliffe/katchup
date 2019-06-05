@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_06_05_022810) do
+=======
+ActiveRecord::Schema.define(version: 2019_06_05_033510) do
+>>>>>>> 681da4039410e8582664c3ab0c438167e0c3c79f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +85,16 @@ ActiveRecord::Schema.define(version: 2019_06_05_022810) do
     t.index ["spot_id"], name: "index_images_on_spot_id"
   end
 
+  create_table "menu_items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.bigint "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_menu_items_on_spot_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "image"
@@ -96,7 +110,6 @@ ActiveRecord::Schema.define(version: 2019_06_05_022810) do
   create_table "spots", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
@@ -140,6 +153,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_022810) do
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "images", "spots"
+  add_foreign_key "menu_items", "spots"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
   add_foreign_key "wishlists", "spots"
