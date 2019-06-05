@@ -1,6 +1,8 @@
 class CatchupsController < ApplicationController
-  skip_before_action :authenticate_user!
-
   def index
+  end
+
+  def new
+    @users = User.all.where.not(id: current_user.id)
   end
 end
