@@ -1,7 +1,13 @@
-<%= render "shared/lists_navbar" %>
+<%= render "shared/navbar" %>
+
+<!-- Favourites and Wishlist buttons -->
+
+<%= render "list_type" %>
+
+
+<!-- Search Bar -->
+
 <div class="lists-index-wrapper container">
-  <h2>Add a spot</h2>
-  <!-- Search -->
   <%= form_tag(lists_path, method: :get, remote: true) do %>
     <form class="form-inline" >
       <div class="md-form my-0 mr-3">
@@ -9,11 +15,12 @@
       </div>
     </form>
   <% end %>
-  <div id="spots-list" class="spots-list">
-  </div>
-  <%= link_to spots_path do %>
-    <h3>See all spots</h3>
-  <% end %>
-  <h4>Add to favourites</h4>
-  <h4>Add to wishlist</h4>
+
+<!-- Map -->
+
+<div class="full-map">
+  Map
+</div>
+
+
 </div>
