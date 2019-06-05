@@ -32,3 +32,5 @@ end
 gem 'nokogiri'
 gem 'geocoder'
 gem 'faker'
+gem 'cloudinary'
+gem 'carrierwave'
