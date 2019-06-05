@@ -3,7 +3,7 @@ class CreateMenuItems < ActiveRecord::Migration[5.2]
     create_table :menu_items do |t|
       t.string :name
       t.string :description
-      t.integer :price
+      t.monetize :price, currency: { present: false }
       t.references :spot, foreign_key: true
 
       t.timestamps
