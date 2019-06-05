@@ -22,7 +22,11 @@
 <div class="d-flex flex-column justify-content-center">
   <% @favourites.each do |favourite| %>
     <div class="spot-card">
+
+      <!-- Image -->
       <%= image_tag("#{favourite.spot.image}")%>
+
+      <!-- Text -->
       <div class="spot-details">
         <div class="spot-name">
           <%= favourite.spot.name %>
@@ -34,6 +38,10 @@
           <%= "#{favourite.spot.description[0..20]}..." %>
         </div>
       </div>
+
+      <!-- Icons -->
+      <%= render "shared/icons", spot: favourite.spot %>
+
     </div>
   <% end %>
 
