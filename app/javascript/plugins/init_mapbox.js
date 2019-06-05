@@ -15,7 +15,11 @@ export default () => {
 
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-      new mapboxgl.Marker({ color: '#C70039' })
+
+      const markerStylingElement = document.createElement('div');
+      markerStylingElement.className = 'map-marker';
+
+      new mapboxgl.Marker(markerStylingElement)
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
         .addTo(map);
