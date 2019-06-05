@@ -22,31 +22,7 @@
 
   <% @wishlist.each do |wishlist| %>
 
-    <div class="spot-card">
-
-      <!-- Image -->
-
-      <%= image_tag("#{wishlist.spot.image}")%>
-
-      <!-- Text -->
-
-      <div class="spot-details">
-        <div class="spot-name">
-          <%= wishlist.spot.name %>
-        </div>
-        <div class="spot-location">
-          <%#= spot.location[0..20] %>
-        </div>
-        <div class="spot-description">
-          <%= "#{wishlist.spot.description[0..20]}..." %>
-        </div>
-      </div>
-
-      <!-- Icons -->
-
-      <%= render "shared/icons", spot: wishlist.spot %>
-
-    </div>
+    <%= render "spots/spot_card", spot: wishlist.spot %>
 
   <% end %>
 
