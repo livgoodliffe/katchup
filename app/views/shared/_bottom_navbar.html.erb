@@ -4,7 +4,7 @@
   <% end %>
 
   <%= link_to discover_index_path(section: 'discover') do %>
-    <i class="fas fa-search <%= 'nav-active' if params[:section] == 'discover' %>"></i>
+    <i class="fas fa-search-plus <%= 'nav-active' if params[:section] == 'discover' %>"></i>
   <% end %>
 
   <%= link_to lists_path(section: 'lists') do %>

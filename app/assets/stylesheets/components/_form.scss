@@ -1,0 +1,20 @@
+.sign-up-form {
+  padding: 20px;
+  margin: 30px;
+  input {
+    border-bottom: 2px solid $dark-grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: $light-grey;
+  }
+}
+
+.sign-up-form-heading {
+  color: $katchup;
+  font-family: "Unbuntu", sans-serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: 23px;
+  padding-bottom: 15px;
+}
