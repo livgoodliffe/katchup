@@ -16,19 +16,6 @@
   </div>
   <!-- Icons -->
 
-  <%= render "shared/icons" %>
-
-
-  <% if user_signed_in? %>
-    <div class="d-flex flex-column">
-      <div class="m-2" id="<%= spot.id %>" >
-        <%= render 'favourites/heart', spot: spot %>
-      </div>
-      <div class="m-2" id="w<%= spot.id %>" >
-        <%= render 'wishlists/bookmark', spot: spot %>
-      </div>
-    </div>
-  <% end %>
-
+  <%= render "shared/icons", spot: spot %>
 
 </div>
