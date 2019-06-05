@@ -32,4 +32,6 @@ Rails.application.routes.draw do
     end
  end
 
+  resources :friend_requests, only: [:index, :create, :destroy]
+
 end
