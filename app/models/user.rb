@@ -11,15 +11,18 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
-  def reviewed_spot?(spot)
-    reviews.where(spot: spot).any?
-  end
+  has_many :friend_requests, dependent: :destroy
+  has_many :pending_friends, through: :friend_requests, source: :friend
 
   has_many :spots
   has_many :favourites
   has_many :wishlists
   has_many :friends, dependent: :destroy
   has_many :pending_friends, through: :friends, source: :friend
+
+  def reviewed_spot?(spot)
+    reviews.where(spot: spot).any?
+  end
 
   def favourited_spot?(spot)
     favourites.where(spot: spot).any?
