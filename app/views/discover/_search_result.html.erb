@@ -15,6 +15,10 @@
     </div>
   </div>
   <!-- Icons -->
+
+  <%= render "shared/icons" %>
+
+
   <% if user_signed_in? %>
     <div class="d-flex flex-column">
       <div class="m-2" id="<%= spot.id %>" >
@@ -25,4 +29,6 @@
       </div>
     </div>
   <% end %>
+
+
 </div>
