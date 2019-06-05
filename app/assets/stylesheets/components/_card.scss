@@ -7,6 +7,7 @@
   border-radius: 5px;
   background-color: white;
   box-shadow: 0px 2px 5px rgba(0,0,0,.3);
+  position: relative;
 
   img {
     width: 100px;
@@ -29,5 +30,13 @@
   .spot-card-icons {
     position: absolute;
     right: -20px;
+  }
+
+  .spot-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 }
