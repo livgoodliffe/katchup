@@ -1,28 +1,21 @@
 <%= render "shared/navbar" %>
-
 <!-- Favourites and Wishlist buttons -->
-
 <%= render "list_type" %>
-
-
 <!-- Search Bar -->
-
 <div class="grey-search-bar">
-    <%= form_tag(lists_path, method: :get, remote: true) do %>
-      <form class="form-inline search-bar" >
-        <div>
-          <%= text_field_tag :search, params[:search], class: "search-bar",
+  <%= form_tag(lists_path, method: :get, remote: true) do %>
+    <form class="form-inline search-bar" >
+      <div>
+        <%= text_field_tag :search, params[:search], class: "search-bar",
           placeholder: "Search through all my spots"%>
-        </div>
-      </form>
-    <% end %>
+      </div>
+    </form>
+  <% end %>
 </div>
-
+<div id="spots-list" class="spots-list">
+</div>
 <!-- Map -->
-
 <div class="full-map">
   Map with all my saved spots with their relevant icons
 </div>
-
-
 </div>
