@@ -2,18 +2,13 @@
 <h1>Discover</h1>
 <!-- Search bar -->
 <div class="grey-search-bar">
-  <%= form_tag(discover_index_path, method: :get, remote: true) do %>
-    <form class="form-inline search-bar" >
-      <div>
-        <%= text_field_tag :search, params[:search], class: "search-bar",
-            placeholder: "Search"%>
-      </div>
-    </form>
+  <%= form_tag(search_index_path, method: :get, remote: true) do %>
+    <%= hidden_field_tag :search_type, 'all_spots' %>
+    <%= text_field_tag :search, nil, class: "search-bar", placeholder: "Search"%>
   <% end %>
 </div>
-<div id="spots-discover" class="spots-discover">
+<div id="search-results" class="search-results">
   <% @spots.each do |spot| %>
     <%= render'search_result', spot: spot %>
   <% end %>
-</div>
 </div>
