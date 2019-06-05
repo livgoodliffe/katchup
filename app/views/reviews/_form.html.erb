@@ -3,6 +3,7 @@
     <%= f.input :rating, collection: (1..5) %>
     <%= f.input :notes %>
     <%= f.input :image %>
+    <%= f.input :image_cache, as: :hidden %>
     <%= f.button :submit, class: "btn btn-default btn-success" %>
   <% end %>
 </div>

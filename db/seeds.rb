@@ -18,7 +18,9 @@ NAME_SELECTOR='.detail a h4'
 DETAIL_LINK_SELECTOR='.detail a'
 DETAIL_LOCATION_SELECTOR='.detailsContainer h2+p'
 DETAIL_DESCRIPTION_SELECTOR='.detailsContainer h4+p'
-DETAIL_HOURS_SELECTOR='.detailsContainer .hanging.noindex'
+
+DETAIL_HOURS_SELECTOR='.detailsContainer .hanging'
+
 DETAIL_IMAGES_SELECTOR='.nivoSlider img'
 
 BASE_URL='https://whatson.melbourne.vic.gov.au'
@@ -34,7 +36,8 @@ def create_menu_item(spot)
                description: Faker::Food.description,
                price: 100 + rand(2901) }
 
-  puts menuitem
+
+  # puts menuitem
 
   menuitem
 end
@@ -51,7 +54,8 @@ def get_image_urls(result_detail_doc)
 end
 
 def get_location(result_detail_doc)
-  spot_detail_location_raw = result_detail_doc.css(DETAIL_LOCATION_SELECTOR).text.gsub(/([^ ]{1})Melbourne/,'\1 Melbourne')
+  spot_detail_location_raw = result_detail_doc.css(DETAIL_LOCATION_SELECTOR).first.text.gsub(/([^ ]{1})Melbourne/,'\1 Melbourne')
+
   spot_detail_location = spot_detail_location_raw
   .gsub("\n"," ")                 # newlines into spaces
   .gsub(/([a-z])([A-Z])/,'\1 \2') # separate aA

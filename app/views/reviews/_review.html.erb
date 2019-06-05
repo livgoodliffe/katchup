@@ -1,46 +1,12 @@
 <div class="card m-3 shadow">
-  <% unless review.image == "" %>
-    <%= image_tag(review.image, class: "review-image") %>
+  <% unless review.image.url.blank? %>
+    <%= cl_image_tag(review.image, class: "review-image") %>
   <% end %>
   <div class="review-content d-flex ">
     <div class="review-user">
-      <%= image_tag(user_avatar(review.user), class: "avatar mx-3 mt-3") %>
+      <%= cl_image_tag(user_avatar(review.user), class: "avatar mx-3 mt-3") %>
       <p class="review-name mx-3 mt-2"><%= review.user.first_name %></p>
     </div>
     <p class="m-2"><%= review.notes %></p>
   </div>
 </div>
-
-
-
-
-
-
-
-
-<!-- <div class="review">
-  <div class="avatar-card-and-rating-wrapper">
-    <div class="avatar-container">
-      <div class="avatar-card">
-        <div class="padded-right">
-            <%= image_tag(user_avatar(review.user), class: "avatar-large") %>
-        </div>
-        <div class="user-and-date">
-          <p class="user-name">
-            <%= review.user.first_name %>
-          </p>
-          <p><%= review.user.first_name %></p>
-          <p class="date-info"><%= review.created_at.strftime("%d %b, %Y") %></p>
-          <p><%= review.notes %></p>
-        </div>
-      </div>
-    </div>
-    <div class="rating-container">
-      <p id="review-rating"><%= set_stars(review.rating) %></p>
-    </div>
-  </div>
-  <hr>
-</div>
- -->
-
-

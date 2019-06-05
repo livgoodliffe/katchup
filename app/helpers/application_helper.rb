@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def user_avatar(user)
-    if user.avatar.nil?
+    if user.avatar.url.blank?
       image_path 'geek.jpg'
     else
       user.avatar
