@@ -18,7 +18,9 @@ NAME_SELECTOR='.detail a h4'
 DETAIL_LINK_SELECTOR='.detail a'
 DETAIL_LOCATION_SELECTOR='.detailsContainer h2+p'
 DETAIL_DESCRIPTION_SELECTOR='.detailsContainer h4+p'
+
 DETAIL_HOURS_SELECTOR='.detailsContainer .hanging'
+
 DETAIL_IMAGES_SELECTOR='.nivoSlider img'
 
 BASE_URL='https://whatson.melbourne.vic.gov.au'
@@ -33,6 +35,7 @@ def create_menu_item(spot)
                name: Faker::Food.dish,
                description: Faker::Food.description,
                price: 100 + rand(2901) }
+
 
   # puts menuitem
 

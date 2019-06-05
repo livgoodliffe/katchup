@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :friends, dependent: :destroy
   has_many :pending_friends, through: :friends, source: :friend
 
+  mount_uploader :avatar, PhotoUploader
+
   def reviewed_spot?(spot)
     reviews.where(spot: spot).any?
   end
