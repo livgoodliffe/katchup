@@ -32,4 +32,3 @@ end
 gem 'nokogiri'
 gem 'geocoder'
 gem 'faker'
-gem 'money-rails'
