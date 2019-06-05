@@ -42,7 +42,7 @@ def get_location(result_detail_doc)
 
   spot_detail_address = spot_detail_location
   .gsub(/(\(.*\))/,'')              # remove (*)
-  .match(/([\d]+[^\d]+\d{4})$/)[0]  # keep: street number followed by .*
+  .match(/[\d]+[^\d]+VIC( \d{4})?$/)[0]  # keep: street number followed by .*
   .gsub('  ', ' ')
 
   puts
