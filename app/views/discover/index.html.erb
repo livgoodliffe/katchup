@@ -1,14 +1,19 @@
 <%= render "shared/navbar" %>
-<div class="container">
   <h1>Discover</h1>
-  <br>
-  <%= form_tag(discover_index_path, method: :get, remote: true) do %>
-    <form class="form-inline" >
-      <div class="md-form my-0 mr-3">
-        <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search"%>
-      </div>
-    </form>
-  <% end %>
+
+  <!-- Search bar -->
+
+  <div class="grey-search-bar">
+      <%= form_tag(lists_path, method: :get, remote: true) do %>
+        <form class="form-inline search-bar" >
+          <div>
+            <%= text_field_tag :search, params[:search], class: "search-bar",
+            placeholder: "Search through your favourites"%>
+          </div>
+        </form>
+      <% end %>
+  </div>
+
   <div id="spots-discover" class="spots-discover">
     <% @spots.each do |spot| %>
       <%= render('search_result', spot:spot) %>

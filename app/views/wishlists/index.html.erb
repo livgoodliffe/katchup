@@ -1,34 +1,30 @@
-<%= render "shared/lists_navbar" %>
+<%= render "shared/navbar" %>
 
+<%= render "lists/list_type" %>
 
-<div class="container">
-
-  <h1>Wishlist</h1>
-
+<div class="d-flex flex-column justify-content-center">
 
   <% @wishlist.each do |wishlist| %>
 
-    <div class="restaurant-card">
+    <div class="spot-card">
 
       <!-- Image -->
 
-      <div class=restaurant-image>
-        <%= image_tag("#{wishlist.spot.image}")%>
-      </div>
+      <%= image_tag("#{wishlist.spot.image}")%>
 
       <!-- Text -->
 
-      <div class="restaurant-details">
+      <div class="spot-details">
 
-        <div class="restaurant-name">
+        <div class="spot-name">
           <%= wishlist.spot.name %>
         </div>
 
-        <div class=restaurant-location>
+        <div class="spot-location">
           <%#= spot.location[0..20] %>
         </div>
 
-        <div class=restaurant-description>
+        <div class="spot-description">
           <%= "#{wishlist.spot.description[0..20]}..." %>
         </div>
       </div>
@@ -36,7 +32,5 @@
     </div>
 
   <% end %>
-
-
 
 </div>

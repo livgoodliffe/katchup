@@ -1,0 +1,12 @@
+.grey-search-bar {
+  background-color: $medium-grey;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  .search-bar {
+    width: 85vw;
+    padding: 5px;
+    padding-left: 10px;
+    border-width: 0;
+  }
+}
