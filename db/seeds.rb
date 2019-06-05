@@ -13,12 +13,12 @@ require 'nokogiri'
 
 BASE_SELECTOR='.result'
 NAME_SELECTOR='.detail a h4'
-# LOCATION_SELECTOR='.detail .subTitle'
-DESCRIPTION_SELECTOR='.detail .snippet'
 IMAGE_SELECTOR='img'
 
 DETAIL_LINK_SELECTOR='.detail a'
 DETAIL_LOCATION_SELECTOR='.detailsContainer h2+p'
+DETAIL_DESCRIPTION_SELECTOR='.detailsContainer h4+p'
+DETAIL_HOURS_SELECTOR='.detailsContainer .hanging.noindex'
 
 BASE_URL='https://whatson.melbourne.vic.gov.au'
 
@@ -26,35 +26,73 @@ BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/res
 
 Spot.destroy_all
 
-def getImageSrc(src)
+def get_image_src(src)
   src.gsub('Small','Large')
 end
 
+def get_location(result_detail_doc)
+  spot_detail_location_raw = result_detail_doc.css(DETAIL_LOCATION_SELECTOR).text.gsub(/([^ ]{1})Melbourne/,'\1 Melbourne')
+  spot_detail_location = spot_detail_location_raw
+  .gsub("\n"," ")                 # newlines into spaces
+  .gsub(/([a-z])([A-Z])/,'\1 \2') # separate aA
+  .gsub(/([a-z])(\d)/,'\1 \2')    #          a1
+  .gsub(/(\d)([A-Z])/,'\1 \2')    #          aA
+  .gsub(/(\))([A-Z])/,'\1 \2')    #          )A
+  .gsub('  ', ' ').strip
+
+  spot_detail_address = spot_detail_location
+  .gsub(/(\(.*\))/,'')              # remove (*)
+  .match(/([\d]+[^\d]+\d{4})$/)[0]  # keep: street number followed by .*
+  .gsub('  ', ' ')
+
+  puts
+  puts "raw location: #{spot_detail_location_raw}"
+  puts "saved location: #{spot_detail_location}"
+  puts "saved address: #{spot_detail_address}"
+
+  { location: spot_detail_location,
+    address: spot_detail_address}
+end
+
+def get_description(result_detail_doc)
+  description = result_detail_doc.css(DETAIL_DESCRIPTION_SELECTOR).text
+  .gsub('.','. ')
+  .gsub('  ',' ').strip
+  puts "description: #{description}"
+
+  description
+end
+
+def get_hours(result_detail_doc)
+  hours = result_detail_doc.css(DETAIL_HOURS_SELECTOR).text
+  .gsub(/([a-z])([A-Z])/, '\1<br>\2')
+
+  puts "hours: #{hours}"
+  hours
+end
+
 70.times do |n|
+
   results =  Nokogiri::HTML(open("#{BASE_RESTAURANT_URL}?start=#{n*10}")).css(BASE_SELECTOR)
 
   results.each_with_index do |result, index|
-    restaurant_detail_url = result.css(DETAIL_LINK_SELECTOR).attr('href')
+    result_detail_url= result.css(DETAIL_LINK_SELECTOR).attr('href')
+    result_detail_doc = Nokogiri::HTML(open("#{BASE_URL}#{result_detail_url}"))
 
-    restaurant_detail_location_initial = Nokogiri::HTML(open("#{BASE_URL}#{restaurant_detail_url}")).css(DETAIL_LOCATION_SELECTOR).text.gsub(/([^ ]{1})Melbourne/,'\1 Melbourne')
-    puts restaurant_detail_location_initial
-    restaurant_detail_location_cleaned_up = restaurant_detail_location_initial
-    .gsub("\n"," ")
-    .gsub(/(\(.*\))/,'')
-    .gsub(/([a-z])([A-Z])/,'\1 \2')
-    .gsub(/([a-z])(\d)/,'\1 \2')
-    .gsub(/(\d)([A-Z])/,'\1 \2')
-    .gsub('  ', ' ').strip
+    location = get_location(result_detail_doc)
+    description = get_description(result_detail_doc)
+    hours = get_hours(result_detail_doc)
 
-
-    restaurant = {
+    spot = {
       name: result.css(NAME_SELECTOR).text.strip,
-      location: restaurant_detail_location_cleaned_up,
-      description: result.css(DESCRIPTION_SELECTOR).text.strip,
-      image: "#{BASE_URL}#{getImageSrc(result.css(IMAGE_SELECTOR).attr('src').text)}"
+      location: location[:location],
+      address: location[:address],
+      description: description,
+      hours: hours,
+      image: "#{BASE_URL}#{get_image_src(result.css(IMAGE_SELECTOR).attr('src').text)}"
 
     }
-    puts "Adding #{n * 10 + index+1}: #{result.css(NAME_SELECTOR).text.strip} @ #{restaurant_detail_location_cleaned_up}"
-    Spot.create(restaurant)
+    puts "Adding #{n * 10 + index+1}: #{spot[:name]}"
+    Spot.create(spot)
   end
 end
