@@ -1,4 +1,6 @@
 class FavouritesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_favourite, only: :destroy
   before_action :set_spot, only: :create
 

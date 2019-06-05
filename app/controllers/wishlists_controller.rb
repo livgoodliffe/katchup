@@ -1,4 +1,6 @@
 class WishlistsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_wishlist, only: :destroy
   before_action :set_spot, only: :create
 

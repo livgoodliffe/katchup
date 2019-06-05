@@ -40,6 +40,8 @@ class SearchController < ApplicationController
     spots_filtered_favourite.each { |spot| @spots << spot }
     spots_filtered_wishlist.each { |spot| @spots << spot }
 
+    @spots = [] if @search.blank?
+
     respond_to do |format|
       format.js
     end

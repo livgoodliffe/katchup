@@ -1,25 +1,16 @@
-
-
-
-<%= form_tag(discover_index_path, method: :get, remote: true) do %>
-  <form class="form-inline" >
-    <div class="md-form my-0 mr-3">
-      <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search"%>
-    </div>
-  </form>
-<% end %>
-
-
-
-
-
-<div class="spots-index-wrapper">
+<%= render "shared/navbar" %>
+<!-- Search bar -->
+<div class="grey-search-bar" style="padding-top: 70px">
+  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search All Spots') %>
+</div>
+<div id="search-results" class="search-results">
+  <!-- this content only exists so that full spot list exists before any search is carried out -->
   <% @spots.each do |spot| %>
-    <%= render('restaurant_card', spot: spot) %>
+    <%= render "spots/spot_card", spot: spot %>
   <% end %>
-  <div id="map"
+</div>
+<div id="map"
     style="width: 100%; height: 400px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
 </div>
