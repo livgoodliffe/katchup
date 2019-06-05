@@ -43,6 +43,26 @@ ActiveRecord::Schema.define(version: 2019_06_05_025112) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friend_requests_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+  end
+
   create_table "images", force: :cascade do |t|
     t.bigint "spot_id"
     t.string "image"
@@ -105,6 +125,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_025112) do
   add_foreign_key "catchups", "users"
   add_foreign_key "favourites", "spots"
   add_foreign_key "favourites", "users"
+  add_foreign_key "friend_requests", "users"
   add_foreign_key "images", "spots"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"

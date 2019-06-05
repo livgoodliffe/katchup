@@ -1,5 +1,5 @@
 <div class="spot-card">
-
+  <!-- Image -->
   <div class=spot-image>
     <%= image_tag("#{spot.image}")%>
   </div>
@@ -14,5 +14,11 @@
       <%= "#{spot.description[0..20]}..." %>
     </div>
   </div>
-  <%= render "shared/icons", spot: spot %>
+
+  <!-- Icons -->
+
+  <div class="spot-card-icons">
+    <%= render "shared/icons", spot: spot %>
+  </div>
+
 </div>
