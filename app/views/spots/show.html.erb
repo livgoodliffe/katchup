@@ -10,7 +10,9 @@
     <%= render 'spots/show/spot-show-photo-modal' %>
   </div>
 
-  <%= render 'spots/show/spot-show-map' %>
+  <% unless @spot.latitude.nil? %>
+    <%= render 'spots/show/spot-show-map' %>
+  <% end %>
 
   <div class="container">
     <!-- Number of reviews -->
