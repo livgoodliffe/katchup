@@ -8,6 +8,7 @@
 
 require 'open-uri'
 require 'nokogiri'
+require 'faker'
 
 # return unless Rails.env.development?
 
@@ -26,6 +27,17 @@ BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/res
 
 Image.destroy_all
 Spot.destroy_all
+
+def create_menu_item(spot)
+  menuitem = { spot_id:spot.id,
+               name: Faker::Food.dish,
+               description: Faker::Food.description,
+               price: 100 + rand(2901) }
+
+  puts menuitem
+
+  menuitem
+end
 
 def get_image_urls(result_detail_doc)
   image_urls = []
@@ -106,6 +118,10 @@ end
 
     image_urls.each do |image_url|
       Image.create(spot_id: spot.id, image: image_url)
+    end
+
+    (3+rand(6)).times do
+      MenuItem.create(create_menu_item(spot))
     end
   end
 end
