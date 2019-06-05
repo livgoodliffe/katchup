@@ -91,7 +91,8 @@ def get_hours(result_detail_doc)
   hours
 end
 
-70.times do |n|
+# 70.times do |n|
+(39..39).each do |n|
 
   results =  Nokogiri::HTML(open("#{BASE_RESTAURANT_URL}?start=#{n*10}")).css(BASE_SELECTOR)
 
