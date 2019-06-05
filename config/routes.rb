@@ -36,4 +36,9 @@ Rails.application.routes.draw do
 
   resources :friend_requests, only: [:index, :create, :destroy]
 
+  resources :pending, only: [:index, :destroy]
+  resources :request, only: [:index, :destroy]
+
+
+
 end
