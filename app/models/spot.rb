@@ -7,8 +7,8 @@ class Spot < ApplicationRecord
     reviews.average(:rating)
   end
 
-  geocoded_by :location
+  geocoded_by :address
 
-  after_validation :geocode, if: :will_save_change_to_location?
+  after_validation :geocode, if: :will_save_change_to_address?
 
 end
