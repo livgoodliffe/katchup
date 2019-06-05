@@ -1,7 +1,7 @@
 <div class="card m-3 shadow">
-  <%= image_tag(@spot.image, class: "review-image") %>
+  <%= image_tag(@spot.images.first.image, class: "review-image") %>
   <div class="review-content d-flex ">
-    <%= image_tag(@spot.image, class: "avatar m-3") %>
+    <%= image_tag(@spot.images.first.image, class: "avatar m-3") %>
     <p class="m-2">something</p>
   </div>
 </div>
