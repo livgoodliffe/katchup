@@ -9,9 +9,9 @@
       </div>
       <div class="modal-body d-flex flex-column">
         <% @spot.menu_items.each do |menu_item| %>
-          <div>
-            <span><%= menu_item.name %></span>
-            <span><%= menu_item.price %></span>
+          <div class="d-flex justify-content-between">
+            <span><%= menu_item.name %>:</span>
+            <span>$<%= menu_item.price.fdiv(100) %></span>
           </div>
         <% end %>
       </div>
