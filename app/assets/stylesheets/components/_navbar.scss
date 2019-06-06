@@ -21,23 +21,14 @@
   }
 }
 
-.menu-bars {
+.navbar-icon {
   color: white;
+  font-size: 25px;
 }
 
-.navbar-toggler {
-  border: none;
-}
-
-
-.bottom-navbar {
-  display: flex;
-  justify-content: space-around;
-  box-shadow: 0px 0px 5px rgba(0,0,0,.5);
-  a {
-    color: $medium-grey;
-    font-size: 25px;
-  }
+.navbar-dropdown {
+  color: white;
+  background-color: $dark-grey;
 }
 
 .nav-active {
