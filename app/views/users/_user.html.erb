@@ -1,14 +1,14 @@
 
 <!-- AJAX for unfollow and follow links -->
 
-<li data-user=<%= user.id %>>
+<!-- <li data-user=<%= user.id %>>
   <%= user.first_name %>
-  <% if current_user.is_following?(user.id) %>
-    <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
-  <% else %>
-    <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
-  <% end %>
-</li>
+  <%# if current_user.is_following?(user.id) %>
+    <%#= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
+  <%# else %>
+    <%#= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
+  <%# end %>
+</li> -->
 
 <!-- AJAX for send friend request and cancel friend request -->
 
@@ -23,6 +23,14 @@
 
 
 
-<div class="user-card">
-  Make a user card here
+<div class="users-card" style="height: 40px; width: 100%">
+  <div class="users-avatar">
+    <%= image_tag(user.image, class: "avatar") %>
+  </div>
+  <div class="users-name">
+    <p><%= user.first_name user.last_name %></p>
+  </div>
+  <div class="users-add-button">
+    <i class="fas fa-plus"></i>
+  </div>
 </div>
