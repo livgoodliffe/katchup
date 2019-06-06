@@ -10,6 +10,25 @@ require 'open-uri'
 require 'nokogiri'
 require 'faker'
 
+50.times {
+  user = User.new
+  user.email = Faker::Internet.email
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.password = "Password123"
+  user.avatar = Faker::Avatar.image
+  user.save!
+}
+
+500.times {
+  friend = Friendship.new
+  friend.user_id = rand(1..50)
+  friend.friend_id = rand(1..50)
+  unless Friendship.exists?(user_id: friend.user_id, friend_id: friend.friend_id )
+    friend.save!
+  end
+}
+
 # return unless Rails.env.development?
 
 BASE_SELECTOR='.result'

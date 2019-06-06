@@ -60,4 +60,13 @@ class User < ApplicationRecord
     relationship = Follow.find_by(follower_id: id, following_id: user_id)
     return true if relationship
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def find_friend_request(user_id)
+    FriendRequest.find_by(friend_id: user_id, user_id: id)
+  end
+
 end
