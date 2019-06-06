@@ -1,33 +1,34 @@
 <div class="spot-card mx-auto">
 
-  <!-- Image -->
+  <%= link_to spot_path(spot) do %>
 
-  <div class=spot-image>
-    <%= image_tag("#{spot.images.first.image}")%>
+    <!-- Image -->
+
+    <div class=spot-image>
+      <%= image_tag("#{spot.images.first.image}")%>
+    </div>
+
+    <!-- Text -->
+
+    <div class="spot-details">
+      <div class="spot-name">
+        <%= spot.name %>
+      </div>
+      <div class="spot-location">
+        Suburb, City
+        <!-- Code this! -->
+      </div>
+    </div>
+
+  <% end %>
+
+  <!-- Icon -->
+  <div class="spot-card-icon">
+    <% if user_signed_in? %>
+      <div id="w<%= spot.id %>" >
+        <%= render 'wishlists/bookmark', spot: spot %>
+      </div>
+    <% end %>
   </div>
-
-  <!-- Text -->
-
-  <div class="spot-details">
-
-    <div class="spot-name">
-      <%= spot.name %>
-    </div>
-    <div class="spot-location">
-      Suburb, City
-
-      <!-- Code this! -->
-    </div>
-
-    <!-- Icon -->
-    <div class="spot-card-icon">
-      <% if user_signed_in? %>
-          <%= render 'wishlists/bookmark', spot: spot %>
-      <% end %>
-    </div>
-
-  </div>
-
-  <%= link_to "", spot, class: "spot-link" %>
 
 </div>
