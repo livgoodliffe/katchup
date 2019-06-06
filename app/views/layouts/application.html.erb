@@ -11,8 +11,8 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
+    <%= render 'shared/geolocation' %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
     <%= render 'shared/bottom_navbar' %>
     <%= javascript_include_tag 'application' %>
