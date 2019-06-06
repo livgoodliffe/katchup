@@ -50,7 +50,7 @@ export default () => {
     markers += makeMarkers(map, mapElement, bounds, 'markersFavourite', 'map-marker-favourite');
     markers += makeMarkers(map, mapElement, bounds, 'markersWishlist', 'map-marker-wishlist');
     markers += makeMarkers(map, mapElement, bounds, 'markerUser', 'map-marker-user');
-
+    console.log(`total markers ${markers}`);
     if (markers > 0) map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
   }
 };
