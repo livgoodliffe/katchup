@@ -1,11 +1,30 @@
-<h1>Choose Time</h1>
-
-<div class="container">
-
-  <% 20.times do %>
-    <div class="p-4 m-2">
-      Calendar
-    </div>
-  <% end %>
-
+<%= hidden_field_tag "time" %>
+<div class="time-selector">
+  <div class="hours-title">Hour</div>
+  <div class="hours-grid-container">
+    <div class="hour">1</div>
+    <div class="hour">2</div>
+    <div class="hour">3</div>
+    <div class="hour">4</div>
+    <div class="hour">5</div>
+    <div class="hour">6</div>
+    <div class="hour">7</div>
+    <div class="hour">8</div>
+    <div class="hour">9</div>
+    <div class="hour">10</div>
+    <div class="hour">11</div>
+    <div class="hour">12</div>
+  </div>
+  <div class="minutes-title">Minutes</div>
+  <div class="minutes-grid-container">
+    <div class="minute">00</div>
+    <div class="minute">15</div>
+    <div class="minute">30</div>
+    <div class="minute">45</div>
+  </div>
+  <!-- <div class="ampm-title">AM or PM ?</div> -->
+  <div class="ampm-grid-container">
+    <div class="ampm">AM</div>
+    <div class="ampm">PM</div>
+  </div>
 </div>

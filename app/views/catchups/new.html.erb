@@ -1,26 +1,33 @@
 <%= render "shared/navbar" %>
 <div style="padding-top: 54px; padding-bottom: 50px;">
   <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
-    <div id="chosen-friends-avatars-container" class="text-center"></div>
     <div class="text-center">
       <%= button_tag "Choose Friends",
                    type: 'button',
                    class: 'modal-activation-button',
-                   data: { toggle: 'modal', target: '#chooseFriends' } %>
+                   data: { toggle: 'modal', target: '#chooseFriends' },
+                   id: "chosen-friends-avatars-container" %>
     </div>
-    <div id="chosen-spot-image-container" class="text-center"></div>
     <div class="text-center">
       <%= button_tag "Choose Spot",
                    type: 'button',
                    class: 'modal-activation-button',
-                   data: { toggle: 'modal', target: '#chooseSpot' } %>
+                   data: { toggle: 'modal', target: '#chooseSpot' },
+                   id: "chosen-spot-image-container" %>
     </div>
-    <div id="chosen-time-container" class="text-center"></div>
+    <div class="text-center">
+      <%= button_tag "Choose Date",
+                   type: 'button',
+                   class: 'modal-activation-button',
+                   data: { toggle: 'modal', target: '#chooseDate' },
+                   id: "chosen-date-container" %>
+    </div>
     <div class="text-center">
       <%= button_tag "Choose Time",
                    type: 'button',
                    class: 'modal-activation-button',
-                   data: { toggle: 'modal', target: '#chooseTime' } %>
+                   data: { toggle: 'modal', target: '#chooseTime' },
+                   id: "chosen-time-container" %>
     </div>
     <div class="text-center">
       <%= button_tag "Create Catchup",
@@ -51,6 +58,21 @@
           </div>
           <div class="modal-body">
             <%= render "choose_spot" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="chooseDate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Choose Date</h5>
+          </div>
+          <div class="modal-body">
+            <%= render "choose_date" %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>

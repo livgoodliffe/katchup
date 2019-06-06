@@ -1,0 +1,9 @@
+<%= hidden_field_tag "date" %>
+<% 12.times do |n| %>
+  <div class="text-center">
+    <% params[:start_date]=Date.today + n.month %>
+    <%= month_calendar do |date| %>
+      <%= date.day %>
+    <% end %>
+  </div>
+<% end %>
