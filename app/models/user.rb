@@ -28,6 +28,11 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, PhotoUploader
 
+  # a user has 0..n created catchups
+  has_many :catchups
+  # a user has many guests for those created catchups
+  has_many :guests, dependent: :destroy
+
   def reviewed_spot?(spot)
     reviews.where(spot: spot).any?
   end
