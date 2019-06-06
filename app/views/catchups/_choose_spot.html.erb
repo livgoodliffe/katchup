@@ -1,11 +1,12 @@
   <% @spots.each do |spot|%>
   <div class="modal-content-card">
-    <div class=spot-image>
-      <%= image_tag("#{spot.images.first.image}") %>
+    <div>
+      <%= image_tag("#{spot.images.first.image}", id: "image_spot_#{spot.id}") %>
     </div>
     <div class="modal-content-card-details">
       <p><%= spot.name %></p>
-      <button class="modal-add-button"><i class="fas fa-plus-circle"></i></button>
+      <button id="button_spot_<%= spot.id %>" class="modal-add-button-spot"><i class="fas fa-plus-circle"></i></button>
+      <%= hidden_field_tag "spot[#{spot.id}]" %>
     </div>
   </div>
 <% end %>

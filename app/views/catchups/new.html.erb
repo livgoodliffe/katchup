@@ -1,18 +1,21 @@
 <%= render "shared/navbar" %>
 <div style="padding-top: 54px; padding-bottom: 50px;">
   <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
+    <div id="chosen-friends-avatars-container" class="text-center"></div>
     <div class="text-center">
       <%= button_tag "Choose Friends",
                    type: 'button',
                    class: 'modal-activation-button',
                    data: { toggle: 'modal', target: '#chooseFriends' } %>
     </div>
+    <div id="chosen-spot-image-container" class="text-center"></div>
     <div class="text-center">
       <%= button_tag "Choose Spot",
                    type: 'button',
                    class: 'modal-activation-button',
                    data: { toggle: 'modal', target: '#chooseSpot' } %>
     </div>
+    <div id="chosen-time-container" class="text-center"></div>
     <div class="text-center">
       <%= button_tag "Choose Time",
                    type: 'button',
