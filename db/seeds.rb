@@ -27,6 +27,20 @@ SEED_FRIEND_COUNT.times do |n|
   puts "Seeded User: ##{n+1}"
 end
 
+p "Adding 3 wishlists and 3 favourites to all users.."
+
+User.all.each do |user|
+  3.times {
+    Wishlist.create(user: user, spot: Spot.all.sample)
+  }
+  3.times {
+    Favourite.create(user: user, spot: Spot.all.sample)
+  }
+end
+
+p "added.."
+
+500.times {
 SEED_FRIENDSHIP_COUNT.times do |n|
   friend = Friendship.new
   friend.user_id = rand(1..SEED_FRIEND_COUNT)

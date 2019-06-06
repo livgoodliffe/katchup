@@ -1,16 +1,17 @@
 class FeedsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
+    byebug
     # My friends wishlisted, favourited and reviewed spots
     @spots = []
     # get the current users's friends wishlist items
-    my_friendships = current_user.frienships
+    my_friendships = current_user.friendships
 
     my_friendships.each do |friendship|
       wishlists = friendship.friend.wishlists
       wishlists.each do |wishlist|
         @spots << wishlist.spot
-        binding.pry
+        # byebug
       end
     end
     # get the current user's friends favourites items
@@ -18,7 +19,7 @@ class FeedsController < ApplicationController
       favourites = friendship.friend.favourites
       favourites.each do |favourite|
         @spots << favourite.spot
-        binding.pry
+        # binding.pry
       end
     end
     # get the curren users's friends reviewed item
@@ -26,7 +27,7 @@ class FeedsController < ApplicationController
       reviewed = friendship.friend.reviews
       reviewed.each do |review|
         @spots << review.spot
-        binding.pry
+        # binding.pry
       end
     end
 
