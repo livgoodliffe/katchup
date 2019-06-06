@@ -1,8 +1,16 @@
 class CatchupsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
   end
 
   def new
-    @users = User.all.where.not(id: current_user.id)
+    @friends = current_user.friends
+  end
+
+  def create
+    # create catchup
+    # create guests
+
   end
 end

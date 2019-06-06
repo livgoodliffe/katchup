@@ -1,0 +1,42 @@
+.modal-activation-button {
+  width: 80%;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 4px;
+  border: solid 1px $katchup;
+}
+
+.modal-dialog {
+  width: 96%;
+  height: 92%;
+  padding: 0;
+}
+
+.modal-content {
+  height: 92%;
+  border-radius: 4px;
+}
+
+.modal-body {
+  overflow-y: auto
+}
+
+.modal-title {
+  margin: 0 auto;
+  color: white;
+  font-weight: bold;
+}
+
+.modal-header {
+  background-color: $katchup;
+}
+
+.modal-footer {
+  margin: 0 auto;
+
+  button {
+    background-color: $katchup;
+  }
+}
