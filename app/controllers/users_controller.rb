@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   def show
     @current_user = current_user
     @params = params
+    @user = User.find(params[:id])
+    @wishlists = Wishlist.where(user_id: @user)
+    @favourites = Favourite.where(user_id: @user)
+    @friends = Friendship.where(user_id: @user)
+    @reviews = Review.where(user_id: @user)
   end
 
   def create
