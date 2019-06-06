@@ -11,10 +11,23 @@
     width: 64px;
     border-radius: 50%;
     background-color: $katchup;
+    text-align: center;
   }
 
   .card {
     border-radius: 8px;
+    position: relative;
+  }
+
+  .card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    &:hover {
+      box-shadow: 4px 4px 8px #ddd;
+    }
   }
 
   .review-tag {
