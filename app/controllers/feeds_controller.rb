@@ -1,7 +1,6 @@
 class FeedsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    byebug
     # My friends wishlisted, favourited and reviewed spots
     @spots = []
     # get the current users's friends wishlist items
