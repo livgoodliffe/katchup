@@ -3,7 +3,7 @@
   <div class="<%= 'active-red-button' if params[:list_type] == 'requests' %>">
     <div class="red-button">
       <%#= link_to requests_path(list_type: 'requests') do %>
-        <p class="m-0">Friend Requests</p>
+        <p class="m-0"><%= link_to "Friend Requests", friend_requests_path(current_user) %></p>
       <%# end %>
     </div>
   </div>
