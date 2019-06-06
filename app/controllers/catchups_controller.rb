@@ -5,7 +5,7 @@ class CatchupsController < ApplicationController
   end
 
   def new
-    @friends = current_user.friends
+    @friends = current_user.friends.sort_by(&:first_name)
     favourite_spots = current_user.favourite_spots.map { |spot| spot }
     wishlist_spots = current_user.wishlist_spots.map { |spot| spot }
 
