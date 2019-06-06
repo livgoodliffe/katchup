@@ -1,51 +1,43 @@
+
 <nav class="navbar fixed-top navbar-light">
 
     <!-- Dropdown -->
 
-    <div class="dropdown navbar-dropdown">
-      <button class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bars navbar-icon"></i>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <div id="menuToggle">
 
-        <% if user_signed_in? %>
+    <input type="checkbox" id="menu-checkbox" />
+      <label class="menu-overlay" for="menu-checkbox"></label>
+      <span></span>
+      <span></span>
+      <span></span>
+    <ul id="menu">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Discover", discover_index_path, class: "" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Spots", lists_path%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Friends", "friendships"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "People", "users"%>
+        </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </li>
 
-          <li class="nav-item">
-            <%= link_to "Discover", discover_index_path, class: "nav-link" %>
-          </li>
+      <!-- If not logged in -->
 
-          <li class="nav-item">
-            <%= link_to "My Spots", lists_path, class: "nav-link" %>
-          </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
 
-          <li class="nav-item">
-            <%= link_to "My Friends", "friendships", class: "nav-link" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "People", "users", class: "nav-link" %>
-          </li>
-
-        <!-- User Actions -->
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
-
-        <!-- If not logged in -->
-
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-
-      </div>
-    </div>
+    </ul>
+  </div>
 
   <!-- Logo -->
 
