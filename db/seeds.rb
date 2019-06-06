@@ -40,7 +40,6 @@ end
 
 p "added.."
 
-500.times {
 SEED_FRIENDSHIP_COUNT.times do |n|
   friend = Friendship.new
   friend.user_id = rand(1..SEED_FRIEND_COUNT)
