@@ -20,6 +20,17 @@ require 'faker'
   user.save!
 }
 
+p "Adding 3 wishlists and 3 favourites to all users"
+
+User.all.each do |user|
+  3.times {
+    Wishlist.create(user: user, spot: Spot.all.sample)
+  }
+  3.times {
+    Favourite.create(user: user, spot: Spot.all.sample)
+  }
+end
+
 500.times {
   friend = Friendship.new
   friend.user_id = rand(1..50)
