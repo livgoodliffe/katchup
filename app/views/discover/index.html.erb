@@ -3,9 +3,14 @@
 <div class="grey-search-bar" style="padding-top: 70px">
   <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search All Spots') %>
 </div>
-<div id="search-results" class="search-results">
-  <!-- this content only exists so that full spot list exists before any search is carried out -->
-  <% @spots.each do |spot| %>
-    <%= render "spots/spot_card", spot: spot %>
-  <% end %>
+
+<div class="container">
+
+  <div id="search-results" class="discover-search-results">
+    <!-- this content only exists so that full spot list exists before any search is carried out -->
+    <% @spots.each do |spot| %>
+      <%= render "spots/spot_card", spot: spot %>
+    <% end %>
+  </div>
+
 </div>

@@ -1,135 +1,65 @@
-.favourite-card-body {
-  display: flex;
-  justify-content: space-between;
-  margin: 16px 8px 4px 8px;
+.feed-card-container {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  margin: 0 0 30px;
+  box-shadow: 0 0 5px rgba(30, 30, 30, 0.2);
 }
 
+.feed-card-body {
+  margin: 12px;
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}
 
- .feed-card-container {
-    height: 400px;
+.feed-card-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.feed-card-text {
+  margin-left: 8px;
+  color: $dark-grey;
+  h2 h3 p {
+    margin: 0;
+  }
+}
+
+.feed-card-when {
+  color: $medium-grey;
+  font-size: 15px;
+  margin: 0;
+}
+
+.feed-card-content {
+  img {
     width: 100%;
-    background: white;
-    border-radius: 12px;
-    margin: 0 0 30px;
-    box-shadow: 0 0 8px rgba(30, 30, 30, 0.3);
+    height: 200px;
+    filter: opacity(30%);
+  }
+  position: relative;
+  background-color: $dark-grey;
+}
 
-  }
-  .img {
-    position: relative;
-    background-position: center;
-    background-size: cover;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
+.feed-card-icon {
+  color: $katchup;
+  font-size: 50px;
+}
 
-  .review-img {
-    height: 60%;
-    background-image: url(https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
-  }
+.feed-card-stars {
+  color: white;
+}
 
-  .feed-card-body {
-    display: flex;
-    align-items: center;
-    // display: inline;
-    margin: 8px;
-  }
-
-  img.avatar {
-    // display: inline;
-    min-width: 40px;
-    max-height: 40px;
-    border-radius: 50%;
-    margin-left: 4px;
-    margin-right: 4px;
-
-  }
-
-  .body-text {
-    // display: inline;
-    margin-left: 8px;
-    p {
-      margin: 8px 0;
-      color: rgba(30, 30, 30, 0.3);
-      font-size: 15px;
-    }
-    h2 {
-      font-size: 18px;
-    }
-  }
-
-  span.name {
-    color: black;
-    font-weight: bold;
-  }
-
-  .line-break {
-    height: 2px;
-    background-color: rgba(199, 0, 57, 0.4);
-  }
-
-  .review-card-review {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    p {
-      margin: 0;
-      font-size: 15px;
-    }
-  }
-  .review-card-heart {
-    position: absolute;
-    top: 12px;
-    right: 56px;
-  }
-  .review-card-bookmark {
-    position: absolute;
-    top: 12px;
-    right: 21px;
-  }
-  .review-card-star {
-    margin-top: 12px;
-
-  }
-
-    .wishlist-card-body {
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 8px;
-  }
-  .wishlist-img {
-   height: 45%;
-   background-image: url(https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
-  }
-  .badge-container {
-    display: flex;
-  }
-  .badges {
-    // position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $katchup;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin: 4px;
-  }
-  .wishlist-card-heart {
-    // position: absolute;
-    font-size: 20px;
-
-  }
-  .wishlist-card-bookmark {
-    // position: absolute;
-    font-size: 20px;
-
-  }
-  .body-text {
-    .comment {
-      em {
-        margin: 0 8px;
-      }
-    }
-  }
-
-
+.feed-card-review {
+  position: absolute;
+  color: white;
+  top: 30px;
+  left: 20px;
+  width: 88%;
+}
