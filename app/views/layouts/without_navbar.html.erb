@@ -3,9 +3,12 @@
   <%= render 'shared/page-head' %>
 
   <body>
+    <%= render 'shared/geolocation' %>
+    <%= render 'shared/flashes' %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+
     <%= render 'shared/bottom_navbar' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
