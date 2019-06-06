@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 <div style="padding-top: 54px; padding-bottom: 50px;">
-  <%= form_tag(catchups_path, method: :post, remote: true) do %>
+  <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
     <div class="text-center">
       <%= button_tag "Choose Friends",
                    type: 'button',
@@ -32,7 +32,7 @@
             <h5 class="modal-title" id="choose-friends-title">Choose Friends</h5>
           </div>
           <div class="modal-body">
-            <%= render "add_friends" %>
+            <%= render "choose_friends" %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
@@ -81,8 +81,7 @@
           </div>
           <div class="modal-footer">
             <%= button_tag "Create Catchup",
-                   class: 'btn btn-primary',
-                   data: { dismiss: 'modal' } %>
+                   class: 'btn btn-primary'%>
             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
           </div>
         </div>
