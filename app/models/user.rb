@@ -66,11 +66,12 @@ class User < ApplicationRecord
     return true if relationship
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def find_friend_request(user_id)
     FriendRequest.find_by(friend_id: user_id, user_id: id)
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
 end
