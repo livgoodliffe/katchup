@@ -23,9 +23,6 @@ class User < ApplicationRecord
   has_many :favourite_spots, through: :favourites, source: :spot
   has_many :wishlist_spots, through: :wishlists, source: :spot
 
-  has_many :friends, dependent: :destroy
-  has_many :pending_friends, through: :friends, source: :friend
-
   mount_uploader :avatar, PhotoUploader
 
   def reviewed_spot?(spot)
