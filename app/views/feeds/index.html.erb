@@ -3,11 +3,17 @@
 <div class="container">
   <h1>Katchup on the lastest...</h1>
   <div class="feed-index">
-    <%= render 'feed_review_card' %>
-    <%= render 'feed_wishlist_card' %>
-    <%= render 'feed_favourite_card' %>
+
+<% @activities.each do |activity|  %>
+  <% if activity.trackable_type == "Review" %>
+    <%= render 'feed_review_card', activity: activity %>
+  <% elsif activity.trackable_type == "Wishlist" %>
+    <%= render 'feed_wishlist_card', activity: activity %>
+  <% else %>
+    <%= render 'feed_favourite_card', activity: activity %>
+  <% end %>
+<% end %>
+
 
   </div>
 </div>
-
-

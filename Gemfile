@@ -34,3 +34,5 @@ gem 'geocoder'
 gem 'faker'
 gem 'cloudinary'
 gem 'carrierwave'
+# for feed tracking
+gem 'public_activity'
