@@ -1,14 +1,5 @@
-
-
-  <% if user_signed_in? %>
-    <div class="d-flex flex-column">
-
-      <div id="<%= spot.id %>" >
-        <%= render 'favourites/heart', spot: spot %>
-      </div>
-      <div id="w<%= spot.id %>" >
-        <%= render 'wishlists/bookmark', spot: spot %>
-      </div>
-    </div>
-
-  <% end %>
+<% if user_signed_in? %>
+  <div class="d-flex flex-column">
+      <%= render 'wishlists/bookmark', spot: spot %>
+  </div>
+<% end %>
