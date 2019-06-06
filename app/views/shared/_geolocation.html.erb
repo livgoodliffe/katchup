@@ -1,0 +1,7 @@
+<!-- TODO: add a hidden form that sends geolocation information to geolocation controller -->
+<div class="map-geolocation">
+  <%= form_tag(geolocation_index_path, method: :get, remote: true) do %>
+    <%= hidden_field_tag :user_latitude %>
+    <%= hidden_field_tag :user_longitude %>
+  <% end %>
+</div>

@@ -10,6 +10,48 @@ require 'open-uri'
 require 'nokogiri'
 require 'faker'
 
+User.destroy_all
+Friendship.destroy_all
+
+SEED_FRIEND_COUNT = 10
+SEED_FRIENDSHIP_COUNT = 50
+
+SEED_FRIEND_COUNT.times do |n|
+  user = User.new
+  user.email = Faker::Internet.email
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.password = "Password123"
+  user.remote_avatar_url = Faker::Avatar.image
+  user.save!
+  puts "Seeded User: ##{n+1}"
+end
+
+p "Adding 3 wishlists and 3 favourites to all users.."
+
+User.all.each do |user|
+  3.times {
+    Wishlist.create(user: user, spot: Spot.all.sample)
+  }
+  3.times {
+    Favourite.create(user: user, spot: Spot.all.sample)
+  }
+end
+
+p "added.."
+
+500.times {
+SEED_FRIENDSHIP_COUNT.times do |n|
+  friend = Friendship.new
+  friend.user_id = rand(1..SEED_FRIEND_COUNT)
+  friend.friend_id = rand(1..SEED_FRIEND_COUNT)
+  puts "Attempting Friendship: ##{n+1}..."
+  unless Friendship.exists?(user_id: friend.user_id, friend_id: friend.friend_id )
+    friend.save!
+    puts "Friendship seeded"
+  end
+end
+
 # return unless Rails.env.development?
 
 BASE_SELECTOR='.result'

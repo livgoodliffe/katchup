@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  attr_accessor :remote_content_url
+
   has_many :reviews
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
   has_many :followers, through: :follower_relationships, source: :follower
@@ -22,9 +24,6 @@ class User < ApplicationRecord
 
   has_many :favourite_spots, through: :favourites, source: :spot
   has_many :wishlist_spots, through: :wishlists, source: :spot
-
-  has_many :friends, dependent: :destroy
-  has_many :pending_friends, through: :friends, source: :friend
 
   mount_uploader :avatar, PhotoUploader
 
@@ -66,11 +65,12 @@ class User < ApplicationRecord
     return true if relationship
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def find_friend_request(user_id)
     FriendRequest.find_by(friend_id: user_id, user_id: id)
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
 end
