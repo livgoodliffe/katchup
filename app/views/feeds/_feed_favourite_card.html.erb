@@ -2,8 +2,8 @@
   <div class="feed-card-body">
     <img class="avatar" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
     <div class="body-text">
-      <p><span class="name">Sophia</span> loves this place</p>
-      <p>12 April 2019 at 10:47PM</p>
+      <p><span class="name"><%= activity.owner.first_name %></span> loves this place</p>
+      <p><%= activity.created_at %></p>
     </div>
    </div>
   <div class="img wishlist-img">
@@ -12,8 +12,8 @@
    <div class="wishlist-card-bottom">
     <div class="favourite-card-body">
        <div class="body-text">
-        <h2>Hutong Dumpling Bar</h2>
-        <p>Melbourne CBD</p>
+        <h2><%= activity.trackable.spot.name %></h2>
+        <p>activity.trackable.spot.location</p>
        </div>
 
        <div class="badge-container">
@@ -27,9 +27,11 @@
     </div>
    <div class="line-break"></div>
     <div class="body-text">
-      <p class="comment"><em>It's closed in winter!</em></p>
+      <p class="comment"><em><%= activity.trackable.spot.reviews.sample.notes %></em></p>
     </div>
    </div>
 </div>
 
-<p><%= activity %></p>
+
+
+<!-- #<PublicActivity::Activity id: 9, trackable_type: "Wishlist", trackable_id: 461, owner_type: "User", owner_id: 39, key: "wishlist.create", parameters: {}, recipient_type: nil, recipient_id: nil, created_at: "2019-06-06 05:54:36", updated_at: "2019-06-06 05:54:36">, #<PublicActivity::Activity id: 10, trackable_type: "Favourite", trackable_id: 465, owner_type: nil, owner_id: nil, key: "favourite.create", parameters: {}, recipient_type: nil, recipient_id: nil, created_at: "2019-06-06 05:54:38", updated_at: "2019-06-06 05:54:38">] -->
