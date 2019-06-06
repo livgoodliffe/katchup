@@ -35,3 +35,5 @@ gem 'faker'
 gem 'cloudinary'
 gem 'carrierwave'
 gem 'simple_calendar'
+# for feed tracking
+gem 'public_activity'

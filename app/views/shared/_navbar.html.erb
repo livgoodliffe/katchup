@@ -1,38 +1,58 @@
+
 <nav class="navbar fixed-top navbar-light">
-  <!-- Logo -->
-  <div class="navbar-brand">
-    <p>katchup</p>
-  </div>
-  <!-- Menu button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <i class="fas fa-bars menu-bars"></i>
-  </button>
-  <!-- Dropdown -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+
+    <!-- Dropdown -->
+
+  <div id="menuToggle">
+
+    <input type="checkbox" id="menu-checkbox" />
+      <label class="menu-overlay" for="menu-checkbox"></label>
+      <span></span>
+      <span></span>
+      <span></span>
+    <ul id="menu">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Discover", discover_index_path, class: "" %>
         </li>
         <li class="nav-item">
-          <%= link_to "my friends", "friendships", class: "nav-link" %>
+          <%= link_to "My Bottle", lists_path%>
         </li>
         <li class="nav-item">
-          <%= link_to "People", "users", class: "nav-link" %>
+          <%= link_to "My Friends", "friendships"%>
         </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to "People", "users"%>
         </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </li>
+
+      <!-- If not logged in -->
+
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
+
     </ul>
   </div>
+
+  <!-- Logo -->
+
+  <%= link_to feeds_path(section: 'feeds') do %>
+    <div class="navbar-brand">
+      <p>katchup</p>
+    </div>
+  <% end %>
+
+  <!-- Add Katchup -->
+
+  <%= link_to catchups_path(section: 'catchups') do %>
+    <div>
+      <i class="far fa-calendar-plus navbar-icon <%= 'nav-active' if params[:section] == 'catchups' %>"></i>
+    </div>
+  <% end %>
+
 </nav>

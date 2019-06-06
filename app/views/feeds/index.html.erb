@@ -1,13 +1,17 @@
-<%= render "shared/navbar" %>
-
 <div class="container">
-  <h1>Katchup on the lastest...</h1>
+  <h1>Katchup on the latest...</h1>
   <div class="feed-index">
-    <%= render 'feed_review_card' %>
-    <%= render 'feed_wishlist_card' %>
-    <%= render 'feed_favourite_card' %>
+
+  <% @activities.each do |activity|  %>
+    <% if activity.trackable_type == "Review" %>
+      <%= render 'feed-standard-card', activity: activity, type: review %>
+    <% elsif activity.trackable_type == "Wishlist" %>
+      <%= render 'feed-standard-card', activity: activity, type: wishlist %>
+    <% else %>
+      <%= render 'feed-standard-card', activity: activity, type: favourite %>
+    <% end %>
+  <% end %>
+
 
   </div>
 </div>
-
-

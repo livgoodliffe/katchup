@@ -17,6 +17,8 @@ class SearchController < ApplicationController
       favourite_search
     when 'wishlist_spots'
       wishlist_search
+    when 'users'
+      users
     end
   end
 
@@ -64,4 +66,14 @@ class SearchController < ApplicationController
       format.js
     end
   end
+
+  def users
+    return if current_user.nil?
+
+    @friends = Friendship.friends.where('first_name ILIKE ?', "%#{@search}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
