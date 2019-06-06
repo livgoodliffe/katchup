@@ -1,0 +1,11 @@
+<%= render 'shared/navbar' %>
+
+<h1>Friends</h1>
+<div class="container">
+  <% @friends.each do |friend| %>
+    <div class="card card-body">
+      <%= cl_image_tag(friend.friend.avatar, class: "avatar m-3") %>
+      <%= friend.friend.full_name %>
+    </div>
+  <% end %>
+</div>
