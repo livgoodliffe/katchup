@@ -25,10 +25,10 @@
 
 <div class="users-card" style="height: 40px; width: 100%">
   <div class="users-avatar">
-    <%= image_tag(user.image, class: "avatar") %>
+    <%= image_tag(user.avatar.url, class: "avatar") %>
   </div>
   <div class="users-name">
-    <p><%= user.first_name user.last_name %></p>
+    <p><%= user.first_name %><%= user.last_name %></p>
   </div>
   <div class="users-add-button">
     <i class="fas fa-plus"></i>
