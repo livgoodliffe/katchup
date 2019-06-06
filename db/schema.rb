@@ -10,19 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_211547) do
+
+ActiveRecord::Schema.define(version: 2019_06_06_010233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "catch_up_users", force: :cascade do |t|
-    t.bigint "catchup_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["catchup_id"], name: "index_catch_up_users_on_catchup_id"
-    t.index ["user_id"], name: "index_catch_up_users_on_user_id"
-  end
 
   create_table "catchups", force: :cascade do |t|
     t.bigint "user_id"
@@ -30,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_211547) do
     t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["spot_id"], name: "index_catchups_on_spot_id"
     t.index ["user_id"], name: "index_catchups_on_user_id"
   end
@@ -71,6 +64,16 @@ ActiveRecord::Schema.define(version: 2019_06_05_211547) do
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.bigint "catchup_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
+    t.index ["catchup_id"], name: "index_guests_on_catchup_id"
+    t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -141,8 +144,6 @@ ActiveRecord::Schema.define(version: 2019_06_05_211547) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
-  add_foreign_key "catch_up_users", "catchups"
-  add_foreign_key "catch_up_users", "users"
   add_foreign_key "catchups", "spots"
   add_foreign_key "catchups", "users"
   add_foreign_key "favourites", "spots"
@@ -150,6 +151,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_211547) do
   add_foreign_key "friend_requests", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "guests", "catchups"
+  add_foreign_key "guests", "users"
   add_foreign_key "images", "spots"
   add_foreign_key "menu_items", "spots"
   add_foreign_key "reviews", "spots"
