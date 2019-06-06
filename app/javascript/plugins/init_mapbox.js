@@ -1,15 +1,23 @@
 import mapboxgl from 'mapbox-gl';
 
 const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
-  if (mapElement.dataset[markerType] === undefined) return;
+  const markerJson = mapElement.dataset[markerType];
+
+  if (markerJson === undefined || markerJson === 'null' || markerJson === '[]') return 0;
 
   const markers = JSON.parse(mapElement.dataset[markerType]);
-
+  console.log(`creating markers for ${markerType}`);
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
     const markerStylingElement = document.createElement('div');
     markerStylingElement.className = markerStyle;
+
+    // user avatar section
+    const userAvatarUrl = mapElement.dataset.markerUserAvatar;
+    if (markerType === 'markerUser' && userAvatarUrl !== '') {
+      markerStylingElement.style.backgroundImage = `url('${userAvatarUrl}')`;
+    }
 
     new mapboxgl.Marker(markerStylingElement)
       .setLngLat([marker.lng, marker.lat])
@@ -18,6 +26,8 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   });
 
   markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+
+  return markers.length;
 };
 
 export default () => {
@@ -35,10 +45,12 @@ export default () => {
     const bounds = new mapboxgl.LngLatBounds();
 
     // dataset attribute are camelcased by browser
-    makeMarkers(map, mapElement, bounds, 'markers', 'map-marker');
-    makeMarkers(map, mapElement, bounds, 'markersFavourite', 'map-marker-favourite');
-    makeMarkers(map, mapElement, bounds, 'markersWishlist', 'map-marker-wishlist');
+    let markers = 0;
+    markers += makeMarkers(map, mapElement, bounds, 'markers', 'map-marker');
+    markers += makeMarkers(map, mapElement, bounds, 'markersFavourite', 'map-marker-favourite');
+    markers += makeMarkers(map, mapElement, bounds, 'markersWishlist', 'map-marker-wishlist');
+    markers += makeMarkers(map, mapElement, bounds, 'markerUser', 'map-marker-user');
 
-    map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+    if (markers > 0) map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
   }
 };
