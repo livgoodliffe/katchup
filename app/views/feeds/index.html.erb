@@ -4,11 +4,11 @@
 
   <% @activities.each do |activity|  %>
     <% if activity.trackable_type == "Review" %>
-      <%= render 'feed-standard-card', activity: activity, type: review %>
+      <%= render 'feed-standard-card', activity: activity %>
     <% elsif activity.trackable_type == "Wishlist" %>
-      <%= render 'feed-standard-card', activity: activity, type: wishlist %>
+      <%= render 'feed-standard-card', activity: activity %>
     <% else %>
-      <%= render 'feed-standard-card', activity: activity, type: favourite %>
+      <%= render 'feed-standard-card', activity: activity %>
     <% end %>
   <% end %>
 
