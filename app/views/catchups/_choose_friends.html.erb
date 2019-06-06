@@ -1,0 +1,13 @@
+<% @friends.each do |friend|%>
+  <div class="modal-content-card">
+    <div>
+      <%= cl_image_tag("#{friend.avatar}", id: "image_friend_#{friend.id}") %>
+    </div>
+    <div class="modal-content-card-details">
+      <%= friend.first_name %>
+      <%= friend.last_name %>
+      <button id="button_friend_<%= friend.id %>" class="modal-add-button-friend"><i class="fas fa-plus-circle"></i></button>
+      <%= hidden_field_tag "friend[#{friend.id}]" %>
+    </div>
+  </div>
+<% end %>

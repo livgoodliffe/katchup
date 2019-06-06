@@ -1,14 +1,12 @@
-
-<!-- Search through my spots -->
-
-<!-- List of my favourites and wishlists with symbols -->
-
-<div class="container">
-
-  <% 20.times do %>
-    <div class="p-4 m-2">
-      Spot
+  <% @spots.each do |spot|%>
+  <div class="modal-content-card">
+    <div>
+      <%= image_tag("#{spot.images.first.image}", id: "image_spot_#{spot.id}") %>
     </div>
-  <% end %>
-
-</div>
+    <div class="modal-content-card-details">
+      <p><%= spot.name %></p>
+      <button id="button_spot_<%= spot.id %>" class="modal-add-button-spot"><i class="fas fa-plus-circle"></i></button>
+      <%= hidden_field_tag "spot[#{spot.id}]" %>
+    </div>
+  </div>
+<% end %>

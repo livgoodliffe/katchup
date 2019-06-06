@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :discover, only: [:index]
 
-  resources :catchups
+  resources :catchups, only: [:index, :new, :create]
 
   resources :search, only: [:index]
 

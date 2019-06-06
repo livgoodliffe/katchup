@@ -16,7 +16,6 @@ class ListsController < ApplicationController
 
     @marker_user = create_user_marker if user_has_coords?
     @marker_user_avatar = current_user.avatar.url
-
   end
 
   private

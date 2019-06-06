@@ -1,53 +1,116 @@
 <%= render "shared/navbar" %>
-
 <div style="padding-top: 54px; padding-bottom: 50px;">
-
-  <!-- Add friends -->
-
-  <%= link_to new_catchup_path(function: 'add_friends') do %>
-    <p class="red-band-button">Add friends</p>
-  <% end %>
-  <% if params[:function] == 'add_friends' %>
-    <div class="container" style="height: 455px; overflow: auto">
-      <%= render "add_friends" %>
+  <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
+    <div class="text-center">
+      <%= button_tag "Choose Friends",
+                   type: 'button',
+                   class: 'modal-activation-button',
+                   data: { toggle: 'modal', target: '#chooseFriends' },
+                   id: "chosen-friends-avatars-container" %>
+    </div>
+    <div class="text-center">
+      <%= button_tag "Choose Spot",
+                   type: 'button',
+                   class: 'modal-activation-button',
+                   data: { toggle: 'modal', target: '#chooseSpot' },
+                   id: "chosen-spot-image-container" %>
+    </div>
+    <div class="text-center">
+      <%= button_tag "Choose Date",
+                   type: 'button',
+                   class: 'modal-activation-button',
+                   data: { toggle: 'modal', target: '#chooseDate' },
+                   id: "chosen-date-container" %>
+    </div>
+    <div class="text-center">
+      <%= button_tag "Choose Time",
+                   type: 'button',
+                   class: 'modal-activation-button',
+                   data: { toggle: 'modal', target: '#chooseTime' },
+                   id: "chosen-time-container" %>
+    </div>
+    <div class="text-center">
+      <%= button_tag "Create Catchup",
+                   type: 'button',
+                   class: 'modal-activation-button',
+                   data: { toggle: 'modal', target: '#createCatchup' } %>
+    </div>
+    <div class="modal fade" id="chooseFriends" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="choose-friends-title">Choose Friends</h5>
+          </div>
+          <div class="modal-body">
+            <%= render "choose_friends" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="chooseSpot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="choose-spots-title">Choose Spot</h5>
+          </div>
+          <div class="modal-body">
+            <%= render "choose_spot" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="chooseDate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Choose Date</h5>
+          </div>
+          <div class="modal-body">
+            <%= render "choose_date" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="chooseTime" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Choose Time</h5>
+          </div>
+          <div class="modal-body">
+            <%= render "choose_time" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="createCatchup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Catchup</h5>
+          </div>
+          <div class="modal-body">
+            <%= render "done" %>
+          </div>
+          <div class="modal-footer">
+            <%= button_tag "Create Catchup",
+                   class: 'btn btn-primary'%>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
-
-
-  <!-- Choose spot -->
-
-  <%= link_to new_catchup_path(function: 'choose_spot') do %>
-    <p class="red-band-button">Choose Spot</p>
-  <% end %>
-  <% if params[:function] == 'choose_spot' %>
-    <div class="container" style="height: 455px; overflow: auto">
-      <%= render "choose_spot" %>
-    </div>
-  <% end %>
-
-
-  <!-- Choose Time -->
-
-  <%= link_to new_catchup_path(function: 'choose_time') do %>
-    <p class="red-band-button">Choose Time</p>
-  <% end %>
-  <% if params[:function] == 'choose_time' %>
-    <div class="container" style="height: 455px; overflow: auto">
-      <%= render "choose_time" %>
-    </div>
-  <% end %>
-
-  <!-- DONE -->
-
-  <%= link_to new_catchup_path(function: 'done') do %>
-    <p class="red-band-button">DONE</p>
-  <% end %>
-  <% if params[:function] == 'done' %>
-    <div class="container" style="height: 455px; overflow: auto">
-      <%= render "done" %>
-    </div>
-  <% end %>
-
-
 </div>
-
