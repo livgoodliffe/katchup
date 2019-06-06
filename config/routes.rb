@@ -37,6 +37,5 @@ Rails.application.routes.draw do
   resources :pending, only: [:index, :destroy]
   resources :request, only: [:index, :destroy]
 
-
-
+  resources :geolocation, only: [:index]
 end
