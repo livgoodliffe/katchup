@@ -16,7 +16,7 @@ require 'faker'
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
   user.password = "Password123"
-  user.avatar = Faker::Avatar.image
+  user.remote_avatar_url = Faker::Avatar.image
   user.save!
 }
 
