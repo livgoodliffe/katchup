@@ -1,21 +1,29 @@
 <h1>Friend Requests</h1>
 
-<h2>Sent</h2>
-<ul>
-  <% @outgoing.each do |request| %>
-    <li>
-      To: <%= request.friend.full_name %>
-      <%= link_to "Cancel", friend_request_path(request, user_id: request.friend.id), method: :delete %>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
 
-<h2>From</h2>
-<ul>
-  <% @incoming.each do |request| %>
-    <li>
-      From: <%= request.user.full_name %>
-      <%= link_to "Accept", friend_request_path(request), method: :put %>
-    </li>
+  <div class="card my-2">
+    <div class="card-body">
+      <h5>Sent</h5>
+      <% @outgoing.each do |request| %>
+          <div class="card-name d-flex justify-content-between">
+            <%= request.friend.full_name %>
+            <%= link_to "Cancel", friend_request_path(request, user_id: request.friend.id), method: :delete %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <% if @incoming.count > 0 %>
+    <div class="card my-2">
+      <div class="card-body">
+        <h5>From</h5>
+        <% @incoming.each do |request| %>
+          <div class="card-name d-flex justify-content-between">
+            <%= request.user.full_name %>
+            <%= link_to "Accept", friend_request_path(request), method: :put %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

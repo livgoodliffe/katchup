@@ -1,19 +1,14 @@
 <%= render "shared/navbar" %>
 <div class="users-page-wrapper">
-  <%= render "request_type" %>
 
+  <div class="container">
+    <%= render "request_type" %>
+    <div class="grey-search-bar">
+      <%= render("search/search_form", search_type: 'users', placeholder: 'Search friends') %>
+    </div>
 
-  <div class="search-wrapper" style="height: ">
-    <input type="search" class="search-placeholder" placeholder="remove me when search is ready" style="width: 100%">
-  </div>
-
-
-  <%# if @params.contain() %>
-  <ul>
     <% @users.each do |user| %>
-        <%= render 'user', user: user %>
-      <% end %>
-  </ul>
-
-
+      <%= render 'user', user: user %>
+    <% end %>
+  </div>
 </div>
