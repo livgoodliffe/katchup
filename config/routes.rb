@@ -25,18 +25,19 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index]
 
-  resources :users, only: [:index] do
+  resources :users, only: [:index, :show] do
     member do
       post :follow
       post :unfollow
     end
   end
 
+  resources :friendships, only: [:index]
+
   resources :friend_requests, only: [:index, :create, :destroy]
 
   resources :pending, only: [:index, :destroy]
   resources :request, only: [:index, :destroy]
-
 
 
 end
