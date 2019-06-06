@@ -1,0 +1,36 @@
+.user-wrapper {
+  padding-top: 64px;
+  text-align: center;
+
+  h4 {
+    color: #999;
+    font-size: 32px;
+  }
+
+  .user-avatar {
+    width: 64px;
+    border-radius: 50%;
+    background-color: $katchup;
+  }
+
+  .card {
+    border-radius: 8px;
+  }
+
+  .review-tag {
+    background-color: $katchup;
+    color: white;
+    font-weight: bold;
+  }
+
+  .container {
+    .card {
+      border-radius: 20px;
+      .review-image {
+        border-radius: 20px 20px 0 0;
+        height: 240px;
+        object-fit: cover;
+      }
+    }
+  }
+}
