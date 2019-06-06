@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get 'kitchen_sink' => 'pages#kitchen_sink'
+
   resources :favourites, only: [:index, :destroy]
 
   resources :wishlists, only: [:index, :destroy]
