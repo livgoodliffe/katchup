@@ -2,21 +2,12 @@
   <%= cl_image_tag(@user.avatar, class: "user-avatar") %>
   <h3 class="mt-3"><%= @user.full_name %></h3>
   <%= render "users/show/activity-cards" %>
-  <div class="review-tag mt-4 p-2">Reviews</div>
-    <div class="container">
-      <% @reviews.each do |review| %>
-      <div class="card mt-4">
-        <% unless review.image.url.blank? %>
-            <%= cl_image_tag(review.image, class: "review-image") %>
-          <% end %>
-          <div class="review-content d-flex ">
-            <div class="review-user">
-              <%= cl_image_tag(user_avatar(review.user), class: "avatar mx-3 mt-3") %>
-              <p class="review-name mx-3 mt-2"><%= review.user.first_name %></p>
-            </div>
-            <p class="m-2"><%= review.notes %></p>
-          </div>
-        <% end %>
-      </div>
-    </div>
+
+  <div class="review-tag mt-4 p-2">
+    Reviews
+  </div>
+
+  <div class="container">
+    <%= render "users/show/reviews-list" %>
+  </div>
 </div>
