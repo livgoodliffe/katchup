@@ -81,11 +81,15 @@ export default () => {
 
     let selectedDayElement = null;
 
-    const hiddenDateInput = document.getElementById('date');
+    const hiddenDateYearInput = document.getElementById('date_year');
+    const hiddenDateMonthInput = document.getElementById('date_month');
+    const hiddenDateDayInput = document.getElementById('date_day');
+
     const dateContainer = document.getElementById('chosen-date-container');
 
-    const calendars = document.querySelectorAll('.simple-calendar');
-    calendars.forEach((calendar) => {
+    const calendarSelection = document.querySelectorAll('.simple-calendar');
+
+    calendarSelection.forEach((calendar) => {
       calendar.addEventListener('click', (event) => {
         const element = event.target;
         if (element.tagName === 'TD') {
@@ -101,22 +105,28 @@ export default () => {
           }
 
           selectedDayElement = element;
-          hiddenDateInput.value = `${year}-${month}-${day}`;
+          hiddenDateYearInput.value = year;
+          hiddenDateMonthInput.value = month;
+          hiddenDateDayInput.value = day;
           dateContainer.innerHTML = `Choose Date<br><span style="font-weight: bold; font-size: 1.5rem;">${day} ${monthWord} ${year}</span>`;
         }
       });
     });
 
     // TIME
-    const hiddenTimeInput = document.getElementById('time');
+    const hiddenTimeHourInput = document.getElementById('time_hour');
+    const hiddenTimeMinuteInput = document.getElementById('time_minute');
+    const hiddenTimeAMPMInput = document.getElementById('time_ampm');
+
     const timeContainer = document.getElementById('chosen-time-container');
-    const timeSelector = document.querySelector('.time-selector');
+
+    const timeSelection = document.querySelector('.time-selector');
 
     let selectedHourElement = null;
     let selectedMinuteElement = null;
     let selectedAMPMElement = null;
 
-    timeSelector.addEventListener('click', (event) => {
+    timeSelection.addEventListener('click', (event) => {
       const element = event.target;
       if (element.classList.contains('hour')) {
         element.classList.add('selected');
@@ -145,7 +155,10 @@ export default () => {
       if (selectedHourElement !== null) {
         if (selectedMinuteElement !== null) {
           if (selectedAMPMElement !== null) {
-            hiddenTimeInput.value = `${selectedHourElement.innerText}:${selectedMinuteElement.innerText}${selectedAMPMElement.innerText}`;
+            hiddenTimeHourInput.value = selectedHourElement.innerText;
+            hiddenTimeMinuteInput.value = selectedMinuteElement.innerText;
+            hiddenTimeAMPMInput.value = selectedAMPMElement.innerText;
+
             timeContainer.innerHTML = `Choose Time<br><span style="font-weight: bold; font-size: 1.5rem;">${selectedHourElement.innerText}:${selectedMinuteElement.innerText}${selectedAMPMElement.innerText}</span>`;
           }
         }
