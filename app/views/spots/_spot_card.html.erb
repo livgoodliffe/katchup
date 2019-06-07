@@ -1,32 +1,24 @@
 <div class="spot-card mx-auto">
-
   <%= link_to spot_path(spot) do %>
-
     <!-- Image -->
-
     <div class=spot-image>
       <%= image_tag("#{spot.images.first.image}")%>
     </div>
-
     <!-- Text -->
-
     <div class="spot-details">
       <div class="spot-name">
         <%= spot.name %>
       </div>
       <div class="spot-location">
-        Suburb, City
-        <!-- Code this! -->
+        <%#= spot.address.match(/(\w+)(?= VIC)/)[0] %>
+        <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
       </div>
     </div>
-
   <% end %>
-
   <!-- Icon -->
   <div class="spot-card-icon">
     <div id="w<%= spot.id %>" >
       <%= render 'shared/bottle_icon', spot: spot %>
     </div>
   </div>
-
 </div>
