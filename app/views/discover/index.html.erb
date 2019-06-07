@@ -7,11 +7,13 @@
 
   <div id="search-results" class="discover-search-results">
     <!-- this content only exists so that full spot list exists before any search is carried out -->
-    <% @spots.each do |spot| %>
+
+    <% @spots.first(25).each do |spot| %>
 
         <%= render "spots/spot_card", spot: spot %>
 
     <% end %>
+
   </div>
 
 </div>
