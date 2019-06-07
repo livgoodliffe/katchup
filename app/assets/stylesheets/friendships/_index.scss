@@ -1,0 +1,20 @@
+.friends-wrapper {
+  padding-top: 48px;
+
+  .card {
+    position: relative;
+    border-radius: 8px;
+  }
+  .card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .avatar {
+    background-color: rgba(199, 0, 57, 0.1);
+    width: 56px;
+  }
+}
