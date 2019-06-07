@@ -1,5 +1,6 @@
 <% type = activity.trackable_type %>
 <div class="feed-card-container">
+<%= link_to spot_path(activity.trackable.spot.id), class: 'feed-card-anchor' do %>
 
 <!-- Who and When -->
 
@@ -60,6 +61,7 @@
       </div>
   </div>
 
+<% end %>
 </div>
 
 
