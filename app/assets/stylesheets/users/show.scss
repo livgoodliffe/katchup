@@ -15,9 +15,23 @@
     text-align: center;
   }
 
+  .to_spot {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
   .card {
     border-radius: 8px;
     position: relative;
+  }
+
+  .place {
+    border-radius: 0 0 8px 8px;
+    border: 4px;
+    border-color: #333;
   }
 
   .card-link {
