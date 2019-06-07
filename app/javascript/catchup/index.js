@@ -1,10 +1,44 @@
 /* eslint no-param-reassign: off */
-export default () => {
 
+const errorMessages = (selectionStatus) => {
+  const friendError = document.getElementById('friend-missing-error');
+  const spotError = document.getElementById('spot-missing-error');
+  const dateError = document.getElementById('date-missing-error');
+  const timeError = document.getElementById('time-missing-error');
+  console.log(spotError);
+  if (selectionStatus.friend === true) {
+    friendError.style.visibility = 'hidden';
+  } else {
+    friendError.style.visibility = 'visible';
+  }
+  if (selectionStatus.spot === true) {
+    spotError.style.visibility = 'hidden';
+  } else {
+    spotError.style.visibility = 'visible';
+  }
+  if (selectionStatus.date === true) dateError.style.visibility = 'hidden';
+  if (selectionStatus.time === true) timeError.style.visibility = 'hidden';
+};
+
+const readyToSubmitCheck = (selectionStatus) => {
+  errorMessages(selectionStatus);
+  const submitButton = document.getElementById('catchup-submit-button');
+  const status = Object.keys(selectionStatus).reduce((acc, value) => (acc && selectionStatus[value]), true);
+  if (status === true) submitButton.disabled = false;
+};
+
+export default () => {
   const catchupForm = document.getElementById('catchup_form');
 
   if (catchupForm) {
     // BUTTONS
+    const selectionStatus = {
+      friend: false,
+      spot: false,
+      date: false,
+      time: false,
+    };
+
     const buttonsFriends = document.querySelectorAll('.modal-add-button-friend');
     const buttonsSpots = document.querySelectorAll('.modal-add-button-spot');
 
@@ -14,6 +48,7 @@ export default () => {
     const backgroundColor = '#C70039';
 
     let spotsSelected = 0;
+    let friendsSelected = 0;
 
     buttonsFriends.forEach((button) => {
       button.addEventListener('click', (event) => {
@@ -28,6 +63,7 @@ export default () => {
           const containerFriendAvatar = document.getElementById(button.id.replace('button', 'container'));
           containerFriendAvatar.parentNode.removeChild(containerFriendAvatar);
           button.innerHTML = '<i class="fas fa-plus-circle"></i>';
+          friendsSelected -= 1;
         } else {
           // set hidden rails form input to true
           hiddenInput.value = true;
@@ -38,7 +74,14 @@ export default () => {
           }
           friendsAvatarsContainer.insertAdjacentHTML('beforeend', `<img id='${button.id.replace('button', 'container')}' class='chosen-friend-avatar' src='${imageUrl}'>`);
           button.innerHTML = '<i class="far fa-check-circle"></i>';
+          friendsSelected += 1;
         }
+        if (friendsSelected === 0) {
+          selectionStatus.friend = false;
+        } else {
+          selectionStatus.friend = true;
+        }
+        readyToSubmitCheck(selectionStatus);
       });
     });
 
@@ -61,6 +104,7 @@ export default () => {
           spotImageContainer.insertAdjacentHTML('beforeend', `<img id='${button.id.replace('button', 'container')}' class="chosen-spot-image" src='${imageUrl}'>`);
           button.innerHTML = '<i class="far fa-check-circle"></i>';
           spotsSelected += 1;
+          selectionStatus.spot = true;
         } else if (hiddenInput.value === 'true') {
           hiddenInput.value = false;
           // remove image from container
@@ -68,7 +112,14 @@ export default () => {
           containerSpotImage.parentNode.removeChild(containerSpotImage);
           button.innerHTML = '<i class="fas fa-plus-circle"></i>';
           spotsSelected -= 1;
+          selectionStatus.spot = false;
         }
+        if (spotsSelected === 1) {
+          selectionStatus.spot = true;
+        } else {
+          selectionStatus.spot = false;
+        }
+        readyToSubmitCheck(selectionStatus);
       });
     });
 
@@ -109,6 +160,8 @@ export default () => {
           hiddenDateMonthInput.value = month;
           hiddenDateDayInput.value = day;
           dateContainer.innerHTML = `Choose Date<br><span style="font-weight: bold; font-size: 1.5rem;">${day} ${monthWord} ${year}</span>`;
+          selectionStatus.date = true;
+          readyToSubmitCheck(selectionStatus);
         }
       });
     });
@@ -160,6 +213,8 @@ export default () => {
             hiddenTimeAMPMInput.value = selectedAMPMElement.innerText;
 
             timeContainer.innerHTML = `Choose Time<br><span style="font-weight: bold; font-size: 1.5rem;">${selectedHourElement.innerText}:${selectedMinuteElement.innerText}${selectedAMPMElement.innerText}</span>`;
+            selectionStatus.time = true;
+            readyToSubmitCheck(selectionStatus);
           }
         }
       }
