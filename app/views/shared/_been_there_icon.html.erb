@@ -1,0 +1,23 @@
+<!-- Ive been here -->
+
+<% if user_signed_in? %>
+  <div class="d-flex flex-column">
+    <% if current_user.favourited_spot?(spot) %>
+      <%= link_to favourite_path(current_user.find_favourite(spot)), method: :delete, remote: true do %>
+
+        <div class="active-simple-button">
+          I've been there
+        </div>
+
+      <% end %>
+    <% else %>
+      <%= link_to spot_favourites_path(spot), method: :post, remote: true do %>
+
+        <div class="simple-button">
+          I've been there
+        </div>
+
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
