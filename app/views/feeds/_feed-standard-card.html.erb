@@ -1,13 +1,10 @@
 <% type = activity.trackable_type %>
-<%# byebug %>
 <div class="feed-card-container">
 
 <!-- Who and When -->
 
   <div class="feed-card-body">
-<!--     <img class="feed-card-avatar" alt="avatar-large" src="<%#= activity.trackable[:image] %>" /> -->
     <%= cl_image_tag(activity.owner.avatar.url, class: "feed-card-avatar") %>
-
     <div class="feed-card-text">
       <div class="feed-card-who">
         <p><strong><%= activity.owner.first_name if activity.owner %></strong>
@@ -16,7 +13,7 @@
           <% elsif type == 'Wishlist' %>
             added to their bottle
           <% else %>
-           <%= activity.owner.first_name if activity.owner %> has been to <%= activity.trackable.spot.name %>
+            has been to <%= activity.trackable.spot.name %>
           <% end %>
         </p>
       </div>
@@ -32,7 +29,11 @@
 
     <!-- Code the type of post -->
 
-    <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+  <% if activity.trackable_type == "Review" %>
+    <%= cl_image_tag(activity.trackable.spot.images.first.image, class: 'dark-pic') %>
+    <% else %>
+    <%= cl_image_tag(activity.trackable.spot.images.first.image) %>
+  <% end %>
 
     <!-- If its a review -->
     <% if activity.trackable_type == "Review" %>
