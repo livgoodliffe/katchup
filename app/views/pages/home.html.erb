@@ -2,8 +2,19 @@
 
   <div><h1>Katchup</h1></div>
 
-  <div class="red-button">
-    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-  </div>
+  <% if user_signed_in? %>
+
+    <div class="small-red-button">
+      <%= link_to "My Feed", feeds_path, class: "nav-link" %>
+    </div>
+
+  <% else %>
+
+    <div class="small-red-button">
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    </div>
+
+  <% end %>
+
 
 </div>
