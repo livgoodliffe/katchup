@@ -1,11 +1,12 @@
 <% type = activity.trackable_type %>
-
+<%# byebug %>
 <div class="feed-card-container">
 
 <!-- Who and When -->
 
   <div class="feed-card-body">
-    <img class="feed-card-avatar" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+<!--     <img class="feed-card-avatar" alt="avatar-large" src="<%#= activity.trackable[:image] %>" /> -->
+    <%= cl_image_tag(activity.owner.avatar.url, class: "feed-card-avatar") %>
 
     <div class="feed-card-text">
       <div class="feed-card-who">
@@ -34,12 +35,13 @@
     <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
 
     <!-- If its a review -->
+    <% if activity.trackable_type == "Review" %>
 
-    <div class="feed-card-review">
-      <h4><em>"The bao buns were the best dish, everything else was average"</em></h4>
-    </div>
+      <div class="feed-card-review">
+        <h4><em><%= activity.trackable.notes %></em></h4>
+      </div>
+    <% end %>
   </div>
-
 <!-- Spot Information and Icon -->
 
   <div class="feed-card-body" style="justify-content: space-between;">
