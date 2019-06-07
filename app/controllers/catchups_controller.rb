@@ -2,7 +2,7 @@ class CatchupsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @catchups = current_user.catchups
+    @catchups = current_user.catchups.sort_by(&:time)
   end
 
   def new
@@ -43,15 +43,14 @@ class CatchupsController < ApplicationController
     friend_ids = []
     params[:friend].each { |key, value| friend_ids << key if value == "true" }
 
-    catchup.save
-
-    friend_ids.each do |id|
-      guest = Guest.new
-      guest.user_id = id
-      guest.catchup = catchup
-      guest.save
+    if catchup.save
+      friend_ids.each do |id|
+        guest = Guest.new
+        guest.user_id = id
+        guest.catchup = catchup
+        guest.save
+      end
+      redirect_to catchups_path
     end
-
-    redirect_to catchups_path
   end
 end
