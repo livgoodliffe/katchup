@@ -1,6 +1,6 @@
 <div class="red-buttons-container">
 
-  <div class="<%= 'active-red-button' if params[:list_type] == 'wishlists' %>">
+  <div class="<%= 'active-red-button' if params[:list_type] == 'favourites' %>">
     <div class="red-button">
       <%= link_to wishlists_path(list_type: 'wishlists') do %>
         <p class="m-0 <%= 'active' if params[:list_type] == 'wishlists' %>">My Bottle</p>
@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="<%= 'active-red-button' if params[:list_type] == 'favourites' %>">
+  <div class="<%= 'active-red-button' if params[:list_type] == 'wishlists' %>">
     <div class="red-button">
       <%= link_to favourites_path(list_type: 'favourites') do %>
         <p class="m-0">Been there</p>
