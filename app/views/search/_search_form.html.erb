@@ -1,4 +1,11 @@
 <%= form_tag(search_index_path, method: :get, remote: true) do %>
   <%= hidden_field_tag :search_type, search_type %>
-  <%= text_field_tag :search, nil, class: "search-bar", placeholder: placeholder %>
+  <div style="position:relative">
+    <%= text_field_tag :search, nil, class: "search-bar", placeholder: placeholder %>
+    <% if search_type=="wishlist_spots" || search_type=="favourite_spots" %>
+      <div class='map-back-button'>
+        <%= link_to "<i class='far fa-map'></i>".html_safe, lists_path %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
