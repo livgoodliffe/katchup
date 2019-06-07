@@ -197,28 +197,35 @@
   }
 }
 
-.catchup-list-card {
-  background: transparent;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+
+
+
+.catchup-card {
+  background: white;
+  margin: 8px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,.1);
 }
 
-.catchup-list-guest-image {
+.catchup-card-when {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
+.catchup-card-guest {
   img {
-    width: 100px;
+    width: 150px;
     height: 100%;
     object-fit: cover;
   }
-
 }
 
 .catchup-list-spot-image {
 
   img {
-    width: 200px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
   }
 
