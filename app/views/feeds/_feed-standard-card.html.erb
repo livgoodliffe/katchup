@@ -1,7 +1,5 @@
 <% type = activity.trackable_type %>
 
-<% if activity.trackable == nil %>
-
 <div class="feed-card-container">
 
 <!-- Who and When -->
@@ -11,13 +9,13 @@
 
     <div class="feed-card-text">
       <div class="feed-card-who">
-        <p><strong><%#= activity.owner.first_name if activity_owner.first_name %></strong>
+        <p><strong><%= activity.owner.first_name if activity.owner.first_name %></strong>
           <% if type == 'Review' %>
             reviewed
           <% elsif type == 'Wishlist' %>
             added to their bottle
           <% else %>
-           <%#= activity.owner.first_name if activity_owner.first_name %> has been to <%#= activity.trackable.spot.name %>
+           <%= activity.owner.first_name if activity_owner.first_name %> has been to <%#= activity.trackable.spot.name %>
           <% end %>
         </p>
       </div>

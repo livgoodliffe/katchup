@@ -3,11 +3,12 @@
   <div class="feed-index">
 
   <% @activities.each do |activity|  %>
-    <% if activity.trackable_type == "Review" %>
+  <!-- <%# byebug %> -->
+    <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
       <%= render 'feed-standard-card', activity: activity %>
-    <% elsif activity.trackable_type == "Wishlist" %>
+    <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
       <%= render 'feed-standard-card', activity: activity %>
-    <% else %>
+    <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
       <%= render 'feed-standard-card', activity: activity %>
     <% end %>
   <% end %>
