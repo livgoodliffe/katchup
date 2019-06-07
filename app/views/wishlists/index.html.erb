@@ -2,11 +2,13 @@
 <%= render "lists/list_type" %>
 <!-- Search bar -->
 <div class="grey-search-bar">
-  <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: 'Search My Wishlist') %>
+  <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: 'Search in my bottle') %>
 </div>
+
 <!-- Cards -->
-<div class="d-flex flex-column justify-content-center">
-  <div id="search-results" class="search-results">
+
+<div class="container">
+  <div id="search-results" class="discover-search-results">
     <% @wishlist_spots.each do |spot| %>
       <%= render "spots/spot_card", spot: spot %>
     <% end %>
