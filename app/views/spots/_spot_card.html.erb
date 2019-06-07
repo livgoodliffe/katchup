@@ -24,11 +24,9 @@
 
   <!-- Icon -->
   <div class="spot-card-icon">
-    <% if user_signed_in? %>
-      <div id="w<%= spot.id %>" >
-        <%= render 'wishlists/bookmark', spot: spot %>
-      </div>
-    <% end %>
+    <div id="w<%= spot.id %>" >
+      <%= render 'shared/bottle_icon', spot: spot %>
+    </div>
   </div>
 
 </div>
