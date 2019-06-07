@@ -19,6 +19,11 @@ class FriendRequestsController < ApplicationController
     end
   end
 
+  def update
+    @friend_request.acept
+    redirect_to friendships_path
+  end
+
   def destroy
     @friend_request.destroy
     respond_to do |format|
@@ -34,6 +39,7 @@ class FriendRequestsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id] || params[:friend_id])
+    set_friend_request
+    @user = User.find(@friend_request.user_id || @friend_request.friend_id)
   end
 end
