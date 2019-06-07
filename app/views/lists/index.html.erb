@@ -1,13 +1,19 @@
 <%= render "shared/navbar" %>
+
 <!-- Favourites and Wishlist buttons -->
+
 <%= render "list_type" %>
+
 <!-- Search Bar -->
+
 <div class="grey-search-bar">
   <%= render('search/search_form', search_type: 'my_spots', placeholder: 'Search My Bottle') %>
 </div>
 <div id="search-results" class="search-results">
 </div>
+
 <!-- Map -->
+
 <div id="map" class="my-map"
     style="width: 100%; height: 100%; position: absolute;"
     data-markers-favourite="<%= @markers_favourite.to_json %>"
