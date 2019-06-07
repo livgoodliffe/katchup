@@ -14,7 +14,7 @@
 
 <div class="card p-2 d-flex rounded my-2" data-user=<%= user.id %>>
   <div class="users-avatar">
-    <%= cl_image_tag(user_avatar(review.user), class: "avatar") %>
+    <%= cl_image_tag(user_avatar(user), class: "avatar") %>
   </div>
   <div class="card-content">
     <%= user.full_name %>

@@ -11,7 +11,7 @@
   <div class="<%= 'active-red-button' if params[:list_type] == 'pending' %>">
     <div class="red-button">
       <%#= link_to pending_path(list_type: 'pending') do %>
-        <p class="m-0 <%= 'active' if params[:list_type] == 'wishlists' %>">Pending Requests</p>
+        <p class="m-0"><%= link_to "Friend Requests", friend_requests_path(current_user) %></p>
       <%# end %>
     </div>
   </div>
