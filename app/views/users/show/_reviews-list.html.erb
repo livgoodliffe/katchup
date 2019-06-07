@@ -11,8 +11,13 @@
           <%= cl_image_tag(user_avatar(review.user), class: "avatar mx-3 mt-3") %>
           <p class="review-name mx-3 mt-2"><%= review.user.first_name %></p>
         </div>
-        <p class="m-2"><%= review.notes %></p>
+        <p class="mx-2 mt-2"><%= review.notes %></p>
       </div>
+      <div class="place m-0 p-0">
+        <p class="m-0 place" style="background-color: #eee">@ <%= review.spot.name %></p>
+      </div>
+    <%= link_to spot_path(review.spot), class: "to_spot" do %>
+    <% end %>
     </div>
   <% end %>
 <% end %>
