@@ -1,12 +1,10 @@
 <% type = activity.trackable_type %>
-
 <div class="feed-card-container">
 
 <!-- Who and When -->
 
   <div class="feed-card-body">
-    <img class="feed-card-avatar" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-
+    <%= cl_image_tag(activity.owner.avatar.url, class: "feed-card-avatar") %>
     <div class="feed-card-text">
       <div class="feed-card-who">
         <p><strong><%= activity.owner.first_name if activity.owner %></strong>
@@ -15,7 +13,7 @@
           <% elsif type == 'Wishlist' %>
             added to their bottle
           <% else %>
-           <%= activity.owner.first_name if activity.owner %> has been to <%= activity.trackable.spot.name %>
+            has been to <%= activity.trackable.spot.name %>
           <% end %>
         </p>
       </div>
@@ -31,15 +29,20 @@
 
     <!-- Code the type of post -->
 
-    <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+  <% if activity.trackable_type == "Review" %>
+    <%= cl_image_tag(activity.trackable.spot.images.first.image, class: 'dark-pic') %>
+    <% else %>
+    <%= cl_image_tag(activity.trackable.spot.images.first.image) %>
+  <% end %>
 
     <!-- If its a review -->
+    <% if activity.trackable_type == "Review" %>
 
-    <div class="feed-card-review">
-      <h4><em>"The bao buns were the best dish, everything else was average"</em></h4>
-    </div>
+      <div class="feed-card-review">
+        <h4><em><%= activity.trackable.notes %></em></h4>
+      </div>
+    <% end %>
   </div>
-
 <!-- Spot Information and Icon -->
 
   <div class="feed-card-body" style="justify-content: space-between;">
