@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def index
     @params = params
     @users = User.all.where.not(id: current_user.id)
+    # @friends = Friendship.where(user_id: current_user)
   end
 
   def follow
