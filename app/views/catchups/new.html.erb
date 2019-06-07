@@ -1,7 +1,8 @@
 <div style="padding-top: 54px; padding-bottom: 50px;">
-  <h1>Let's Katchup!</h1>
 
-
+  <div class="text-center">
+    <h1>Let's Katchup!</h1>
+  </div>
 
   <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
     <div class="text-center">
@@ -32,10 +33,10 @@
                    data: { toggle: 'modal', target: '#chooseTime' },
                    id: "chosen-time-container" %>
     </div>
-    <div class="text-center">
-      <%= button_tag "Create Catchup",
+    <div class="text-center d-flex justify-content-center">
+      <%= button_tag "Done",
                    type: 'button',
-                   class: 'modal-activation-button',
+                   class: 'red-button',
                    data: { toggle: 'modal', target: '#createCatchup' } %>
     </div>
     <div class="modal fade" id="chooseFriends" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

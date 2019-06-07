@@ -1,5 +1,6 @@
 <% type = activity.trackable_type %>
 <div class="feed-card-container">
+<%= link_to spot_path(activity.trackable.spot.id), class: 'feed-card-anchor' do %>
 
 <!-- Who and When -->
 
@@ -56,10 +57,13 @@
      </div>
 
      <div>
+      <div id="w<%= activity.trackable.spot.id %>" >
         <%= render "shared/bottle_icon", spot: activity.trackable.spot %>
       </div>
+    </div>
   </div>
 
+<% end %>
 </div>
 
 

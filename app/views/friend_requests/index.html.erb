@@ -1,8 +1,10 @@
 <h1>Friend Requests</h1>
 
-<div class="container">
-
+<div class="container" style="position: relative;">
   <div class="card my-2">
+  <%= link_to users_path do %>
+    <i class="fas fa-chevron-circle-left back-btn" style="position: absolute; font-size: 24px"></i>
+  <% end %>
     <div class="card-body">
       <h5>Sent</h5>
       <% @outgoing.each do |request| %>

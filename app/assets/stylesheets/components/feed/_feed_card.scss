@@ -1,4 +1,5 @@
 .feed-card-container {
+  // position: relative;
   width: 100%;
   background: white;
   border-radius: 8px;
@@ -65,4 +66,9 @@
   top: 30px;
   left: 20px;
   width: 88%;
+}
+
+a.feed-card-anchor {
+  text-decoration: none;
+
 }
