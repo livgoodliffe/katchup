@@ -229,20 +229,22 @@
 }
 .catchup-card-guest {
   img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 20px;
   }
 }
 .catchup-list-spot-image {
   img {
     width: 100%;
-    height: 200px;
+    height: 150px;
     object-fit: cover;
   }
 }
 .catchup-list-spot-name {
   font-size: 1.5rem;
   font-weight: bold;
+  margin: 8px;
 }
