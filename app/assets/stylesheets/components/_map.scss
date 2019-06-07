@@ -114,3 +114,13 @@ $map-restaurant-details-left-padding: 0;
 .map-geolocation {
   visibility: hidden;
 }
+
+.map-back-button {
+  a {
+    position: absolute;
+    bottom: -0.2rem;
+    right: 0.2rem;
+    font-size: 1.75rem;
+    color: $dark-grey;
+  }
+}
