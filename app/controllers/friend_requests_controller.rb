@@ -1,6 +1,6 @@
 class FriendRequestsController < ApplicationController
   before_action :set_friend_request, except: [:index, :create]
-  before_action :set_user, except: [:index]
+  before_action :set_user, except: [:index, :update]
 
   def index
     @incoming = FriendRequest.where(friend: current_user)
@@ -20,7 +20,7 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
-    @friend_request.acept
+    @friend_request.accept
     redirect_to friendships_path
   end
 
@@ -39,7 +39,6 @@ class FriendRequestsController < ApplicationController
   end
 
   def set_user
-    set_friend_request
-    @user = User.find(@friend_request.user_id || @friend_request.friend_id)
+    @user = User.find(params[:user_id] || params[:friend_id])
   end
 end
