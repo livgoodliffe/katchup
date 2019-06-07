@@ -1,11 +1,17 @@
 <%= render 'shared/navbar' %>
 
-<h1>Friends</h1>
-<div class="container">
-  <% @friends.each do |friend| %>
-    <div class="card card-body">
-      <%= cl_image_tag(friend.friend.avatar, class: "avatar m-3") %>
-      <%= friend.friend.full_name %>
-    </div>
-  <% end %>
+<div class="friends-wrapper">
+  <div class="container">
+  <h1>My Friends</h1>
+    <% @friends.each do |friend| %>
+      <div class="card my-2 pt-0 shadow-sm">
+        <div class="card-body py-0 d-flex justify-content-between align-items-center">
+          <%= cl_image_tag(friend.friend.avatar, class: "avatar m-3") %>
+          <%= friend.friend.full_name %>
+        </div>
+        <%= link_to user_path(friend.friend), class: "card-link" do %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

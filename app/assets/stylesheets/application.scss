@@ -15,6 +15,7 @@
 @import "spots/index";
 @import "lists/index";
 @import "users/index";
+@import "friendships/index";
 
 // Mapbox (css doesn't work from javascript pack so was placed here)
 @import 'mapbox-gl/dist/mapbox-gl.css';
