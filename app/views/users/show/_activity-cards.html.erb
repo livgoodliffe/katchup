@@ -1,13 +1,13 @@
 <div class="activity-cards d-flex px-2 justify-content-center pt-4">
   <div class="card py-3 px-2 m-2" style="width: 28%">
     <h4><%= @wishlists.count %></h4>
-    <p class="card-text">Wishlists</p>
+    <p class="card-text">My Bottle</p>
     <%= link_to wishlists_path, class: "card-link" do %>
     <% end %>
   </div>
   <div class="card py-3 px-2 m-2" style="width: 28%">
     <h4><%= @favourites.count %></h4>
-    <p class="card-text">Favourites</p>
+    <p class="card-text">Been Here</p>
     <%= link_to favourites_path, class: "card-link" do %>
     <% end %>
   </div>
