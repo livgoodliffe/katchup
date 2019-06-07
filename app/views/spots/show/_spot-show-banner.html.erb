@@ -8,7 +8,9 @@
       <h1 ><%= @spot.name %></h1>
       <div id="show-underline"></div>
 
+      <div id="w<%= spot.id %>" >
         <%= render 'shared/bottle_icon', spot: @spot %>
+      </div>
 
       <div id="average-rating">
         <%= render 'spots/show/spot-show-average-rating', average: @spot.average_rating %>
