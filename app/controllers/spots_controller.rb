@@ -21,5 +21,7 @@ class SpotsController < ApplicationController
       lng: @spot.longitude,
       infoWindow: render_to_string(partial: "map_marker_info", locals: { spot: @spot })
     }]
+
+    render :layout => 'without_navbar'
   end
 end
