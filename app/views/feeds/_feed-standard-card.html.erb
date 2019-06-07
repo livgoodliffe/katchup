@@ -1,7 +1,6 @@
 <% type = activity.trackable_type %>
 <div class="feed-card-container">
 <%= link_to spot_path(activity.trackable.spot.id), class: 'feed-card-anchor' do %>
-
 <!-- Who and When -->
 
   <div class="feed-card-body">
@@ -40,7 +39,7 @@
     <% if activity.trackable_type == "Review" %>
 
       <div class="feed-card-review">
-        <h4><em><%= activity.trackable.notes %></em></h4>
+        <h4><em>"<%= activity.trackable.notes %>"</em></h4>
       </div>
     <% end %>
   </div>
