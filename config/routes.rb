@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index]
 
+  resources :users, only: [:index]
+
   resources :users, only: [:index, :show] do
     member do
       post :follow
