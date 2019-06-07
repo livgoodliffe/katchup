@@ -43,6 +43,7 @@ class ListsController < ApplicationController
 
   def create_user_marker
     [{ lat: current_user.latitude,
-       lng: current_user.longitude }]
+       lng: current_user.longitude,
+       infoWindow: render_to_string(partial: "user_marker_info" )}]
   end
 end
