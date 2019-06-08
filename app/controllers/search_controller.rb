@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    @timestamp = params[:timestamp]
     @search = params[:search]
     @search_type = params[:search_type]
     @location = params[:result_location]
@@ -43,7 +44,6 @@ class SearchController < ApplicationController
     spots_filtered_wishlist.each { |spot| @spots << spot }
 
     @spots = [] if @search.blank?
-
     respond_to do |format|
       format.js
     end

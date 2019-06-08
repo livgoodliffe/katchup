@@ -1,3 +1,5 @@
+timestamp = parseInt(document.getElementById('timestamp').value);
+
 function clearResults() {
   const resultsContainer = document.getElementById('search-results')
   resultsContainer.innerHTML = ""
@@ -8,8 +10,12 @@ function addResults(resultHTML) {
   resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
 }
 
-clearResults();
+if (timestamp === <%= @timestamp %>) {
+  clearResults();
+}
 
 <% @spots.each do |spot| %>
-addResults(`<%= render("search_result", spot:spot) %>`)
+if (timestamp === <%= @timestamp %>) {
+  addResults(`<%= render("search_result", spot:spot) %>`)
+}
 <% end %>
