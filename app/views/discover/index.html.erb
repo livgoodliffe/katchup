@@ -1,19 +1,26 @@
+<div class="m-right-panel m-page scene_element scene_element--fadeinright">
+
+
+
 <!-- Search bar -->
-<div class="grey-search-bar" style="padding-top: 70px">
-  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search All Spots') %>
+
+<div class="search-bar">
+  <%= link_to feeds_path do %>
+    <i class="fas fa-arrow-left red-arrow"></i>
+  <% end %>
+  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...') %>
 </div>
 
-<div class="container">
+<div id="search-results" class="discover-search-results">
 
-  <div id="search-results" class="discover-search-results">
-    <!-- this content only exists so that full spot list exists before any search is carried out -->
+  <!-- this content only exists so that full spot list exists before any search is carried out -->
 
-    <% @spots.first(25).each do |spot| %>
+  <% @spots.first(25).each do |spot| %>
 
-        <%= render "spots/spot_card", spot: spot %>
+      <%= render "spots/spot_card", spot: spot %>
 
-    <% end %>
+  <% end %>
 
-  </div>
+</div>
 
 </div>
