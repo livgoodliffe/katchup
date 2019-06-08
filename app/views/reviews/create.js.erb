@@ -6,18 +6,27 @@ function refreshForm(innerHTML) {
 function addReview(reviewHTML) {
   const reviews = document.getElementById('reviews');
   reviews.insertAdjacentHTML('afterbegin', reviewHTML);
-  var elmnt = document.getElementById("reviews-container");
-  elmnt.scrollIntoView();
+  document.getElementById("reviews-container").scrollIntoView();
 }
 
 <% if @review.errors.any? %>
 refreshForm('<%= j render "reviews/form" %>');
 <% else %>
 addReview('<%= j render "reviews/review", review: @review %>');
+
+// update displayed review count
 var reviewNum = document.getElementById('num-review');
 reviewNum.innerHTML = '<%= j render("spots/show/spot-show-num-reviews", total: @spot.reviews.count) %>';
+
+// update average review rating
 var averageRating = document.getElementById('average-rating');
 averageRating.innerHTML = '<%= j render("spots/show/spot-show-average-rating", average: @spot.average_rating) %>';
+
+// remove no review message
 var noReviewMessage = document.getElementById('no-review-message');
-noReviewMessage.innerHTML = '';
+if (noReviewMessage) noReviewMessage.innerHTML = '';
+
+// reload the review form
+var reviewForm = document.getElementById('review-form');
+reviewForm.innerHTML = '<%= j render("spots/show/spots-show-review-form", review: Review.new) %>';
 <% end %>

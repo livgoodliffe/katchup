@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       respond_to do |format|
-        format.html { redirect_to spot_path(@spot, anchor: "#reviews-anchor") }
+        format.html { redirect_to @spot }
         format.js
       end
     else

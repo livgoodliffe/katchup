@@ -1,6 +1,6 @@
 <section class="spot-section">
   <% if user_signed_in? %>
     <h5 class="border-bottom">Add review</h5>
-    <%= render 'reviews/form' %>
+    <%= render 'reviews/form', review: review %>
   <% end %>
 </section>
