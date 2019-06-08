@@ -1,12 +1,14 @@
+<!-- Search bar -->
+
+  <div class="search-bar grow" id="search-search">
+    <i id='search-back-button'></i>
+    <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
+  </div>
+
+
 <!-- Feed page -->
 
 <div id="feed-page">
-
-  <div id="feed-page-selector">
-    <div class="search-bar grow">
-      <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
-    </div>
-  </div>
 
   <h1>Katchup on the latest...</h1>
   <div class="feed-index">
@@ -27,13 +29,6 @@
 <!-- Search page -->
 
 <div id="search-page" class="hidden">
-
-  <div class="search-bar">
-    <%= link_to feeds_path do %>
-      <i class="fas fa-arrow-left red-arrow" id="search-back-button"></i>
-    <% end %>
-    <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...') %>
-  </div>
 
   <div id="search-results" class="discover-search-results">
     <% @spots.first(25).each do |spot| %>
