@@ -1,28 +1,20 @@
 <div class="card catchup-card">
-
-    <div class="text-center">
-
-      <div class="catchup-card-when">
-        <h4><%= catchup.time.strftime("%a %d %b %Y %H:%M%p") %></h3>
-      </div>
-
-
-      <div class="catchup-list-spot-image">
-        <%= image_tag("#{catchup.spot.images.first.image}") %>
-      </div>
-
-      <div class="catchup-list-spot-name"><%= catchup.spot.name %></div>
-
+  <div class="text-center">
+    <div class="catchup-card-when">
+      <h4><%= catchup.time.strftime("%a %d %b %Y %l:%M%p") %></h3>
     </div>
-
-    <div class="row justify-content-around">
-      <% catchup.guests.each do |guest| %>
-        <div>
-          <div class="catchup-card-guest">
-            <%= cl_image_tag("#{guest.user.avatar}") %>
-          </div>
+    <div class="catchup-list-spot-image">
+      <%= image_tag("#{catchup.spot.images.first.image}") %>
+    </div>
+    <div class="catchup-list-spot-name"><%= catchup.spot.name %></div>
+  </div>
+  <div class="row justify-content-around">
+    <% catchup.guests.each do |guest| %>
+      <div>
+        <div class="catchup-card-guest">
+          <%= cl_image_tag("#{guest.user.avatar}") %>
         </div>
-      <% end %>
-    </div>
-
+      </div>
+    <% end %>
+  </div>
 </div>
