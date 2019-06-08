@@ -2,8 +2,8 @@
   <span class="review-count">
     <% if total.positive? %>
       <p class="num-reviews"><%= pluralize(total, 'review') %></p>
-    <% else %>
-      <span class="no-rating">no reviews</span>
+      <%# else %>
+      <!-- <span class="no-rating">no reviews</span> -->
     <% end %>
   </span>
   <div id="reviews-anchor"></div>
