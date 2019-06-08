@@ -1,6 +1,13 @@
 <div class="form-wrapper">
   <%= simple_form_for [@spot, @review], remote: true do |f| %>
-    <%= f.input :rating, collection: (1..5) %>
+    <%= f.input :rating, as: :hidden, collection: (1..5) %>
+    <div id="review-form-stars">
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+    </div>
     <%= f.input :notes %>
     <%= f.input :image %>
     <%= f.input :image_cache, as: :hidden %>
