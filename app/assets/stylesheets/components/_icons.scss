@@ -7,7 +7,6 @@
 .small-icon {
   margin: 5px;
   color: $medium-grey;
-  text-shadow: 0px 2px 5px rgba(0,0,0,.1);
   font-size: 30px;
 }
 
@@ -16,4 +15,10 @@
   color: $katchup;
   text-shadow: 0px 2px 5px rgba(0,0,0,.1);
   font-size: 30px;
+}
+
+.map-icon {
+  margin-left: 10px;
+  color: $medium-grey;
+  font-size: 25px;
 }

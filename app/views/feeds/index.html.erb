@@ -3,6 +3,12 @@
   <div class="search-bar grow" id="search-search">
     <i id='search-back-button'></i>
     <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
+    <i class="far fa-map map-icon" id="map-icon"></i>
+
+    <!-- when i click map map slides in from right -->
+    <!-- map with my location and whats around me -->
+
+
   </div>
 
 
@@ -35,4 +41,15 @@
         <%= render "spots/spot_card", spot: spot %>
     <% end %>
   </div>
+</div>
+
+
+<!-- Map -->
+
+<div id="feed-map" class="my-map hidden"
+    style="width: 100%; height: 90%;"
+    data-markers-spots="<%= @markers_spots.to_json %>"
+    data-marker-user="<%= @marker_user.to_json %>"
+    data-marker-user-avatar="<%= @marker_user_avatar %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
