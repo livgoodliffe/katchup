@@ -1,26 +1,40 @@
-<!-- Search bar -->
+<!-- Feed page -->
 
-<div class="search-bar">
-  <%= link_to discover_index_path, class: "grow" do %>
-    <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...') %>
-  <% end %>
+<div id="feed-page">
+  <div class="search-bar grow">
+    <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
+  </div>
+
+  <h1>Katchup on the latest...</h1>
+  <div class="feed-index">
+    <% @activities.each do |activity|  %>
+      <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
+        <%= render 'feed-standard-card', activity: activity %>
+      <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
+        <%= render 'feed-standard-card', activity: activity %>
+      <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
+        <%= render 'feed-standard-card', activity: activity %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
-<div id="search-results" class="discover-search-results"></div>
-
-<h1>Katchup on the latest...</h1>
-<div class="feed-index">
-
-<% @activities.each do |activity|  %>
-<!-- <%# byebug %> -->
-  <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
-    <%= render 'feed-standard-card', activity: activity %>
-  <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
-    <%= render 'feed-standard-card', activity: activity %>
-  <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
-    <%= render 'feed-standard-card', activity: activity %>
-  <% end %>
-<% end %>
 
 
+<!-- Search page -->
+
+<div id="search-page" class="hidden">
+
+  <div class="search-bar">
+    <%= link_to feeds_path do %>
+      <i class="fas fa-arrow-left red-arrow" id="search-back-button"></i>
+    <% end %>
+    <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...') %>
+  </div>
+
+  <div id="search-results" class="discover-search-results">
+    <% @spots.first(25).each do |spot| %>
+        <%= render "spots/spot_card", spot: spot %>
+    <% end %>
+  </div>
 </div>
