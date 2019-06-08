@@ -48,6 +48,7 @@ export default () => {
     markers += makeMarkers(map, mapElement, bounds, 'markers', 'map-marker');
     markers += makeMarkers(map, mapElement, bounds, 'markersFavourite', 'map-marker-favourite');
     markers += makeMarkers(map, mapElement, bounds, 'markersWishlist', 'map-marker-wishlist');
+    markers += makeMarkers(map, mapElement, bounds, 'markersSpots', 'map-marker');
     markers += makeMarkers(map, mapElement, bounds, 'markerUser', 'map-marker-user');
     if (markers > 0) map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
   }
