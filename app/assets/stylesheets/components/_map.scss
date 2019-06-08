@@ -1,27 +1,3 @@
-// card css spec
-$map-available-display-width: 150px;
-$map-restaurant-card-margin: 0rem;
-$map-restaurant-card-border-radius: 1rem;
-$map-restaurant-card-width: calc(#{$map-available-display-width} - 2 * #{$map-restaurant-card-margin});
-
-$map-restaurant-card-shadow-x: 0;
-$map-restaurant-card-shadow-y: 6px;
-$map-restaurant-card-shadow-blur: 3px;
-$map-restaurant-card-shadow-spread: -3px;
-
-$map-restaurant-card-shadow-colour: gray;
-$map-restaurant-card-background-colour: white;
-
-
-// image css spec
-$map-restaurant-image-height: 40px;
-$map-restaurant-image-width: 50px;
-$map-restaurant-image-left-border-radius: 1rem;
-
-// details css spec
-$map-restaurant-details-width: calc(#{$map-restaurant-card-width} - #{$map-restaurant-image-width});
-$map-restaurant-details-left-padding: 0;
-
 .mapboxgl-popup {
   max-width: 150px;
 }
@@ -35,26 +11,25 @@ $map-restaurant-details-left-padding: 0;
 
   .map-restaurant-card {
     display: flex;
-    width: $map-restaurant-card-width;
-    border-radius: $map-restaurant-card-border-radius;
-    margin: $map-restaurant-card-margin;
-    box-shadow: 0; $map-restaurant-card-shadow-y $map-restaurant-card-shadow-blur $map-restaurant-card-shadow-spread $map-restaurant-card-shadow-colour;
-    background-color: $map-restaurant-card-background-colour;
+    width: 200px;
+    border-radius: 1rem;
+    margin: 0rem;
+    box-shadow: 0 6px 3px -3px gray;
+    background-color: white;
 
     .map-restaurant-image img {
-      width: $map-restaurant-image-width;
-      height: $map-restaurant-image-height;
+      width: 50px;
+      height: 40px;
       object-fit: cover;
-      border-top-left-radius: $map-restaurant-image-left-border-radius;
-      border-bottom-left-radius: $map-restaurant-image-left-border-radius;
+      border-top-left-radius: 1rem;
     }
 
     .map-restaurant-details {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-left: $map-restaurant-details-left-padding;
-      width: $map-restaurant-details-width;
+      padding-left: 0;
+      width: 100px;
 
       .map-restaurant-name {
         font-weight: bold;
@@ -73,7 +48,6 @@ $map-restaurant-details-left-padding: 0;
 }
 
 .map-marker {
-  // color: #C70039;
   background-image: image-url('circle.png');
   background-size: cover;
   background-position: center;
@@ -81,15 +55,6 @@ $map-restaurant-details-left-padding: 0;
   height: 15px;
   cursor: pointer;
 }
-
-// .map-marker-favourite {
-//   background-image: image-url('heart.png');
-//   background-size: cover;
-//   background-position: center;
-//   width: 30px;
-//   height: 30px;
-//   cursor: pointer;
-// }
 
 .map-marker-spot {
   background-image: image-url('wine-bottle-solid.svg');
