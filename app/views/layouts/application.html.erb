@@ -6,7 +6,9 @@
     <%= render 'shared/flashes' %>
     <%= render 'shared/navbar' %>
 
-    <%= yield %>
+    <div class="container" style="padding-top: 70px;">
+      <%= yield %>
+    </div>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

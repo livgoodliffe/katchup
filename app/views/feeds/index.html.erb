@@ -1,18 +1,26 @@
-<div class="container">
-  <h1>Katchup on the latest...</h1>
-  <div class="feed-index">
+<!-- Search bar -->
 
-  <% @activities.each do |activity|  %>
-  <!-- <%# byebug %> -->
-    <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
-      <%= render 'feed-standard-card', activity: activity %>
-    <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
-      <%= render 'feed-standard-card', activity: activity %>
-    <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
-      <%= render 'feed-standard-card', activity: activity %>
-    <% end %>
+<div class="search-bar">
+  <%= link_to discover_index_path, class: "grow" do %>
+    <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...') %>
   <% end %>
+</div>
+
+<div id="search-results" class="discover-search-results"></div>
+
+<h1>Katchup on the latest...</h1>
+<div class="feed-index">
+
+<% @activities.each do |activity|  %>
+<!-- <%# byebug %> -->
+  <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
+    <%= render 'feed-standard-card', activity: activity %>
+  <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
+    <%= render 'feed-standard-card', activity: activity %>
+  <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
+    <%= render 'feed-standard-card', activity: activity %>
+  <% end %>
+<% end %>
 
 
-  </div>
 </div>
