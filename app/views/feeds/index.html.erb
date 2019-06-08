@@ -1,8 +1,11 @@
 <!-- Feed page -->
 
 <div id="feed-page">
-  <div class="search-bar grow">
-    <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
+
+  <div id="feed-page-selector">
+    <div class="search-bar grow">
+      <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
+    </div>
   </div>
 
   <h1>Katchup on the latest...</h1>
@@ -17,8 +20,8 @@
       <% end %>
     <% end %>
   </div>
-</div>
 
+</div>
 
 
 <!-- Search page -->
