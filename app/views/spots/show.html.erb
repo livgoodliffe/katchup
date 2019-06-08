@@ -1,19 +1,13 @@
 <div class="spot-show-wrapper">
   <%= render 'spots/show/spot-show-banner' %>
-
   <!-- Been there -->
-
   <div class="simple-button-container">
     <div id="<%= @spot.id %>" >
       <%= render 'shared/been_there_icon', spot: @spot %>
     </div>
   </div>
-
   <!-- Spot details -->
-
-
   <div class="info d-flex justify-content-around px-3 m-3">
-
     <%= link_to "Menu", "#", data: { toggle: "modal", target: "#menuModal" } %>
     <%= render 'spots/show/spot-show-menu-modal' %>
     <%= link_to "Information", "#", data: { toggle: "modal", target: "#infoModal" } %>
@@ -21,11 +15,9 @@
     <%= link_to "Photos", "#", data: { toggle: "modal", target: "#photoModal" } %>
     <%= render 'spots/show/spot-show-photo-modal' %>
   </div>
-
   <% unless @spot.latitude.nil? %>
     <%= render 'spots/show/spot-show-map' %>
   <% end %>
-
   <div class="container">
     <!-- Number of reviews -->
     <div id="num-review">
@@ -34,9 +26,8 @@
     <!-- Listing reviews -->
     <%= render 'spots/show/spot-show-reviews-list' %>
     <!-- Review form -->
-    <%= render 'spots/show/spots-show-review-form' %>
-
+    <div id="review-form">
+      <%= render 'spots/show/spots-show-review-form', review: @review %>
+    </div>
   </div>
 </div>
-
-

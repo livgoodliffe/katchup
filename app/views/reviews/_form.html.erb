@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <%= simple_form_for [@spot, @review], remote: true do |f| %>
+  <%= simple_form_for [@spot, review], remote: true do |f| %>
     <%= f.input :rating, as: :hidden, collection: (1..5) %>
     <div class="mb-2" id="review-form-stars">
       <i class="far fa-star"></i>
