@@ -1,9 +1,10 @@
 <div id="reviews-container">
   <h5>Reviews</h5>
-  <div id="reviews"></div>
-  <% if @spot.reviews.any? %>
+  <div id="reviews">
+    <% if @spot.reviews.any? %>
       <%= render @spot.reviews.ordered_by_date %>
-  <% else %>
-    <p>This book doesn't have any reviews yet.</p>
-  <% end %>
+    <% else %>
+      <p id="no-review-message">This spot doesn't have any reviews yet.</p>
+    <% end %>
+  </div>
 </div>

@@ -1,7 +1,14 @@
 <div class="form-wrapper">
   <%= simple_form_for [@spot, @review], remote: true do |f| %>
-    <%= f.input :rating, collection: (1..5) %>
-    <%= f.input :notes %>
+    <%= f.input :rating, as: :hidden, collection: (1..5) %>
+    <div class="mb-2" id="review-form-stars">
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+    </div>
+    <%= f.input :notes, label: false, placeholder: 'Select your rating above and enter your comments here' %>
     <%= f.input :image %>
     <%= f.input :image_cache, as: :hidden %>
     <%= f.button :submit, class: "btn btn-default btn-success" %>

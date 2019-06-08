@@ -7,6 +7,17 @@
       <%= cl_image_tag(user_avatar(review.user), class: "avatar mx-3 mt-3") %>
       <p class="review-name mx-3 mt-2"><%= review.user.first_name %></p>
     </div>
-    <p class="m-2"><%= review.notes %></p>
+    <div class="d-flex flex-column">
+      <div class="m-2"><%= review.notes %></div>
+      <div class="m-2 review-stars">
+        <% full_stars = review.rating.nil? ? 0 : review.rating %>
+        <% full_stars.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5-full_stars).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

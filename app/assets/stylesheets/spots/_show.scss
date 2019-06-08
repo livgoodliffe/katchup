@@ -24,7 +24,7 @@
     .show-banner-content {
       margin: auto;
       color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
       position: relative;
 
       h1 {
@@ -32,6 +32,7 @@
         padding-bottom: 4px;
         color: white;
       }
+
       p {
         padding: 8px;
         margin-bottom: 4px;
@@ -68,8 +69,10 @@
 
   .container {
     margin-bottom: 64px;
+
     .card {
       border-radius: 20px;
+
       .review-image {
         border-radius: 20px 20px 0 0;
         height: 240px;
@@ -87,5 +90,19 @@
 
   .review-name {
     color: #999
+  }
+
+  .review-stars {
+    i {
+      color: black;
+    }
+  }
+
+}
+
+
+#review-form-stars {
+  i {
+    color: black;
   }
 }
