@@ -4,7 +4,7 @@
     <% if @spot.reviews.any? %>
       <%= render @spot.reviews.ordered_by_date %>
     <% else %>
-      <p>This spot doesn't have any reviews yet.</p>
+      <p id="no-review-message">This spot doesn't have any reviews yet.</p>
     <% end %>
   </div>
 </div>
