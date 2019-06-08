@@ -1,3 +1,9 @@
+.simple-button-container {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
 .simple-button {
   color: $dark-grey;
   border-radius: 10px;
@@ -30,6 +36,7 @@
   padding: 10px;
   margin: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+
   a {
     color: white;
     text-decoration: none;
@@ -47,6 +54,7 @@
   padding: 5px;
   margin: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+
   a {
     color: white;
     text-decoration: none;
