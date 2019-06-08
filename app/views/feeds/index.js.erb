@@ -1,0 +1,9 @@
+// var tester = document.getElementById("js-tester");
+// tester.innerHTML = 'sup'
+
+
+const tester = document.getElementById("js-tester");
+tester.addEventListener("click", (event) => {
+  console.log(event);
+  console.log(event.currentTarget);
+});
