@@ -6,17 +6,50 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# return unless Rails.env.development?
+
 require 'open-uri'
 require 'nokogiri'
 require 'faker'
 
-User.destroy_all
+puts "*** Seeding Started ***"
+puts "* Deleting Old Data *"
+puts "Deleting Activity Logs.."
+PublicActivity::Activity.destroy_all
+puts "Deleting Guests.."
+Guest.destroy_all
+puts "Deleting Catchups.."
+Catchup.destroy_all
+puts "Deleting Favourite Lists.."
+Favourite.destroy_all
+puts "Deleting Wishlist Lists.."
+Wishlist.destroy_all
+puts "Deleting Follows.."
+Follow.destroy_all
+puts "Deleting Friend Requests.."
+FriendRequest.destroy_all
+puts "Deleting Friendships.."
 Friendship.destroy_all
+puts "Deleting Reviews.."
+Review.destroy_all
+puts "Deleting Spot Images.."
+Image.destroy_all
+puts "Deleting Menu Items.."
+MenuItem.destroy_all
+puts "Deleting Spots.."
+Spot.destroy_all
+puts "Deleting Users.."
+User.destroy_all
 
-SEED_FRIEND_COUNT = 10
+puts "* Seeding Data *"
+SEED_USER_COUNT = 15
 SEED_FRIENDSHIP_COUNT = 50
+SEED_WISHLIST_COUNT = 3
+SEED_FAVOURITE_COUNT = 3
 
-SEED_FRIEND_COUNT.times do |n|
+puts "Adding #{SEED_USER_COUNT} Users.."
+
+SEED_USER_COUNT.times do |n|
   user = User.new
   user.email = Faker::Internet.email
   user.first_name = Faker::Name.first_name
@@ -27,31 +60,32 @@ SEED_FRIEND_COUNT.times do |n|
   puts "Seeded User: ##{n+1}"
 end
 
-p "Adding 3 wishlists and 3 favourites to all users.."
+puts "Adding #{SEED_WISHLIST_COUNT} wishlists and #{SEED_FAVOURITE_COUNT} favourites to all users.."
 
-User.all.each do |user|
-  3.times {
+User.all.each_with_index do |user, k|
+  SEED_WISHLIST_COUNT.times { |n|
     Wishlist.create(user: user, spot: Spot.all.sample)
+    puts "Seeded User ##{k+1} Wishlist Item ##{n+1}"
   }
-  3.times {
+  SEED_FAVOURITE_COUNT.times { |n|
     Favourite.create(user: user, spot: Spot.all.sample)
+    puts "Seeded User ##{k+1} Favourite Item ##{n+1}"
   }
 end
 
-p "added.."
+puts "Adding #{SEED_FRIENDSHIP_COUNT} Friendships.."
 
-SEED_FRIENDSHIP_COUNT.times do |n|
+loop do
   friend = Friendship.new
-  friend.user_id = rand(1..SEED_FRIEND_COUNT)
-  friend.friend_id = rand(1..SEED_FRIEND_COUNT)
-  puts "Attempting Friendship: ##{n+1}..."
+  friend.user_id = User.pluck('id').sample
+  friend.friend_id = User.pluck('id').sample
+  next if friend.user_id == friend.friend_id
   unless Friendship.exists?(user_id: friend.user_id, friend_id: friend.friend_id )
     friend.save!
-    puts "Friendship seeded"
+    puts "Seeded Friendship ##{Friendship.count / 2} between User (id:#{friend.user_id}) and Friend (id:#{friend.friend_id})"
   end
+  break if (Friendship.count / 2) == SEED_FRIENDSHIP_COUNT
 end
-
-# return unless Rails.env.development?
 
 BASE_SELECTOR='.result'
 NAME_SELECTOR='.detail a h4'
@@ -68,15 +102,14 @@ BASE_URL='https://whatson.melbourne.vic.gov.au'
 
 BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/restaurants/allrestaurants/pages/allrestaurants.aspx'
 
-Image.destroy_all
-Spot.destroy_all
+# please provide number in multiples of 10
+SEED_SPOT_COUNT = 100 # max 700 (site can provide slightly more)
 
 def create_menu_item(spot)
   menuitem = { spot_id:spot.id,
                name: Faker::Food.dish,
                description: Faker::Food.description,
                price: 100 + rand(2901) }
-
 
   # puts menuitem
 
@@ -87,7 +120,7 @@ def get_image_urls(result_detail_doc)
   image_urls = []
   result_detail_doc.css(DETAIL_IMAGES_SELECTOR).each_with_index do |element, index|
     image_url = "#{BASE_URL}#{element.attr('src')}"
-    puts "Image #{index}: #{image_url}"
+    # puts "Seeded Spot Image #{index}: #{image_url}"
     image_urls << image_url
   end
 
@@ -110,10 +143,10 @@ def get_location(result_detail_doc)
   .match(/([\d]+)?[^\d]+VIC( \d{4})?$/)[0] # # keep: street number (if exists) followed by .*
   .gsub('  ', ' ')
 
-  puts
-  puts "raw location: #{spot_detail_location_raw}"
-  puts "saved location: #{spot_detail_location}"
-  puts "saved address: #{spot_detail_address}"
+  # puts
+  # puts "raw location: #{spot_detail_location_raw}"
+  # puts "Seeded spot location: #{spot_detail_location}"
+  # puts "Seeded spot address: #{spot_detail_address}"
 
   { location: spot_detail_location,
     address: spot_detail_address}
@@ -123,7 +156,7 @@ def get_description(result_detail_doc)
   description = result_detail_doc.css(DETAIL_DESCRIPTION_SELECTOR).text
   .gsub('.','. ')
   .gsub('  ',' ').strip
-  puts "description: #{description}"
+  #puts "description: #{description}"
 
   description
 end
@@ -132,11 +165,11 @@ def get_hours(result_detail_doc)
   hours = result_detail_doc.css(DETAIL_HOURS_SELECTOR).text
   .gsub(/([a-z])([A-Z])/, '\1<br>\2')
 
-  puts "hours: #{hours}"
+  # puts "hours: #{hours}"
   hours
 end
 
-20.times do |n|
+(SEED_SPOT_COUNT/10).times do |n|
 
   results =  Nokogiri::HTML(open("#{BASE_RESTAURANT_URL}?start=#{n*10}")).css(BASE_SELECTOR)
 
@@ -157,9 +190,9 @@ end
       hours: hours,
     }
 
-    puts "Adding #{n * 10 + index+1}: #{spot[:name]}"
 
     spot = Spot.create(spot)
+
 
     image_urls.each do |image_url|
       Image.create(spot_id: spot.id, image: image_url)
@@ -168,5 +201,8 @@ end
     (3+rand(6)).times do
       MenuItem.create(create_menu_item(spot))
     end
+
+    puts "Seeded Spot ##{n * 10 + index+1}: #{spot[:name]} with #{image_urls.count} images"
+
   end
 end
