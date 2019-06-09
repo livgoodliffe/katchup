@@ -1,4 +1,5 @@
 import { animateCSS, alwaysVisible, willHideAfterwards } from '../animate_css';
+import pageState from '../page_state';
 
 export default () => {
   const feed = document.querySelector('#feed-page');
@@ -9,6 +10,9 @@ export default () => {
 
   const mapPage = document.querySelector('#map');
   const mapIcon = document.querySelector('#map-icon');
+
+  // all states, followed by default
+  const state = pageState(['search', 'feed', 'map'], 'feed');
 
   const bringInSearch = (callback) => {
     animateCSS(searchPage, 'fadeInLeft', callback, alwaysVisible);
@@ -44,19 +48,37 @@ export default () => {
 
   if (searchSelect) {
     searchSelect.addEventListener('click', () => {
-      takeOutFeed(bringInSearch.bind(null, bringInArrow));
+      if (state.currentState() === 'feed') {
+        takeOutFeed(bringInSearch.bind(null, bringInArrow));
+        state.setState('search');
+      } else if (state.currentState() === 'map') {
+        takeOutMap(bringInSearch);
+        state.setState('search');
+      }
     });
   }
 
   if (back) {
     back.addEventListener('click', () => {
-      takeOutSearch(bringInFeed.bind(null, takeOutArrow));
+      if (state.currentState() === 'search') {
+        takeOutSearch(bringInFeed.bind(null, takeOutArrow));
+        state.setState('feed');
+      } else if (state.currentState() === 'map') {
+        takeOutMap(bringInFeed.bind(null, takeOutArrow));
+        state.setState('feed');
+      }
     });
   }
 
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
-      takeOutFeed(bringInMap.bind(null, bringInArrow));
+      if (state.currentState() === 'search') {
+        takeOutSearch(bringInMap.bind(null, bringInArrow));
+        state.setState('map');
+      } else if (state.currentState() === 'feed') {
+        takeOutFeed(bringInMap.bind(null, bringInArrow));
+        state.setState('map');
+      }
     });
   }
 };

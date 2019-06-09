@@ -16,7 +16,7 @@ const setVisibility = (node, visibility) => {
   }
 };
 
-export const animateCSS = (node, animationName, callback, visibility, extraClasses) => {
+export const animateCSS = (node, animationName, callback, visibility) => {
   node.classList.add('animated', animationName);
   setVisibility(node, visibility.start);
 
