@@ -6,6 +6,7 @@
   color: $dark-grey;
   font-size: 12px;
   border-radius: 12px;
+  width: 50%;
 }
 .btn-group a:not(:last-child) {
   border-right: none; /* Prevent double borders */
@@ -15,6 +16,7 @@
   background-color: $light-grey;
 }
 
+// Simple button
 
 .simple-button-container {
   a:hover {
@@ -39,6 +41,9 @@
   justify-content: center;
   margin: 10px;
 }
+
+// Red button
+
 .red-button {
   display: flex;
   justify-content: center;
@@ -71,14 +76,8 @@
     text-decoration: none;
   }
 }
-.active-red-button {
-  opacity: 0.5;
-}
-.red-buttons-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 55px;
-}
+
+
 .red-band-button {
   background: linear-gradient($katchup-mid, $katchup);
   color: white;
@@ -93,6 +92,7 @@
     text-decoration: none;
   }
 }
+
 .small-white-button {
   display: flex;
   justify-content: center;
