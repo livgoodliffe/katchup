@@ -10,7 +10,6 @@
         <%= spot.name %>
       </div>
       <div class="spot-location">
-        <%#= spot.address.match(/(\w+)(?= VIC)/)[0] %>
         <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
       </div>
     </div>

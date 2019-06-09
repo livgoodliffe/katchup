@@ -2,7 +2,7 @@
   <p class="text-center">Average Rating</p>
   <div class="stars d-flex justify-content-center">
     <% if @spot.average_rating.nil? %>
-      <span class="no-rating">not rated</span>
+      <span class="no-rating">Not rated</span>
     <% else %>
       <%= set_stars(average) %>
     <% end %>

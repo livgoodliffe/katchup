@@ -12,50 +12,48 @@
 }
 
 .mapboxgl-popup {
+  transform:none !important;
   width: 100vw;
+}
+.mapboxgl-popup-tip {
+  display: none !important;
+}
+
+.mapboxgl-popup-content {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+}
+
+.map-restaurant-card {
+  display: flex;
+  background-color: white;
+  width: 100vw;
+  .map-restaurant-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  .map-restaurant-name {
+    margin: 0;
+  }
+  .map-restaurant-location {
+    font-size: 14px;
+  }
 }
 
 
-  .map-restaurant-card {
-    width: 40px;
-    display: flex;
-    background-color: white;
-
-    .map-restaurant-image img {
-      width: 50px;
-      height: 40px;
-      object-fit: cover;
-    }
-
-    .map-restaurant-details {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 0;
-      width: 300px;
-
-      .map-restaurant-name {
-        font-weight: bold;
-      }
-
-      .map-restaurant-location {
-        font-size: 0.75rem;
-      }
-
-      .map-restaurant-description {
-        font-size: 0.75rem;
-      }
-    }
-  }
 
 
 .map-marker:before {
   cursor: pointer;
   font-family: "Font Awesome 5 Free";
-  content: '\f276';
+  content: '\f3c5';
   font-size: 30px;
   color: $katchup;
-  text-shadow: 0 0 5px white;
+  text-shadow: 0 0 3px white;
   font-weight: 900;
 }
 
