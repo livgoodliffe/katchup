@@ -18,8 +18,16 @@ export default () => {
     animateCSS(searchPage, 'slideInRight', callback, alwaysVisible);
   };
 
+  const fadeInSearch = (callback) => {
+    animateCSS(searchPage, 'fadeIn', callback, alwaysVisible);
+  };
+
   const takeOutSearch = (callback) => {
     animateCSS(searchPage, 'slideOutRight', callback, willHideAfterwards);
+  };
+
+  const fadeOutSearch = (callback) => {
+    animateCSS(searchPage, 'fadeOut', callback, willHideAfterwards);
   };
 
   const bringInFeed = (callback) => {
@@ -34,12 +42,16 @@ export default () => {
     animateCSS(mapPage, 'slideInRight', callback, alwaysVisible);
   };
 
+  const fadeInMap = (callback) => {
+    animateCSS(mapPage, 'fadeIn', callback, alwaysVisible);
+  };
+
   const takeOutMap = (callback) => {
     animateCSS(mapPage, 'slideOutRight', callback, willHideAfterwards);
   };
 
-  const takeOutMapLeft = (callback) => {
-    animateCSS(mapPage, 'slideOutLeft', callback, willHideAfterwards);
+  const fadeOutMap = (callback) => {
+    animateCSS(mapPage, 'fadeOut', callback, willHideAfterwards);
   };
   const bringInArrow = (callback) => {
     animateCSS(back, 'slideInLeft', callback, alwaysVisible);
@@ -57,8 +69,8 @@ export default () => {
         bringInArrow();
         state.setState('search');
       } else if (state.currentState() === 'map') {
-        takeOutMapLeft();
-        bringInSearch();
+        fadeOutMap();
+        fadeInSearch();
         state.setState('search');
       }
     });
@@ -83,9 +95,8 @@ export default () => {
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
       if (state.currentState() === 'search') {
-        takeOutSearch();
-        bringInMap();
-        bringInArrow();
+        fadeOutSearch();
+        fadeInMap();
         state.setState('map');
       } else if (state.currentState() === 'feed') {
         takeOutFeed();
