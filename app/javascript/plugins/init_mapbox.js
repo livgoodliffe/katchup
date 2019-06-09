@@ -4,7 +4,6 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   const markerJson = mapElement.dataset[markerType];
 
   if (markerJson === undefined || markerJson === 'null' || markerJson === '[]') return 0;
-
   const markers = JSON.parse(mapElement.dataset[markerType]);
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
@@ -42,7 +41,7 @@ export default () => {
 
     // see if user coords are available
     let userCoordsAvailable = false;
-    if (mapElement.dataset.markerUser !== undefined && mapElement.dataset.markerUser !== '' && mapElement.dataset.markerUser !== '[]') {
+    if (mapElement.dataset.markerUser !== undefined && mapElement.dataset.markerUser !== 'null' && mapElement.dataset.markerUser !== '[]') {
       const [userMarker] = JSON.parse(mapElement.dataset.markerUser);
       userCoordsAvailable = true;
       mapOptions.center = [userMarker.lng, userMarker.lat];
@@ -51,7 +50,7 @@ export default () => {
 
     const map = new mapboxgl.Map(mapOptions);
     window.mapboxMap = map;
-
+    window.mapboxMap.userCoordsAvailable = userCoordsAvailable;
     let bounds = null;
     if (!userCoordsAvailable) bounds = new mapboxgl.LngLatBounds();
 
