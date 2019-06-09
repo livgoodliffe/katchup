@@ -1,40 +1,23 @@
 <!-- Search bar -->
 
+<div class="container">
   <div class="search-bar grow" id="search-search">
     <i id='search-back-button' class="fas fa-arrow-left red-arrow hidden"></i>
     <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
     <i class="far fa-map map-icon" id="map-icon"></i>
-
-    <!-- when i click map map slides in from right -->
-    <!-- map with my location and whats around me -->
-
-
   </div>
-
+</div>
 
 <!-- Feed page -->
 
-<div id="feed-page">
-
-  <h1>Katchup on the latest...</h1>
-  <div class="feed-index">
-    <% @activities.each do |activity|  %>
-      <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% end %>
-    <% end %>
-  </div>
-
+<div id="feed-page" class="container">
+  <%= render "feed-page" %>
 </div>
 
 
 <!-- Search page -->
 
-<div id="search-page" class="hidden">
+<div id="search-page" class="hidden container">
 
   <div id="search-results" class="discover-search-results">
     <% @spots.first(25).each do |spot| %>
@@ -43,15 +26,9 @@
   </div>
 </div>
 
+<!-- Map page -->
 
-<!-- Map -->
+<div id="map-page">
 
-<div id="map" class="my-map hidden"
-    style="width: 100%; height: 90%; position: absolute;"
-    data-markers-spots="<%= @markers_spot.to_json %>"
-    data-markers-favourite="<%= @markers_favourite.to_json %>"
-    data-markers-wishlist="<%= @markers_wishlist.to_json %>"
-    data-marker-user="<%= @marker_user.to_json %>"
-    data-marker-user-avatar="<%= @marker_user_avatar %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
