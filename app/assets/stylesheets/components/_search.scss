@@ -19,9 +19,11 @@
   align-items: center;
   margin-bottom: 8px;
   justify-content: center;
+
   .grow {
     flex-grow: 1;
   }
+
   form {
     flex-grow: 2;
   }
@@ -36,15 +38,18 @@
   padding-bottom: 5px;
   font-weight: lighter;
   position: relative;
+
   input::placeholder {
     color: $medium-grey;
     padding-left: 7px;
   }
+
   .search-text {
     background: none;
     border: none;
     width: 90%
   }
+
   .search-icon {
     color: $medium-grey;
     font-size: 16px;
