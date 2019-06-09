@@ -6,7 +6,11 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   if (markerJson === undefined || markerJson === 'null' || markerJson === '[]') return 0;
   const markers = JSON.parse(mapElement.dataset[markerType]);
   markers.forEach((marker) => {
+
+
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+
 
     const markerStylingElement = document.createElement('div');
     markerStylingElement.className = markerStyle;
