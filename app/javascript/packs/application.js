@@ -6,12 +6,12 @@ import geoLocation from '../geolocation';
 import catchupListeners from '../catchup';
 import flashFadeOut from '../flash_fade_out';
 import reviewStars from '../review_stars';
-import { slideInSearch } from '../feed/index';
+import feedAnimations from '../feed/index';
 
-slideInSearch();
 initMapbox();
 searchListener();
 geoLocation();
 catchupListeners();
 flashFadeOut();
 reviewStars();
+feedAnimations();
