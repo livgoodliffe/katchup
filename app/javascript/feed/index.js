@@ -69,7 +69,7 @@ export default () => {
         bringInArrow();
         state.setState('search');
       } else if (state.currentState() === 'map') {
-        fadeOutMap();
+        fadeOutMap(() => window.mapboxMap.zoomTo(8));
         fadeInSearch();
         state.setState('search');
       }
@@ -84,7 +84,7 @@ export default () => {
         takeOutArrow();
         state.setState('feed');
       } else if (state.currentState() === 'map') {
-        takeOutMap();
+        takeOutMap(() => window.mapboxMap.zoomTo(8));
         bringInFeed();
         takeOutArrow();
         state.setState('feed');
@@ -96,11 +96,11 @@ export default () => {
     mapIcon.addEventListener('click', () => {
       if (state.currentState() === 'search') {
         fadeOutSearch();
-        fadeInMap();
+        fadeInMap(() => window.mapboxMap.zoomTo(12, { duration: 2000 }));
         state.setState('map');
       } else if (state.currentState() === 'feed') {
         takeOutFeed();
-        bringInMap();
+        bringInMap(() => window.mapboxMap.zoomTo(12, { duration: 2000 }));
         bringInArrow();
         state.setState('map');
       }
