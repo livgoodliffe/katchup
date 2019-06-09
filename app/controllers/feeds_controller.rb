@@ -8,15 +8,7 @@ class FeedsController < ApplicationController
                   .where(owner_id: current_user.friends)
                   .where("key ilike ?", "%create%")
 
-    if params[:search].present?
-      search = params[:search]
-      @spots = Spot.where('name ILIKE ?', "%#{search}%")
-      respond_to do |format|
-        format.js
-      end
-    else
-      @spots = Spot.all
-    end
+    @spots = Spot.all
 
     spots = spots_with_coords_array(Spot.all)
 
@@ -52,7 +44,6 @@ class FeedsController < ApplicationController
   def create_user_marker
     [{ lat: current_user.latitude,
        lng: current_user.longitude,
-       infoWindow: render_to_string(partial: "lists/user_marker_info" )
-     }]
+       infoWindow: render_to_string(partial: "lists/user_marker_info") }]
   end
 end
