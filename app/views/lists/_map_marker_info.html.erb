@@ -1,16 +1,39 @@
-<div class="map-restaurant-card" style="width: 100vw; position: fixed, bottom: 0;">
+<%= link_to spot_path(spot) do %>
+<div class="map-restaurant-card">
+
   <div class="map-restaurant-image">
     <%= image_tag("#{spot.images.first.image}")%>
   </div>
+
   <div class="map-restaurant-details">
     <div class="map-restaurant-name">
-      <%= spot.name %>
+      <h6><%= spot.name %></h6>
     </div>
     <div class="map-restaurant-location">
-      <%#= spot.location[0..20] %>
+      <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
     </div>
-    <div class="map-restaurant-description">
-      <%#= "#{spot.description[0..20]}..." %>
+    <div>
+      Average rating
+      <div class="mx-auto">
+        <p class="text-center">Average Rating</p>
+
+        <div class="stars d-flex justify-content-center" style="color: red;">
+          <% if spot.average_rating.nil? %>
+            <span class="no-rating">Not rated</span>
+          <% else %>
+            <%= set_stars(spot.average_rating) %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Icon -->
+  <div class="spot-card-icon">
+    <div id="w<%= spot.id %>" >
+      <%= render 'shared/bookmark_icon', spot: spot %>
+    </div>
+  </div>
+
 </div>
+<% end %>

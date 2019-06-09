@@ -8,7 +8,7 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   markers.forEach((marker) => {
 
 
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    const popup = new mapboxgl.Popup({closeButton: true}).setHTML(marker.infoWindow);
 
 
 
