@@ -12,16 +12,13 @@
 
   <br>
 
-  <!-- Map -->
+  <div id="search-results" class="discover-search-results"></div>
 
-  <div id="map" class="my-map"
-      style="width: 100%; height: 79%; position: fixed; bottom: 0"
-
-      data-markers-favourite="<%= @markers_favourite.to_json %>"
-      data-markers-wishlist="<%= @markers_wishlist.to_json %>"
-      data-marker-user="<%= @marker_user.to_json %>"
-      data-marker-user-avatar="<%= @marker_user_avatar %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map" class="my-map" style="height: 100vh"
+    data-markers-favourite="<%= @markers_favourite.to_json %>"
+    data-markers-wishlist="<%= @markers_wishlist.to_json %>"
+    data-marker-user="<%= @marker_user.to_json %>"
+    data-marker-user-avatar="<%= @marker_user_avatar %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
 </div>

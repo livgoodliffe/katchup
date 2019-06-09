@@ -41,6 +41,7 @@ export default () => {
       style: 'mapbox://styles/mapbox/light-v9',
     });
 
+    // map.addControl(new mapboxgl.FullscreenControl());
     const bounds = new mapboxgl.LngLatBounds();
 
     // dataset attribute are camelcased by browser

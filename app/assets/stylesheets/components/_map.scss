@@ -2,6 +2,11 @@
   max-width: 150px;
 }
 
+.my-map-feed.hidden {
+  display: block;
+  visibility: hidden;
+}
+
 .mapboxgl-popup-content {
   border: 0;
 
@@ -12,23 +17,28 @@
     display: flex;
     width: 100vw;
     background-color: white;
+
     .map-restaurant-image img {
       width: 50px;
       height: 40px;
       object-fit: cover;
     }
+
     .map-restaurant-details {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding-left: 0;
       width: 100px;
+
       .map-restaurant-name {
         font-weight: bold;
       }
+
       .map-restaurant-location {
         font-size: 0.75rem;
       }
+
       .map-restaurant-description {
         font-size: 0.75rem;
       }
