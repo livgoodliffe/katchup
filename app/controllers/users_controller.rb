@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.left_outer_joins(:Friendships).where(Friendships: {friend_id: nil})
+    @users = User.where.not(id: current_user.friend_ids).where.not(id: current_user.id)
 
     # @users = User.all.where.not(id: current_user.id)
     # @friends = Friendship.where(user_id: current_user)
