@@ -7,8 +7,8 @@ export default () => {
   const searchPage = document.querySelector('#search-page');
   const back = document.querySelector('#search-back-button');
 
-  const mapPage = document.querySelector('#map');
   const mapIcon = document.querySelector('#map-icon');
+  const mapPage = document.querySelector('#map-page');
 
   const bringInSearch = (callback) => {
     animateCSS(searchPage, 'fadeInLeft', callback, alwaysVisible);
@@ -56,6 +56,7 @@ export default () => {
 
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
+
       takeOutFeed(bringInMap.bind(null, bringInArrow));
     });
   }

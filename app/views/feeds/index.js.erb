@@ -1,0 +1,12 @@
+const mapIcon = document.querySelector('#map-icon');
+const mapPage = document.querySelector('#map-page');
+
+    mapIcon.addEventListener('click', () => {
+
+      console.log("hey");
+
+      mapPage.innerHTML = '<%= j render "feeds/feed-map" %>';
+
+      // feed.classList.add('hidden');
+      // back.classList.add('fas', 'fa-arrow-left', 'red-arrow', 'animated', 'slideInLeft');
+    });
