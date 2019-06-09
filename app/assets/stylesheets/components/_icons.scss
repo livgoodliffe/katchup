@@ -18,9 +18,7 @@
 
 .bookmark-icon-active {
   font-size: 15px;
-  background: $katchup;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: $katchup;
   border: 1px solid $medium-grey;
   border-radius: 50%;
   display: flex;
