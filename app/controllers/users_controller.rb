@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.friend_ids).where.not(id: current_user.id)
+
+    # @users = User.all.where.not(id: current_user.id)
     # @friends = Friendship.where(user_id: current_user)
   end
 
