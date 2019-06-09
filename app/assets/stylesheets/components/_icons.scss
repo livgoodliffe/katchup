@@ -5,7 +5,6 @@
 }
 
 .bookmark-icon {
-  text-shadow: 0px 2px 5px rgba(0,0,0,.1);
   font-size: 15px;
   color: $medium-grey;
   border: 1px solid $medium-grey;
@@ -18,7 +17,6 @@
 }
 
 .bookmark-icon-active {
-  text-shadow: 0px 2px 5px rgba(0,0,0,.1);
   font-size: 15px;
   background: linear-gradient($katchup-mid, $katchup);
   -webkit-background-clip: text;
