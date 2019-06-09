@@ -1,23 +1,24 @@
-<%= render "shared/navbar" %>
+<div style="position: relative;">
 
-<!-- Favourites and Wishlist buttons -->
+  <!-- Dual buttons -->
 
-<%= render "list_type" %>
+  <%= render "list_type" %>
 
-<!-- Search Bar -->
+  <!-- Search Bar -->
 
-<div class="grey-search-bar">
-  <%= render('search/search_form', search_type: 'my_spots', placeholder: 'Search My Bottle') %>
-</div>
+  <div class="container pt-3">
+    <%= render('search/search_form', search_type: 'my_spots', placeholder: 'All my spots') %>
+  </div>
 
- <div id="search-results" class="discover-search-results"></div>
+  <br>
 
-<!-- Map -->
+  <div id="search-results" class="discover-search-results"></div>
 
-<div id="map" class="my-map" style="height: 100vh"
+  <div id="map" class="my-map" style="height: 100vh"
     data-markers-favourite="<%= @markers_favourite.to_json %>"
     data-markers-wishlist="<%= @markers_wishlist.to_json %>"
     data-marker-user="<%= @marker_user.to_json %>"
     data-marker-user-avatar="<%= @marker_user_avatar %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
