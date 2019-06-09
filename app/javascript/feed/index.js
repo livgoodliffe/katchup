@@ -9,7 +9,7 @@ export default () => {
   const back = document.querySelector('#search-back-button');
 
   const mapIcon = document.querySelector('#map-icon');
-  const mapPage = document.querySelector('#map-page');
+  const mapPage = document.querySelector('#map');
 
   // all states, followed by default
   const state = pageState(['search', 'feed', 'map'], 'feed');

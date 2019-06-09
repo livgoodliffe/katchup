@@ -27,7 +27,8 @@
 </div>
 
 <!-- Map page -->
-<div id="map" class="my-map hidden"
+<div id="map-page">
+  <div id="map" class="my-map hidden"
     style="width: 100%; height: 90%; position: absolute;"
     data-markers-spots="<%= @markers_spot.to_json %>"
     data-markers-favourite="<%= @markers_favourite.to_json %>"
@@ -35,4 +36,5 @@
     data-marker-user="<%= @marker_user.to_json %>"
     data-marker-user-avatar="<%= @marker_user_avatar %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
