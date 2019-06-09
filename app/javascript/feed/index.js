@@ -1,4 +1,6 @@
-const slideInSearch = () => {
+import { animateCSS, alwaysVisible, willHideAfterwards } from '../animate_css';
+
+export default () => {
   const feed = document.querySelector('#feed-page');
   const searchSelect = document.querySelector('#search-search form');
 
@@ -8,42 +10,54 @@ const slideInSearch = () => {
   const mapIcon = document.querySelector('#map-icon');
   const mapPage = document.querySelector('#map-page');
 
+  const bringInSearch = (callback) => {
+    animateCSS(searchPage, 'fadeInLeft', callback, alwaysVisible);
+  };
+
+  const takeOutSearch = (callback) => {
+    animateCSS(searchPage, 'fadeOutLeft', callback, willHideAfterwards);
+  };
+
+  const bringInFeed = (callback) => {
+    animateCSS(feed, 'fadeInRight', callback, alwaysVisible);
+  };
+
+  const takeOutFeed = (callback) => {
+    animateCSS(feed, 'fadeOutRight', callback, willHideAfterwards);
+  };
+
+  const bringInMap = (callback) => {
+    animateCSS(mapPage, 'fadeInRight', callback, alwaysVisible);
+  };
+
+  const takeOutMap = (callback) => {
+    animateCSS(mapPage, 'fadeOutRight', callback, willHideAfterwards);
+  };
+
+  const bringInArrow = (callback) => {
+    animateCSS(back, 'slideInLeft', callback, alwaysVisible);
+  };
+
+  const takeOutArrow = (callback) => {
+    animateCSS(back, 'slideOutLeft', callback, willHideAfterwards);
+  };
 
   if (searchSelect) {
     searchSelect.addEventListener('click', () => {
-      searchPage.classList.add('animated', 'slideInRight');
-      searchPage.classList.remove('hidden');
-
-      feed.classList.add('hidden');
-      back.classList.add('fas', 'fa-arrow-left', 'red-arrow', 'animated', 'slideInLeft');
+      takeOutFeed(bringInSearch.bind(null, bringInArrow));
     });
-  };
+  }
 
   if (back) {
     back.addEventListener('click', () => {
-      searchPage.classList.add('animated', 'slideOutRight');
-      searchPage.classList.remove('slideOutRight');
-
-      back.classList.remove('fas', 'fa-arrow-left', 'red-arrow', 'slideInLeft');
-      searchPage.classList.add('hidden');
-      feed.classList.remove('hidden');
+      takeOutSearch(bringInFeed.bind(null, takeOutArrow));
     });
-  };
+  }
 
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
 
-      mapPage.innerHTML = '<%= j render "feed-map" %>';
-
-
-      // mapPage.innerHTML = '<%= j render :partial => 'feed-map' %>';
-
-      // mapPage.innerHTML = '<%= j render "feeds/feed-map" %>';
-
-      feed.classList.add('hidden');
-      back.classList.add('fas', 'fa-arrow-left', 'red-arrow', 'animated', 'slideInLeft');
+      takeOutFeed(bringInMap.bind(null, bringInArrow));
     });
-  };
+  }
 };
-
-export { slideInSearch };
