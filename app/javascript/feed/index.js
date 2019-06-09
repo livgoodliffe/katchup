@@ -15,29 +15,32 @@ export default () => {
   const state = pageState(['search', 'feed', 'map'], 'feed');
 
   const bringInSearch = (callback) => {
-    animateCSS(searchPage, 'fadeInLeft', callback, alwaysVisible);
+    animateCSS(searchPage, 'slideInRight', callback, alwaysVisible);
   };
 
   const takeOutSearch = (callback) => {
-    animateCSS(searchPage, 'fadeOutLeft', callback, willHideAfterwards);
+    animateCSS(searchPage, 'slideOutRight', callback, willHideAfterwards);
   };
 
   const bringInFeed = (callback) => {
-    animateCSS(feed, 'fadeInRight', callback, alwaysVisible);
+    animateCSS(feed, 'slideInLeft', callback, alwaysVisible);
   };
 
   const takeOutFeed = (callback) => {
-    animateCSS(feed, 'fadeOutRight', callback, willHideAfterwards);
+    animateCSS(feed, 'slideOutLeft', callback, willHideAfterwards);
   };
 
   const bringInMap = (callback) => {
-    animateCSS(mapPage, 'fadeInRight', callback, alwaysVisible);
+    animateCSS(mapPage, 'slideInRight', callback, alwaysVisible);
   };
 
   const takeOutMap = (callback) => {
-    animateCSS(mapPage, 'fadeOutRight', callback, willHideAfterwards);
+    animateCSS(mapPage, 'slideOutRight', callback, willHideAfterwards);
   };
 
+  const takeOutMapLeft = (callback) => {
+    animateCSS(mapPage, 'slideOutLeft', callback, willHideAfterwards);
+  };
   const bringInArrow = (callback) => {
     animateCSS(back, 'slideInLeft', callback, alwaysVisible);
   };
@@ -49,10 +52,13 @@ export default () => {
   if (searchSelect) {
     searchSelect.addEventListener('click', () => {
       if (state.currentState() === 'feed') {
-        takeOutFeed(bringInSearch.bind(null, bringInArrow));
+        takeOutFeed();
+        bringInSearch();
+        bringInArrow();
         state.setState('search');
       } else if (state.currentState() === 'map') {
-        takeOutMap(bringInSearch);
+        takeOutMapLeft();
+        bringInSearch();
         state.setState('search');
       }
     });
@@ -61,10 +67,14 @@ export default () => {
   if (back) {
     back.addEventListener('click', () => {
       if (state.currentState() === 'search') {
-        takeOutSearch(bringInFeed.bind(null, takeOutArrow));
+        takeOutSearch();
+        bringInFeed();
+        takeOutArrow();
         state.setState('feed');
       } else if (state.currentState() === 'map') {
-        takeOutMap(bringInFeed.bind(null, takeOutArrow));
+        takeOutMap();
+        bringInFeed();
+        takeOutArrow();
         state.setState('feed');
       }
     });
@@ -73,10 +83,14 @@ export default () => {
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
       if (state.currentState() === 'search') {
-        takeOutSearch(bringInMap.bind(null, bringInArrow));
+        takeOutSearch();
+        bringInMap();
+        bringInArrow();
         state.setState('map');
       } else if (state.currentState() === 'feed') {
-        takeOutFeed(bringInMap.bind(null, bringInArrow));
+        takeOutFeed();
+        bringInMap();
+        bringInArrow();
         state.setState('map');
       }
     });

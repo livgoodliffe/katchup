@@ -1,23 +1,23 @@
+<div class="container">
 
+  <div>
+    <h2>Your friends are loving</h2>
+  </div>
 
+  <div>
+    <h2>Cuisine</h2>
+  </div>
 
-<!-- Search bar -->
+  <div>
+    <h2>Trending in Melbourne</h2>
+  </div>
 
-<div class="search-bar">
-  <%= link_to feeds_path do %>
-    <i class="fas fa-arrow-left red-arrow"></i>
-  <% end %>
-  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...') %>
-</div>
+  <div>
+    <h2>Everyone wants to try</h2>
+  </div>
 
-<div id="search-results" class="discover-search-results">
-
-  <!-- this content only exists so that full spot list exists before any search is carried out -->
-
-  <% @spots.first(25).each do |spot| %>
-
-      <%= render "spots/spot_card", spot: spot %>
-
-  <% end %>
+  <div>
+    <h2>Nearby</h2>
+  </div>
 
 </div>
