@@ -5,8 +5,8 @@ const slideInSearch = () => {
   const searchPage = document.querySelector('#search-page');
   const back = document.querySelector('#search-back-button');
 
-  const mapPage = document.querySelector('#map');
   const mapIcon = document.querySelector('#map-icon');
+  const mapPage = document.querySelector('#map-page');
 
 
   if (searchSelect) {
@@ -32,8 +32,13 @@ const slideInSearch = () => {
 
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
-      mapPage.classList.add('animated', 'slideInRight');
-      mapPage.classList.remove('hidden');
+
+      mapPage.innerHTML = '<%= j render "feed-map" %>';
+
+
+      // mapPage.innerHTML = '<%= j render :partial => 'feed-map' %>';
+
+      // mapPage.innerHTML = '<%= j render "feeds/feed-map" %>';
 
       feed.classList.add('hidden');
       back.classList.add('fas', 'fa-arrow-left', 'red-arrow', 'animated', 'slideInLeft');

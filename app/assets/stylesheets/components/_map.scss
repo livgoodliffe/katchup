@@ -3,75 +3,56 @@
 }
 
 .mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  background-color: rgba(0, 0, 0, 0);
   border: 0;
-  box-shadow: none;
 
   .map-restaurant-card {
+    position: absolute;
+    left: 0;
+    bottom: 0;
     display: flex;
-    width: 200px;
-    border-radius: 1rem;
-    margin: 0rem;
-    box-shadow: 0 6px 3px -3px gray;
+    width: 100vw;
     background-color: white;
-
     .map-restaurant-image img {
       width: 50px;
       height: 40px;
       object-fit: cover;
-      border-top-left-radius: 1rem;
     }
-
     .map-restaurant-details {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding-left: 0;
       width: 100px;
-
       .map-restaurant-name {
         font-weight: bold;
       }
-
       .map-restaurant-location {
         font-size: 0.75rem;
       }
-
       .map-restaurant-description {
         font-size: 0.75rem;
       }
-
     }
   }
 }
 
-.map-marker {
-  background-image: image-url('circle.png');
-  background-size: cover;
-  background-position: center;
-  width: 15px;
-  height: 15px;
+.map-marker:before {
   cursor: pointer;
+  font-family: "Font Awesome 5 Free";
+  content: '\f276';
+  font-size: 30px;
+  color: $katchup;
+  text-shadow: 0 0 5px white;
+  font-weight: 900;
 }
 
-.map-marker-spot {
-  background-image: image-url('wine-bottle-solid.svg');
-  background-size: cover;
-  background-position: center;
-  width: 40px;
-  height: 40px;
+.map-marker-wishlist:before {
   cursor: pointer;
-}
-
-.map-marker-wishlist {
-  background-image: image-url('wine-bottle-solid.svg');
-  background-size: cover;
-  background-position: center;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+  font-family: "Font Awesome 5 Free";
+  content: '\f02e';
+  font-size: 30px;
+  color: $katchup;
+  text-shadow: 0 0 5px white;
 }
 
 .map-marker-user {
