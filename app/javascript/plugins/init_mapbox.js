@@ -24,7 +24,7 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
       .addTo(map);
   });
 
-  markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+  if (bounds !== null) markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
 
   return markers.length;
 };
@@ -35,14 +35,27 @@ export default () => {
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
-    const map = new mapboxgl.Map({
+    const mapOptions = {
       container: 'map',
-      // style: 'mapbox://styles/mapbox/streets-v10',
       style: 'mapbox://styles/mapbox/light-v9',
-    });
+    };
 
-    // map.addControl(new mapboxgl.FullscreenControl());
-    const bounds = new mapboxgl.LngLatBounds();
+    // see if user coords are available
+    let userCoordsAvailable = false;
+    if (mapElement.dataset.markerUser !== undefined && mapElement.dataset.markerUser !== '' && mapElement.dataset.markerUser !== '[]') {
+      const [userMarker] = JSON.parse(mapElement.dataset.markerUser);
+      userCoordsAvailable = true;
+      mapOptions.center = [userMarker.lng, userMarker.lat];
+      mapOptions.zoom = 7;
+    }
+
+    console.log(mapOptions);
+
+    const map = new mapboxgl.Map(mapOptions);
+    window.mapboxMap = map;
+
+    let bounds = null;
+    if (!userCoordsAvailable) bounds = new mapboxgl.LngLatBounds();
 
     // dataset attribute are camelcased by browser
     let markers = 0;
@@ -51,6 +64,8 @@ export default () => {
     markers += makeMarkers(map, mapElement, bounds, 'markersWishlist', 'map-marker-wishlist fas');
     markers += makeMarkers(map, mapElement, bounds, 'markersSpots', 'map-marker');
     markers += makeMarkers(map, mapElement, bounds, 'markerUser', 'map-marker-user');
-    if (markers > 0) map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+    if (!userCoordsAvailable) {
+      if (markers > 0) map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+    }
   }
 };
