@@ -49,8 +49,6 @@ export default () => {
       mapOptions.zoom = 7;
     }
 
-    console.log(mapOptions);
-
     const map = new mapboxgl.Map(mapOptions);
     window.mapboxMap = map;
 
