@@ -16,12 +16,6 @@
 }
 
 
-
-
-
-
-
-
 .simple-button-container {
   a:hover {
     text-decoration: none;
@@ -38,7 +32,7 @@
   color: white;
   border-radius: 10px;
   padding: 10px;
-  background-color: $katchup;
+  background: linear-gradient($katchup-mid, $katchup);
 }
 .simple-button-container {
   display: flex;
@@ -49,7 +43,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $katchup;
+  background: linear-gradient($katchup-mid, $katchup);
   color: white;
   width: 45vw;
   border-radius: 5px;
@@ -65,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $katchup;
+  background: linear-gradient($katchup-mid, $katchup);
   color: white;
   width: 150px;
   border-radius: 10px;
@@ -86,7 +80,7 @@
   padding-top: 55px;
 }
 .red-band-button {
-  background-color: $katchup;
+  background: linear-gradient($katchup-mid, $katchup);
   color: white;
   padding: 16px;
   width: 100%;
