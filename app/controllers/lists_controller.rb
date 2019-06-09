@@ -5,6 +5,7 @@ class ListsController < ApplicationController
     # get correct spots
     favourite_spots = spots_with_coords_array(current_user.favourite_spots)
     wishlist_spots = spots_with_coords_array(current_user.wishlist_spots)
+    spots = spots_with_coords_array(Spot.all)
 
     # prevent spots with both marker types, favourite prevails
     favourite_ids = favourite_spots.map(&:id)
@@ -13,6 +14,7 @@ class ListsController < ApplicationController
     # create markers
     @markers_favourite = create_markers(favourite_spots)
     @markers_wishlist = create_markers(wishlist_spots)
+    @markers_spot = create_markers(spots)
 
     @marker_user = create_user_marker if user_has_coords?
     @marker_user_avatar = current_user.avatar.url

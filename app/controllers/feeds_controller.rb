@@ -18,11 +18,9 @@ class FeedsController < ApplicationController
       @spots = Spot.all
     end
 
-    @spots = Spot.all
+    spots = spots_with_coords_array(Spot.all)
 
-    all_spots = spots_with_coords_array(@spots)
-
-    @markers_spots = create_markers(all_spots)
+    @markers_spot = create_markers(spots)
 
     @marker_user = create_user_marker if user_has_coords?
     @marker_user_avatar = current_user.avatar.url
@@ -42,7 +40,7 @@ class FeedsController < ApplicationController
       {
         lat: spot.latitude,
         lng: spot.longitude,
-        # infoWindow: render_to_string(partial: "map_marker_info", locals: { spot: spot })
+        infoWindow: render_to_string(partial: "lists/map_marker_info", locals: { spot: spot })
       }
     end
   end
@@ -54,7 +52,7 @@ class FeedsController < ApplicationController
   def create_user_marker
     [{ lat: current_user.latitude,
        lng: current_user.longitude,
-       # infoWindow: render_to_string(partial: "user_marker_info" )
+       infoWindow: render_to_string(partial: "lists/user_marker_info" )
      }]
   end
 end

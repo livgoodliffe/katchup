@@ -5,7 +5,7 @@ const slideInSearch = () => {
   const searchPage = document.querySelector('#search-page');
   const back = document.querySelector('#search-back-button');
 
-  const mapPage = document.querySelector('#feed-map');
+  const mapPage = document.querySelector('#map');
   const mapIcon = document.querySelector('#map-icon');
 
 
