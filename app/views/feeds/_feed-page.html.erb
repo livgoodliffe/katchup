@@ -1,3 +1,4 @@
+<!-- <img src="../../assets/810.gif" alt="Loading..." title="Loading..." /> -->
 <div class="feed-index">
   <% @activities.each do |activity|  %>
     <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
@@ -8,7 +9,7 @@
       <%= render 'feed-standard-card', activity: activity %>
     <% end %>
   <% end %>
+</div>
 <div id="infinite-scrolling">
   <%= will_paginate @activities%>
-</div>
 </div>
