@@ -16,8 +16,10 @@ export default () => {
       appendLine(data) {
         const html = this.createLine(data);
         // const element = document.querySelector("[data-chat-room='Best Room']");
-        const element = document.getElementById('#notification');
-        element.insertAdjacentHTML('beforeend', html);
+        const element = document.getElementById('catchup-chat-messages');
+        if (element) {
+          element.insertAdjacentHTML('beforeend', html);
+        }
       },
 
       createLine(data) {
