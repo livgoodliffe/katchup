@@ -1,0 +1,10 @@
+<div>
+  <h4>You're quite the Katch!</h4>
+  <p>Katchups you have been invited to:</p>
+</div>
+
+<% if @catchups_invitations.present? %>
+  <% @catchups_invitations.each do |catchup| %>
+    <%= render "catchup-summary-card", catchup: catchup %>
+  <% end %>
+<% end %>
