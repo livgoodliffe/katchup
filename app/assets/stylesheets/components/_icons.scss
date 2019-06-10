@@ -4,7 +4,7 @@
   letter-spacing: 5px;
 }
 
-.bookmark-icon {
+.action-icon {
   font-size: 15px;
   color: $medium-grey;
   border: 1px solid $medium-grey;
@@ -16,10 +16,10 @@
   width: 30px;
 }
 
-.bookmark-icon-active {
+.action-icon-active {
   font-size: 15px;
   color: $katchup;
-  border: 1px solid $medium-grey;
+  border: 2px solid $katchup;
   border-radius: 50%;
   display: flex;
   justify-content: center;

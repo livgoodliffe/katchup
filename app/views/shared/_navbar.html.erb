@@ -1,54 +1,53 @@
 
-<nav class="navbar fixed-top navbar-light">
+<nav class="navbar fixed-top">
 
-    <!-- Dropdown -->
+  <!-- Dropdown -->
 
-  <div id="menuToggle">
+  <div id="mySidenav" class="sidenav">
 
-    <input type="checkbox" id="menu-checkbox" />
-      <label class="menu-overlay" for="menu-checkbox"></label>
-      <span></span>
-      <span></span>
-      <span></span>
-    <ul id="menu">
-      <% if user_signed_in? %>
-       <li class="nav-item">
-          <%= link_to "News Feed", feeds_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Discover", discover_index_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Collection", lists_path%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Find Friends", users_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Profile", user_path(current_user)%>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-      <!-- If not logged in -->
+    <% if user_signed_in? %>
 
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+      <%= link_to feeds_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">home</i>Home
       <% end %>
 
-    </ul>
+      <%= link_to discover_index_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">whatshot</i> What's Hot
+      <% end %>
+
+      <%= link_to lists_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">room</i> My Spots
+      <% end %>
+
+      <%= link_to users_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">group_add</i> Add Friends
+      <% end %>
+
+      <div class="dropdown-divider"></div>
+
+      <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">face</i> My Profile
+      <% end %>
+
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item nav-label" %>
+
+    <% else %>
+
+      <%= link_to "Login", new_user_session_path, class: "dropdown-item nav-label" %>
+
+    <% end %>
   </div>
+
+  <i class="fas fa-bars navbar-icon" onclick="openNav()"></i>
+
 
   <!-- Logo -->
 
-  <%= link_to feeds_path(section: 'feeds') do %>
     <div class="navbar-brand">
       <p>katchup</p>
     </div>
-  <% end %>
 
   <!-- Add Katchup -->
 

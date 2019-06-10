@@ -1,14 +1,11 @@
-<%= render "shared/navbar" %>
-<div class="users-page-wrapper">
 
   <div class="container">
+
     <%= render "request_type" %>
-    <div class="grey-search-bar">
-      <%= render("search/search_form", search_type: 'users', placeholder: 'Search friends') %>
-    </div>
+
+    <%= render("search/search_form", search_type: 'users', placeholder: 'Search friends') %>
 
     <% @users.each do |user| %>
       <%= render 'user', user: user %>
     <% end %>
   </div>
-</div>
