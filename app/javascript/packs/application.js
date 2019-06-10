@@ -8,6 +8,7 @@ import flashFadeOut from '../flash_fade_out';
 import reviewStars from '../review_stars';
 import feedAnimations from '../feed/index';
 import listsAnimations from '../lists/index';
+import '../navbar/index';
 
 makeMap();
 searchListener();
