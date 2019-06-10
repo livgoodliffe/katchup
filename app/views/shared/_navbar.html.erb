@@ -3,30 +3,45 @@
 
   <!-- Dropdown -->
 
-  <div class="nav-item dropdown">
-    <a id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-bars navbar-icon"></i>
-    </a>
+  <div id="mySidenav" class="sidenav">
 
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
 
-        <%= link_to "News Feed", feeds_path, class: "dropdown-item" %>
-        <%= link_to "Discover", discover_index_path, class: "dropdown-item" %>
-        <%= link_to "My Collection", lists_path, class: "dropdown-item" %>
-        <%= link_to "Find Friends", users_path, class: "dropdown-item" %>
-        <div class="dropdown-divider"></div>
-        <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-
-      <% else %>
-
-        <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
-
+      <%= link_to feeds_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">home</i>Home
       <% end %>
-    </div>
+
+      <%= link_to discover_index_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">whatshot</i> What's Hot
+      <% end %>
+
+      <%= link_to lists_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">room</i> My Spots
+      <% end %>
+
+      <%= link_to users_path, class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">group_add</i> Add Friends
+      <% end %>
+
+      <div class="dropdown-divider"></div>
+
+      <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
+        <i class="material-icons pr-1">face</i> My Profile
+      <% end %>
+
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item nav-label" %>
+
+    <% else %>
+
+      <%= link_to "Login", new_user_session_path, class: "dropdown-item nav-label" %>
+
+    <% end %>
   </div>
+
+  <i class="fas fa-bars navbar-icon" onclick="openNav()"></i>
+
 
   <!-- Logo -->
 
