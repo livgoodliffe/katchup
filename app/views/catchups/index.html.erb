@@ -6,11 +6,9 @@
       <div class="red-button">Organise a Katchup</div>
     <% end %>
   </div>
-  <div class="d-flex justify-content-center">
-    <h1>My Upcoming Katchups:</h1>
-  </div>
 </div>
 
+<!-- Which type of catchup? Mine or others -->
 
 <div class="d-flex">
   <% mine_active = 'underline-active' if params[:list_type] == 'mine' %>
@@ -22,6 +20,8 @@
   <%= link_to "INVITED TO", catchups_path(list_type: 'others'),
   :class => "button-underline #{others_active}", style: 'text-decoration: none;' %>
 </div>
+
+<!-- Render katchup type page -->
 
 <div class="container">
 
