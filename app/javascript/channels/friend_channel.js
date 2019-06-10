@@ -4,7 +4,7 @@ export default () => {
   console.log('friend client side websockets');
   const userId = document.querySelector('body').dataset.userid;
   if (userId !== null) {
-    App.cable.subscriptions.create({ channel: 'FriendChannel', room: `friend_${userID}` }, {
+    App.cable.subscriptions.create({ channel: 'FriendChannel', room: `friend_${userId}` }, {
       received(data) {
         document.getElementById('#notification').classList.remove('hidden')
         console.log('received data', data);
