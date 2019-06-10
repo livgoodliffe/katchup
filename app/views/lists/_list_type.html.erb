@@ -1,9 +1,13 @@
-<div class="btn-group container" role="group">
-  <% wishlist_active = 'dual-active' if params[:list_type] == 'wishlists' %>
-  <% favourite_active = 'dual-active' if params[:list_type] == 'favourites' %>
+<div class="d-flex">
+  <% wishlist_active = 'underline-active' if params[:list_type] == 'wishlists' %>
+  <% favourite_active = 'underline-active' if params[:list_type] == 'favourites' %>
 
-  <%= link_to "SAVED SPOTS", wishlists_path(list_type: 'wishlists'), :class => "btn btn-basic #{favourite_active}" %>
+  <%= link_to "SAVED SPOTS", wishlists_path(list_type: 'wishlists'),
+  :class => "button-underline #{wishlist_active}", style: 'text-decoration: none' %>
 
-  <%= link_to "BEEN THERE", favourites_path(list_type: 'favourites'), :class => "btn btn-basic #{wishlist_active}" %>
-
+  <%= link_to "BEEN THERE", favourites_path(list_type: 'favourites'),
+  :class => "button-underline #{favourite_active}", style: 'text-decoration: none;' %>
 </div>
+
+
+
