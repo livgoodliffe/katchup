@@ -12,24 +12,28 @@
 
 <!-- AJAX for send friend request and cancel friend request -->
 
-<div class="card p-2 d-flex rounded my-2" data-user=<%= user.id %>>
+<div class="add-user" data-user=<%= user.id %>>
+
   <div class="users-avatar">
     <%= cl_image_tag(user_avatar(user), class: "avatar") %>
   </div>
+
   <div class="card-content">
     <%= user.full_name %>
-    <div>
-      <% if request = current_user.find_friend_request(user.id) %>
-        <%= link_to friend_request_path(request, user_id: user.id), method: :delete, remote: true do %>
-          <p class="mb-0 btn btn-primary">Cancel Friend Request</p>
-        <% end %>
-      <% else %>
-        <%= link_to friend_requests_path(friend_id: user.id), method: :post, remote: true do %>
-          <p class="mb-0 btn btn-primary">Send Friend Request</p>
-        <% end %>
-      <% end %>
-    </div>
   </div>
+
+  <div class="add-button">
+    <% if request = current_user.find_friend_request(user.id) %>
+      <%= link_to friend_request_path(request, user_id: user.id), method: :delete, remote: true do %>
+        <i class="fas fa-plus action-icon-active"></i>
+      <% end %>
+    <% else %>
+      <%= link_to friend_requests_path(friend_id: user.id), method: :post, remote: true do %>
+        <i class="fas fa-plus action-icon"></i>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
 
 <!--
