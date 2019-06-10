@@ -1,4 +1,3 @@
-import 'bootstrap';
 
 import makeMap from '../plugins/init_mapbox';
 import searchListener from '../search';
@@ -8,6 +7,9 @@ import flashFadeOut from '../flash_fade_out';
 import reviewStars from '../review_stars';
 import feedAnimations from '../feed/index';
 import listsAnimations from '../lists/index';
+// import paginateFeed from '../feed/pagination';
+
+
 
 makeMap();
 searchListener();

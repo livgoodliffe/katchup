@@ -3,10 +3,20 @@ class FeedsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    # @activities_for_pagination = PublicActivity::Activity
+    #                              .order("created_at desc")
+    #                               .where(owner_id: current_user.friends)
+    #                               .where("key ilike ?", "%create%")
     @activities = PublicActivity::Activity
-                  .order("created_at desc")
+                  .paginate(page: params[:page], per_page: 15)
+                  .order('created_at DESC')
                   .where(owner_id: current_user.friends)
                   .where("key ilike ?", "%create%")
+    # byebug
+    respond_to do |format|
+      format.html
+      format.js
+    end
 
     @spots = Spot.all
 
