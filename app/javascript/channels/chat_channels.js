@@ -5,7 +5,7 @@ export default () => {
 
   if (catchupPage) {
     console.log('client side js loaded');
-    App.cable.subscriptions.create({ channel: 'CatchupChannel', room: 'Room' }, {
+    App.cable.subscriptions.create({ channel: 'CatchupChannel', room: 'test' }, {
       received(data) {
         console.log('received data', data);
         this.appendLine(data);
