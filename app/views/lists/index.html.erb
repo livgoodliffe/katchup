@@ -1,24 +1,23 @@
-<div style="position: relative;">
+<!-- Dual buttons -->
 
-  <!-- Dual buttons -->
+<%= render "list_type" %>
 
-  <%= render "list_type" %>
+<!-- Search Bar -->
 
-  <!-- Search Bar -->
+<div class="container pt-3">
+  <%= render('search/search_form', search_type: 'my_spots', placeholder: 'All my spots') %>
+</div>
 
-  <div class="container pt-3">
-    <%= render('search/search_form', search_type: 'my_spots', placeholder: 'All my spots') %>
-  </div>
+<div id="search-results" class="discover-search-results"></div>
 
-  <br>
-
-  <div id="search-results" class="discover-search-results"></div>
-
-  <div id="map" class="my-map-list" style="height: 78vh;"
+<div class="info-map">
+  <div id="map" class="my-map-list info-map-map" style="min-height: 200px;"
     data-markers-favourite="<%= @markers_favourite.to_json %>"
     data-markers-wishlist="<%= @markers_wishlist.to_json %>"
     data-marker-user="<%= @marker_user.to_json %>"
     data-marker-user-avatar="<%= @marker_user_avatar %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <div class="info-map-window info-map-window-closed" id="info-map-window">
   </div>
 </div>

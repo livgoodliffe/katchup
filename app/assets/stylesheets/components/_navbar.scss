@@ -1,7 +1,6 @@
 .sidenav a {
   font-size: 18px !important;
-  text-align: bottom !important;
-  color: white !important;
+  color: $dark-grey !important;
 }
 
 /* The side navigation menu */
@@ -12,10 +11,14 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: $dark-grey; /* Black*/
+  background-color: $light-grey; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* The navigation menu links */

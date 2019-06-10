@@ -1,5 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 
+const infoWindowEl = document.getElementById('info-map-window');
+
 const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   const markerJson = mapElement.dataset[markerType];
 
@@ -8,7 +10,8 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   markers.forEach((marker) => {
 
 
-    const popup = new mapboxgl.Popup({closeButton: true}).setHTML(marker.infoWindow);
+    // const popup = new mapboxgl.Popup({closeButton: true}).setHTML(marker.infoWindow);
+
 
 
 
@@ -21,9 +24,13 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
       markerStylingElement.style.backgroundImage = `url('${userAvatarUrl}')`;
     }
 
+    markerStylingElement.addEventListener('touchstart', () => {
+      infoWindowEl.innerHTML = marker.infoWindow;
+      infoWindowEl.classList.remove('info-map-window-closed');
+    });
+
     new mapboxgl.Marker(markerStylingElement)
       .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup)
       .addTo(map);
   });
 
@@ -68,5 +75,12 @@ export default () => {
     if (!userCoordsAvailable) {
       if (markers > 0) map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
     }
+
+    map.on('click', (e) => {
+      // If a user clicks on the map, close the info window.
+      if (e.originalEvent.target.classList.contains('mapboxgl-canvas')) {
+        infoWindowEl.classList.add('info-map-window-closed');
+      }
+    })
   }
 };

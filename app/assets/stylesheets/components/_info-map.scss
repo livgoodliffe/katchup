@@ -1,0 +1,29 @@
+.info-map {
+  position: relative;
+  flex: 1;
+}
+
+.info-map-map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.info-map-window {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.info-map-window-closed {
+  transform: translateY(200px);
+  opacity: 0;
+}
