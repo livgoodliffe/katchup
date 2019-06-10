@@ -9,8 +9,7 @@ import reviewStars from '../review_stars';
 import feedAnimations from '../feed/index';
 import listsAnimations from '../lists/index';
 import '../navbar/index';
-import channels from '../channels';
-
+import { friendChannel, catchupChannel } from '../channels';
 
 makeMap();
 searchListener();
@@ -20,4 +19,5 @@ flashFadeOut();
 reviewStars();
 feedAnimations();
 listsAnimations();
-channels();
+friendChannel();
+catchupChannel();

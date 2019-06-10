@@ -2,7 +2,7 @@
 <html>
   <%= render 'shared/page-head' %>
 
-  <body>
+  <body data-userid="<%= current_user.present? ? current_user.id : 'null' %>">
     <%= render 'shared/geolocation' %>
     <%= render 'shared/flashes' %>
 

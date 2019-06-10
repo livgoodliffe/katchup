@@ -1,3 +1,4 @@
-import channels from './friend_channels';
+import friendChannel from './friend_channel';
+import catchupChannel from './catchup_channel';
 
-export default channels;
+export { friendChannel, catchupChannel };
