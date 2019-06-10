@@ -1,54 +1,38 @@
 
-<nav class="navbar fixed-top navbar-light">
+<nav class="navbar fixed-top">
 
-    <!-- Dropdown -->
+  <!-- Dropdown -->
 
-  <div id="menuToggle">
+  <div class="nav-item dropdown">
+    <a id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-bars navbar-icon"></i>
+    </a>
 
-    <input type="checkbox" id="menu-checkbox" />
-      <label class="menu-overlay" for="menu-checkbox"></label>
-      <span></span>
-      <span></span>
-      <span></span>
-    <ul id="menu">
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
       <% if user_signed_in? %>
-       <li class="nav-item">
-          <%= link_to "News Feed", feeds_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Discover", discover_index_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Collection", lists_path%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Find Friends", users_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Profile", user_path(current_user)%>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
 
-      <!-- If not logged in -->
+        <%= link_to "News Feed", feeds_path, class: "dropdown-item" %>
+        <%= link_to "Discover", discover_index_path, class: "dropdown-item" %>
+        <%= link_to "My Collection", lists_path, class: "dropdown-item" %>
+        <%= link_to "Find Friends", users_path, class: "dropdown-item" %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
 
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
 
-    </ul>
+        <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+
+      <% end %>
+    </div>
   </div>
 
   <!-- Logo -->
 
-  <%= link_to feeds_path(section: 'feeds') do %>
     <div class="navbar-brand">
       <p>katchup</p>
     </div>
-  <% end %>
 
   <!-- Add Katchup -->
 
