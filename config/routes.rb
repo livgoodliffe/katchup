@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  mount ActionCable.server => '/cable'
+
   root to: 'pages#home'
 
   get 'kitchen_sink' => 'pages#kitchen_sink'
