@@ -1,3 +1,11 @@
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
 .sidenav a {
   font-size: 18px !important;
   color: $dark-grey !important;

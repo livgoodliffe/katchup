@@ -1,17 +1,21 @@
 <!-- Dual buttons -->
 
-<%= render "list_type" %>
+<div class="container">
 
-<!-- Search Bar -->
+  <%= render "list_type" %>
 
-<div class="container pt-3">
-  <%= render('search/search_form', search_type: 'my_spots', placeholder: 'All my spots') %>
+  <!-- Search Bar -->
+
+  <div class="pt-3 pb-3">
+    <%= render('search/search_form', search_type: 'my_spots', placeholder: 'All my spots') %>
+  </div>
+
 </div>
 
 <div id="search-results" class="discover-search-results"></div>
 
 <div class="info-map">
-  <div id="map" class="my-map-list info-map-map" style="min-height: 200px;"
+  <div id="map" class="my-map-list info-map-map"
     data-markers-favourite="<%= @markers_favourite.to_json %>"
     data-markers-wishlist="<%= @markers_wishlist.to_json %>"
     data-marker-user="<%= @marker_user.to_json %>"
