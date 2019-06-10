@@ -11,20 +11,6 @@
   width: 100vw;
 }
 
-.mapboxgl-popup {
-  transform:none !important;
-  width: 100vw;
-}
-.mapboxgl-popup-tip {
-  display: none !important;
-}
-
-.mapboxgl-popup-content {
-  width: 100vw;
-  position: fixed;
-  left: 0;
-}
-
 .map-restaurant-card {
   display: flex;
   background-color: white;

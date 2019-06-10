@@ -50,7 +50,8 @@ class CatchupsController < ApplicationController
         guest.user_id = id
         guest.catchup = catchup
         guest.save
-      end
+        ActionCable.server.broadcast("catchup_#{id}", message: 'You have been invited to catchup!')
+    end
       redirect_to catchups_path
     end
   end

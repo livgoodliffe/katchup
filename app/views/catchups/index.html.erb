@@ -1,6 +1,5 @@
-<!-- Create  -->
-
-<div class="container">
+<div id="catchup-page" class="container">
+  <div id="catchup-chat-messages">CHAT MESSAGES SHOULD APPEAR HERE</div>
   <div class="d-flex justify-content-center">
     <%= link_to new_catchup_path do %>
       <div class="red-button">Organise a Katchup</div>
@@ -28,6 +27,7 @@
   <br>
 
   <% if params[:list_type] == 'mine' %>
+
     <%= render 'catchups_mine' %>
   <% else %>
     <%= render 'catchups_others' %>
