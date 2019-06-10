@@ -56,9 +56,18 @@
 .navbar {
   background: white;
   box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+  position: relative;
   .navbar-collapse {
     flex-grow: 0;
   }
+}
+
+#notification {
+  position:absolute;
+  font-size: 16px;
+  color: $katchup;
+  left: 32px;
+  top: 8px
 }
 
 .navbar-brand {

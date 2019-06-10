@@ -1,12 +1,12 @@
 /* global App */
 
 export default () => {
-  const catchupPage = document.querySelector('#catchup-page');
 
-  if (catchupPage) {
-    console.log('client side js loaded');
-    App.cable.subscriptions.create({ channel: 'CatchupChannel', room: 'Room' }, {
+  const friendRequest = () => {
+    console.log('friend client side js loaded');
+    App.cable.subscriptions.create({ channel: 'FriendChannel', room: 'friend_${userID}' }, {
       received(data) {
+        document.getElementById('#notification').classList.remove('hidden')
         console.log('received data', data);
         this.appendLine(data);
       },
@@ -14,7 +14,7 @@ export default () => {
       appendLine(data) {
         const html = this.createLine(data);
         // const element = document.querySelector("[data-chat-room='Best Room']");
-        const element = document.querySelector('#catchup-chat-messages');
+        const element = document.getElementById('#notification');
         element.insertAdjacentHTML('beforeend', html);
       },
 
