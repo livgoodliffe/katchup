@@ -1,15 +1,14 @@
-<h1>Katchup on the latest...</h1>
-  <div class="feed-index">
-    <% @activities.each do |activity|  %>
-      <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% end %>
+<div class="feed-index">
+  <% @activities.each do |activity|  %>
+    <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
+      <%= render 'feed-standard-card', activity: activity %>
+    <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
+      <%= render 'feed-standard-card', activity: activity %>
+    <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
+      <%= render 'feed-standard-card', activity: activity %>
     <% end %>
-    <div id="infinite-scrolling">
-      <%= will_paginate @activities%>
-    </div>
-  </div>
+  <% end %>
+<div id="infinite-scrolling">
+  <%= will_paginate @activities%>
+</div>
+</div>
