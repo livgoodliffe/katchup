@@ -11,6 +11,7 @@ import listsAnimations from '../lists/index';
 import '../navbar/index';
 import { friendChannel, catchupChannel } from '../channels';
 
+
 makeMap();
 searchListener();
 geoLocation();
