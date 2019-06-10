@@ -1,0 +1,6 @@
+<h2> Organised by me </h2>
+<% if @catchups.present? %>
+  <% @catchups.each do |catchup| %>
+    <%= render "catchup-summary-card", catchup: catchup %>
+  <% end %>
+<% end %>

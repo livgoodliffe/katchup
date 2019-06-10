@@ -3,6 +3,7 @@ class CatchupsController < ApplicationController
 
   def index
     @catchups = current_user.catchups.sort_by(&:time)
+    @catchups_invitations = current_user.catchups_invitations.sort_by(&:time)
   end
 
   def new

@@ -1,0 +1,6 @@
+<h2> Invited by others </h2>
+<% if @catchups_invitations.present? %>
+  <% @catchups_invitations.each do |catchup| %>
+    <%= render "catchup-summary-card", catchup: catchup %>
+  <% end %>
+<% end %>
