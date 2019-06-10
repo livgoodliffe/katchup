@@ -2,12 +2,14 @@
 <nav class="navbar fixed-top">
 
   <!-- Dropdown -->
-
+  <i id="notification" class="fas fa-circle hidden"></i>
   <div id="mySidenav" class="sidenav">
 
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
     <% if user_signed_in? %>
+
+    <div>
 
       <%= link_to feeds_path, class: "dropdown-item nav-label" do %>
         <i class="material-icons pr-1">home</i>Home
@@ -25,17 +27,21 @@
         <i class="material-icons pr-1">group_add</i> Add Friends
       <% end %>
 
-      <div class="dropdown-divider"></div>
-
       <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
         <i class="material-icons pr-1">face</i> My Profile
       <% end %>
+    </div>
 
+    <div>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item nav-label" %>
+    </div>
 
     <% else %>
 
+    <div></div>
+    <div>
       <%= link_to "Login", new_user_session_path, class: "dropdown-item nav-label" %>
+    </div>
 
     <% end %>
   </div>
