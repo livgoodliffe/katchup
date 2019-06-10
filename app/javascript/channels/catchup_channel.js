@@ -1,12 +1,13 @@
 /* global App */
 
 export default () => {
-  const catchupPage = document.querySelector('#catchup-page');
+  console.log('catchup client side websockets');
+  const userId = document.querySelector('body').dataset.userid;
 
-  if (catchupPage) {
-    console.log('client side js loaded');
-    App.cable.subscriptions.create({ channel: 'CatchupChannel', room: 'test' }, {
+  if (userId !== null) {
+    App.cable.subscriptions.create({ channel: 'CatchupChannel', room: `catchup_${userId}` }, {
       received(data) {
+        document.getElementById('catchup-navbar-badge').classList.remove('hidden');
         console.log('received data', data);
         this.appendLine(data);
       },
@@ -21,8 +22,7 @@ export default () => {
       createLine(data) {
         return `
       <article class="chat-line">
-        <span class="speaker">${data.sent_by}</span>
-        <span class="body">${data.body}</span>
+        <span class="message">${data.message}</span>
       </article>
     `;
       },
