@@ -1,3 +1,24 @@
+a {
+  text-decoration: none !important;
+}
+
+.button-underline {
+  border-bottom: 2px solid $medium-grey;
+  color: $medium-grey;
+  width: 50%;
+  text-align: center;
+  padding-bottom: 5px;
+
+}
+
+.underline-active {
+  border-bottom: 2px solid $katchup;
+  color: $katchup;
+}
+
+
+
+
 // dual button
 
 .btn-basic {
