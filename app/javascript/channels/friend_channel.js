@@ -1,11 +1,9 @@
 /* global App */
 
 export default () => {
-  console.log('friend client side websockets');
-  App.cable.subscriptions.create({ channel: 'FriendChannel', room: `friend` }, {
+  App.cable.subscriptions.create({ channel: 'FriendChannel', room: 'friend' }, {
     received(data) {
-      document.getElementById('#notification').classList.remove('hidden')
-      console.log('received data', data);
+      document.getElementById('#notification').classList.remove('hidden');
       this.appendLine(data);
     },
 

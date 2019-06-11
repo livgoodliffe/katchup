@@ -7,7 +7,6 @@
   function removeResult(id) {
     const result = document.getElementById(id);
     result.parentNode.removeChild(result);
-    console.log(catchupContainer.children_length);
     if (catchupContainer.children.length === 0) {
       document.getElementById('catchup-navbar-badge').classList.add('hidden');
     }
