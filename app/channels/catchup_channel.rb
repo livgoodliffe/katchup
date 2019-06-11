@@ -13,7 +13,7 @@ class CatchupChannel < ApplicationCable::Channel
     puts "received a list request"
     Notification.where(user_id: current_user.id).each do |notification|
       puts "going to send this as message to catchup#{current_user.id} JSON.parse(notification.content)"
-      if notification.dismissed == false
+      if notification.dismissed == false && notification.catchup?
         ActionCable.server.broadcast("catchup#{current_user.id}", JSON.parse(notification.content))
       end
     end
