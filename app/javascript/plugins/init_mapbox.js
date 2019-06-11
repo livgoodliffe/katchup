@@ -48,6 +48,7 @@ export default () => {
     const mapOptions = {
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v9',
+      zoom: 1
     };
 
     // see if user coords are available
