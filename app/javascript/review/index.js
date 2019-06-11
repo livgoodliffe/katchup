@@ -1,22 +1,22 @@
-// function thumbnailLoader() {
-//   const reviewLabel = document.querySelector('.new_review label.file');
-//   const file = document.getElementById('review_image').files[0];
-//   const reader = new FileReader();
-//   reader.onload = (e) => {
-//     const image = document.createElement('img');
-//     image.style.width = '100%';
-//     image.style.height = '100%';
-//     image.src = e.target.result;
-//     document.body.appendChild(image);
-//     reviewLabel.innerHTML = '';
-//     reviewLabel.appendChild(image);
-//   };
-//   reader.readAsDataURL(file);
-// }
+function thumbnailLoader() {
+  const reviewLabel = document.querySelector('.new_review label.file');
+  const file = document.getElementById('review_image').files[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const image = document.createElement('img');
+    image.style.width = '100%';
+    image.style.height = '100%';
+    image.src = e.target.result;
+    document.body.appendChild(image);
+    reviewLabel.innerHTML = '';
+    reviewLabel.appendChild(image);
+  };
+  reader.readAsDataURL(file);
+}
 
 export const reviewImageHandler = () => {
   const reviewLabel = document.querySelector('.new_review label.file');
-  // const reviewImageInput = document.getElementById('review_image');
+  const reviewImageInput = document.getElementById('review_image');
 
   if (reviewLabel) {
     reviewLabel.innerHTML = '<p><i class="fas fa-camera"></i></p><p class="review-photo-text">Add Photo</p>';
@@ -24,7 +24,7 @@ export const reviewImageHandler = () => {
     reviewLabel.classList.remove('hide-review-label');
   }
 
-  // reviewImageInput.addEventListener('change', () => { thumbnailLoader(); });
+  reviewImageInput.addEventListener('change', () => { thumbnailLoader(); });
 };
 
 export const reviewStarsHandler = () => {
