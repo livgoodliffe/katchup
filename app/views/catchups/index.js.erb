@@ -1,16 +1,21 @@
-function addResults(resultHTML) {
   catchupContainer = document.getElementById('catchup-invitation-content');
-  catchupContainer.insertAdjacentHTML('beforeend', resultHTML)
-}
 
-function removeResult(id) {
-  const result = document.getElementById(id);
-  result.parentNode.removeChild(result);
-}
+  function addResults(resultHTML) {
+    catchupContainer.insertAdjacentHTML('beforeend', resultHTML)
+  }
 
-<% case @action %>
-<% when "add" %>
-addResults(`<%= render("catchup-invitation-summary-card", catchup:@catchup, id: "catchup-invite-card#{@catchup.id}") %>`);
-<% when "remove" %>
-removeResult('<%= "catchup-invite-card#{@catchup.id}" %>');
-<% end %>
+  function removeResult(id) {
+    const result = document.getElementById(id);
+    result.parentNode.removeChild(result);
+    console.log(catchupContainer.children_length);
+    if (catchupContainer.children.length === 0) {
+      document.getElementById('catchup-navbar-badge').classList.add('hidden');
+    }
+  }
+
+  <% case @action %>
+  <% when "add" %>
+  addResults(`<%= render("catchup-invitation-summary-card", catchup:@catchup, id: "catchup-invite-card#{@catchup.id}") %>`);
+  <% when "remove" %>
+  removeResult('<%= "catchup-invite-card#{@catchup.id}" %>');
+  <% end %>
