@@ -9,8 +9,8 @@
       <i class="far fa-star"></i>
     </div>
     <%= f.input :notes, label: false, placeholder: 'Select your rating above and enter your comments here' %>
-    <%= f.input :image %>
+    <%= f.input :image, :label_html => { :class => "hide-review-label" } %>
     <%= f.input :image_cache, as: :hidden %>
-    <%= f.button :submit, class: "btn btn-default btn-success" %>
+    <%= f.button :submit, class: "small-red-button" %>
   <% end %>
 </div>
