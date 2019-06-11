@@ -20,7 +20,9 @@
     <%= render 'spots/show/spot-show-photo-modal' %>
   </div>
   <% unless @spot.latitude.nil? %>
-    <%= render 'spots/show/spot-show-map' %>
+    <div>
+      <%= render 'spots/show/spot-show-map' %>
+    </div>
   <% end %>
   <div class="container">
     <!-- Number of reviews -->

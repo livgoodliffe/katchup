@@ -1,14 +1,11 @@
+
+<div class="discover-container container">
   <div>
     <div class="discover-heading container">
       <h4>Your friends are loving</h4>
     </div>
     <div class="discover-horizontal">
-      <%= 10.times do %>
-        <div class="m-1" style="background-color: white; width: 100px; height: 100px;">
-          Hello
-        </div>
-      <% end %>
-
+      <%= render 'discover/index/discover_cards' %>
     </div>
   </div>
 
@@ -25,6 +22,7 @@
       <h4>Trending in Melbourne</h4>
     </div>
     <div class="discover-horizontal">
+      <%= render 'discover/index/discover_cards' %>
     </div>
   </div>
 
@@ -33,6 +31,7 @@
       <h4>Everyone wants to try</h4>
     </div>
     <div class="discover-horizontal">
+      <%= render 'discover/index/discover_cards' %>
     </div>
   </div>
 
@@ -41,6 +40,7 @@
       <h4>Nearby</h4>
     </div>
     <div class="discover-horizontal">
+      <%= render 'discover/index/discover_cards' %>
     </div>
   </div>
-
+</div>
