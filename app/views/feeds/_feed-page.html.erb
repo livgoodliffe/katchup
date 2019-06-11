@@ -1,12 +1,12 @@
-<h1>Katchup on the latest...</h1>
-  <div class="feed-index">
-    <% @activities.each do |activity|  %>
-      <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
-        <%= render 'feed-standard-card', activity: activity %>
-      <% end %>
+<!-- <img src="../../assets/810.gif" alt="Loading..." title="Loading..." /> -->
+<div class="feed-index">
+  <% @activities.each do |activity|  %>
+    <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
+      <%= render 'feed-standard-card', activity: activity %>
+    <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
+      <%= render 'feed-standard-card', activity: activity %>
+    <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
+      <%= render 'feed-standard-card', activity: activity %>
     <% end %>
-  </div>
+  <% end %>
+</div>

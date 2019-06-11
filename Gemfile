@@ -15,6 +15,10 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+gem 'jquery-rails'
+gem 'coffee-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

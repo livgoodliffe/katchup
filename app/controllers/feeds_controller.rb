@@ -4,9 +4,15 @@ class FeedsController < ApplicationController
 
   def index
     @activities = PublicActivity::Activity
-                  .order("created_at desc")
+                  .paginate(page: params[:page], per_page: 15)
+                  .order('created_at DESC')
                   .where(owner_id: current_user.friends)
                   .where("key ilike ?", "%create%")
+    # byebug
+    respond_to do |format|
+      format.html
+      format.js
+    end
 
     @spots = Spot.all
 
