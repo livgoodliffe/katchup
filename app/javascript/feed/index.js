@@ -99,11 +99,11 @@ export default () => {
 
       if (state.currentState() === 'search') {
         fadeOutSearch();
-        fadeInMap(() => window.mapboxMap.zoomTo(12, { duration: 2000 }));
+        fadeInMap(() => window.mapboxMap.resize().zoomTo(12, { duration: 2000 }));
         state.setState('map');
       } else if (state.currentState() === 'feed') {
         takeOutFeed();
-        bringInMap(() => window.mapboxMap.zoomTo(12, { duration: 2000 }));
+        bringInMap(() => window.mapboxMap.resize().zoomTo(12, { duration: 2000 }));
         bringInArrow();
         state.setState('map');
       }

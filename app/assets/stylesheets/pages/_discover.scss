@@ -1,11 +1,22 @@
 .discover-horizontal {
-  height: 150px;
+  height: 28vh;
   width: 100vw;
-  background-color: $light-grey;
   display: flex;
   overflow-x: auto;
 }
 
 .discover-heading {
   padding-top: 10px;
+}
+
+.discover-card-image {
+  width: 80vw;
+  height: 22vh;
+}
+
+.discover-container {
+  p {
+    font-size: 12px;
+    font-weight: bold;
+  }
 }
