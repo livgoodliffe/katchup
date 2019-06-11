@@ -1,58 +1,49 @@
-<div class="container">
+<div class="container login">
 
-  <div class="sign-up-form">
+  <h5 class="katchup-form-heading">Join the Katchup club</h5>
 
-    <h5 class="sign-up-form-heading">Join the Katchup club</h5>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { class: "katchup-form-input", autocomplete: "email" },
+                  placeholder: "email",
+                  label: false %>
+      <%= f.input :first_name,
+                  required: true,
+                  input_html: { class: "katchup-form-input", autocomplete: "first name" },
+                  placeholder: "first name",
+                  label: false %>
+      <%= f.input :last_name,
+                  required: true,
+                  input_html: { class: "katchup-form-input", autocomplete: "last name" },
+                  placeholder: "last name",
+                  label: false %>
+      <%= f.input :avatar,
+                  required: false,
+                  input_html: { class: "katchup-form-input", autocomplete: "avatar" },
+                  placeholder: "upload your avatar",
+                  label_html: { class: "katchup-form-label" },
+                  label: "Upload your avatar:" %>
+      <%= f.input :password,
+                  required: true,
+                  input_html: { class: "katchup-form-input", autocomplete: "new-password" },
+                  placeholder: "password",
+                  label: false %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { class: "katchup-form-input", autocomplete: "new-password" },
+                  placeholder: "password confirmation",
+                  label: false %>
 
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" },
-                    placeholder: "email",
-                    label: false %>
-        <%= f.input :first_name,
-                    required: true,
-                    input_html: { autocomplete: "first name" },
-                    placeholder: "first name",
-                    label: false %>
-        <%= f.input :last_name,
-                    required: true,
-                    input_html: { autocomplete: "last name" },
-                    placeholder: "last name",
-                    label: false %>
-        <%= f.input :avatar,
-                    required: false,
-                    input_html: { autocomplete: "avatar" },
-                    placeholder: "upload your avatar",
-                    label: false %>
-        <%= f.input :password,
-                    required: true,
-                    input_html: { autocomplete: "new-password" },
-                    placeholder: "password",
-                    label: false %>
-        <%= f.input :password_confirmation,
-                    required: true,
-                    input_html: { autocomplete: "new-password" },
-                    placeholder: "password confirmation",
-                    label: false %>
-      </div>
+    <%= f.button :submit, "Sign up", class: "login-button"  %>
 
-      <div class="form-actions btn red-button">
-        <%= f.button :submit, "Sign up", class: "red-button" %>
-      </div>
+  <% end %>
 
-    <% end %>
+  <br>
 
-    <br>
-
-    <%= render "devise/shared/links" %>
-
-  </div>
-
-
+  <%= render "devise/shared/links" %>
 
 </div>
