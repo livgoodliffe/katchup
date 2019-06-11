@@ -114,6 +114,5 @@ class CatchupsController < ApplicationController
     notification.catchup!
     notification.content = { catchup_id: catchup_id }.to_json
     notification.save!
-    ActionCable.server.broadcast("catchup#{id}", message: 'alert')
   end
 end
