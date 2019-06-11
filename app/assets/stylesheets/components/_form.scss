@@ -2,18 +2,6 @@
 input:-webkit-autofill:focus {
    -webkit-box-shadow: 0 0 0 50px white inset;
    -webkit-text-fill-color: #333;
-
-  .sign-up-form {
-  padding: 20px;
-  margin: 30px;
-
-  input {
-    border-bottom: 2px solid $dark-grey;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background-color: $light-grey;
-  }
 }
 
 .katchup-form-input:-webkit-autofill {
@@ -83,21 +71,17 @@ input:-webkit-autofill:focus {
     color: $katchup;
     text-decoration: none;
   }
+}
 
-    
-    
 .hide-review-label {
   visibility: hidden;
 }
-
-
 
 .new_review label.file {
   text-align: center;
   width: 200px;
   height: 200px;
   border-radius: 8px;
-
 
   color: $medium-grey;
   background-color: $light-grey;
@@ -106,19 +90,15 @@ input:-webkit-autofill:focus {
   p {
     font-size: 4rem;
     font-weight: 700;
-
-    &.review-photo-text {
-      font-size: 1.5rem;
+      &.review-photo-text {
+        font-size: 1.5rem;
+      }
     }
-  }
 
   img {
     object-fit: cover;
   }
 }
-
-
-
 
 #review_image {
   width: 0.1px;
@@ -128,3 +108,16 @@ input:-webkit-autofill:focus {
   position: absolute;
   z-index: -1;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
