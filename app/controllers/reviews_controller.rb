@@ -12,6 +12,8 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
+      @review.reload # so that image url is available
+      puts "saved -> image url #{@review.image_url}"
       respond_to do |format|
         format.html { redirect_to @spot }
         format.js

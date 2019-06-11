@@ -29,4 +29,5 @@ if (noReviewMessage) noReviewMessage.innerHTML = '';
 // reload the review form
 var reviewForm = document.getElementById('review-form');
 reviewForm.innerHTML = '<%= j render("spots/show/spots-show-review-form", review: Review.new) %>';
+window.reviewHandlersReload(); // because previous dom elements are destroyed
 <% end %>

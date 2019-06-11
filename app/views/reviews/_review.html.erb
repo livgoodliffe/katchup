@@ -1,6 +1,6 @@
 <div class="card m-3 shadow">
-  <% unless review.image.url.blank? %>
-    <%= cl_image_tag(review.image, class: "review-image") %>
+  <% unless review.image_url.blank? %>
+    <%= cl_image_tag(review.image_url, class: "review-image") %>
   <% end %>
   <div class="review-content d-flex ">
     <div class="review-user">

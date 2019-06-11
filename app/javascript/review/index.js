@@ -1,4 +1,4 @@
-function thumbnailLoader() {
+const thumbnailLoader = () => {
   const reviewLabel = document.querySelector('.new_review label.file');
   const file = document.getElementById('review_image').files[0];
   const reader = new FileReader();
@@ -12,9 +12,9 @@ function thumbnailLoader() {
     reviewLabel.appendChild(image);
   };
   reader.readAsDataURL(file);
-}
+};
 
-export const reviewImageHandler = () => {
+const reviewImageHandler = () => {
   const reviewLabel = document.querySelector('.new_review label.file');
   const reviewImageInput = document.getElementById('review_image');
 
@@ -27,7 +27,7 @@ export const reviewImageHandler = () => {
   reviewImageInput.addEventListener('change', () => { thumbnailLoader(); });
 };
 
-export const reviewStarsHandler = () => {
+const reviewStarsHandler = () => {
   const reviewStars = document.querySelectorAll('#review-form-stars i');
   const reviewRating = document.getElementById('review_rating');
 
@@ -48,3 +48,10 @@ export const reviewStarsHandler = () => {
     });
   }
 };
+
+window.reviewHandlersReload = () => {
+  reviewImageHandler();
+  reviewStarsHandler();
+};
+
+export { reviewImageHandler, reviewStarsHandler };

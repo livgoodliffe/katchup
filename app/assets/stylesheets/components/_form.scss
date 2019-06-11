@@ -32,6 +32,7 @@
   height: 200px;
   border-radius: 8px;
 
+
   color: $medium-grey;
   background-color: $light-grey;
   display: inline-block;
@@ -43,6 +44,10 @@
     &.review-photo-text {
       font-size: 1.5rem;
     }
+  }
+
+  img {
+    object-fit: cover;
   }
 }
 
