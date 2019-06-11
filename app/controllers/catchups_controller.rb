@@ -3,10 +3,8 @@ class CatchupsController < ApplicationController
 
   def index
     if params.key?(:catchup_accept)
-      puts 'ACCEPT MESSAGE DETECTED'
       @catchup = Catchup.find(params[:catchup_invitation_id])
       @action = "remove"
-      puts "guest user id #{current_user.id} catchup_id #{@catchup.id}"
 
       guest = Guest.where(user_id: current_user.id).where(catchup_id: @catchup.id).first
       guest.accepted!
@@ -23,7 +21,6 @@ class CatchupsController < ApplicationController
         format.js
       end
     elsif params.key?(:catchup_decline)
-      puts 'DECLINE MESSAGE DETECTED'
       @catchup = Catchup.find(params[:catchup_invitation_id])
       @action = "remove"
 
@@ -42,7 +39,6 @@ class CatchupsController < ApplicationController
         format.js
       end
     elsif params[:catchup_invitation_id].present?
-      puts "RECEIVED A REQUEST FOR CATCHUP INVITATION card with id #{params[:catchup_invitation_id]}"
       @catchup = Catchup.find(params[:catchup_invitation_id])
       @organiser = User.find(@catchup.user_id)
       @action = "add"
