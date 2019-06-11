@@ -4,7 +4,7 @@
 </div>
 <% if @catchups.present? %>
   <% @catchups.each do |catchup| %>
-    <%= render "catchup-summary-card", catchup: catchup %>
+    <%= render "catchup-summary-card", catchup: catchup, others: false%>
   <% end %>
 <% end %>
 <p>Katchups you have accepted:</p>
