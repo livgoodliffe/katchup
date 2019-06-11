@@ -1,9 +1,7 @@
-console.log("index.js.erb file loads")
-
 $('.feed-index').append('<%= j render "feed-page", activities: @activities %>');
 <% if @activities.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @activities %>');
 <% else %>
   $(window).off('scroll');
-  $('.pagination').remove();
+  $('.pagination').replaceWith("<h4>All caught up!</h4>");
 <% end %>
