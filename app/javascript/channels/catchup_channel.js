@@ -4,7 +4,10 @@ const catchupInvitationId = document.getElementById('catchup_invitation_id');
 const receivedCatchupInvitationIds = [];
 
 const displayNavbarBadge = () => {
-  document.getElementById('catchup-navbar-badge').classList.remove('hidden');
+  const catchupNavbarBadge = document.getElementById('catchup-navbar-badge');
+  if (catchupNavbarBadge) {
+    catchupNavbarBadge.classList.remove('hidden');
+  }
 };
 
 export default () => {
