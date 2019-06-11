@@ -2,9 +2,14 @@
   <h4>My Katchups</h4>
   <p>Katchups you have organised:</p>
 </div>
-
 <% if @catchups.present? %>
   <% @catchups.each do |catchup| %>
     <%= render "catchup-summary-card", catchup: catchup %>
+  <% end %>
+<% end %>
+<p>Katchups you have accepted:</p>
+<% if @catchups_accepted_invitations.present? %>
+  <% @catchups_accepted_invitations.each do |catchup| %>
+    <%= render "catchup-summary-card", catchup: catchup, others: true %>
   <% end %>
 <% end %>
