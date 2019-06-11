@@ -2,7 +2,9 @@
 
   <i class="fas fa-map-marker-alt white-pin"></i>
 
-  <div><h1>katchup</h1></div>
+  <div>
+    <h1>katchup</h1>
+  </div>
 
   <br>
   <br>
@@ -16,10 +18,15 @@
   <% else %>
 
     <div class="small-white-button">
-      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <%= link_to "Login", new_user_session_path %>
     </div>
+
     <div style="color: white">
-      <p>Don't have an account? <strong>Sign up</strong></p>
+      Don't have an account?
+      <strong>
+        <%= link_to "Sign up", new_user_registration_path,
+        style: 'color: white;' %>
+      </strong>
     </div>
 
   <% end %>

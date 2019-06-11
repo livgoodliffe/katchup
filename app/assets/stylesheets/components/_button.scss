@@ -1,3 +1,5 @@
+
+
 a {
   text-decoration: none !important;
 }
@@ -122,6 +124,23 @@ a {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .3);
   a {
     color: white;
+    text-decoration: none;
+  }
+}
+
+.red-button-outline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  border: 3px solid $katchup;
+  color: $katchup;
+  width: 120px;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .3);
+  a {
+    color: $katchup;
     text-decoration: none;
   }
 }

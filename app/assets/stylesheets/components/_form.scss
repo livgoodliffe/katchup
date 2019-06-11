@@ -1,20 +1,75 @@
-.sign-up-form {
-  padding: 20px;
-  margin: 30px;
-  input {
-    border-bottom: 2px solid $dark-grey;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background-color: $light-grey;
+input:-webkit-autofill:focus {
+   -webkit-box-shadow: 0 0 0 50px white inset;
+   -webkit-text-fill-color: #333;
+}
+
+.katchup-form-input:-webkit-autofill {
+   -webkit-box-shadow:0 0 0 50px white inset;
+   -webkit-text-fill-color: $dark-grey;
+   border-bottom: 3px solid $katchup;
+   border-top: 0;
+   border-left: 0;
+   border-right: 0;
+}
+
+.katchup-form-label {
+  font-weight: bold;
+}
+
+.login {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.katchup-form-heading {
+  font-size: 30px;
+  color: $katchup;
+  font-weight: normal;
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($katchup-mid, $katchup);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+  color: white;
+  width: 100%;
+  a {
+    color: white;
+    text-decoration: none;
   }
 }
 
-.sign-up-form-heading {
+.login-button-outlined {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
   color: $katchup;
-  font-family: "Unbuntu", sans-serif;
-  text-align: center;
-  font-weight: bold;
-  font-size: 23px;
-  padding-bottom: 15px;
+  border: 2px solid $katchup;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+  color: $katchup;
+  width: 100%;
+  a {
+    color: $katchup;
+    text-decoration: none;
+  }
 }
+
+
