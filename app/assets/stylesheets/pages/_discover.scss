@@ -1,4 +1,11 @@
-.discover-search-results {
+.discover-horizontal {
+  height: 150px;
+  width: 100vw;
+  background-color: $light-grey;
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: auto;
+}
+
+.discover-heading {
+  padding-top: 10px;
 }
