@@ -44,5 +44,23 @@ export default () => {
         takeOutArrow();
         // state.setState('feed');
     });
-  };
+  }
+
+  if (mapIcon) {
+    mapIcon.addEventListener('click', () => {
+
+      console.log("map clicked");
+
+      if (state.currentState() === 'search') {
+        fadeOutSearch();
+        fadeInMap(() => window.mapboxMap.resize().zoomTo(12, { duration: 2000 }));
+        state.setState('map');
+      } else if (state.currentState() === 'feed') {
+        takeOutFeed();
+        bringInMap(() => window.mapboxMap.resize().zoomTo(12, { duration: 2000 }));
+        bringInArrow();
+        state.setState('map');
+      }
+    });
+  }
 };

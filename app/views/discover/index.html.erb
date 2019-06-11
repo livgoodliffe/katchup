@@ -1,31 +1,26 @@
-<div>
-  <div class="discover-heading container">
-    <h4>One spot</h4>
-  </div>
-  <div class="discover-horizontal">
 
-    <div>
-      <% @spots.first(25).each do |spot| %>
-        <%= render "spots/spot_card", spot: spot %>
-      <% end %>
-    </div>
-
-  </div>
-</div>
-
-
-
-
+<div class="discover-container container">
   <div>
     <div class="discover-heading container">
       <h4>Your friends are loving</h4>
     </div>
     <div class="discover-horizontal">
-      <%= 10.times do %>
-        <div class="m-1" style="background-color: white; width: 100px; height: 100px;">
-          Hello
+
+      <% @spots.first(10).each do |spot| %>
+        <div class="discovery-card mx-2">
+          <%= cl_image_tag(spot.images.first.image, :crop=>"scale", class: "discover-card-image" ) %>
+          <div class="card-content">
+            <p class="mt-1"><%= spot.name %></p>
+            <p><%= spot.location %></p>
+          </div>
         </div>
+
       <% end %>
+
+
+
+
+
     </div>
   </div>
 
@@ -60,4 +55,4 @@
     <div class="discover-horizontal">
     </div>
   </div>
-
+</div>
