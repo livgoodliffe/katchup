@@ -5,12 +5,20 @@
       <h4>Your friends are loving</h4>
     </div>
     <div class="discover-horizontal">
-      <div class="discover-card">
-        <%= cl_image_tag(@spots.first.images.first.image, class: "discover-card-image", crop: "fill") %>
-        <div class="card-content">
-          <p class="mt-1"><%= @spots.first.name %></p>
+
+      <% @spots.first(10).each do |spot| %>
+        <div class="discovery-card mx-2">
+          <%= cl_image_tag(spot.images.first.image, :crop=>"scale", class: "discover-card-image" ) %>
+          <div class="card-content">
+            <p class="mt-1"><%= spot.name %></p>
+            <p><%= spot.location %></p>
+          </div>
         </div>
-      </div>
+
+      <% end %>
+
+
+
 
 
     </div>
