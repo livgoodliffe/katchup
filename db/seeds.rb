@@ -42,50 +42,50 @@ puts "Deleting Users.."
 User.destroy_all
 
 puts "* Seeding Data *"
-SEED_USER_COUNT = 15
-SEED_FRIENDSHIP_COUNT = 50
-SEED_WISHLIST_COUNT = 3
-SEED_FAVOURITE_COUNT = 3
+# SEED_USER_COUNT = 15
+# SEED_FRIENDSHIP_COUNT = 50
+# SEED_WISHLIST_COUNT = 3
+# SEED_FAVOURITE_COUNT = 3
 
-puts "Adding #{SEED_USER_COUNT} Users.."
+# puts "Adding #{SEED_USER_COUNT} Users.."
 
-SEED_USER_COUNT.times do |n|
-  user = User.new
-  user.email = Faker::Internet.email
-  user.first_name = Faker::Name.first_name
-  user.last_name = Faker::Name.last_name
-  user.password = "Password123"
-  user.remote_avatar_url = Faker::Avatar.image
-  user.save!
-  puts "Seeded User: ##{n+1}"
-end
+# SEED_USER_COUNT.times do |n|
+#   user = User.new
+#   user.email = Faker::Internet.email
+#   user.first_name = Faker::Name.first_name
+#   user.last_name = Faker::Name.last_name
+#   user.password = "Password123"
+#   user.remote_avatar_url = Faker::Avatar.image
+#   user.save!
+#   puts "Seeded User: ##{n+1}"
+# end
 
-puts "Adding #{SEED_WISHLIST_COUNT} wishlists and #{SEED_FAVOURITE_COUNT} favourites to all users.."
+# puts "Adding #{SEED_WISHLIST_COUNT} wishlists and #{SEED_FAVOURITE_COUNT} favourites to all users.."
 
-User.all.each_with_index do |user, k|
-  SEED_WISHLIST_COUNT.times { |n|
-    Wishlist.create(user: user, spot: Spot.all.sample)
-    puts "Seeded User ##{k+1} Wishlist Item ##{n+1}"
-  }
-  SEED_FAVOURITE_COUNT.times { |n|
-    Favourite.create(user: user, spot: Spot.all.sample)
-    puts "Seeded User ##{k+1} Favourite Item ##{n+1}"
-  }
-end
+# User.all.each_with_index do |user, k|
+#   SEED_WISHLIST_COUNT.times { |n|
+#     Wishlist.create(user: user, spot: Spot.all.sample)
+#     puts "Seeded User ##{k+1} Wishlist Item ##{n+1}"
+#   }
+#   SEED_FAVOURITE_COUNT.times { |n|
+#     Favourite.create(user: user, spot: Spot.all.sample)
+#     puts "Seeded User ##{k+1} Favourite Item ##{n+1}"
+#   }
+# end
 
-puts "Adding #{SEED_FRIENDSHIP_COUNT} Friendships.."
+# puts "Adding #{SEED_FRIENDSHIP_COUNT} Friendships.."
 
-loop do
-  friend = Friendship.new
-  friend.user_id = User.pluck('id').sample
-  friend.friend_id = User.pluck('id').sample
-  next if friend.user_id == friend.friend_id
-  unless Friendship.exists?(user_id: friend.user_id, friend_id: friend.friend_id )
-    friend.save!
-    puts "Seeded Friendship ##{Friendship.count / 2} between User (id:#{friend.user_id}) and Friend (id:#{friend.friend_id})"
-  end
-  break if (Friendship.count / 2) == SEED_FRIENDSHIP_COUNT
-end
+# loop do
+#   friend = Friendship.new
+#   friend.user_id = User.pluck('id').sample
+#   friend.friend_id = User.pluck('id').sample
+#   next if friend.user_id == friend.friend_id
+#   unless Friendship.exists?(user_id: friend.user_id, friend_id: friend.friend_id )
+#     friend.save!
+#     puts "Seeded Friendship ##{Friendship.count / 2} between User (id:#{friend.user_id}) and Friend (id:#{friend.friend_id})"
+#   end
+#   break if (Friendship.count / 2) == SEED_FRIENDSHIP_COUNT
+# end
 
 BASE_SELECTOR='.result'
 NAME_SELECTOR='.detail a h4'

@@ -1,6 +1,6 @@
 class CatchupChannel < ApplicationCable::Channel
   def subscribed
-    stream_from params[:room].to_s
+    stream_from "#{params[:room]}#{current_user.id}"
   end
 
   def unsubscribed
