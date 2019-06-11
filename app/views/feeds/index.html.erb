@@ -4,8 +4,11 @@
   <div class="search-bar grow" id="search-search">
     <i id='search-back-button' class="fas fa-arrow-left red-arrow hidden"></i>
     <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
-    <i class="far fa-map map-icon" id="map-icon"></i>
-  </div>
+
+    <!-- Map deleted from feed -->
+<!--     <i class="far fa-map map-icon" id="map-icon"></i>
+
+ -->  </div>
 </div>
 
     <div id="feed-page" class="container">
@@ -29,17 +32,9 @@
 </div>
 
 
+<!-- Map deleted from feed -->
 
-  <!-- Map page -->
-
-<!--   <div id="map" class="my-map-feed hidden"
-    data-markers-spots="<%= @markers_spot.to_json %>"
-    data-marker-user="<%= @marker_user.to_json %>"
-    data-marker-user-avatar="<%= @marker_user_avatar %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div> -->
-
-  <div class="info-map">
+<!--   <div class="info-map">
     <div id="map" class="info-map-map my-map-feed hidden"
       data-markers-spots="<%= @markers_spot.to_json %>"
       data-marker-user="<%= @marker_user.to_json %>"
@@ -48,6 +43,6 @@
     </div>
     <div class="info-map-window info-map-window-closed" id="info-map-window">
     </div>
-</div>
+</div> -->
 
 

@@ -1,0 +1,12 @@
+<div class="info-map">
+  <div id="map" class="my-map-list info-map-map"
+    data-markers-spot="<%= @markers_favourite.to_json %>"
+    data-markers-favourite="<%= @markers_favourite.to_json %>"
+    data-markers-wishlist="<%= @markers_wishlist.to_json %>"
+    data-marker-user="<%= @marker_user.to_json %>"
+    data-marker-user-avatar="<%= @marker_user_avatar %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <div class="info-map-window info-map-window-closed" id="info-map-window">
+  </div>
+</div>

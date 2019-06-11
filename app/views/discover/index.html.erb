@@ -1,3 +1,21 @@
+<div>
+  <div class="discover-heading container">
+    <h4>One spot</h4>
+  </div>
+  <div class="discover-horizontal">
+
+    <div>
+      <% @spots.first(25).each do |spot| %>
+        <%= render "spots/spot_card", spot: spot %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+
+
   <div>
     <div class="discover-heading container">
       <h4>Your friends are loving</h4>
@@ -8,7 +26,6 @@
           Hello
         </div>
       <% end %>
-
     </div>
   </div>
 
