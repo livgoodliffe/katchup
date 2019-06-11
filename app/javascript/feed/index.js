@@ -94,6 +94,9 @@ export default () => {
 
   if (mapIcon) {
     mapIcon.addEventListener('click', () => {
+
+      console.log("map clicked");
+
       if (state.currentState() === 'search') {
         fadeOutSearch();
         fadeInMap(() => window.mapboxMap.zoomTo(12, { duration: 2000 }));
