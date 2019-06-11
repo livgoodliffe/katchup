@@ -24,7 +24,9 @@ const reviewImageHandler = () => {
     reviewLabel.classList.remove('hide-review-label');
   }
 
-  reviewImageInput.addEventListener('change', () => { thumbnailLoader(); });
+  if (reviewImageInput) {
+    reviewImageInput.addEventListener('change', () => { thumbnailLoader(); });
+  }
 };
 
 const reviewStarsHandler = () => {

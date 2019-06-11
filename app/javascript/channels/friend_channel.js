@@ -4,7 +4,6 @@ export default () => {
   App.cable.subscriptions.create({ channel: 'FriendChannel', room: 'friend' }, {
     received(data) {
       document.getElementById('#notification').classList.remove('hidden');
-      console.log('received data', data);
       this.appendLine(data);
     },
 
