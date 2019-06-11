@@ -1,27 +1,42 @@
-<!-- Dual buttons -->
 
-<div class="container">
-
-  <%= render "list_type" %>
-
-  <!-- Search Bar -->
-
-  <div class="pt-3 pb-3">
-    <%= render('search/search_form', search_type: 'my_spots', placeholder: 'All my spots') %>
+<div class="d-flex">
+  <div id="want_to_try_button"
+  class="button-underline underline-active">
+    WANT TO TRY
   </div>
-
+  <div id="been_there_button"
+  class="button-underline">
+    BEEN THERE
+  </div>
 </div>
 
-<div id="search-results" class="discover-search-results"></div>
 
-<div class="info-map">
-  <div id="map" class="my-map-list"
-    data-markers-favourite="<%= @markers_favourite.to_json %>"
-    data-markers-wishlist="<%= @markers_wishlist.to_json %>"
-    data-marker-user="<%= @marker_user.to_json %>"
-    data-marker-user-avatar="<%= @marker_user_avatar %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<!-- WANT TO TRY -->
+
+
+<div id="want_to_try_list">
+  <div class="container pt-3">
+    <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: "Search through my saved spots") %>
   </div>
-  <div class="info-map-window info-map-window-closed" id="info-map-window">
+
+  <div id="search-results" class="discover-search-results">
+    <% @wishlist_spots.each do |spot| %>
+      <%= render "spots/spot_card", spot: spot %>
+    <% end %>
+  </div>
+</div>
+
+
+<!-- BEEN THERE -->
+
+<div id="been_there_list" class="hidden">
+  <div class="container pt-3">
+    <%= render('search/search_form', search_type: 'favourite_spots', placeholder: "Search through spots I've been") %>
+  </div>
+
+  <div id="search-results" class="discover-search-results">
+    <% @favourite_spots.each do |spot| %>
+      <%= render "spots/spot_card", spot: spot %>
+    <% end %>
   </div>
 </div>

@@ -2,22 +2,28 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+
+    @wishlist = current_user.wishlists
+    @wishlist_spots = current_user.wishlist_spots.sort_by(&:name)
+
+    @favourites = current_user.favourites
+    @favourite_spots = current_user.favourite_spots.sort_by(&:name)
     # get correct spots
-    favourite_spots = spots_with_coords_array(current_user.favourite_spots)
-    wishlist_spots = spots_with_coords_array(current_user.wishlist_spots)
-    spots = spots_with_coords_array(Spot.all)
+    # favourite_spots = spots_with_coords_array(current_user.favourite_spots)
+    # wishlist_spots = spots_with_coords_array(current_user.wishlist_spots)
+    # spots = spots_with_coords_array(Spot.all)
 
-    # prevent spots with both marker types, favourite prevails
-    favourite_ids = favourite_spots.map(&:id)
-    wishlist_spots = wishlist_spots.reject { |spot| favourite_ids.include?(spot.id) }
+    # # prevent spots with both marker types, favourite prevails
+    # favourite_ids = favourite_spots.map(&:id)
+    # wishlist_spots = wishlist_spots.reject { |spot| favourite_ids.include?(spot.id) }
 
-    # create markers
-    @markers_favourite = create_markers(favourite_spots)
-    @markers_wishlist = create_markers(wishlist_spots)
-    @markers_spot = create_markers(spots)
+    # # create markers
+    # @markers_favourite = create_markers(favourite_spots)
+    # @markers_wishlist = create_markers(wishlist_spots)
+    # @markers_spot = create_markers(spots)
 
-    @marker_user = create_user_marker if user_has_coords?
-    @marker_user_avatar = current_user.avatar.url
+    # @marker_user = create_user_marker if user_has_coords?
+    # @marker_user_avatar = current_user.avatar.url
   end
 
   private
