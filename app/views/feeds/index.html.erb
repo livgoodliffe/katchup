@@ -6,7 +6,7 @@
     <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
     <i class="far fa-map map-icon" id="map-icon"></i>
   </div>
-<div>
+</div>
 
     <div id="feed-page" class="container">
       <h1>Katchup on the latest...</h1>
@@ -28,28 +28,26 @@
   </div>
 </div>
 
-    <!-- Map page -->
-<!--<div id="map-page">
-      <div id="map" class="my-map-feed hidden"
-        data-markers-spots="<%= @markers_spot.to_json %>"
-        data-markers-favourite="<%= @markers_favourite.to_json %>"
-        data-markers-wishlist="<%= @markers_wishlist.to_json %>"
-        data-marker-user="<%= @marker_user.to_json %>"
-        data-marker-user-avatar="<%= @marker_user_avatar %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div> -->
 
 
-    <!-- This should work with a few tweaks -->
+  <!-- Map page -->
 
-      <div class="info-map" id="map-page">
-        <div id="map" class="my-map-list info-map-map"
-          data-markers-spots="<%= @markers_spot.to_json %>"
-          data-marker-user="<%= @marker_user.to_json %>"
-          data-marker-user-avatar="<%= @marker_user_avatar %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-        <div class="info-map-window info-map-window-closed" id="info-map-window">
-        </div>
-      </div>
+<!--   <div id="map" class="my-map-feed hidden"
+    data-markers-spots="<%= @markers_spot.to_json %>"
+    data-marker-user="<%= @marker_user.to_json %>"
+    data-marker-user-avatar="<%= @marker_user_avatar %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div> -->
+
+  <div class="info-map">
+    <div id="map" class="info-map-map my-map-feed hidden"
+      data-markers-spots="<%= @markers_spot.to_json %>"
+      data-marker-user="<%= @marker_user.to_json %>"
+      data-marker-user-avatar="<%= @marker_user_avatar %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <div class="info-map-window info-map-window-closed" id="info-map-window">
+    </div>
+</div>
+
+

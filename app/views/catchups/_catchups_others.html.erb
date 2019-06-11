@@ -2,9 +2,9 @@
   <h4>You're quite the Katch!</h4>
   <p>Katchups you have been invited to:</p>
 </div>
-
-<% if @catchups_invitations.present? %>
-  <% @catchups_invitations.each do |catchup| %>
-    <%= render "catchup-summary-card", catchup: catchup %>
-  <% end %>
+<!-- Catchup Invitation Form (to get Catchup Invitation Cards)  -->
+<%= form_tag(catchups_path, method: :get, remote: true, id: 'catchup-invitation-form') do %>
+  <%= hidden_field_tag :catchup_invitation_id %>
 <% end %>
+<!-- Catchup Invitations -->
+<div id="catchup-invitation-content"></div>

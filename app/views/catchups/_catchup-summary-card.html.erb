@@ -8,11 +8,25 @@
     </div>
     <div class="catchup-list-spot-name"><%= catchup.spot.name %></div>
   </div>
+  <% if others == true %>
+    <div>Invited by:
+      <h4><%= User.find(catchup.user_id).first_name %> <%= User.find(catchup.user_id).last_name %></h4>
+    </div>
+  <% end %>
   <div class="row justify-content-around">
     <% catchup.guests.each do |guest| %>
       <div>
         <div class="catchup-card-guest">
           <%= cl_image_tag("#{guest.user.avatar}") %>
+          <% if guest.pending? %>
+            <i style="color: orange" class="fas fa-question"></i>
+          <% end %>
+          <% if guest.accepted? %>
+            <i style="color: green"  class="fas fa-check"></i>
+          <% end %>
+          <% if guest.declined? %>
+            <i style="color: red" class="fas fa-times"></i>
+          <% end %>
         </div>
       </div>
     <% end %>

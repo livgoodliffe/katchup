@@ -13,8 +13,6 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
     // const popup = new mapboxgl.Popup({closeButton: true}).setHTML(marker.infoWindow);
 
 
-
-
     const markerStylingElement = document.createElement('div');
     markerStylingElement.className = markerStyle;
 
