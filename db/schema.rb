@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_044911) do
+ActiveRecord::Schema.define(version: 2019_06_11_005507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,16 @@ ActiveRecord::Schema.define(version: 2019_06_06_044911) do
     t.index ["spot_id"], name: "index_menu_items_on_spot_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "dismissed", default: false, null: false
+    t.integer "variety", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "image"
@@ -173,6 +183,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_044911) do
   add_foreign_key "guests", "users"
   add_foreign_key "images", "spots"
   add_foreign_key "menu_items", "spots"
+  add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
   add_foreign_key "wishlists", "spots"

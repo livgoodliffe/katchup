@@ -1,30 +1,32 @@
-/* global App */
+/* global App, Rails */
+const catchupInviteForm = document.getElementById('catchup-invitation-form');
+const catchupInvitationId = document.getElementById('catchup_invitation_id');
+const receivedCatchupInvitationIds = [];
+
+const displayNavbarBadge = () => {
+  document.getElementById('catchup-navbar-badge').classList.remove('hidden');
+};
 
 export default () => {
-  console.log('catchup client side websockets');
-  App.cable.subscriptions.create({ channel: 'CatchupChannel', room: `catchup` }, {
+  App.catchupChannel = App.cable.subscriptions.create({
+    channel: 'CatchupChannel',
+    room: 'catchup',
+  }, {
+
+    connected() {
+      const sendListRequest = () => this.send({ request: 'list' });
+      sendListRequest();
+      setInterval(sendListRequest, 5000);
+    },
+
     received(data) {
-      document.getElementById('catchup-navbar-badge').classList.remove('hidden');
-
-      console.log('received data', data);
-      this.appendLine(data);
-    },
-
-    appendLine(data) {
-      const html = this.createLine(data);
-      // const element = document.querySelector("[data-chat-room='Best Room']");
-      const element = document.getElementById('catchup-chat-messages');
-      if (element) {
-        element.insertAdjacentHTML('beforeend', html);
+      displayNavbarBadge();
+      const { catchup_id: catchupId } = data;
+      if (catchupInviteForm && !receivedCatchupInvitationIds.includes(catchupId)) {
+        receivedCatchupInvitationIds.push(catchupId);
+        catchupInvitationId.value = catchupId;
+        Rails.fire(catchupInviteForm, 'submit');
       }
-    },
-
-    createLine(data) {
-      return `
-      <article class="chat-line">
-        <span class="message">${data.message}</span>
-      </article>
-    `;
     },
   });
 };

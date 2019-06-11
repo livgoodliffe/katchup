@@ -6,4 +6,14 @@ class CatchupChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def receive(data)
+    return unless data["request"] == "list"
+
+    Notification.where(user_id: current_user.id).each do |notification|
+      if notification.dismissed == false && notification.catchup?
+        ActionCable.server.broadcast("catchup#{current_user.id}", JSON.parse(notification.content))
+      end
+    end
+  end
 end

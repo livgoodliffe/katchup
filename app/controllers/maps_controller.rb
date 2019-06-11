@@ -1,4 +1,4 @@
-class ListsController < ApplicationController
+class MapsController < ApplicationController
   before_action :authenticate_user!
 
   def index
