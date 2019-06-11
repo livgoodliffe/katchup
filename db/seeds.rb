@@ -16,6 +16,8 @@ puts "*** Seeding Started ***"
 puts "* Deleting Old Data *"
 puts "Deleting Activity Logs.."
 PublicActivity::Activity.destroy_all
+puts "Deleting Notifications.."
+Notification.destroy_all
 puts "Deleting Guests.."
 Guest.destroy_all
 puts "Deleting Catchups.."
