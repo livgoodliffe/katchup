@@ -1,24 +1,29 @@
-<h1>Friend Requests</h1>
+<div class="container">
 
-<div class="container" style="position: relative;">
+  <div class="d-flex">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left red-arrow"></i>
+    <% end %>
+    <h4>Friend requests</h4>
+  </div>
+
   <div class="card my-2">
-  <%= link_to users_path do %>
-    <i class="fas fa-chevron-circle-left back-btn" style="position: absolute; font-size: 24px"></i>
-  <% end %>
     <div class="card-body">
       <h5>Sent</h5>
       <% @outgoing.each do |request| %>
-          <div class="card-name d-flex justify-content-between">
-            <%= request.friend.full_name %>
-            <%= link_to "Cancel", friend_request_path(request, user_id: request.friend.id), method: :delete %>
-          </div>
+        <div class="card-name d-flex justify-content-between">
+          <%= request.friend.full_name %>
+          <%= link_to "Cancel", friend_request_path(request, user_id: request.friend.id), method: :delete, class: "requests-link" %>
+        </div>
       <% end %>
     </div>
   </div>
+
   <% if @incoming.count > 0 %>
+
     <div class="card my-2">
       <div class="card-body">
-        <h5>From</h5>
+        <h5>Recieved</h5>
         <% @incoming.each do |request| %>
           <div class="card-name d-flex justify-content-between">
             <%= request.user.full_name %>
@@ -27,5 +32,6 @@
         <% end %>
       </div>
     </div>
+
   <% end %>
 </div>
