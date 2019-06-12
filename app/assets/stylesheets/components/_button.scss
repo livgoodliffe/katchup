@@ -1,3 +1,43 @@
+.been-there-button {
+  color: $dark-grey;
+  border-radius: 10px;
+  border: 1px solid $dark-grey;
+  padding: 10px;
+  background-color: white;
+  width: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
+  p {
+    margin: 0;
+  }
+}
+
+.been-there-button-active {
+  color: $been-there;
+  border-radius: 10px;
+  border: 1px solid $been-there;
+  padding: 10px;
+  background-color: white;
+  font-weight: bold;
+  width: 165px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
+  p {
+    margin: 0;
+  }
+  i {
+    padding-left: 5px;
+  }
+}
+
+.been-there-tick {
+  padding-left: 5px;
+}
+
 .requests-link {
   color: $katchup
 }
