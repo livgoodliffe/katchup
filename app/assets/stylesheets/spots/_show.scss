@@ -21,10 +21,6 @@
     color: white;
     font-weight: normal;
   }
-  // p {
-  //   padding: 8px;
-  //   margin-bottom: 4px;
-  // }
 }
 
 .spot-banner-bottom-icons {
@@ -48,65 +44,51 @@
   justify-content: space-between;
 }
 
-// #show-underline {
-//   border-bottom: 2px solid white;
-//   bottom: 0px;
-//   width: 40%;
-//   margin-bottom: 5px;
-//   margin-top: 5px;
+.fa-star {
+  margin: 0 4px;
+  font-size: 16px;
+  color: white;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+// .review-content {
+//   align-items: center;
 // }
 
-  .card {
-    background-color: inherit;
+// .container {
+//   margin-bottom: 64px;
+
+//   .card {
+//     border-radius: 20px;
+
+//     .review-image {
+//       border-radius: 20px 20px 0 0;
+//       height: 240px;
+//       object-fit: cover;
+//     }
+//   }
+
+
+.info {
+  a {
+    color: $dark-grey;
+    text-decoration: none;
   }
+}
 
-  .fa-star {
-    margin: 0 4px;
-    font-size: 16px;
-    color: white;
+.review-name {
+  color: #999
+}
+
+.review-stars {
+  i {
+    color: black;
   }
-
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-
-  .review-content {
-    align-items: center;
-  }
-
-  .container {
-    margin-bottom: 64px;
-
-    .card {
-      border-radius: 20px;
-
-      .review-image {
-        border-radius: 20px 20px 0 0;
-        height: 240px;
-        object-fit: cover;
-      }
-    }
-
-
-  .info {
-    a {
-      color: $dark-grey;
-      text-decoration: none;
-    }
-  }
-
-  .review-name {
-    color: #999
-  }
-
-  .review-stars {
-    i {
-      color: black;
-    }
-  }
-
 }
 
 
