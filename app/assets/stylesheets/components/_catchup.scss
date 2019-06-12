@@ -251,7 +251,7 @@
   margin: 8px;
 }
 
-#catchup-navbar-badge {
+.catchup-badge {
   position: absolute;
   top: -0.25rem;
   right: -0.25rem;
@@ -259,13 +259,17 @@
   color: $katchup;
 }
 
-#catchup-navbar-badge:before {
-  font-family: "Font Awesome 5 Free";
+.catchup-badge.header {
+  right: 1.5rem;
+}
+
+.catchup-badge:before {
+  font-family: "Font Awesome 5 Pro";
   font-weight: 900;
   content: '\f0f3';
   font-style: normal;
 }
 
-#catchup-navbar-badge.hidden {
+.catchup-badge.hidden {
   visibility: hidden;
 }

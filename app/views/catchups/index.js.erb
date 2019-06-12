@@ -1,25 +1,39 @@
-  catchupInviteContainer = document.getElementById('catchup-invitation-content');
-  guestResponseContainer = document.getElementById('guest-response-content');
+catchupInviteContainer = document.getElementById('catchup-invitation-content');
+guestResponseContainer = document.getElementById('guest-response-content');
 
-  function addContent(container, resultHTML) {
-    container.insertAdjacentHTML('beforeend', resultHTML)
+function addContent(container, resultHTML) {
+  container.insertAdjacentHTML('beforeend', resultHTML)
+}
+
+function removeContent(container, badge, id) {
+  const result = document.getElementById(id);
+  result.parentNode.removeChild(result);
+  if (container.children.length === 0) {
+    document.getElementById(badge).classList.add('hidden');
+  }
+}
+
+function updateNavbarBadge() {
+  const myCatchupBadge = document.getElementById('my-catchup-badge');
+  const otherCatchupBadge = document.getElementById('other-catchup-badge');
+  const navbarCatchupBadge = document.getElementById('navbar-catchup-badge');
+
+  if (myCatchupBadge.classList.contains('hidden') && otherCatchupBadge.classList.contains('hidden')) {
+    navbarCatchupBadge.classList.add('hidden');
   }
 
-  function removeContent(container, id) {
-    const result = document.getElementById(id);
-    result.parentNode.removeChild(result);
-    if (container.children.length === 0) {
-      document.getElementById('catchup-navbar-badge').classList.add('hidden');
-    }
-  }
+}
 
-  <% case @action %>
-  <% when "add_invite" %>
-  addContent(catchupInviteContainer, `<%= render("catchup_invitation_card", catchup:@catchup, id: "catchup-invite-card#{@catchup.id}") %>`);
-  <% when "remove_invite" %>
-  removeContent(catchupInviteContainer, '<%= "catchup-invite-card#{@catchup.id}" %>');
-  <% when "add_response" %>
-  addContent(guestResponseContainer, `<%= render("guest_response_card", guest:@guest, id: "guest-response-card#{@guest.id}") %>`);
-  <% when "remove_response" %>
-  removeContent(guestResponseContainer, '<%= "guest-response-card#{@guest.id}" %>');
-  <% end %>
+
+<% case @action %>
+<% when "add_invite" %>
+addContent(catchupInviteContainer, `<%= render("catchup_invitation_card", catchup:@catchup, id: "catchup-invite-card#{@catchup.id}") %>`);
+<% when "remove_invite" %>
+removeContent(catchupInviteContainer, 'other-catchup-badge', '<%= "catchup-invite-card#{@catchup.id}" %>');
+updateNavbarBadge()
+<% when "add_response" %>
+addContent(guestResponseContainer, `<%= render("guest_response_card", guest:@guest, id: "guest-response-card#{@guest.id}") %>`);
+<% when "remove_response" %>
+removeContent(guestResponseContainer, 'my-catchup-badge', '<%= "guest-response-card#{@guest.id}" %>');
+updateNavbarBadge()
+<% end %>

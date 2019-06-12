@@ -12,11 +12,20 @@
   <% else %>
     <% others_active = 'underline-active'  %>
   <% end %>
-
-  <%= link_to "MY KATCHUPS", catchups_path(list_type: 'mine'),
-  :class => "button-underline #{mine_active}", style: 'text-decoration: none' %>
-  <%= link_to "INVITATIONS", catchups_path(list_type: 'others'),
-  :class => "button-underline #{others_active}", style: 'text-decoration: none;' %>
+  <%= link_to catchups_path(list_type: 'mine'),
+  class: "button-underline #{mine_active}",
+  style: 'text-decoration: none; position: relative;',
+  id: 'my-catchup-header' do %>
+  MY KATCHUPS
+  <i id="my-catchup-badge" class="catchup-badge header hidden"></i>
+  <% end %>
+  <%= link_to catchups_path(list_type: 'others'),
+  class: "button-underline #{others_active}",
+  style: 'text-decoration: none; position: relative;',
+  id: 'other-catchup-header' do %>
+  INVITATIONS
+  <i id="other-catchup-badge" class="catchup-badge header hidden"></i>
+  <% end %>
 </div>
 <!-- Render katchup type page -->
 <div class="container">
