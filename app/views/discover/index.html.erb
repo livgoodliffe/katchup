@@ -1,13 +1,15 @@
 
 <div class="discover-container container">
-  <div>
-    <div class="discover-heading container">
-      <h4>Your friends are loving</h4>
+  <% unless @friends_spots.empty? %>
+    <div>
+      <div class="discover-heading container">
+        <h4>Your friends are loving</h4>
+      </div>
+      <div class="discover-horizontal">
+        <%= render 'discover/index/friends_loving_cards' %>
+      </div>
     </div>
-    <div class="discover-horizontal">
-      <%= render 'discover/index/friends_loving_cards' %>
-    </div>
-  </div>
+  <% end %>
 
   <div>
     <div class="discover-heading container">
