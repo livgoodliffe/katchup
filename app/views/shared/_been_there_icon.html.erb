@@ -1,23 +1,17 @@
-<!-- Ive been here -->
 
 <% if user_signed_in? %>
   <div class="d-flex flex-column">
     <% if current_user.favourited_spot?(spot) %>
       <%= link_to favourite_path(current_user.find_favourite(spot)), method: :delete, remote: true do %>
-<!--
-        <div class="active-simple-button">
-          I've been there
-        </div> -->
-      <%= render 'shared/been-there-tick-icon', spot: spot %>
-
+        <div class="been-there-button-active">
+          <p>I've been there<i class="fas fa-check"></i></p>
+        </div>
       <% end %>
     <% else %>
       <%= link_to spot_favourites_path(spot), method: :post, remote: true do %>
-
-        <div class="simple-button">
-          I've been there
+        <div class="been-there-button">
+         <p>I've been there</p>
         </div>
-
       <% end %>
     <% end %>
   </div>
