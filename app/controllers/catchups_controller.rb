@@ -2,46 +2,77 @@ class CatchupsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if params.key?(:catchup_accept)
-      @catchup = Catchup.find(params[:catchup_invitation_id])
-      @action = "remove"
+    if params.key?(:response_dismiss)
+      @guest = Guest.find(params[:guest_response_id])
 
+      # let js partial know that the guest response card is to be removed
+      @action = "remove_response"
+
+      # dismiss the guest invite notification so that it doesn't reappear on the guest's browser
+      dismiss_guest_notification
+
+      # send js response partial
+      respond_to do |format|
+        format.js
+      end
+    elsif params.key?(:guest_response_id)
+      @guest = Guest.find(params[:guest_response_id])
+
+      # let js partial know that the guest response card is to be created
+      @action = "add_response"
+
+      # send js response partial
+      respond_to do |format|
+        format.js
+      end
+    elsif params.key?(:catchup_accept) # accept respoinse to catchup you're invited to
+      @catchup = Catchup.find(params[:catchup_invitation_id])
+
+      # let js partial know that the invite card is to be removed
+      @action = "remove_invite"
+
+      # get the guest instance and set status to accept
       guest = Guest.where(user_id: current_user.id).where(catchup_id: @catchup.id).first
       guest.accepted!
 
-      notifications = Notification.where(user_id: current_user.id)
-      notifications.each do |notification|
-        content = JSON.parse(notification.content)
-        if content["catchup_id"] == @catchup.id
-          notification.update(dismissed: true)
-        end
-      end
+      # dismiss the guest invite notification so that it doesn't reappear on the guest's browser
+      dismiss_catchup_notification
 
+      # create notification for organiser to let them know the user has accepted
+      create_guest_status_notification(@catchup.user_id, guest.id)
+
+      # send js response partial
       respond_to do |format|
         format.js
       end
-    elsif params.key?(:catchup_decline)
+    elsif params.key?(:catchup_decline) # decline response to catchup you're invited to
       @catchup = Catchup.find(params[:catchup_invitation_id])
-      @action = "remove"
 
+      # let js partial know that the invite card is to be removed
+      @action = "remove_invite"
+
+      # get the guest instance and set status to decline
       guest = Guest.where(user_id: current_user.id).where(catchup_id: @catchup.id).first
       guest.declined!
 
-      notifications = Notification.where(user_id: current_user.id)
-      notifications.each do |notification|
-        content = JSON.parse(notification.content)
-        if content["catchup_id"] == @catchup.id
-          notification.update(dismissed: true)
-        end
-      end
+      # dismiss the guest invite notification so that it doesn't reappear on the guest's browser
+      dismiss_catchup_notification
 
+      # create notification for organiser to let them know the user has declined
+      create_guest_status_notification(@catchup.user_id, guest.id)
+
+      # send js response partial
       respond_to do |format|
         format.js
       end
-    elsif params[:catchup_invitation_id].present?
+    elsif params.key?(:catchup_invitation_id) # catchup you're invited to
       @catchup = Catchup.find(params[:catchup_invitation_id])
       @organiser = User.find(@catchup.user_id)
-      @action = "add"
+
+      # let js partial know that the invite card is to created
+      @action = "add_invite"
+
+      # send js response partial
       respond_to do |format|
         format.js
       end
@@ -96,7 +127,7 @@ class CatchupsController < ApplicationController
         guest.user_id = id
         guest.catchup = catchup
         guest.save
-        create_catchup_invite(id, catchup.id)
+        create_catchup_invite_notification(id, catchup.id)
       end
       redirect_to catchups_path
     end
@@ -104,11 +135,39 @@ class CatchupsController < ApplicationController
 
   private
 
-  def create_catchup_invite(id, catchup_id)
+  def create_catchup_invite_notification(id, catchup_id)
     notification = Notification.new
     notification.user_id = id
     notification.catchup!
     notification.content = { catchup_id: catchup_id }.to_json
-    notification.save!
+    notification.save
+  end
+
+  def dismiss_catchup_notification
+    notifications = Notification.where(user_id: current_user.id)
+    notifications.each do |notification|
+      if notification.catchup?
+        content = JSON.parse(notification.content)
+        notification.update(dismissed: true) if content["catchup_id"] == @catchup.id
+      end
+    end
+  end
+
+  def create_guest_status_notification(organiser_id, guest_id)
+    notification = Notification.new
+    notification.user_id = organiser_id
+    notification.guest!
+    notification.content = { guest_id: guest_id }.to_json
+    notification.save
+  end
+
+  def dismiss_guest_notification
+    notifications = Notification.where(user_id: current_user.id)
+    notifications.each do |notification|
+      if notification.guest?
+        content = JSON.parse(notification.content)
+        notification.update(dismissed: true) if content["guest_id"] == @guest.id
+      end
+    end
   end
 end

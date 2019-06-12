@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
   belongs_to :user
 
-  enum variety: %i[friend catchup]
+  enum variety: %i[friend catchup guest]
 end

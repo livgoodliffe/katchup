@@ -11,7 +11,7 @@ class CatchupChannel < ApplicationCable::Channel
     return unless data["request"] == "list"
 
     Notification.where(user_id: current_user.id).each do |notification|
-      if notification.dismissed == false && notification.catchup?
+      if notification.dismissed == false
         ActionCable.server.broadcast("catchup#{current_user.id}", JSON.parse(notification.content))
       end
     end
