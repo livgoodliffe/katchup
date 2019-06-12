@@ -81,6 +81,18 @@
   top: 8px
 }
 
+.add-frined {
+  position: relative;
+}
+
+.friend-notification {
+  position:absolute;
+  font-size: 12px;
+  color: $katchup;
+  left: 46px;
+  top: 6px;
+}
+
 .navbar-brand {
   font-weight: bold;
   align-self: center;

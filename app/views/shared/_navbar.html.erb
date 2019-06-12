@@ -1,7 +1,9 @@
 <nav class="navbar fixed-top">
 
   <!-- Dropdown -->
-  <i id="notification" class="fas fa-circle hidden"></i>
+  <% unless current_user.friend_requests.empty? %>
+    <i id="notification" class="fas fa-circle"></i>
+  <% end %>
   <div id="mySidenav" class="sidenav">
 
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -31,9 +33,14 @@
         <i class="fal fa-map-marker-alt pr-3"></i>My Spots
       <% end %>
 
-      <%= link_to users_path, class: "dropdown-item nav-label" do %>
-        <i class="far fa-user-plus pr-3"></i>Add Friends
-      <% end %>
+      <div class="add-frined">
+        <%= link_to users_path, class: "dropdown-item nav-label" do %>
+          <% unless current_user.friend_requests.empty? %>
+            <i class="fas fa-circle friend-notification"></i>
+          <% end %>
+          <i class="far fa-user-plus pr-3"></i>Add Friends
+        <% end %>
+      </div>
 
       <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
         <i class="fal fa-laugh-beam pr-3"></i>My Profile

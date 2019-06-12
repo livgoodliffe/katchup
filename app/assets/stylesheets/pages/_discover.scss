@@ -6,11 +6,10 @@
   }
 
   .discover-horizontal {
-    height: 30vh;
+    height: 35vh;
     width: 100vw;
     display: flex;
     overflow-x: scroll;
-    overflow: scroll;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     ::-webkit-scrollbar {
@@ -19,8 +18,17 @@
     }
 
     .discovery-card {
-      width: 88vw;
       box-sizing: content-box;
+      position: relative;
+      max-width: 280px;
+    }
+
+    .discover-card-link {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
     }
 
     .cuisine-card {
@@ -47,27 +55,35 @@
 
   .cuisine {
     margin-bottom: 24px;
-    height: 16vh !important;
+    height: 20vh !important;
   }
 
   .discover-horizontal::-webkit-scrollbar { width: 0 !important }
 
   .discover-card-image {
-    width: 80vw;
     height: 22vh;
 
   }
 
   .discover-container {
-    .mt-1 {
-      font-size: 12px;
-      font-weight: bold;
-    }
 
-    p {
-      padding: 0;
-      margin: 0;
-      font-size: 11px
+    .card-content {
+      max-width: 280px;
+      word-break: break-all;
+
+      .mt-1 {
+        font-size: 16px;
+        font-weight: bold;
+        word-break: break-all;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        word-break: break-all;
+        white-space: pre-wrap;
+      }
     }
   }
 }

@@ -15,7 +15,7 @@
 
   &:after {
     content: "\f303";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Pro";
     font-weight: 900;
     position: absolute;
     top: 24px;
@@ -255,8 +255,11 @@
   position: absolute;
   top: -0.25rem;
   right: -0.25rem;
-  font-size: 1.25rem;
-  color: $katchup;
+  font-size: 1rem;
+  // color: $katchup;
+  background: -webkit-gradient(linear, left top, right bottom, from($katchup-pink), to($katchup));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .catchup-badge.header {
@@ -266,7 +269,7 @@
 .catchup-badge:before {
   font-family: "Font Awesome 5 Pro";
   font-weight: 900;
-  content: '\f0f3';
+  content: '\f111';
   font-style: normal;
 }
 
