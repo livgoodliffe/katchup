@@ -51,8 +51,8 @@
 
 .spot-card-icon {
   position: absolute;
-  bottom: 5px;
-  right: 5px
+  bottom: 8px;
+  right: 8px
 }
 
 .discover-card {
@@ -92,12 +92,6 @@
   color: $medium-grey;
 }
 
-.spot-card-icon {
-  position: absolute;
-  bottom: 5px;
-  right: 5px
-}
-
 .guest-response-image-and-name {
   display: flex;
   align-items: center;
@@ -116,3 +110,4 @@
     font-weight: bold;
   }
 }
+

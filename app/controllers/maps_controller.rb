@@ -3,18 +3,20 @@ class MapsController < ApplicationController
 
   def index
     # get correct spots
-    favourite_spots = spots_with_coords_array(current_user.favourite_spots)
-    wishlist_spots = spots_with_coords_array(current_user.wishlist_spots)
     spots = spots_with_coords_array(Spot.all)
+    wishlist_spots = spots_with_coords_array(current_user.wishlist_spots)
+    favourite_spots = spots_with_coords_array(current_user.favourite_spots)
 
-    # prevent spots with both marker types, favourite prevails
+    # prevent spots with both marker types, favourite prevails, then wishlist secondary
     favourite_ids = favourite_spots.map(&:id)
+    wishlist_ids = wishlist_spots.map(&:id)
     wishlist_spots = wishlist_spots.reject { |spot| favourite_ids.include?(spot.id) }
+    spots = spots.reject { |spot| favourite_ids.include?(spot.id) || wishlist_ids.include?(spot.id) }
 
     # create markers
-    @markers_favourite = create_markers(favourite_spots)
-    @markers_wishlist = create_markers(wishlist_spots)
     @markers_spot = create_markers(spots)
+    @markers_wishlist = create_markers(wishlist_spots)
+    @markers_favourite = create_markers(favourite_spots)
 
     @marker_user = create_user_marker if user_has_coords?
     @marker_user_avatar = current_user.avatar.url

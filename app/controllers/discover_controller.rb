@@ -1,9 +1,7 @@
-require 'byebug'
 class DiscoverController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    # byebug
     if params[:search].present?
       search = params[:search]
       @spots = Spot.where('name ILIKE ?', "%#{search}%")
@@ -21,7 +19,9 @@ class DiscoverController < ApplicationController
     current_user.friends.each do |friend|
       friend.reviews.each do |review|
         if review.rating >= 4
-          @friends_spots << review.spot
+          unless @friends_spots.include? review.spot
+            @friends_spots << review.spot
+          end
         end
       end
     end

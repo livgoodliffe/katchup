@@ -1,8 +1,28 @@
+<div class="container mb-2 button-key">
+
+  <div class="d-flex" style="align-items: center;">
+    <p class="map-marker mr-2"></p>
+    <p>All</p>
+  </div>
+
+  <div class="d-flex" style="align-items: center;">
+    <p class="map-marker-wishlist small-marker mr-2"></p>
+    <p>Saved</p>
+  </div>
+
+  <div class="d-flex" style="align-items: center;">
+    <p class="map-marker-favourite small-marker mr-2"></p>
+    <p>Been There</p>
+  </div>
+
+</div>
+
+
 <div class="info-map">
   <div id="map" class="info-map-map my-map-feed"
     data-markers-spots="<%= @markers_spot.to_json %>"
-    data-markers-favourite="<%= @markers_favourite.to_json %>"
     data-markers-wishlist="<%= @markers_wishlist.to_json %>"
+    data-markers-favourite="<%= @markers_favourite.to_json %>"
     data-marker-user="<%= @marker_user.to_json %>"
     data-marker-user-avatar="<%= @marker_user_avatar %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">

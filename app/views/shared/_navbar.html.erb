@@ -11,27 +11,32 @@
     <div>
 
       <%= link_to feeds_path, class: "dropdown-item nav-label" do %>
-        <i class="material-icons pr-1">home</i>Home
+        <i class="far fa-home-alt pr-3"></i>Home
       <% end %>
 
       <%= link_to maps_path, class: "dropdown-item nav-label" do %>
-        <i class="material-icons pr-1">map</i>Map
+        <div class="d-flex">
+          <div>
+            <i class="far fa-map-marked-alt pr-3"></i>
+          </div>
+          <div>Map</div>
+        </div>
       <% end %>
 
       <%= link_to discover_index_path, class: "dropdown-item nav-label" do %>
-        <i class="material-icons pr-1">whatshot</i> What's Hot
+        <i class="far fa-fire-alt pr-3"></i>What's Hot
       <% end %>
 
       <%= link_to lists_path, class: "dropdown-item nav-label" do %>
-        <i class="material-icons pr-1">room</i> My Spots
+        <i class="fal fa-map-marker-alt pr-3"></i>My Spots
       <% end %>
 
       <%= link_to users_path, class: "dropdown-item nav-label" do %>
-        <i class="material-icons pr-1">group_add</i> Add Friends
+        <i class="far fa-user-plus pr-3"></i>Add Friends
       <% end %>
 
       <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
-        <i class="material-icons pr-1">face</i> My Profile
+        <i class="fal fa-laugh-beam pr-3"></i>My Profile
       <% end %>
     </div>
 
