@@ -1,64 +1,64 @@
-.user-wrapper {
-  padding-top: 64px;
-  text-align: center;
+// .user-wrapper {
+//   padding-top: 64px;
+//   text-align: center;
 
-  h4 {
-    color: #999;
-    font-size: 32px;
-  }
+//   h4 {
+//     color: #999;
+//     font-size: 32px;
+//   }
 
-  .user-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: $katchup;
-    text-align: center;
-  }
+//   .user-avatar {
+//     width: 64px;
+//     height: 64px;
+//     border-radius: 50%;
+//     background-color: $katchup;
+//     text-align: center;
+//   }
 
-  .to_spot {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-  }
+//   .to_spot {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//   }
 
-  .card {
-    border-radius: 8px;
-    position: relative;
-  }
+//   .card {
+//     border-radius: 8px;
+//     position: relative;
+//   }
 
-  .place {
-    border-radius: 0 0 8px 8px;
-    border: 4px;
-    border-color: #333;
-  }
+//   .place {
+//     border-radius: 0 0 8px 8px;
+//     border: 4px;
+//     border-color: #333;
+//   }
 
-  .card-link {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    &:hover {
-      box-shadow: 4px 4px 8px #ddd;
-    }
-  }
+//   .card-link {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//     &:hover {
+//       box-shadow: 4px 4px 8px #ddd;
+//     }
+//   }
 
-  .review-tag {
-    background-color: $katchup;
-    color: white;
-    font-weight: bold;
-  }
+//   .review-tag {
+//     background-color: $katchup;
+//     color: white;
+//     font-weight: bold;
+//   }
 
-  .container {
-    .card {
-      border-radius: 20px;
-      .review-image {
-        border-radius: 20px 20px 0 0;
-        height: 240px;
-        object-fit: cover;
-      }
-    }
-  }
-}
+//   .container {
+//     .card {
+//       border-radius: 20px;
+//       .review-image {
+//         border-radius: 20px 20px 0 0;
+//         height: 240px;
+//         object-fit: cover;
+//       }
+//     }
+//   }
+// }

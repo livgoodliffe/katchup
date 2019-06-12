@@ -255,8 +255,11 @@
   position: absolute;
   top: -0.25rem;
   right: -0.25rem;
-  font-size: 1.25rem;
-  color: $katchup;
+  font-size: 1rem;
+  // color: $katchup;
+  background: -webkit-gradient(linear, left top, right bottom, from($katchup-pink), to($katchup));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #catchup-navbar-badge:before {
