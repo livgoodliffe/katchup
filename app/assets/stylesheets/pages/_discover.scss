@@ -25,10 +25,13 @@
 
     .cuisine-card {
       flex: 0 0 auto;
-      height: 104px;
-      width: 104px;
+      height: 128px;
+      width: 128px;
       text-align: center;
       background-color: $katchup-half;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       display: inline-block;
       box-sizing: content-box !important;
       margin-right: 4px;
