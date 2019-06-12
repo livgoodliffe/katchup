@@ -7,20 +7,19 @@
   display: flex;
   background-color: white;
   width: 100vw;
-  .map-restaurant-image img {
-    width: 70px;
-    height: 70px;
-    border-radius: 5px;
-    object-fit: cover;
-    margin-right: 20px;
-  }
-  .map-restaurant-name {
-    margin: 0;
-  }
-  .map-restaurant-location {
-    font-size: 14px;
-  }
+  padding: 10px;
 }
+
+.map-popup-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+
+
 
 #map {
   position: absolute;
@@ -30,23 +29,36 @@
   left: 0;
 }
 
-.map-marker:before {
-  cursor: pointer;
-  font-family: "Font Awesome 5 Free";
-  content: '\f3c5';
-  font-size: 30px;
-  color: $katchup;
-  text-shadow: 0 0 3px white;
-  font-weight: 900;
-}
+// Spot markers on map
 
 .map-marker-wishlist:before {
   cursor: pointer;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Pro";
   content: '\f02e';
   font-size: 30px;
   color: $katchup;
   text-shadow: 0 0 5px white;
+  font-weight: 900;
+}
+
+.map-marker-favourite:before {
+  cursor: pointer;
+  font-family: "Font Awesome 5 Pro";
+  content: '\f606';
+  font-size: 30px;
+  color: $been-there;
+  text-shadow: 0 0 5px white;
+  font-weight: 900;
+}
+
+.map-marker:before {
+  cursor: pointer;
+  font-family: "Font Awesome 5 Pro";
+  content: '\f111';
+  font-size: 15px;
+  color: $dark-grey;
+  text-shadow: 0 0 3px white;
+  font-weight: 900;
 }
 
 .map-marker-user {

@@ -1,16 +1,14 @@
-
 <div class="map-popup">
-  <%= link_to spot_path(spot) do %>
-    <div class="map-restaurant-image">
+
+    <div class="map-popup-image">
       <%= image_tag("#{spot.images.first.image}")%>
     </div>
-  <% end %>
 
-    <div class="map-restaurant-details">
-      <div class="map-restaurant-name">
-        <h6><%= spot.name %></h6>
+    <div class="mr-3">
+      <div>
+        <h5><%= spot.name %></h5>
       </div>
-      <div class="map-restaurant-location">
+      <div>
         <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
       </div>
     </div>
