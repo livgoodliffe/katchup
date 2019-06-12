@@ -1,5 +1,3 @@
-import 'bootstrap';
-
 import makeMap from '../plugins/init_mapbox';
 import searchListener from '../search';
 import geoLocation from '../geolocation';

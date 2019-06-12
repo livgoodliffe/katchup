@@ -4,10 +4,11 @@
   <div class="d-flex flex-column">
     <% if current_user.favourited_spot?(spot) %>
       <%= link_to favourite_path(current_user.find_favourite(spot)), method: :delete, remote: true do %>
-
+<!--
         <div class="active-simple-button">
           I've been there
-        </div>
+        </div> -->
+      <%= render 'shared/been-there-tick-icon', spot: spot %>
 
       <% end %>
     <% else %>

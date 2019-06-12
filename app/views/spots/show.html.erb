@@ -1,5 +1,4 @@
 <div class="spot-show-wrapper">
-
   <%= render 'spots/show/spot-show-banner' %>
 
   <!-- Been there -->
@@ -10,16 +9,23 @@
     </div>
   </div>
 
-  <!-- Menu -->
+  <!-- Spot details -->
 
-  <div class="simple-button m-3">
+  <div class="info d-flex justify-content-around px-3 m-3">
     <%= link_to "Menu", "#", data: { toggle: "modal", target: "#menuModal" } %>
     <%= render 'spots/show/spot-show-menu-modal' %>
+    <%= link_to "Information", "#", data: { toggle: "modal", target: "#infoModal" } %>
+    <%= render 'spots/show/spot-show-modal' %>
+    <%= link_to "Photos", "#", data: { toggle: "modal", target: "#photoModal" } %>
+    <%= render 'spots/show/spot-show-photo-modal' %>
   </div>
-
-
+  <% unless @spot.latitude.nil? %>
+    <div>
+      <%= render 'spots/show/spot-show-map' %>
+    </div>
+  <% end %>
   <div class="container">
-    <!-- Number of reviews
+    <!-- Number of reviews -->
     <div id="num-review">
       <%= render('spots/show/spot-show-num-reviews', total: @spot.reviews.count) %>
     </div>
@@ -29,5 +35,5 @@
     <div id="review-form">
       <%= render 'spots/show/spots-show-review-form', review: @review %>
     </div>
-  </div> -->
+  </div>
 </div>
