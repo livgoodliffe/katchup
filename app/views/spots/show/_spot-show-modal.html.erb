@@ -47,7 +47,11 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                <p><%= @spot.hours.html_safe %></p>
+                <% if @spot.hours.nil? %>
+                  <p>Opening Hours not avaliable</p>
+                <% else %>
+                  <p><%= @spot.hours.html_safe %></p>
+                <% end %>
               </div>
             </div>
           </div>
