@@ -1,16 +1,14 @@
-.discover-horizontal {
-  height: 30vh;
-  width: 100vw;
-  display: flex;
-  overflow-x: auto;
-}
-
 .discover-heading {
   padding-top: 10px;
 }
 
 .discover-horizontal {
+  height: 30vh;
+  width: 100vw;
+  display: flex;
+  overflow-x: auto;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
