@@ -1,5 +1,5 @@
 import { animateCSS, alwaysVisible, willHideAfterwards } from '../animate_css';
-import pageState from '../page_state';
+// import pageState from '../page_state';
 
 export default () => {
   const feed = document.querySelector('#feed-page');
@@ -32,6 +32,7 @@ export default () => {
         feed.classList.add('hidden');
         bringInSearch();
         bringInArrow();
+        // back.classList.remove('hidden');
         // state.setState('search');
     });
   };
@@ -42,6 +43,7 @@ export default () => {
         feed.classList.remove('hidden');
         takeOutSearch();
         takeOutArrow();
+        // back.classList.add('hidden');
         // state.setState('feed');
     });
   }
