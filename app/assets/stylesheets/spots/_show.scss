@@ -1,55 +1,60 @@
-.spot-show-wrapper {
-  p {
-    font-size: 12px;
+.spot-banner-top-icons {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  left: 15px;
+  right: 15px;
+}
+
+.show-banner-name {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    color: white;
+    font-weight: normal;
   }
+  // p {
+  //   padding: 8px;
+  //   margin-bottom: 4px;
+  // }
+}
 
-  #map {
-    position: relative;
-  }
+.spot-banner-bottom-icons {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  left: 60px;
+  right: 60px;
+}
 
-  .show-banner {
-    border-radius: 0 0 32px 32px;
-    height: 30vh;
-    padding-top: 4rem;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    position: relative;
+.show-banner {
+  border-radius: 0 0 32px 32px;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: inherit;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
 
-    .back-btn {
-      position: absolute;
-      left: 32px;
-      top: 32px;
-      color: white;
-      font-size: 24px;
-    }
-
-    .show-banner-content {
-      margin: auto;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-      position: relative;
-
-      h1 {
-        margin-bottom: 0;
-        padding-bottom: 4px;
-        color: white;
-      }
-
-      p {
-        padding: 8px;
-        margin-bottom: 4px;
-      }
-
-    }
-  }
-
-  #show-underline {
-    border-bottom: 4px solid white;
-    bottom: 0px;
-    width: 40%;
-  }
+// #show-underline {
+//   border-bottom: 2px solid white;
+//   bottom: 0px;
+//   width: 40%;
+//   margin-bottom: 5px;
+//   margin-top: 5px;
+// }
 
   .card {
     background-color: inherit;
@@ -83,7 +88,7 @@
         object-fit: cover;
       }
     }
-  }
+
 
   .info {
     a {

@@ -19,7 +19,7 @@
     <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: "Search through my saved spots") %>
   </div>
 
-  <div id="search-results" class="discover-search-results">
+  <div id="search-results" class="discover-search-results flex-wrap">
     <% @wishlist_spots.each do |spot| %>
       <%= render "spots/spot_card", spot: spot %>
     <% end %>

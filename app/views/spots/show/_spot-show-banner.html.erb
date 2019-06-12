@@ -1,20 +1,67 @@
 <div class="card border-0">
   <div class="show-banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= @spot.images.first.image %>);">
-    <%= link_to :back do %>
-      <i class="fas fa-chevron-circle-left back-btn"></i>
-    <% end %>
-    <div class="show-banner-content d-flex flex-column align-items-center">
 
-      <h1 ><%= @spot.name %></h1>
-      <div id="show-underline"></div>
+    <div style="margin: auto;">
 
-      <div id="w<%= @spot.id %>" >
+    <!-- Top icons -->
+
+    <div class="spot-banner-top-icons">
+      <div class="spot-banner-arrow">
+        <%= link_to :back do %>
+          <i class="fas fa-arrow-left white-arrow"></i>
+        <% end %>
+      </div>
+
+      <div id="w<%= @spot.id %>" class= "spot-banner-wishlist" >
         <%= render 'shared/bookmark_icon', spot: @spot %>
       </div>
+    </div>
+
+    <!-- Spot name -->
+
+    <div class="show-banner-name">
+
+      <div>
+        <h1 ><%= @spot.name %></h1>
+      </div>
+
+      <div id="show-underline"></div>
+
+      <!-- Stars -->
 
       <div id="average-rating">
         <%= render 'spots/show/spot-show-average-rating', average: @spot.average_rating %>
       </div>
+
+    </div>
+
+      <!-- Bottom icons -->
+
+      <div class="spot-banner-bottom-icons">
+        <div>
+          <%= link_to "#", data: { toggle: "modal", target: "#mapModal" } do %>
+            <i class="material-icons white-icon">map</i>
+          <% end %>
+          <%= render 'spots/show/spot-show-map-modal' %>
+        </div>
+
+        <div>
+          <%= link_to "#", data: { toggle: "modal", target: "#photoModal" } do %>
+            <i class="material-icons white-icon">image</i>
+          <% end %>
+          <%= render 'spots/show/spot-show-photo-modal' %>
+        </div>
+
+        <div>
+          <%= link_to "#", data: { toggle: "modal", target: "#infoModal" } do %>
+            <i class="material-icons white-icon">info</i>
+          <% end %>
+          <%= render 'spots/show/spot-show-modal' %>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
+
