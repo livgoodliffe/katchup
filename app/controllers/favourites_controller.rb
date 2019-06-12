@@ -10,6 +10,7 @@ class FavouritesController < ApplicationController
   end
 
   def create
+    # byebug
     @spot = Spot.find(params[:spot_id])
     current_user.favourites.create(spot: @spot)
 
