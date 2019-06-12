@@ -16,7 +16,7 @@ class FriendRequestsController < ApplicationController
         format.html { redirect_to root_path }
         format.js
       end
-      ActionCable.server.broadcast("friend_#{userID}", message: "accepted friend request")
+      ActionCable.server.broadcast("friend#{friend.id}", message: "accepted friend request")
     end
   end
 
