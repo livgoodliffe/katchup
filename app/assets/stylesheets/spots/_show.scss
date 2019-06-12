@@ -58,23 +58,15 @@
   border-radius: 50%;
 }
 
-// .review-content {
-//   align-items: center;
-// }
+.review-content {
+  align-items: center;
+}
 
-// .container {
-//   margin-bottom: 64px;
-
-//   .card {
-//     border-radius: 20px;
-
-//     .review-image {
-//       border-radius: 20px 20px 0 0;
-//       height: 240px;
-//       object-fit: cover;
-//     }
-//   }
-
+.review-image {
+  border-radius: 20px 20px 0 0;
+  height: 240px;
+  object-fit: cover;
+}
 
 .info {
   a {
