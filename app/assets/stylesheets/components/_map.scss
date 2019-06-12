@@ -44,6 +44,14 @@
   text-shadow: 0 0 5px white;
   font-weight: 900;
 }
+.map-marker-wishlist.map-marker-active:before {
+  font-size: 40px;
+  margin-bottom: -2px;
+}
+
+.map-marker-wishlist {
+  z-index: 2;
+}
 
 .map-marker-favourite:before {
   cursor: pointer;
@@ -55,6 +63,26 @@
   font-weight: 900;
 }
 
+.map-marker-favourite:after {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  content: '';
+  z-index: -1;
+}
+.map-marker-favourite.map-marker-active:before {
+  font-size: 45px;
+  margin-bottom: -2px;
+}
+
+.map-marker-favourite {
+  z-index: 3;
+}
+
 .map-marker:before {
   cursor: pointer;
   font-family: "Font Awesome 5 Pro";
@@ -63,6 +91,11 @@
   color: $dark-grey;
   text-shadow: 0 0 3px white;
   font-weight: 900;
+}
+
+.map-marker.map-marker-active:before {
+  font-size: 25px;
+  margin-bottom: -2px;
 }
 
 .map-marker-user {

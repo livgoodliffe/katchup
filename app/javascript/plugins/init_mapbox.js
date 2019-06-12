@@ -2,6 +2,13 @@ import mapboxgl from 'mapbox-gl';
 
 const infoWindowEl = document.getElementById('info-map-window');
 
+const clearActiveMarkers = () => {
+  const activeMarkers = document.querySelectorAll('.map-marker-active');
+  activeMarkers.forEach((marker) => {
+    marker.classList.remove('map-marker-active');
+  });
+}
+
 const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
   const markerJson = mapElement.dataset[markerType];
 
@@ -22,9 +29,13 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
       markerStylingElement.style.backgroundImage = `url('${userAvatarUrl}')`;
     }
 
-    markerStylingElement.addEventListener('touchstart', () => {
+    markerStylingElement.addEventListener('click', () => {
+      clearActiveMarkers();
+
       infoWindowEl.innerHTML = marker.infoWindow;
       infoWindowEl.classList.remove('info-map-window-closed');
+
+      markerStylingElement.classList.add('map-marker-active');
     });
 
     new mapboxgl.Marker(markerStylingElement)
@@ -79,6 +90,7 @@ export default () => {
       // If a user clicks on the map, close the info window.
       if (e.originalEvent.target.classList.contains('mapboxgl-canvas')) {
         infoWindowEl.classList.add('info-map-window-closed');
+        clearActiveMarkers();
       }
     })
   }
