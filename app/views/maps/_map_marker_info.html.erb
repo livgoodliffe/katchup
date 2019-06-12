@@ -1,23 +1,27 @@
 <div class="map-popup">
 
-    <div class="map-popup-image">
-      <%= image_tag("#{spot.images.first.image}")%>
-    </div>
+<%= link_to spot_path(spot) do %>
+  <div class="map-popup-image">
+    <%= image_tag("#{spot.images.first.image}")%>
+  </div>
+<% end %>
 
-    <div class="mr-3">
-      <div>
-        <h5><%= spot.name %></h5>
-      </div>
-      <div>
-        <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
-      </div>
+<%= link_to spot_path(spot) do %>
+  <div class="mr-3">
+    <div>
+      <h5><%= spot.name %></h5>
     </div>
+    <div>
+      <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
+    </div>
+  </div>
+<% end %>
 
-    <!-- Icon -->
-    <div class="spot-card-icon">
-      <div id="w<%= spot.id %>" >
-        <%= render 'shared/bookmark_icon', spot: spot %>
-      </div>
+  <!-- Icon -->
+  <div class="spot-card-icon">
+    <div id="w<%= spot.id %>" >
+      <%= render 'shared/bookmark_icon', spot: spot %>
     </div>
+  </div>
 
 </div>
