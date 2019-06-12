@@ -41,3 +41,4 @@ gem 'carrierwave'
 gem 'simple_calendar'
 # for feed tracking
 gem 'public_activity'
+gem 'highline' # for terminal prompt
