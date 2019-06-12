@@ -46,9 +46,16 @@
   background-color: $dark-grey;
 }
 
+.feed-image {
+  object-fit: cover;
+  width: 100%;
+}
+
 .dark-pic {
     filter: opacity(30%);
 }
+
+
 
 .feed-card-icon {
   color: $katchup;

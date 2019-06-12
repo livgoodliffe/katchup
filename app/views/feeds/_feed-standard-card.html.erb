@@ -30,9 +30,9 @@
     <!-- Code the type of post -->
 
   <% if activity.trackable_type == "Review" %>
-    <%= cl_image_tag(activity.trackable.spot.images.first.image, class: 'dark-pic') %>
+    <%= cl_image_tag(activity.trackable.spot.images.first.image, class: 'dark-pic feed-image') %>
     <% else %>
-    <%= cl_image_tag(activity.trackable.spot.images.first.image) %>
+    <%= cl_image_tag(activity.trackable.spot.images.first.image, class: 'feed-image') %>
   <% end %>
 
     <!-- If its a review -->
