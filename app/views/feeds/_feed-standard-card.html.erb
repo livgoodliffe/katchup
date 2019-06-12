@@ -4,7 +4,9 @@
 <!-- Who and When -->
 
   <div class="feed-card-body">
-    <%= cl_image_tag(activity.owner.avatar.url, class: "feed-card-avatar") %>
+    <%#= cl_image_tag(activity.owner.avatar.url, class: "feed-card-avatar") %>
+    <%= cl_image_tag(user_avatar(activity.owner), class: "feed-card-avatar") %>
+
     <div class="feed-card-text">
       <div class="feed-card-who">
         <p><strong><%= activity.owner.first_name if activity.owner %></strong>
