@@ -55,12 +55,12 @@ export default () => {
       const [userMarker] = JSON.parse(mapElement.dataset.markerUser);
       userCoordsAvailable = true;
       mapOptions.center = [userMarker.lng, userMarker.lat];
-      mapOptions.zoom = 7;
     }
 
     const map = new mapboxgl.Map(mapOptions);
     window.mapboxMap = map;
     window.mapboxMap.userCoordsAvailable = userCoordsAvailable;
+    window.mapboxMap.zoomTo(12);
     let bounds = null;
     if (!userCoordsAvailable) bounds = new mapboxgl.LngLatBounds();
 
