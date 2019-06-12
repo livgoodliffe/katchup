@@ -215,11 +215,23 @@
 // Catchup Summary Card
 
 .catchup-card {
+  position: relative;
   background: white;
-  margin: 8px;
-  width: 90%;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .1);
+}
+
+.catchup-card-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.catchup-card-text {
+  color: white;
+
 }
 
 .catchup-card-when {
