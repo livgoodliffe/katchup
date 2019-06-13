@@ -141,6 +141,10 @@
   .today {
     border: 1px solid $katchup;
   }
+
+  td {
+    border-top: 0;
+  }
 }
 
 
