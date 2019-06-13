@@ -19,7 +19,8 @@
     </div>
     <!-- Listing reviews -->
     <%= render 'spots/show/spot-show-reviews-list' %>
-    <%= render 'spots/show/spots-show-review-form', review: @review %>
-
+    <div id="review-form">
+      <%= render 'spots/show/spots-show-review-form', review: @review %>
+    </div>
   </div>
 </div>
