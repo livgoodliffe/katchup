@@ -129,6 +129,7 @@ class CatchupsController < ApplicationController
         guest.save
         create_catchup_invite_notification(id, catchup.id)
       end
+      flash[:notice] = "Katchup Created!"
       redirect_to catchups_path
     end
   end
