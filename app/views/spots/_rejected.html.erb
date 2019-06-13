@@ -1,0 +1,37 @@
+  <!-- Spot details -->
+
+  <div class="info d-flex justify-content-around px-3 m-3">
+    <%= link_to "Menu", "#", data: { toggle: "modal", target: "#menuModal" } %>
+    <%= render 'spots/show/spot-show-menu-modal' %>
+    <%= link_to "Information", "#", data: { toggle: "modal", target: "#infoModal" } %>
+    <%= render 'spots/show/spot-show-modal' %>
+    <%= link_to "Photos", "#", data: { toggle: "modal", target: "#photoModal" } %>
+    <%= render 'spots/show/spot-show-photo-modal' %>
+  </div>
+  <% unless @spot.latitude.nil? %>
+    <div>
+      <%= render 'spots/show/spot-show-map' %>
+    </div>
+  <% end %>
+
+<!-- Review form -->
+
+<div id="review-form">
+  <%= render 'spots/show/spots-show-review-form', review: @review %>
+</div>
+
+<!-- been there tick icon -->
+
+<% if user_signed_in? %>
+  <div class="d-flex flex-column">
+    <% if current_user.favourited_spot?(spot) %>
+      <%= link_to favourite_path(current_user.find_favourite(spot)), method: :delete, remote: true do %>
+        <i class="fas fa-check action-icon-active"></i>
+      <% end %>
+    <% else %>
+      <%= link_to spot_favourites_path(spot), method: :post, remote: true do %>
+        <i class="fas fa-check action-icon"></i>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

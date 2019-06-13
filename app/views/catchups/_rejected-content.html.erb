@@ -1,0 +1,32 @@
+
+<h5>You're quite the Katch! Katchups you have been invited to:</h5>
+
+  <!-- Catchup Invitation Form (to get Catchup Invitation Cards)  -->
+  <%= form_tag(catchups_path, method: :get, remote: true, id: 'catchup-invitation-form') do %>
+    <%= hidden_field_tag :catchup_invitation_id %>
+  <% end %>
+  <!-- Catchup Invitations -->
+  <div id="catchup-invitation-content"></div>
+
+<h5>Katchups you have organised:</h5>
+  <!-- Guest Response Form (to get Guest Response Notice)  -->
+  <%= form_tag(catchups_path, method: :get, remote: true, id: 'guest-response-form') do %>
+    <%= hidden_field_tag :guest_response_id %>
+  <% end %>
+  <!-- Guest Responses -->
+  <div id="guest-response-content"></div>
+
+  <% if @catchups.present? %>
+    <% @catchups.each do |catchup| %>
+      <%= render "catchup_summary_card", catchup: catchup, others: false%>
+    <% end %>
+  <% end %>
+
+<h5>Katchups you have accepted:</h5>
+
+  <% if @catchups_accepted_invitations.present? %>
+    <% @catchups_accepted_invitations.each do |catchup| %>
+      <%= render "catchup_summary_card", catchup: catchup, others: true %>
+    <% end %>
+  <% end %>
+</div>

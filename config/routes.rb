@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     member do
       post :follow
       post :unfollow
+      get :wishlists, only: [:index]
+      get :favourites, only: [:index]
     end
   end
 

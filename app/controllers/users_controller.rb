@@ -40,6 +40,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def wishlists
+    @user = User.find(params[:id])
+    @wishlist_spots = @user.wishlist_spots.sort_by(&:name)
+  end
+
+  def favourites
+    @user = User.find(params[:id])
+    @favourite_spots = @user.favourite_spots.sort_by(&:name)
+  end
+
   private
 
   def set_user

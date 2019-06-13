@@ -130,6 +130,12 @@ const calendar = (selectionStatus) => {
     link.parentNode.removeChild(link);
   });
 
+  // remove table striping
+  const stripedTables = document.querySelectorAll('.table-striped');
+  stripedTables.forEach((table) => {
+    table.classList.remove('table-striped');
+  });
+
   let selectedDayElement = null;
 
   const hiddenDateYearInput = document.getElementById('date_year');

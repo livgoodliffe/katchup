@@ -1,11 +1,12 @@
-<div id="catchup-page" class="container">
+<div id="catchup-page" class="">
   <div class="d-flex justify-content-center">
     <%= link_to new_catchup_path do %>
       <div class="red-button">Organise a Katchup</div>
     <% end %>
   </div>
-</div>
-<!-- Which type of catchup? Mine or others -->
+
+  <!-- Which type of catchup? Mine or others -->
+
 <div class="d-flex">
   <% if params[:list_type] == 'mine' %>
     <% mine_active = 'underline-active'  %>
@@ -27,6 +28,8 @@
   <i id="other-catchup-badge" class="catchup-badge header hidden"></i>
   <% end %>
 </div>
+
+
 <!-- Render katchup type page -->
 <div class="container">
   <br>
