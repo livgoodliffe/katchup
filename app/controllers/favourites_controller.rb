@@ -12,6 +12,8 @@ class FavouritesController < ApplicationController
   def create
     # byebug
     @spot = Spot.find(params[:spot_id])
+    # remove from wishlist if you are adding it to your 'ive been there' list
+    current_user.wishlists.destroy(in_wishlist?(@spot)) if in_wishlist?(@spot)
     current_user.favourites.create(spot: @spot)
 
     respond_to do |format|
@@ -43,5 +45,9 @@ class FavouritesController < ApplicationController
 
   def favourite_params
     params.require(:favourite).permit(:spot_id)
+  end
+
+  def in_wishlist?(spot)
+    current_user.wishlists.find_by spot_id: spot[:id]
   end
 end
