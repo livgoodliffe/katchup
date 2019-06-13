@@ -49,7 +49,7 @@
             <%= render "choose_friends" %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+            <button type="button" class="small-red-button" data-dismiss="modal">Back to Katchup</button>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
             <%= render "choose_spot" %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+            <button type="button" class="small-red-button" data-dismiss="modal">Back to Katchup</button>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
             <%= render "choose_date" %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+            <button type="button" class="small-red-button" data-dismiss="modal">Back to Katchup</button>
           </div>
         </div>
       </div>
@@ -94,23 +94,24 @@
             <%= render "choose_time" %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to Katchup</button>
+            <button type="button" class="small-red-button" data-dismiss="modal">Back to Katchup</button>
           </div>
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="createCatchup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create Catchup</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create Katchup</h5>
           </div>
           <div class="modal-body">
             <%= render "done" %>
           </div>
           <div class="modal-footer">
-            <%= button_tag "Create Catchup",
-                   class: 'btn btn-primary',
+            <%= button_tag "Create Katchup",
+                   class: 'small-red-button',
                    disabled: 'true',
                    id: 'catchup-submit-button'%>
           </div>
