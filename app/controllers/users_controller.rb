@@ -50,6 +50,10 @@ class UsersController < ApplicationController
     @favourite_spots = @user.favourite_spots.sort_by(&:name)
   end
 
+  def friendships
+    @friends = Friendship.where(user_id: params[:id])
+  end
+
   private
 
   def set_user

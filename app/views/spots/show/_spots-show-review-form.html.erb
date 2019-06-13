@@ -11,7 +11,9 @@
         <section class="spot-section">
           <% if user_signed_in? %>
             <h5 class="border-bottom">Add review</h5>
-            <%= render 'reviews/form', review: review %>
+            <div id="new_review">
+              <%= render 'reviews/form', review: review %>
+            </div>
           <% end %>
         </section>
       </div>
