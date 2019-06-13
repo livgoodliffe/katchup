@@ -28,7 +28,7 @@ class FriendRequestsController < ApplicationController
   def destroy
     @friend_request.destroy
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to users_path }
       format.js { render action: :create }
     end
   end

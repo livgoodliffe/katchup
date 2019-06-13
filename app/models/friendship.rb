@@ -17,7 +17,7 @@ class Friendship < ApplicationRecord
   end
 
   def has_inverse_relationship?
-   self.class.exists?(inverse_friendship_options)
+    self.class.exists?(inverse_friendship_options)
   end
 
   def inverse_friendship_options
