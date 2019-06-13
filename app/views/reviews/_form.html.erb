@@ -11,6 +11,6 @@
     <%= f.input :notes, label: false, placeholder: 'Select your rating above and enter your comments here' %>
     <%= f.input :image, :label_html => { :class => "hide-review-label" } %>
     <%= f.input :image_cache, as: :hidden %>
-    <%= f.button :submit, class: "small-red-button" %>
+    <%= f.button :submit, data: { toggle: "modal", target: "#reviewModal" }, class: "small-red-button" %>
   <% end %>
 </div>
