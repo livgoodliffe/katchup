@@ -4,7 +4,8 @@
   <title>Katchup</title>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
-  <link rel="icon" href="https://res.cloudinary.com/livgood/image/upload/v1560417727/KATCHUP_FAVICON_scokyu.svg" type="image/x-icon" />
+  <%= favicon_link_tag asset_path('katchup_favicon.png') %>
+
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
   <%#= stylesheet_pack_tag 'application', media: 'all' %>
