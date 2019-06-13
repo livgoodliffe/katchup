@@ -255,6 +255,7 @@
 .accepted-text {
   color: $been-there;
 }
+
 .declined-text {
   color: $katchup;
 }
@@ -264,6 +265,14 @@
     width: 100%;
     height: 100px;
   }
+
   position: relative;
   background-color: $dark-grey;
+}
+
+#my-catchup-header,
+#other-catchup-header {
+  &:hover {
+    color: $katchup;
+  }
 }
