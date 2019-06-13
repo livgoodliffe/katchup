@@ -1,6 +1,6 @@
 <% catchup = Catchup.find(guest.catchup_id) %>
 
-<div class="card" id="<%= id %>">
+<div class="border-bottom" id="<%= id %>">
 
   <!-- Guest response heading: -->
 
@@ -45,7 +45,7 @@
         <%= form_tag(catchups_path, method: :get, remote: true) do %>
           <%= hidden_field_tag :guest_response_id, guest.id %>
           <%= hidden_field_tag :response_dismiss %>
-          <%= button_tag "Dismiss" %>
+          <%= button_tag "Dismiss", class: "btn decline-btn" %>
         <% end %>
       </div>
     </div>

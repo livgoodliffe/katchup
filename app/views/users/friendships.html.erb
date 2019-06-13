@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex ml-4">
   <%= link_to users_path do %>
     <i class="fas fa-arrow-left red-arrow"></i>
   <% end %>
@@ -6,12 +6,10 @@
 </div>
 
 <% @friends.each do |friend| %>
-  <div class="card my-2 pt-0 shadow-sm">
-    <div class="card-body py-0 d-flex justify-content-between align-items-center">
-      <%= cl_image_tag(friend.friend.avatar, class: "avatar m-3") %>
-      <%= friend.friend.full_name %>
-    </div>
-    <%= link_to user_path(friend.friend), class: "card-link" do %>
+  <div class="py-0 d-flex align-items-center border-bottom my-friend-list">
+    <%= cl_image_tag(friend.friend.avatar, class: "avatar m-3") %>
+    <%= friend.friend.full_name %>
+    <%= link_to user_path(friend.friend), class: "card-link my-friends" do %>
     <% end %>
   </div>
 <% end %>

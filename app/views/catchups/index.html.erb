@@ -33,12 +33,10 @@
     <% end %>
   </div>
   <!-- Render katchup type page -->
-  <div class="container">
-    <br>
-    <% if params[:list_type] == 'others' %>
-      <%= render 'catchups_others' %>
-    <% else %>
-      <%= render 'catchups_mine' %>
-    <% end %>
-  </div>
+  <br>
+  <% if params[:list_type] == 'others' %>
+    <%= render 'catchups_others' %>
+  <% else %>
+    <%= render 'catchups_mine' %>
+  <% end %>
 </div>
