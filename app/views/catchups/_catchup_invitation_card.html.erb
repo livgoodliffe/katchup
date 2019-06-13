@@ -1,28 +1,54 @@
-<div class="card catchup-card" id="<%= id %>">
-  <div class="text-center">
-    <div class="catchup-card-when">
-      <h4><%= catchup.time.strftime("%A %-d %b %Y %l:%M%p") %></h3>
+
+<div class="card" id="<%= id %>">
+
+  <!-- Organiser -->
+
+  <div class="catchup-card-top">
+    <div class="d-flex align-items-center">
+      <div class="catchup-card-organiser">
+        <%= cl_image_tag("#{User.find(catchup.user_id).avatar}") %>
+      </div>
+      <p><strong><%= @organiser.first_name %></strong>
+         invited you to:</p>
     </div>
-    <div class="catchup-list-spot-image">
-      <%= image_tag("#{catchup.spot.images.first.image}") %>
+  </div>
+
+  <!-- Place and time -->
+
+  <div class="feed-card-content">
+    <%= image_tag("#{catchup.spot.images.first.image}", class: "dark-pic feed-image") %>
+
+    <div class="catchup-card-spot-name">
+      <h3>
+        <%= catchup.spot.name %>
+      </h3>
+      <h5>
+        <%= catchup.time.strftime("%A %-d %b %Y %l:%M%p") %>
+      </h5>
     </div>
-    <div class="catchup-list-spot-name"><%= catchup.spot.name %></div>
-    <div>Invited by: <h4><%= @organiser.first_name %> <%= @organiser.last_name %></h4></div>
-    <div class="d-flex justify-content-around mb-3">
-      <div>
+
+  </div>
+
+  <!-- Accept or decline -->
+
+  <div class="catchup-card-guests">
+
+    <div>
         <%= form_tag(catchups_path, method: :get, remote: true) do %>
           <%= hidden_field_tag :catchup_invitation_id, catchup.id %>
           <%= hidden_field_tag :catchup_accept %>
-          <%= button_tag "Accept", class: 'btn btn-primary' %>
+          <%= button_tag "Accept", class: 'small-green-button' %>
         <% end %>
       </div>
       <div>
         <%= form_tag(catchups_path, method: :get, remote: true) do %>
           <%= hidden_field_tag :catchup_invitation_id, catchup.id %>
           <%= hidden_field_tag :catchup_decline %>
-          <%= button_tag "Decline", class: 'btn btn-danger' %>
+          <%= button_tag "Decline", class: 'small-red-button' %>
         <% end %>
       </div>
-    </div>
+
   </div>
 </div>
+
+

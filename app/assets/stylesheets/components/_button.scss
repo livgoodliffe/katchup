@@ -107,6 +107,7 @@ a {
   color: white;
   width: 45vw;
   border-radius: 5px;
+  border: 0;
   padding: 10px;
   margin: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
@@ -115,6 +116,25 @@ a {
     text-decoration: none;
   }
 }
+
+.small-green-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($been-there-darker, $been-there);
+  color: white;
+  width: 150px;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 .small-red-button {
   display: flex;
   justify-content: center;
@@ -122,15 +142,17 @@ a {
   background: linear-gradient($katchup-mid, $katchup);
   color: white;
   width: 150px;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 5px;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+  margin: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
   a {
     color: white;
     text-decoration: none;
   }
 }
+
 .active-red-button {
   opacity: 0.5;
 }

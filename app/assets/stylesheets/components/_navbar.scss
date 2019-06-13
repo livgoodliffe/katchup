@@ -73,14 +73,6 @@
   }
 }
 
-#notification {
-  position:absolute;
-  font-size: 16px;
-  color: $katchup;
-  left: 32px;
-  top: 8px
-}
-
 .add-frined {
   position: relative;
 }
@@ -113,5 +105,38 @@
   color: $medium-grey;
   font-size: 25px;
   margin: 0;
+}
+
+// BADGES
+
+#notification {
+  position:absolute;
+  font-size: 16px;
+  color: $katchup;
+  left: 32px;
+  top: 8px
+}
+
+.catchup-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  font-size: 16px;
+  color: $katchup;
+}
+
+.catchup-badge.header {
+  right: 1.5rem;
+}
+
+.catchup-badge:before {
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  content: '\f111';
+  font-style: normal;
+}
+
+.catchup-badge.hidden {
+  visibility: hidden;
 }
 
