@@ -1,9 +1,9 @@
 <nav class="navbar fixed-top">
 
   <!-- Dropdown -->
-  <% unless FriendRequest.where(:friend_id == current_user).empty? %>
+<!--   <% unless FriendRequest.where(:friend_id == current_user).empty? %>
     <i id="notification" class="fas fa-circle"></i>
-  <% end %>
+  <% end %> -->
   <div id="mySidenav" class="sidenav">
 
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -35,9 +35,9 @@
 
       <div class="add-frined">
         <%= link_to users_path, class: "dropdown-item nav-label" do %>
-          <% unless FriendRequest.where(:friend_id == current_user).empty? %>
+<!--           <% unless FriendRequest.where(:friend_id == current_user).empty? %>
             <i class="fas fa-circle friend-notification"></i>
-          <% end %>
+          <% end %> -->
           <i class="far fa-user-plus pr-3"></i>Add Friends
         <% end %>
       </div>
