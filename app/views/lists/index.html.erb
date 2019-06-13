@@ -1,39 +1,32 @@
-
 <div class="d-flex">
-  <div id="want_to_try_button"
-  class="button-underline underline-active">
-    WANT TO TRY
+  <div class="button-underline-container">
+      <div id="want_to_try_button" class="button-underline underline-active">
+        WANT TO TRY
+      </div>
+      <div id="moving-underline"></div>
   </div>
-  <div id="been_there_button"
-  class="button-underline">
-    BEEN THERE
+  <div class="button-underline-container">
+    <div id="been_there_button" class="button-underline">
+      BEEN THERE
+    </div>
   </div>
 </div>
-
-
 <!-- WANT TO TRY -->
-
-
 <div id="want_to_try_list">
   <div class="container pt-3">
     <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: "Search through my saved spots") %>
   </div>
-
   <div id="search-results" class="discover-search-results flex-wrap">
     <% @wishlist_spots.each do |spot| %>
       <%= render "spots/spot_card", spot: spot %>
     <% end %>
   </div>
 </div>
-
-
 <!-- BEEN THERE -->
-
 <div id="been_there_list" class="hidden">
   <div class="container pt-3">
     <%= render('search/search_form', search_type: 'favourite_spots', placeholder: "Search through spots I've been") %>
   </div>
-
   <div id="search-results" class="discover-search-results">
     <% @favourite_spots.each do |spot| %>
       <%= render "spots/spot_card", spot: spot %>
