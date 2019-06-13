@@ -8,6 +8,7 @@
   background-color: white;
   width: 100vw;
   padding: 10px;
+
   a {
     text-decoration: none !important;
     color: $dark-grey;
@@ -34,8 +35,36 @@
 }
 
 // Spot markers on map
+.hidden-marker {
+  &.map-marker {
+    visibility: hidden;
+  }
 
-.map-marker-wishlist:before {
+  &.map-marker-wishlist {
+    visibility: hidden;
+  }
+
+  &.map-marker-favourite {
+    visibility: hidden
+  }
+}
+
+.transparent-marker-header {
+  &.map-marker-header {
+    opacity: 0.5;
+  }
+
+  &.map-marker-wishlist-header {
+    opacity: 0.5;
+  }
+
+  &.map-marker-favourite-header {
+    opacity: 0.5;
+  }
+}
+
+.map-marker-wishlist:before,
+.map-marker-wishlist-header:before {
   cursor: pointer;
   font-family: "Font Awesome 5 Pro";
   content: '\f02e';
@@ -44,6 +73,7 @@
   text-shadow: 0 0 5px white;
   font-weight: 900;
 }
+
 .map-marker-wishlist.map-marker-active:before {
   font-size: 40px;
   margin-bottom: -2px;
@@ -53,7 +83,8 @@
   z-index: 2;
 }
 
-.map-marker-favourite:before {
+.map-marker-favourite:before,
+.map-marker-favourite-header:before {
   cursor: pointer;
   font-family: "Font Awesome 5 Pro";
   content: '\f606';
@@ -74,6 +105,7 @@
   content: '';
   z-index: -1;
 }
+
 .map-marker-favourite.map-marker-active:before {
   font-size: 45px;
   margin-bottom: -2px;
@@ -83,7 +115,8 @@
   z-index: 3;
 }
 
-.map-marker:before {
+.map-marker:before,
+.map-marker-header:before {
   cursor: pointer;
   font-family: "Font Awesome 5 Pro";
   content: '\f111';
