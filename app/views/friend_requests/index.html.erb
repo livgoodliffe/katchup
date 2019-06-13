@@ -25,10 +25,10 @@
       <div class="card-body">
         <h5>Recieved</h5>
         <% @incoming.each do |request| %>
-          <div class="card-name d-flex justify-content-between">
-            <%= request.user.full_name %>
-            <%= link_to "Accept", friend_request_path(request), method: :put %>
-          </div>
+            <div class="card-name d-flex justify-content-between">
+              <%= request.user.full_name %>
+              <%= link_to "Accept", friend_request_path(request), method: :put %>
+            </div>
         <% end %>
       </div>
     </div>
