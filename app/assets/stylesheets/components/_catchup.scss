@@ -274,3 +274,19 @@
   font-weight: bold;
   margin: 8px;
 }
+
+.accepted-text {
+  color: $been-there;
+}
+.declined-text {
+  color: $katchup;
+}
+
+.catchup-response-content {
+  img {
+    width: 100%;
+    height: 100px;
+  }
+  position: relative;
+  background-color: $dark-grey;
+}

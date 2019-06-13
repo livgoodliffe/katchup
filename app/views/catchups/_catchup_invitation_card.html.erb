@@ -4,15 +4,13 @@
   <!-- Organiser -->
 
   <div class="catchup-card-top">
-      <div class="d-flex align-items-center">
-        <div class="catchup-card-organiser">
-          <%= cl_image_tag("#{User.find(catchup.user_id).avatar}") %>
-        </div>
-        <p><strong><%= @organiser.first_name %></strong>
-           invited you to:</p>
+    <div class="d-flex align-items-center">
+      <div class="catchup-card-organiser">
+        <%= cl_image_tag("#{User.find(catchup.user_id).avatar}") %>
       </div>
-
-
+      <p><strong><%= @organiser.first_name %></strong>
+         invited you to:</p>
+    </div>
   </div>
 
   <!-- Place and time -->
