@@ -7,14 +7,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="background-color: #ccc">
+      <div class="modal-body">
         <% @spot.images.each do |image| %>
-          <%= image_tag image.image, class: "card mx-auto my-3" %>
+          <%= image_tag image.image, class: "spot-modal-images" %>
         <% end %>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn" data-dismiss="modal">Close</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
