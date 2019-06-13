@@ -27,11 +27,22 @@
 
 .spot-banner-bottom-icons {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   display: flex;
   justify-content: space-between;
   left: 60px;
   right: 60px;
+
+  a {
+    display: inline-block;
+    padding: 10px;
+
+    &:active,
+    &:focus {
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+    }
+  }
 }
 
 .show-banner {

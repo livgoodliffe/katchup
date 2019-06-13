@@ -1,7 +1,7 @@
-<div class="book-rating">
+<div class="book-rating m-3">
   <span class="review-count">
     <% if total.positive? %>
-      <p class="num-reviews"><%= pluralize(total, 'review') %></p>
+      <h5 class="num-reviews"><%= pluralize(total, 'review') %></h5>
     <% end %>
   </span>
   <div id="reviews-anchor"></div>

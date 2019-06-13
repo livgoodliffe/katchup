@@ -1,15 +1,15 @@
 .feed-card-container {
   width: 100%;
   background: white;
-  border-radius: 8px;
-  margin: 0 0 30px;
-  box-shadow: 0 0 5px rgba(30, 30, 30, 0.2);
+  padding-bottom: 0;
+  border-top: 2px solid #eee;
+  position: relative;
 }
 
 .feed-card-body {
-  margin: 12px;
+  margin: 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   p {
     margin: 0;
   }
@@ -20,11 +20,10 @@
   height: 50px;
   border-radius: 50%;
   margin-left: 4px;
-  margin-right: 4px;
+  margin-right: 12px;
 }
 
 .feed-card-text {
-  margin-left: 8px;
   color: $dark-grey;
   h2 h3 p {
     margin: 0;
@@ -73,12 +72,36 @@
 .feed-card-review {
   position: absolute;
   color: white;
-  top: 88px;
-  left: 179px;
-  width: 88%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a.feed-card-anchor {
   text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 
+  &:focus,
+  &:active {
+    background: rgba(0,0,0,0.05);
+  }
+}
+
+.feed-item-bookmark-container {
+  margin-top: 2px;
+
+  .action-icon {
+    font-size: 15px;
+    width: 32px;
+    height: 32px;
+  }
 }
