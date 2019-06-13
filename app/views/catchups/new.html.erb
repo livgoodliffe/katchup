@@ -1,9 +1,7 @@
 <div style="padding-top: 54px; padding-bottom: 50px;">
-
   <div class="text-center">
     <h1>Let's Katchup!</h1>
   </div>
-
   <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
     <div class="text-center">
       <%= button_tag "Choose Friends",
@@ -34,10 +32,14 @@
                    id: "chosen-time-container" %>
     </div>
     <div class="text-center d-flex justify-content-center">
-      <%= button_tag "Done",
-                   type: 'button',
-                   class: 'red-button',
-                   data: { toggle: 'modal', target: '#createCatchup' } %>
+      <%#= button_tag "Let's Katchup",
+                   class: 'small-red-button',
+                   disabled: 'true',
+                   id: 'catchup-submit-button'%>
+
+     <button id="catchup-submit-button" class="red-button">Let's Katchup</button>
+     <button id="summaryModalButton" type="button" style='height: 0px;' data-toggle="modal" data-target="#createCatchup"></button>
+
     </div>
     <div class="modal fade" id="chooseFriends" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered " role="document">
@@ -99,21 +101,17 @@
         </div>
       </div>
     </div>
-
     <div class="modal fade" id="createCatchup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create Katchup</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Missing Info</h5>
           </div>
           <div class="modal-body">
             <%= render "done" %>
           </div>
           <div class="modal-footer">
-            <%= button_tag "Create Katchup",
-                   class: 'small-red-button',
-                   disabled: 'true',
-                   id: 'catchup-submit-button'%>
+            <button type="button" class="small-red-button" data-dismiss="modal">Back to Katchup</button>
           </div>
         </div>
       </div>

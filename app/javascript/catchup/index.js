@@ -1,5 +1,7 @@
 /* eslint no-param-reassign: off */
 
+var submitReady = false;
+
 const errorMessages = (selectionStatus) => {
   const friendError = document.getElementById('friend-missing-error');
   const spotError = document.getElementById('spot-missing-error');
@@ -29,12 +31,15 @@ const errorMessages = (selectionStatus) => {
 
 const readyToSubmitCheck = (selectionStatus) => {
   errorMessages(selectionStatus);
-  const submitButton = document.getElementById('catchup-submit-button');
 
   const status = Object.keys(selectionStatus)
     .reduce((acc, value) => (acc && selectionStatus[value]), true);
 
-  if (status === true) submitButton.disabled = false;
+  if (status === true) {
+    submitReady = true;
+  } else {
+    submitReady = false;
+  }
 };
 
 const friends = (selectionStatus) => {
@@ -283,6 +288,14 @@ export default () => {
   const catchupForm = document.getElementById('catchup_form');
 
   if (catchupForm) {
+    // Submission Handling
+    const submitButton = document.getElementById('catchup-submit-button');
+    submitButton.addEventListener('click', (event) => {
+      if (!submitReady) {
+        event.preventDefault();
+        document.getElementById('summaryModalButton').click();
+      }
+    });
 
     // BUTTONS
     const selectionStatus = {
