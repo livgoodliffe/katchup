@@ -25,3 +25,15 @@
   border-bottom: 1px solid #eee;
   padding: 20px 0;
 }
+
+.my-friends {
+  &:active,
+  &:focus {
+    background-color: #eee;
+    opacity: 0.7;
+  }
+}
+
+.my-friend-list {
+  position: relative;
+}
