@@ -1,5 +1,5 @@
 meta_product_name: "Katchup"
-meta_title: "Katchup - the only review you needs is from your friends"
+meta_title: "Katchup - the only review you need is from your friends"
 meta_description: "Can't remember that great place your friend told you about? Trying to plan a night out with your friends but can't think of anywhere new?"
 meta_image: "homepage.png" # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
+twitter_account: "@KatchupClub"   # required for Twitter Cards
