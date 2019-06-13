@@ -4,38 +4,40 @@
       <div class="red-button">Organise a Katchup</div>
     <% end %>
   </div>
-
   <!-- Which type of catchup? Mine or others -->
-
-<div class="d-flex">
-  <% if params[:list_type] == 'mine' %>
-    <% mine_active = 'underline-active'  %>
-  <% else %>
-    <% others_active = 'underline-active'  %>
-  <% end %>
-  <%= link_to catchups_path(list_type: 'mine'),
+  <div class="d-flex">
+    <% if params[:list_type] == 'mine' %>
+      <% mine_active = 'underline-active'  %>
+    <% else %>
+      <% others_active = 'underline-active'  %>
+    <% end %>
+    <%= link_to catchups_path(list_type: 'mine'),
   class: "button-underline #{mine_active}",
   style: 'text-decoration: none; position: relative;',
   id: 'my-catchup-header' do %>
-  MY KATCHUPS
-  <i id="my-catchup-badge" class="catchup-badge header hidden"></i>
-  <% end %>
-  <%= link_to catchups_path(list_type: 'others'),
+      MY KATCHUPS
+      <i id="my-catchup-badge" class="catchup-badge header hidden"></i>
+      <% if params[:list_type] == 'others' %>
+        <div id="moving-underline"></div>
+      <% end %>
+    <% end %>
+    <%= link_to catchups_path(list_type: 'others'),
   class: "button-underline #{others_active}",
   style: 'text-decoration: none; position: relative;',
   id: 'other-catchup-header' do %>
-  INVITATIONS
-  <i id="other-catchup-badge" class="catchup-badge header hidden"></i>
-  <% end %>
-</div>
-
-
-<!-- Render katchup type page -->
-<div class="container">
-  <br>
-  <% if params[:list_type] == 'mine' %>
-    <%= render 'catchups_mine' %>
-  <% else %>
-    <%= render 'catchups_others' %>
-  <% end %>
-</div>
+      INVITATIONS
+      <i id="other-catchup-badge" class="catchup-badge header hidden"></i>
+      <% if params[:list_type] == 'mine' %>
+        <div id="moving-underline"></div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Render katchup type page -->
+  <div class="container">
+    <br>
+    <% if params[:list_type] == 'mine' %>
+      <%= render 'catchups_mine' %>
+    <% else %>
+      <%= render 'catchups_others' %>
+    <% end %>
+  </div>
