@@ -10,11 +10,11 @@
           <%= cl_image_tag("#{User.find(catchup.user_id).avatar}") %>
         </div>
         <p><strong><%= User.find(catchup.user_id).first_name %></strong>
-           invited you to:</p>
+           invited you to</p>
       </div>
 
       <% else %>
-        <p>You organised:</p>
+        <p>You organised</p>
     <% end %>
 
   </div>
