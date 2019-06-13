@@ -2,9 +2,9 @@
   display: flex;
   position: relative;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid $medium-grey;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
 
   .add-button {
     position: absolute;

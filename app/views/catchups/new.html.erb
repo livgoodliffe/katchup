@@ -6,32 +6,36 @@
 
   <%= form_tag(catchups_path, method: :post, id: 'catchup_form') do %>
     <div class="text-center">
-      <%= button_tag "Choose Friends",
-                   type: 'button',
+      <%= button_tag type: 'button',
                    class: 'modal-activation-button',
                    data: { toggle: 'modal', target: '#chooseFriends' },
-                   id: "chosen-friends-avatars-container" %>
+                   id: "chosen-friends-avatars-container" do %>
+        <div class="mb-3"><i class="fal fa-hand-spock"></i> Friends</div>
+      <% end %>
     </div>
     <div class="text-center">
-      <%= button_tag "Choose Spot",
-                   type: 'button',
+      <%= button_tag type: 'button',
                    class: 'modal-activation-button',
                    data: { toggle: 'modal', target: '#chooseSpot' },
-                   id: "chosen-spot-image-container" %>
+                   id: "chosen-spot-image-container" do %>
+          <div class="mb-3"><i class="fal fa-map-marker mx-1"></i> Spot</div>
+      <% end %>
     </div>
     <div class="text-center">
-      <%= button_tag "Choose Date",
-                   type: 'button',
+      <%= button_tag type: 'button',
                    class: 'modal-activation-button',
                    data: { toggle: 'modal', target: '#chooseDate' },
-                   id: "chosen-date-container" %>
+                   id: "chosen-date-container" do %>
+        <i class="fal fa-calendar mx-1"></i> Date
+      <% end %>
     </div>
     <div class="text-center">
-      <%= button_tag "Choose Time",
-                   type: 'button',
+      <%= button_tag type: 'button',
                    class: 'modal-activation-button',
                    data: { toggle: 'modal', target: '#chooseTime' },
-                   id: "chosen-time-container" %>
+                   id: "chosen-time-container" do %>
+                   <i class="fal fa-clock mr-1"></i> When?
+      <% end %>
     </div>
     <div class="text-center d-flex justify-content-center">
       <%= button_tag "Done",

@@ -1,6 +1,5 @@
 <div class="container">
-  <%= render("search/search_form", search_type: 'users', placeholder: 'Search friends') %>
-  <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+  <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Friends</a>
     </li>
@@ -11,12 +10,14 @@
       <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Add friends</a>
     </li>
   </ul>
+    <%= render("search/search_form", search_type: 'users', placeholder: 'Search friends') %>
+
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <% @friends.each do |friend| %>
-        <div class="card my-2 pt-0 shadow-sm">
-          <div class="card-body py-0 d-flex justify-content-between align-items-center">
-            <%= cl_image_tag(friend.friend.avatar, class: "avatar m-3") %>
+        <div class="friend-row">
+          <div class="py-0 d-flex align-items-center">
+            <%= cl_image_tag(friend.friend.avatar, class: "avatar mr-3") %>
             <%= friend.friend.full_name %>
           </div>
           <%= link_to user_path(friend.friend), class: "card-link" do %>
@@ -26,32 +27,22 @@
 
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="card my-2">
-        <div class="card-body">
-          <h5>Sent</h5>
-          <% @outgoing.each do |request| %>
-            <div class="card-name d-flex justify-content-between">
-              <%= request.friend.full_name %>
-              <%= link_to "Cancel", friend_request_path(request, user_id: request.friend.id), method: :delete, class: "requests-link" %>
-            </div>
-          <% end %>
+      <h5 class="mt-5 mb-2">Sent</h5>
+      <% @outgoing.each do |request| %>
+        <div class="friend-row d-flex justify-content-between">
+          <%= request.friend.full_name %>
+          <%= link_to "Cancel", friend_request_path(request, user_id: request.friend.id), method: :delete, class: "requests-link" %>
         </div>
-      </div>
+      <% end %>
 
       <% if @incoming.count > 0 %>
-
-        <div class="card my-2">
-          <div class="card-body">
-            <h5>Recieved</h5>
+        <h5 class="mt-5 mb-2">Recieved</h5>
             <% @incoming.each do |request| %>
-                <div class="card-name d-flex justify-content-between">
+                <div class="friend-row d-flex justify-content-between">
                   <%= request.user.full_name %>
                   <%= link_to "Accept", friend_request_path(request), method: :put %>
                 </div>
             <% end %>
-          </div>
-        </div>
-
       <% end %>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

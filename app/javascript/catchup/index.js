@@ -154,7 +154,7 @@ const calendar = (selectionStatus) => {
           selectedDayElement = null;
           element.classList.remove('selected');
           selectionStatus.date = false;
-          dateContainer.innerHTML = 'Choose Date';
+          dateContainer.innerHTML = '<i class="fal fa-calendar mr-2"></i> Date';
         } else {
           const title = element.parentNode.parentNode.parentNode.parentNode.querySelector('.calendar-heading').innerText;
           const [monthWord, year] = title.split(' ');
@@ -172,7 +172,7 @@ const calendar = (selectionStatus) => {
           hiddenDateYearInput.value = year;
           hiddenDateMonthInput.value = month;
           hiddenDateDayInput.value = day;
-          dateContainer.innerHTML = `Choose Date<br>\
+          dateContainer.innerHTML = `<i class="fal fa-calendar mr-2"></i> Date<br>\
                                      <span style="font-weight: bold; font-size: 1.5rem;">\
                                      ${date.toLocaleDateString('en', { weekday: 'long' })} \
                                      ${day} \
@@ -252,10 +252,10 @@ const time = (selectionStatus) => {
       hiddenTimeMinuteInput.value = selectedMinuteElement.innerText;
       hiddenTimeAMPMInput.value = selectedAMPMElement.innerText;
 
-      timeContainer.innerHTML = `Choose Time<br><span style="font-weight: bold; font-size: 1.5rem;">${selectedHourElement.innerText}:${selectedMinuteElement.innerText}${selectedAMPMElement.innerText}</span>`;
+      timeContainer.innerHTML = `<i class="fal fa-clock mr-1"></i> When?<br><span style="font-weight: bold; font-size: 1.5rem;">${selectedHourElement.innerText}:${selectedMinuteElement.innerText}${selectedAMPMElement.innerText}</span>`;
       selectionStatus.time = true;
     } else {
-      timeContainer.innerHTML = 'Choose Time';
+      timeContainer.innerHTML = '<i class="fal fa-clock mr-1"></i> When?';
       selectionStatus.time = false;
     }
     readyToSubmitCheck(selectionStatus);

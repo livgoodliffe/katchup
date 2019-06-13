@@ -1,5 +1,4 @@
 <div id="reviews-container">
-  <h5>Reviews</h5>
   <div id="reviews">
     <% if @spot.reviews.any? %>
       <%= render @spot.reviews.ordered_by_date %>
