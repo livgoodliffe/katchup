@@ -137,6 +137,10 @@
   .next-month {
     visibility: hidden;
   }
+
+  .today {
+    border: 1px solid $katchup;
+  }
 }
 
 
@@ -216,10 +220,12 @@
 
 .catchup-card-top {
   padding: 8px;
+
   p {
     margin: 0;
   }
 }
+
 .catchup-card-spot-name {
   position: absolute;
   bottom: 10px;
