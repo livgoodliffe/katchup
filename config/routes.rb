@@ -34,11 +34,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
 
   resources :users, only: [:index, :show] do
-    resources :wishlists, only: [:index]
-    resources :favourites, only: [:index]
     member do
       post :follow
       post :unfollow
+      get :wishlists, only: [:index]
+      get :favourites, only: [:index]
     end
   end
 
