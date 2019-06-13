@@ -1,3 +1,13 @@
+<!-- If you link to this page on Facebook you can dynamically set what shows up -->
+<%# content_for :meta_title, "#{@offer.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<%# content_for :meta_description, @offer.description %>
+<%# content_for :meta_image, cl_image_path(@offer.photo.path) %>
+
+<!-- app/views/offers/show.html.erb -->
+<% content_for :meta_title, "Never worry about where to Katchup" %>
+<% content_for :meta_description, "You want to go somewhere unique with your friends, reccommended by your friends" %>
+<% content_for :meta_image, "KATCHUP_FAVICON.svg" %>
+
 <div class="home">
 
   <i class="fas fa-map-marker-alt white-pin"></i>
