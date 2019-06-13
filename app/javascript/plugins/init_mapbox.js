@@ -1,5 +1,26 @@
 import mapboxgl from 'mapbox-gl';
 
+window.toggleSpotMarkers = () => {
+  document.querySelectorAll('.map-marker').forEach((marker) => {
+    marker.classList.toggle('hidden-marker');
+  });
+  document.querySelector('.map-marker-header').classList.toggle('transparent-marker-header');
+};
+
+window.toggleWishlistMarkers = () => {
+  document.querySelectorAll('.map-marker-wishlist').forEach((marker) => {
+    marker.classList.toggle('hidden-marker');
+  });
+  document.querySelector('.map-marker-wishlist-header').classList.toggle('transparent-marker-header');
+};
+
+window.toggleFavouriteMarkers = () => {
+  document.querySelectorAll('.map-marker-favourite').forEach((marker) => {
+    marker.classList.toggle('hidden-marker');
+  });
+  document.querySelector('.map-marker-favourite-header').classList.toggle('transparent-marker-header');
+};
+
 const infoWindowEl = document.getElementById('info-map-window');
 
 const clearActiveMarkers = () => {
