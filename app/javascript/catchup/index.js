@@ -266,19 +266,17 @@ export default () => {
   // sliding underline on headers
   const catchupPage = document.getElementById('catchup-page');
   const movingUnderline = document.getElementById('moving-underline');
-  const otherCatchupHeader = document.getElementById('other-catchup-header');
+  const myCatchupHeader = document.getElementById('my-catchup-header');
   const catchupInvitationContent = document.getElementById('catchup-invitation-content');
   const guestResponseContent = document.getElementById('guest-response-content');
 
   if (catchupPage) {
     if (!movingUnderline) {
-      otherCatchupHeader.insertAdjacentHTML('beforeend', '<div id="moving-underline"></div>');
-    } else {
-      if (catchupInvitationContent) {
-        movingUnderline.classList.add('right');
-      } else if (guestResponseContent) {
-        movingUnderline.classList.add('left');
-      }
+      myCatchupHeader.insertAdjacentHTML('beforeend', '<div id="moving-underline"></div>');
+    } else if (catchupInvitationContent) {
+      movingUnderline.classList.add('right');
+    } else if (guestResponseContent) {
+      movingUnderline.classList.add('left');
     }
   }
 

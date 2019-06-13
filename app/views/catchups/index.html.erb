@@ -6,10 +6,10 @@
   </div>
   <!-- Which type of catchup? Mine or others -->
   <div class="d-flex">
-    <% if params[:list_type] == 'mine' %>
-      <% mine_active = 'underline-active'  %>
-    <% else %>
+    <% if params[:list_type] == 'others' %>
       <% others_active = 'underline-active'  %>
+    <% else %>
+      <% mine_active = 'underline-active'  %>
     <% end %>
     <%= link_to catchups_path(list_type: 'mine'),
   class: "button-underline #{mine_active}",
@@ -35,9 +35,10 @@
   <!-- Render katchup type page -->
   <div class="container">
     <br>
-    <% if params[:list_type] == 'mine' %>
-      <%= render 'catchups_mine' %>
-    <% else %>
+    <% if params[:list_type] == 'others' %>
       <%= render 'catchups_others' %>
+    <% else %>
+      <%= render 'catchups_mine' %>
     <% end %>
   </div>
+</div>
