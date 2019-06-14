@@ -262,8 +262,8 @@ end
 
 unless keep_user
   puts "* Seeding User Data *"
-  SEED_WISHLIST_COUNT = 3
-  SEED_FAVOURITE_COUNT = 3
+  SEED_WISHLIST_COUNT = 0
+  SEED_FAVOURITE_COUNT = 0
 
   puts "Adding #{SEED_WISHLIST_COUNT} wishlists and #{SEED_FAVOURITE_COUNT} favourites to all users.."
   if Spot.count > 0
