@@ -32,7 +32,7 @@ class MapsController < ApplicationController
   end
 
   def create_markers(spots)
-    spots.map do |spot|
+    spots.first(50).map do |spot|
       {
         lat: spot.latitude,
         lng: spot.longitude,
