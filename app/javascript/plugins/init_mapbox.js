@@ -44,6 +44,11 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
     const markerStylingElement = document.createElement('div');
     markerStylingElement.className = markerStyle;
 
+    // hide all spot markers by default
+    if (markerType === 'markersSpots') {
+      markerStylingElement.classList.add('hidden-marker');
+    }
+
     // user avatar section
     const userAvatarUrl = mapElement.dataset.markerUserAvatar;
     if (markerType === 'markerUser' && userAvatarUrl !== '') {
