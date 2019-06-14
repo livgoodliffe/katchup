@@ -53,6 +53,7 @@ const makeMarkers = (map, mapElement, bounds, markerType, markerStyle) => {
     const userAvatarUrl = mapElement.dataset.markerUserAvatar;
     if (markerType === 'markerUser' && userAvatarUrl !== '') {
       markerStylingElement.style.backgroundImage = `url("${userAvatarUrl.replace('http','https')}")`;
+      console.log(markerStylingElement.style.backgroundImage);
     }
 
     markerStylingElement.addEventListener('click', () => {
