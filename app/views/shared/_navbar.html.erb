@@ -13,24 +13,31 @@
     <div>
 
       <%= link_to feeds_path, class: "dropdown-item nav-label" do %>
-        <i class="far fa-home-alt pr-3"></i>Home
+        <div class="d-flex">
+          <i class="far fa-home pr-3" style="width: 40px"></i>
+          <p class="m-0">Home</p>
+        </div>
       <% end %>
 
       <%= link_to maps_path, class: "dropdown-item nav-label" do %>
         <div class="d-flex">
-          <div>
-            <i class="far fa-map-marked-alt pr-3"></i>
-          </div>
-          <div>Map</div>
+          <i class="far fa-map-marked-alt pr-3" style="width: 40px"></i>
+          <p class="m-0">Map</p>
         </div>
       <% end %>
 
       <%= link_to discover_index_path, class: "dropdown-item nav-label" do %>
-        <i class="far fa-fire-alt pr-3"></i>What's Hot
+        <div class="d-flex">
+          <i class="far fa-fire-alt pr-4" style="width: 40px"></i>
+          <p class="m-0">What's Hot</p>
+        </div>
       <% end %>
 
       <%= link_to lists_path, class: "dropdown-item nav-label" do %>
-        <i class="fal fa-map-marker-alt pr-3"></i>My Spots
+        <div class="d-flex">
+          <i class="far fa-map-marker-alt pr-3" style="width: 40px"></i>
+          <p class="m-0">My Spots</p>
+        </div>
       <% end %>
 
       <div class="add-frined">
@@ -38,12 +45,18 @@
 <!--           <% unless FriendRequest.where(:friend_id == current_user).empty? %>
             <i class="fas fa-circle friend-notification"></i>
           <% end %> -->
-          <i class="far fa-user-plus pr-3"></i>Add Friends
+          <div class="d-flex">
+            <i class="far fa-user-plus pr-3" style="width: 40px"></i>
+            <p class="m-0">Add Friends</p>
+          </div>
         <% end %>
       </div>
 
       <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
-        <i class="fal fa-laugh-beam pr-3"></i>My Profile
+        <div class="d-flex">
+          <i class="far fa-laugh-beam pr-3" style="width: 40px"></i>
+          <p class="m-0">My Profile</p>
+        </div>
       <% end %>
     </div>
 
