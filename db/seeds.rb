@@ -166,7 +166,7 @@ unless keep_spot
   BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/restaurants/allrestaurants/pages/allrestaurants.aspx'
 
   # please provide number in multiples of 10
-  SEED_SPOT_COUNT = 100 # max 700 (site can provide slightly more)
+  SEED_SPOT_COUNT = 700 # max 700 (site can provide slightly more)
 
   def get_image_urls(result_detail_doc)
     image_urls = []
