@@ -126,7 +126,15 @@
 }
 
 .catchup-badge.header {
-  right: 1.5rem;
+  right: 24px;
+  top: 3px;
+  font-size: 12px;
+}
+
+.catchup-badge.header.invitations {
+  right: 30px;
+  top: 3px;
+  font-size: 12px;
 }
 
 .catchup-badge:before {
