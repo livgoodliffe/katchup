@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
   get 'kitchen_sink' => 'pages#kitchen_sink'
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :spots, only: [ :index, :show ]
+      resources :reviews, only: [ :index, :create ]
+    end
+  end
+
   resources :favourites, only: [:index, :destroy]
 
   resources :wishlists, only: [:index, :destroy]
