@@ -1,3 +1,6 @@
+
 json.array! @spots do |spot|
-  json.extract! spot, :id, :name, :address, :description, :images
+  json.name spot.name
+  json.address spot.address
+  json.image spot.images[0].image
 end
