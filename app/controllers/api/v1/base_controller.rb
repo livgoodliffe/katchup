@@ -1,4 +1,9 @@
-class Api::V1::BaseController < ActionController::API
+# class Api::V1::BaseController < ActionController::API
+class Api::V1::BaseController < ActionController::Base
+
+  respond_to :json
+
+
   include Pundit
 
   after_action :verify_authorized, except: :index

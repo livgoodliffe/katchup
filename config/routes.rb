@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   mount ActionCable.server => '/cable'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :spots, only: [ :index, :show ]
-      resources :reviews, only: [ :index, :create ]
+      resources :reviews
     end
   end
 
