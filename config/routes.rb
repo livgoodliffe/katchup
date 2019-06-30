@@ -6,12 +6,11 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  get 'kitchen_sink' => 'pages#kitchen_sink'
-
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :spots, only: [ :index, :show ]
       resources :reviews
+      resources :users, only: [ :index ]
     end
   end
 

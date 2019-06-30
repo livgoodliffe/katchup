@@ -1,16 +1,14 @@
-# class Api::V1::BaseController < ActionController::API
-class Api::V1::BaseController < ActionController::Base
+class Api::V1::BaseController < ActionController::API
 
   respond_to :json
 
-
   include Pundit
-
   after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
+  rescue_from Pundit::NotAuthorizedError,   with: :user_not_authorized
+
 
   rescue_from StandardError,                with: :internal_server_error
-  rescue_from Pundit::NotAuthorizedError,   with: :user_not_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   private
@@ -31,6 +29,6 @@ class Api::V1::BaseController < ActionController::Base
     else
       response = { error: "Internal Server Error" }
     end
-    render json: response, status: :internal_server_error
+    # render json: response, status: :internal_server_error
   end
 end
