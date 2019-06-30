@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :spots, only: [ :index, :show ]
       resources :reviews
-      resources :users, only: [ :index, :show ]
+      resources :users
     end
   end
 

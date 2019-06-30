@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
 
   # added with tutorial
-  protect_from_forgery with: :null_session
-  include SessionsHelper
+  # protect_from_forgery with: :null_session
+  # include SessionsHelper
 
 
   include PublicActivity::StoreController
