@@ -55,7 +55,7 @@ SEED_USER_COUNT.times do |n|
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
   user.password = "Password123"
-  user.remote_avatar_url = Faker::Avatar.image
+  # user.remote_avatar_url = Faker::Avatar.image
   user.save!
   puts "Seeded User: ##{n+1}"
 end
