@@ -17,10 +17,6 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def create
     @user = User.new(user_params)
-  end
-
-  def create
-    @user = User.new(user_params)
       if @user.save
         log_in @user
         flash[:success] = 'Account was successfully created.'
