@@ -15,8 +15,17 @@ class Api::V1::UsersController < Api::V1::BaseController
     @user = User.new
   end
 
+  # def create
+  #   @user = User.new(user_params)
+  # end
+
   def create
     @user = User.new(user_params)
+      if @user.save
+        render json: @user.authentication_token
+      else
+        render_error
+      end
   end
 
   private
