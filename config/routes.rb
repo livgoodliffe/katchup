@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  # comment out for api only
 
   mount ActionCable.server => '/cable'
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
       resources :spots, only: [ :index, :show ]
       resources :reviews
       resources :users
+      resources :sessions, only: [ :create, :destroy ]
     end
   end
 
