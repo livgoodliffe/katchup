@@ -77,6 +77,9 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise_token_auth (1.1.0)
+      devise (> 3.5.2, < 4.7)
+      rails (>= 4.2.0, < 6)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.4)
@@ -279,6 +282,7 @@ DEPENDENCIES
   cloudinary
   coffee-rails
   devise
+  devise_token_auth
   dotenv-rails
   faker
   font-awesome-sass (~> 5.6.1)
