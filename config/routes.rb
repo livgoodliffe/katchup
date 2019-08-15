@@ -7,18 +7,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-<<<<<<< HEAD
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resources :spots, only: [ :index, :show ]
-      resources :reviews
-      resources :users
-      resources :sessions, only: [ :create, :destroy ]
-    end
-  end
-=======
   get 'kitchen_sink' => 'pages#kitchen_sink'
->>>>>>> parent of 619af06... added some api to the spots
 
   resources :favourites, only: [:index, :destroy]
 
