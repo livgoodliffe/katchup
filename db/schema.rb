@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_113026) do
+ActiveRecord::Schema.define(version: 2019_06_11_005507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,8 +159,6 @@ ActiveRecord::Schema.define(version: 2019_06_22_113026) do
     t.string "avatar"
     t.float "latitude"
     t.float "longitude"
-    t.string "authentication_token", limit: 30
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -186,6 +184,8 @@ ActiveRecord::Schema.define(version: 2019_06_22_113026) do
   add_foreign_key "images", "spots"
   add_foreign_key "menu_items", "spots"
   add_foreign_key "notifications", "users"
+  add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
   add_foreign_key "wishlists", "spots"
