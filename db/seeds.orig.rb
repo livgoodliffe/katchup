@@ -103,7 +103,7 @@ BASE_URL='https://whatson.melbourne.vic.gov.au'
 BASE_RESTAURANT_URL='https://whatson.melbourne.vic.gov.au/diningandnightlife/restaurants/allrestaurants/pages/allrestaurants.aspx'
 
 # please provide number in multiples of 10
-SEED_SPOT_COUNT = 100 # max 700 (site can provide slightly more)
+SEED_SPOT_COUNT = 20 # max 700 (site can provide slightly more)
 
 def create_menu_item(spot)
   menuitem = { spot_id:spot.id,

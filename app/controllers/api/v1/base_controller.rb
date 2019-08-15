@@ -1,4 +1,8 @@
 class Api::V1::BaseController < ActionController::API
+
+  acts_as_token_authentication_handler_for User, fallback: :none
+  # added from isaac tutorial
+
   include Pundit
 
   after_action :verify_authorized, except: :index
@@ -26,6 +30,6 @@ class Api::V1::BaseController < ActionController::API
     else
       response = { error: "Internal Server Error" }
     end
-    render json: response, status: :internal_server_error
+    # render json: response, status: :internal_server_error
   end
 end

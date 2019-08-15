@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  # comment out for api only
 
   mount ActionCable.server => '/cable'
 
   root to: 'pages#home'
 
-  get 'kitchen_sink' => 'pages#kitchen_sink'
-
+<<<<<<< HEAD
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :spots, only: [ :index, :show ]
-      resources :reviews, only: [ :index, :create ]
+      resources :reviews
+      resources :users
+      resources :sessions, only: [ :create, :destroy ]
     end
   end
+=======
+  get 'kitchen_sink' => 'pages#kitchen_sink'
+>>>>>>> parent of 619af06... added some api to the spots
 
   resources :favourites, only: [:index, :destroy]
 

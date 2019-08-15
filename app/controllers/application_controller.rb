@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
+
+  # added with tutorial
+  # protect_from_forgery with: :null_session
+  # include SessionsHelper
+
+
   include PublicActivity::StoreController
 
-  protect_from_forgery with: :exception
   before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -13,4 +18,5 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
+
 end
