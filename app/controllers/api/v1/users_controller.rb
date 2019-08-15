@@ -17,6 +17,20 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def create
     @user = User.new(user_params)
+<<<<<<< HEAD
+=======
+  end
+
+  def create
+    @user = User.new(user_params)
+      if @user.save
+        log_in @user
+        flash[:success] = 'Account was successfully created.'
+        redirect_to @user
+      else
+        render :new
+      end
+>>>>>>> parent of c1ddf9f... added names, and email to users api
   end
 
   private
