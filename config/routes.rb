@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => {:registrations => "registrations"}
-  # comment out for api only
-
   mount ActionCable.server => '/cable'
 
   root to: 'pages#home'

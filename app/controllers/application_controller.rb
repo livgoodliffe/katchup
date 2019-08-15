@@ -1,10 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  # added with tutorial
-  # protect_from_forgery with: :null_session
-  # include SessionsHelper
-
-
   include PublicActivity::StoreController
 
   before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
