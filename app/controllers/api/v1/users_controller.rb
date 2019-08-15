@@ -19,6 +19,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     @user = User.new(user_params)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of c1ddf9f... added names, and email to users api
@@ -26,6 +27,8 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def create
     @user = User.new(user_params)
+=======
+>>>>>>> parent of 4d6e0d9... user controller create edited
       if @user.save
         log_in @user
         flash[:success] = 'Account was successfully created.'
@@ -33,7 +36,10 @@ class Api::V1::UsersController < Api::V1::BaseController
       else
         render :new
       end
+<<<<<<< HEAD
 >>>>>>> parent of c1ddf9f... added names, and email to users api
+=======
+>>>>>>> parent of 4d6e0d9... user controller create edited
   end
 
   private
