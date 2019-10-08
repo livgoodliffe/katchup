@@ -2,43 +2,18 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  # API
-
-  get    'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-  get    'verify'  => 'sessions#verify_access_token'
-  resources :users
-  resources :password_resets, only: [:new, :create, :edit, :update]
-  root 'welcome#welcome'
-
-  namespace :api do
-    post   'login'   => 'sessions#create'
-    delete 'logout'  => 'sessions#destroy'
-    get    'verify'  => 'sessions#verify_access_token'
-    resources :users, param: :access_token
-    resources :password_resets, only: [:new, :create, :edit, :update]
-    resources :spots, only: [ :index, :show, :update ]
-  end
-
-  # namespace :api, defaults: { format: :json } do
-  #   namespace :v1 do
-  #     resources :spots, only: [ :index, :show, :update ]
-  #     resources :users,
-  #     resources :users, param: :authentication_token
-  #     resources :password_resets, only: [:new, :create, :edit, :update]
-  #     resources :password_resets, only: [:new, :create, :edit, :update]
-  #   end
-  # end
-
-
-
   mount ActionCable.server => '/cable'
 
   root to: 'pages#home'
 
   get 'kitchen_sink' => 'pages#kitchen_sink'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :spots, only: [ :index, :show ]
+      resources :reviews, only: [ :index, :create ]
+    end
+  end
 
   resources :favourites, only: [:index, :destroy]
 
