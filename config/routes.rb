@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # API
 
-  # namespaxe prevents naming conflict
+  # namespace prevents naming conflict
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
