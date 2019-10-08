@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  acts_as_token_authenticatable
-
   skip_before_action :authenticate_user!, only: :index
   before_action :set_user, only: %i[follow unfollow]
 
