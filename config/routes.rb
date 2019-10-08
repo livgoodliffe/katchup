@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   # API
 
   # namespace prevents naming conflict
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
 
   # WEBSITE
 
-  devise_for :users
+
 
   mount ActionCable.server => '/cable'
 
