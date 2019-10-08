@@ -1,4 +1,4 @@
-class Api::V1::UsersController < Api::V1::BaseController
+class Api::UsersController < Api::BaseController
 
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 

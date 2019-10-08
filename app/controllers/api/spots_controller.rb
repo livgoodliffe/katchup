@@ -1,4 +1,4 @@
-class Api::V1::SpotsController < Api::V1::BaseController
+class Api::SpotsController < Api::BaseController
   before_action :set_spot, only: [ :show ]
 
   def index

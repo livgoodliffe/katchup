@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < Api::V1::BaseController
+class Api::SessionsController < Api::BaseController
 
     def new
     end

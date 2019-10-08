@@ -4,14 +4,33 @@ Rails.application.routes.draw do
 
   # API
 
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resources :spots, only: [ :index, :show, :update ]
-      resources :users, param: :authentication_token
-      resources :password_resets, only: [:new, :create, :edit, :update]
-      resources :password_resets, only: [:new, :create, :edit, :update]
-    end
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  get    'verify'  => 'sessions#verify_access_token'
+  resources :users
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  root 'welcome#welcome'
+
+  namespace :api do
+    post   'login'   => 'sessions#create'
+    delete 'logout'  => 'sessions#destroy'
+    get    'verify'  => 'sessions#verify_access_token'
+    resources :users, param: :access_token
+    resources :password_resets, only: [:new, :create, :edit, :update]
+    resources :spots, only: [ :index, :show, :update ]
   end
+
+  # namespace :api, defaults: { format: :json } do
+  #   namespace :v1 do
+  #     resources :spots, only: [ :index, :show, :update ]
+  #     resources :users,
+  #     resources :users, param: :authentication_token
+  #     resources :password_resets, only: [:new, :create, :edit, :update]
+  #     resources :password_resets, only: [:new, :create, :edit, :update]
+  #   end
+  # end
 
 
 
