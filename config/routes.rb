@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resources :spots, only: [ :index, :show, :update ]
-    end
-  end
-
   mount ActionCable.server => '/cable'
 
   root to: 'pages#home'
 
   get 'kitchen_sink' => 'pages#kitchen_sink'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :spots, only: [ :index, :show ]
+      resources :reviews, only: [ :index, :create ]
+    end
+  end
 
   resources :favourites, only: [:index, :destroy]
 
