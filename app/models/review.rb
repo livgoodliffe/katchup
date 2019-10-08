@@ -5,6 +5,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :spot
 
+  # validate rating is 1-5
+
   mount_uploader :image, PhotoUploader
 
   def self.ordered_by_date
