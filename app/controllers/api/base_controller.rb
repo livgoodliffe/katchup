@@ -1,4 +1,4 @@
-class Api::V1::BaseController < ActionController::API
+class Api::BaseController < ActionController::API
 
   include Pundit
 
