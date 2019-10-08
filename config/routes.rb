@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  # API
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :spots, only: [ :index, :show, :update ]
-    end
+      resources :users, param: :authentication_token
+      resources :password_resets, only: [:new, :create, :edit, :update]
+      resources :password_resets, only: [:new, :create, :edit, :update]
   end
 
   mount ActionCable.server => '/cable'
