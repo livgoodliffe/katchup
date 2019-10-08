@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  # API
+
+  # namespaxe prevents naming conflict
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :spots, only: [ :index ]
+    end
+  end
+
+  # WEBSITE
+
   devise_for :users
 
   mount ActionCable.server => '/cable'
