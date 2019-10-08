@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   # API
@@ -9,7 +10,10 @@ Rails.application.routes.draw do
       resources :users, param: :authentication_token
       resources :password_resets, only: [:new, :create, :edit, :update]
       resources :password_resets, only: [:new, :create, :edit, :update]
+    end
   end
+
+
 
   mount ActionCable.server => '/cable'
 
