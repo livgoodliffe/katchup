@@ -1,14 +1,5 @@
 <head>
 
-  <!-- le wagon pwa -->
-
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable"  content="yes">
-
-  <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
-
-  <%= render 'shared/ios_pwa_links' %>
-
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142127956-1"></script>
@@ -52,4 +43,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src="https://kit.fontawesome.com/1f9cc9e6ce.js"></script>
+
+
+  <!-- le wagon pwa -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable"  content="yes">
+
+  <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
+  <%= render 'shared/ios_pwa_links' %>
+
 </head>
