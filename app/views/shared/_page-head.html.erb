@@ -1,15 +1,14 @@
 <head>
 
+  <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142127956-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142127956-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-142127956-1');
-  </script>
+      gtag('config', 'UA-142127956-1');
+    </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
@@ -25,12 +24,13 @@
   <meta property="og:site_name" content="<%= meta_title %>" />
 
   <!-- Twitter Card data -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
-  <meta name="twitter:title" content="<%= meta_title %>">
-  <meta name="twitter:description" content="<%= meta_description %>">
-  <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-  <meta name="twitter:image:src" content="<%= meta_image %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
+
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= favicon_link_tag asset_path('new_favicon-01.png') %>
@@ -40,17 +40,12 @@
   <%#= stylesheet_pack_tag 'application', media: 'all' %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <!-- <script src="anime.min.js"></script> -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/1f9cc9e6ce.js"></script>
+
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-  <script src="https://kit.fontawesome.com/1f9cc9e6ce.js"></script>
 
-
-  <!-- le wagon pwa -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable"  content="yes">
-
-  <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
-
-  <%= render 'ios_pwa_links' %>
 
 </head>
