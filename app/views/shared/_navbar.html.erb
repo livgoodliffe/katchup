@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top">
 
-<!-- Dropdown -->
+  <!-- Dropdown -->
 <!--   <% unless FriendRequest.where(:friend_id == current_user).empty? %>
     <i id="notification" class="fas fa-circle"></i>
   <% end %> -->
@@ -19,7 +19,19 @@
         </div>
       <% end %>
 
+      <%= link_to maps_path, class: "dropdown-item nav-label" do %>
+        <div class="d-flex">
+          <i class="far fa-map-marked-alt pr-3" style="width: 40px"></i>
+          <p class="m-0">Map</p>
+        </div>
+      <% end %>
 
+      <%= link_to discover_index_path, class: "dropdown-item nav-label" do %>
+        <div class="d-flex">
+          <i class="far fa-fire-alt pr-4" style="width: 40px"></i>
+          <p class="m-0">What's Hot</p>
+        </div>
+      <% end %>
 
       <%= link_to lists_path, class: "dropdown-item nav-label" do %>
         <div class="d-flex">
@@ -72,11 +84,11 @@
     </div>
   <% end %>
 
-  <!-- Map -->
+  <!-- Add Katchup -->
 
-  <%= link_to maps_path do %>
+  <%= link_to catchups_path(section: 'catchups') do %>
     <div>
-      <i style="position:relative" class="far fa-map-marked-alt navbar-icon">
+      <i style="position:relative" class="far fa-calendar-plus navbar-icon <%= 'nav-active' if params[:section] == 'catchups' %>">
         <i id="navbar-catchup-badge" class="catchup-badge hidden"></i>
       </i>
     </div>
