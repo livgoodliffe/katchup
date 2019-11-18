@@ -74,16 +74,9 @@
 
   <!-- Map -->
 
-  <%= link_to maps_path, class: "dropdown-item nav-label" do %>
-    <div class="d-flex">
-      <i class="far fa-map-marked-alt pr-3" style="width: 40px"></i>
-      <p class="m-0">Map</p>
-    </div>
-  <% end %>
-
   <%= link_to maps_path do %>
     <div>
-      <i style="position:relative" class="far fa-map-marked-alt navbar-icon <%= 'nav-active' if params[:section] == 'maps' %>">
+      <i style="position:relative" class="far fa-map-marked-alt navbar-icon">
         <i id="navbar-catchup-badge" class="catchup-badge hidden"></i>
       </i>
     </div>
