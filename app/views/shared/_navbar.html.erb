@@ -4,6 +4,7 @@
 <!--   <% unless FriendRequest.where(:friend_id == current_user).empty? %>
     <i id="notification" class="fas fa-circle"></i>
   <% end %> -->
+
   <div id="mySidenav" class="sidenav">
 
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -12,31 +13,10 @@
 
     <div>
 
-      <%= link_to feeds_path, class: "dropdown-item nav-label" do %>
-        <div class="d-flex">
-          <i class="far fa-home pr-3" style="width: 40px"></i>
-          <p class="m-0">Home</p>
-        </div>
-      <% end %>
-
-      <%= link_to maps_path, class: "dropdown-item nav-label" do %>
-        <div class="d-flex">
-          <i class="far fa-map-marked-alt pr-3" style="width: 40px"></i>
-          <p class="m-0">Map</p>
-        </div>
-      <% end %>
-
-      <%= link_to discover_index_path, class: "dropdown-item nav-label" do %>
-        <div class="d-flex">
-          <i class="far fa-fire-alt pr-4" style="width: 40px"></i>
-          <p class="m-0">What's Hot</p>
-        </div>
-      <% end %>
-
       <%= link_to lists_path, class: "dropdown-item nav-label" do %>
         <div class="d-flex">
           <i class="far fa-map-marker-alt pr-3" style="width: 40px"></i>
-          <p class="m-0">My Spots</p>
+          <p class="m-0">Saved Spots</p>
         </div>
       <% end %>
 
@@ -55,7 +35,7 @@
       <%= link_to user_path(current_user), class: "dropdown-item nav-label" do %>
         <div class="d-flex">
           <i class="far fa-laugh-beam pr-3" style="width: 40px"></i>
-          <p class="m-0">My Profile</p>
+          <p class="m-0">Profile</p>
         </div>
       <% end %>
     </div>
@@ -66,7 +46,6 @@
 
     <% else %>
 
-    <div></div>
     <div>
       <%= link_to "Login", new_user_session_path, class: "dropdown-item nav-label" %>
     </div>
@@ -74,7 +53,7 @@
     <% end %>
   </div>
 
-  <i class="fas fa-bars navbar-icon" onclick="openNav()"></i>
+  <i class="far fa-bars navbar-icon" onclick="openNav()"></i>
 
 
   <!-- Logo -->
@@ -86,9 +65,9 @@
 
   <!-- Add Katchup -->
 
-  <%= link_to catchups_path(section: 'catchups') do %>
+  <%= link_to maps_path do %>
     <div>
-      <i style="position:relative" class="far fa-calendar-plus navbar-icon <%= 'nav-active' if params[:section] == 'catchups' %>">
+      <i style="position:relative" class="fal fa-map navbar-icon <%= 'nav-active' if params[:section] == 'maps' %>">
         <i id="navbar-catchup-badge" class="catchup-badge hidden"></i>
       </i>
     </div>
