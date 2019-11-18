@@ -6,6 +6,7 @@
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
     "firebase": "^6.2.2",
+    "gmaps": "^0.4.24",
     "jquery": "^3.4.1",
     "mapbox-gl": "^1.0.0",
     "popper.js": "^1.15.0"
