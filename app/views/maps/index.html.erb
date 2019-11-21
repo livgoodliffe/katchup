@@ -1,9 +1,5 @@
 <div class="container mb-2 button-key">
   <div class="d-flex justify-content-around w-100">
-    <div class="d-flex align-items-center" onclick="window.toggleSpotMarkers()">
-      <div class="map-marker-header transparent-marker-header mr-2"></div>
-      <div>Other Spots</div>
-    </div>
     <div class="d-flex align-items-center" onclick="window.toggleWishlistMarkers()">
       <div class="map-marker-wishlist-header small-marker mr-2"></div>
       <div>Saved</div>
@@ -15,26 +11,13 @@
   </div>
 </div>
 <div class="info-map">
-
-  <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers_spot.to_json %>"
-  ></div>
-
-
-<!-- <div id="map" class="info-map-map my-map-feed"
-    data-markers-spots="<%= @markers_spot.to_json %>"
+  <div id="map" class="info-map-map my-map-feed"
     data-markers-wishlist="<%= @markers_wishlist.to_json %>"
     data-markers-favourite="<%= @markers_favourite.to_json %>"
     data-marker-user="<%= @marker_user.to_json %>"
     data-marker-user-avatar="<%= @marker_user_avatar %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    >
-  </div> -->
-
-
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <div class="info-map-window info-map-window-closed" id="info-map-window">
   </div>
 </div>
