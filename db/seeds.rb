@@ -1,13 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# return unless Rails.env.development?
-
 require 'open-uri'
 require 'nokogiri'
 require 'faker'
@@ -117,13 +107,6 @@ unless keep_spot
   BROADSHEET_ADDRESS_SELECTOR= '.address-content'
 
   SEED_SPOT_COUNT = 20
-
-  def create_menu_item(spot)
-    { spot_id:spot.id,
-      name: Faker::Food.dish,
-      description: Faker::Food.description,
-      price: 100 + rand(2901) } # price between $1 and $30
-  end
 
   richmond_restaurants = Nokogiri::HTML(open("#{BROADSHEET_BASE_URL}")).css(BROADSHEET_BASE_SELECTOR)
 

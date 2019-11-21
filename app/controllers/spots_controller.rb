@@ -2,9 +2,10 @@ class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @spots = Spot.all
-    @spots_with_coords = @spots.select { |spot| spot.latitude.present? && spot.longitude.present? }
-    @markers = @spots_with_coords.map do |spot|
+
+    @spots = Spot.where.not(latitude: nil, longitude: nil)
+
+    @markers = @spots.map do |spot|
       {
         lat: spot.latitude,
         lng: spot.longitude,
