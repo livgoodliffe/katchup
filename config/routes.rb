@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get 'kitchen_sink' => 'pages#kitchen_sink'
 
+  get 'search' => 'pages#search'
+
   resources :favourites, only: [:index, :destroy]
 
   resources :wishlists, only: [:index, :destroy]
