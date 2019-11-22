@@ -13,6 +13,7 @@ gem 'rails', '5.2.3'
 gem 'redis'
 
 gem "http"
+gem 'yelp', require: 'yelp'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
