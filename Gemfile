@@ -14,6 +14,8 @@ gem 'redis'
 
 gem "http"
 gem 'yelp', require: 'yelp'
+gem 'google_places'
+gem 'romato'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

@@ -36,7 +36,7 @@ class MapsController < ApplicationController
       {
         lat: spot.latitude,
         lng: spot.longitude,
-        infoWindow: render_to_string(partial: "map_marker_info", locals: { spot: spot })
+        infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: spot })
       }
     end
   end

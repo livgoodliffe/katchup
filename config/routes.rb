@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
 
   # API
@@ -15,8 +16,6 @@ Rails.application.routes.draw do
 
   # WEBSITE
 
-
-
   mount ActionCable.server => '/cable'
 
   root to: 'pages#home'
@@ -30,6 +29,8 @@ Rails.application.routes.draw do
   resources :wishlists, only: [:index, :destroy]
 
   resources :reviews, only: [:index, :show, :create, :update, :edit, :destroy]
+
+  resources :spots
 
   resources :spots, only: [:show, :index] do
     resources :reviews, only: [:create]
