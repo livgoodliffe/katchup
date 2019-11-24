@@ -1,29 +1,44 @@
-<h2>Search through DB and Zomato</h2>
+<h2>Search</h2>
 
 <%= form_tag search_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: "Find a spot"
+    placeholder: "Find a spot",
+    id: "spots-search"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
 <h5>Search results:</h5>
 
-<ul>
-  <% @spots.each do |spot| %>
-    <li><%= spot["restaurant"]["name"] %></li>
-    <li><%= spot["restaurant"]["location"]["locality"] %>, <%= spot["restaurant"]["location"]["city"] %></li>
-    <li><%= spot["restaurant"]["location"]["latitude"] %></li>
-    <li><%= spot["restaurant"]["location"]["longitude"] %></li>
-    <%= image_tag("#{spot["restaurant"]["thumb"]}", class: "dark-pic feed-image") %>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <div id="spots">
 
+        <div id="search-results" class="discover-search-results">
+          <% @spots.each do |spot| %>
+            <div class="spot-card mx-auto">
+                <div class=spot-image>
+                  <%= image_tag("#{spot["restaurant"]["thumb"]}") %>
+                </div>
+                <div class="spot-details">
+                  <div class="spot-name">
+                    <%= spot["restaurant"]["name"] %>
+                  </div>
+                  <div class="spot-location">
+                    <%= spot["restaurant"]["location"]["locality"] %>, <%= spot["restaurant"]["location"]["city"] %>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        </div>
 
-
-
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
