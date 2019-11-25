@@ -1,6 +1,11 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  require "json"
+  require "optparse"
+  require "http"
+
+
   def index
     @spots = Spot.where.not(latitude: nil, longitude: nil)
 

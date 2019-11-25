@@ -12,10 +12,6 @@ class PagesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:home]
 
-  def initialize
-    @client = Romato::Zomato.new(ENV["ZOMATO_API"])
-  end
-
   def home
     render :layout => 'without_navbar'
   end
@@ -25,6 +21,7 @@ class PagesController < ApplicationController
 
   def search
 
+    @client = Romato::Zomato.new(ENV["ZOMATO_API"])
     term = params[:query]
     results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
     @spots = results["restaurants"]
