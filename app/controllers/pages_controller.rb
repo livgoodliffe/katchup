@@ -10,10 +10,11 @@ class PagesController < ApplicationController
   # SEARCH_LIMIT = 3
   # GP_API = ENV["GOOGLE_PLACES"]
 
-  skip_before_action :authenticate_user!, only: [:home]
+  # skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    render :layout => 'without_navbar'
+    # checks if user is signed in and redirect root to feeds_path
+    user_signed_in? ? redirect_to feeds_path : render :layout => 'without_navbar'
   end
 
   def kitchen_sink
