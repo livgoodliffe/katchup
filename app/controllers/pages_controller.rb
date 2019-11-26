@@ -14,7 +14,11 @@ class PagesController < ApplicationController
 
   def home
     # checks if user is signed in and redirect root to feeds_path
-    user_signed_in? ? redirect_to feeds_path : render :layout => 'without_navbar'
+    if user_signed_in?
+      redirect_to feeds_path
+    else
+      render :layout => 'without_navbar'
+    end
   end
 
   def kitchen_sink
