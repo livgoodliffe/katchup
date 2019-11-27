@@ -1,32 +1,63 @@
 class SpotsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
 
   require "json"
   require "optparse"
   require "http"
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @spots = Spot.where.not(latitude: nil, longitude: nil)
 
-    @markers = @spots.map do |spot|
-      {
-        lat: spot.latitude,
-        lng: spot.longitude,
-        infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: spot })
-      }
-    end
+    @client = Romato::Zomato.new(ENV["ZOMATO_API"])
+    term = params[:query]
+    results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
+    @spots = results["restaurants"]
+
+  end
+
+  def create
+    @spot = Spot.new(
+      res_id: params[:res_id],
+      name: params[:name],
+      thumbnail: params[:thumbnail],
+      suburb: params[:suburb],
+      city: params[:city],
+      latitude: params[:latitude],
+      longitude: params[:longitude],
+      )
+
+    @spot.save
+
   end
 
   def show
     @spot = Spot.find(params[:id])
-    @review = Review.new
-    @marker = [{
-      lat: @spot.latitude,
-      lng: @spot.longitude,
-      infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: @spot })
-    }]
-
-    render :layout => 'without_navbar'
   end
+
+
+
+
+  # def index
+  #   @spots = Spot.where.not(latitude: nil, longitude: nil)
+
+  #   @markers = @spots.map do |spot|
+  #     {
+  #       lat: spot.latitude,
+  #       lng: spot.longitude,
+  #       infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: spot })
+  #     }
+  #   end
+  # end
+
+  # def show
+  #   @spot = Spot.find(params[:id])
+  #   @review = Review.new
+  #   @marker = [{
+  #     lat: @spot.latitude,
+  #     lng: @spot.longitude,
+  #     infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: @spot })
+  #   }]
+
+  #   render :layout => 'without_navbar'
+  # end
 end
