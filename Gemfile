@@ -44,8 +44,8 @@ end
 gem 'nokogiri'
 gem 'geocoder'
 gem 'faker'
-gem 'cloudinary'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'simple_calendar'
 # for feed tracking
 gem 'public_activity'
