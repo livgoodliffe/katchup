@@ -1,16 +1,51 @@
-<!-- Search bar -->
-<div class="grey-search-bar" style="padding-top: 70px">
-  <%= render('search/search_form', search_type: 'all_spots', placeholder: 'Search All Spots') %>
-</div>
-<div id="search-results" class="search-results">
-  <!-- this content only exists so that full spot list exists before any search is carried out -->
-  <% @spots.each do |spot| %>
-    <%= render "spots/spot_card", spot: spot %>
-  <% end %>
+<%= form_tag spots_path, method: :get do %>
+  <div class="search-field mr-2 ml-2">
+    <i class="fas fa-search search-icon"></i>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "search-text",
+        placeholder: "Find a spot",
+        id: "spots-search"
+      %>
+  </div>
+<% end %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <div id="spots">
+
+        <div id="search-results" class="discover-search-results">
+          <% @spots.each do |spot| %>
+
+          <% res_id = spot["restaurant"]["R"]["res_id"] %>
+          <% thumbnail = spot["restaurant"]["thumb"] %>
+          <% name = spot["restaurant"]["name"] %>
+          <% suburb = spot["restaurant"]["location"]["locality"] %>
+          <% city = spot["restaurant"]["location"]["city"] %>
+          <% latitude = spot["restaurant"]["location"]["latitude"] %>
+          <% longitude = spot["restaurant"]["location"]["longitude"] %>
+
+            <div class="spot-card mx-auto">
+                <div class=spot-image>
+                  <%= image_tag("#{thumbnail}") %>
+                </div>
+                <div class="spot-details">
+                  <div class="spot-name">
+                    <%= name %>
+                  </div>
+                  <div class="spot-location">
+                    <%= suburb %>, <%= city %>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
-<div id="map"
-    style="width: 100%; height: 400px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+
+
+
