@@ -16,17 +16,24 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(
-      res_id: params[:res_id],
-      name: params[:name],
-      thumbnail: params[:thumbnail],
-      suburb: params[:suburb],
-      city: params[:city],
-      latitude: params[:latitude],
-      longitude: params[:longitude],
-      )
 
-    @spot.save
+    # if Spot.find(params[:res_id]) ! nil
+    #   @spot = Spot.find(params[:res_id])
+    #   redirect_to spot_path(@spot)
+
+    # else
+      @spot = Spot.new(
+        res_id: params[:res_id],
+        name: params[:name],
+        thumbnail: params[:thumbnail],
+        suburb: params[:suburb],
+        city: params[:city],
+        latitude: params[:latitude],
+        longitude: params[:longitude],
+        )
+      @spot.save
+      redirect_to spot_path(@spot)
+    # end
 
   end
 

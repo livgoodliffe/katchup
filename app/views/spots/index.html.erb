@@ -18,27 +18,39 @@
         <div id="search-results" class="discover-search-results">
           <% @spots.each do |spot| %>
 
-          <% res_id = spot["restaurant"]["R"]["res_id"] %>
-          <% thumbnail = spot["restaurant"]["thumb"] %>
-          <% name = spot["restaurant"]["name"] %>
-          <% suburb = spot["restaurant"]["location"]["locality"] %>
-          <% city = spot["restaurant"]["location"]["city"] %>
-          <% latitude = spot["restaurant"]["location"]["latitude"] %>
-          <% longitude = spot["restaurant"]["location"]["longitude"] %>
+            <% res_id = spot["restaurant"]["R"]["res_id"] %>
+            <% thumbnail = spot["restaurant"]["thumb"] %>
+            <% name = spot["restaurant"]["name"] %>
+            <% suburb = spot["restaurant"]["location"]["locality"] %>
+            <% city = spot["restaurant"]["location"]["city"] %>
+            <% latitude = spot["restaurant"]["location"]["latitude"] %>
+            <% longitude = spot["restaurant"]["location"]["longitude"] %>
 
-            <div class="spot-card mx-auto">
-                <div class=spot-image>
-                  <%= image_tag("#{thumbnail}") %>
-                </div>
-                <div class="spot-details">
-                  <div class="spot-name">
-                    <%= name %>
+            <%= link_to spots_path(
+              res_id: res_id,
+              thumbnail: thumbnail,
+              name: name,
+              suburb: suburb,
+              city: city,
+              latitude: latitude,
+              longitude: longitude ), :method => :post do %>
+
+              <div class="spot-card mx-auto">
+                  <div class=spot-image>
+                    <%= image_tag("#{thumbnail}") %>
                   </div>
-                  <div class="spot-location">
-                    <%= suburb %>, <%= city %>
+                  <div class="spot-details">
+                    <div class="spot-name">
+                      <%= name %>
+                    </div>
+                    <div class="spot-location">
+                      <%= suburb %>, <%= city %>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+
+            <% end %>
+
           <% end %>
         </div>
 
