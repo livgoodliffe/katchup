@@ -3,7 +3,6 @@ class SpotsController < ApplicationController
   require "json"
   require "optparse"
   require "http"
-  require "byebug"
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
