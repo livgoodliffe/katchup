@@ -19,48 +19,62 @@
 
         <div id="search-results" class="discover-search-results">
 
-          <!-- zomato results -->
-          <% @spots_zom.each do |spot| %>
-            <% res_id = spot["restaurant"]["R"]["res_id"] %>
-            <% thumbnail = spot["restaurant"]["thumb"] %>
-            <% name = spot["restaurant"]["name"] %>
-            <% suburb = spot["restaurant"]["location"]["locality"] %>
-            <% city = spot["restaurant"]["location"]["city"] %>
-            <% latitude = spot["restaurant"]["location"]["latitude"] %>
-            <% longitude = spot["restaurant"]["location"]["longitude"] %>
-
-            <div class="spot-card mx-auto">
-                <div class=spot-image>
-                  <%= image_tag("#{thumbnail}") %>
-                </div>
-                <div class="spot-details">
-                  <div class="spot-name">
-                    <%= name %>
-                  </div>
-                  <div class="spot-location">
-                    <%= suburb %>, <%= city %>
-                  </div>
-                </div>
-            </div>
-
-          <% end %>
+          <!-- database results -->
 
           <% @spots_db.each do |spot| %>
-
-            <div class="spot-card mx-auto">
-                <div class=spot-image>
-                  <%= image_tag("#{spot.thumbnail}") %>
-                </div>
-                <div class="spot-details">
-                  <div class="spot-name">
-                    <%= spot.name %>
+            <%= link_to spot_path(spot) do %>
+              <div class="spot-card mx-auto">
+                  <div class=spot-image>
+                    <%= image_tag("#{spot.thumbnail}") %>
                   </div>
-                  <div class="spot-location">
-                    <%= spot.suburb %>, <%= spot.city %>
+                  <div class="spot-details">
+                    <div class="spot-name">
+                      <%= spot.name %>
+                    </div>
+                    <div class="spot-location">
+                      <%= spot.suburb %>, <%= spot.city %>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+            <% end %>
           <% end %>
+
+          <!-- zomato results -->
+
+          <% @spots_zom.each do |spot| %>
+            <!-- definitions -->
+              <% res_id = spot["restaurant"]["R"]["res_id"] %>
+              <% thumbnail = spot["restaurant"]["thumb"] %>
+              <% name = spot["restaurant"]["name"] %>
+              <% suburb = spot["restaurant"]["location"]["locality"] %>
+              <% city = spot["restaurant"]["location"]["city"] %>
+              <% latitude = spot["restaurant"]["location"]["latitude"] %>
+              <% longitude = spot["restaurant"]["location"]["longitude"] %>
+            <%= link_to spots_path(
+              res_id: res_id,
+              thumbnail: thumbnail,
+              name: name,
+              suburb: suburb,
+              city: city,
+              latitude: latitude,
+              longitude: longitude ), :method => :post do %>
+              <div class="spot-card mx-auto">
+                  <div class=spot-image>
+                    <%= image_tag("#{thumbnail}") %>
+                  </div>
+                  <div class="spot-details">
+                    <div class="spot-name">
+                      <%= name %>
+                    </div>
+                    <div class="spot-location">
+                      <%= suburb %>, <%= city %>
+                    </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+
+
         </div>
 
       </div>
