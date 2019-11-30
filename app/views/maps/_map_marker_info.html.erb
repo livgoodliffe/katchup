@@ -2,7 +2,7 @@
 
 <%= link_to spot_path(spot) do %>
   <div class="map-popup-image">
-    <%= image_tag("#{spot.images.first.image}")%>
+    <%= image_tag("#{spot.thumbnail}")%>
   </div>
 <% end %>
 
@@ -12,7 +12,7 @@
       <h5><%= spot.name %></h5>
     </div>
     <div>
-      <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
+      <p><%= spot.suburb %>, <%= spot.city %></p>
     </div>
   </div>
 <% end %>

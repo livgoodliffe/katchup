@@ -1,8 +1,8 @@
 <div class="review-card m-3">
 
-  <%= cl_image_tag(@spot.images.first.image, class: "review-image") %>
+  <%= cl_image_tag(@spot.thumbnail, class: "review-image") %>
   <div class="review-content d-flex ">
-    <%= cl_image_tag(@spot.images.first.image, class: "avatar m-3") %>
+    <%= cl_image_tag(@spot.thumbnail, class: "avatar m-3") %>
     <p class="m-2">something</p>
   </div>
 </div>
