@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
+  # redirects user after sign in
+  def after_sign_in_path_for(resource)
+    feeds_path
+  end
+
 end

@@ -5,8 +5,14 @@ class PagesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:home]
 
+
   def home
-    render :layout => 'without_navbar'
+    # checks if user is signed in and redirect root to feeds_path
+    if user_signed_in?
+      redirect_to feeds_path
+    else
+      render :layout => 'without_navbar'
+    end
   end
 
   def kitchen_sink
