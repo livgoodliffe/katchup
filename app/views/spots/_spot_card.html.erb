@@ -1,18 +1,9 @@
 <div class="spot-card mx-auto">
+
   <%= link_to spot_path(spot) do %>
-    <!-- Image -->
-    <div class=spot-image>
-      <%= image_tag("#{spot.images.first.image}")%>
-    </div>
-    <!-- Text -->
-    <div class="spot-details">
-      <div class="spot-name">
-        <%= spot.name %>
-      </div>
-      <div class="spot-location">
-        <%= spot.address.gsub(/ VIC \d{4}?/,'') %>
-      </div>
-    </div>
+
+  <%= render 'spot_card_inside', spot: spot %>
+
   <% end %>
   <!-- Icon -->
   <div class="spot-card-icon">

@@ -1,6 +1,6 @@
 <% @spots.sample(25).each do |spot| %>
   <div class="discovery-card mx-2">
-    <%= cl_image_tag(spot.images.first.image, :crop=>"scale", class: "discover-card-image" ) %>
+    <%= cl_image_tag(spot.thumbnail, :crop=>"scale", class: "discover-card-image" ) %>
     <div class="card-content">
       <p class="mt-1"><%= spot.name %></p>
       <p><%= spot.location %></p>

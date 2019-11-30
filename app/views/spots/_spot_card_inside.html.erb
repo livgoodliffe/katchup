@@ -1,0 +1,13 @@
+<!-- Image -->
+<div class=spot-image>
+  <%= image_tag("#{spot.thumbnail}")%>
+</div>
+<!-- Text -->
+<div class="spot-details">
+  <div class="spot-name">
+    <%= spot.name %>
+  </div>
+  <div class="spot-location">
+    <p><%= spot.suburb %>, <%= spot.city %></p>
+  </div>
+</div>

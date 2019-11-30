@@ -1,6 +1,6 @@
 <% @friends_spots.each do |spot| %>
   <div class="discovery-card mx-2">
-    <%= cl_image_tag(spot.images.first.image, class: "discover-card-image", crop: "crop" ) %>
+    <%= cl_image_tag(spot.thumbnail, class: "discover-card-image", crop: "crop" ) %>
     <div class="card-content">
       <p class="mt-1"><%= spot.name %></p>
       <p><%= spot.location %></p>

@@ -8,20 +8,36 @@ class SpotsController < ApplicationController
 
   def index
 
-    @client = Romato::Zomato.new(ENV["ZOMATO_API"])
     term = params[:query]
+
+    # search in database
+
+    @spots_db = Spot.where('name ILIKE ?', "%#{term}%")
+
+    # search in zomato (don't show doubles)
+
+
+    @client = Romato::Zomato.new(ENV["ZOMATO_API"])
     results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
     @spots = results["restaurants"]
+
+
+
+
+
+
+
 
   end
 
   def create
 
-    # if Spot.find(params[:res_id]) ! nil
-    #   @spot = Spot.find(params[:res_id])
-    #   redirect_to spot_path(@spot)
 
-    # else
+
+
+
+
+
       @spot = Spot.new(
         res_id: params[:res_id],
         name: params[:name],
@@ -33,7 +49,6 @@ class SpotsController < ApplicationController
         )
       @spot.save
       redirect_to spot_path(@spot)
-    # end
 
   end
 
