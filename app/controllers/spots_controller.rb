@@ -3,6 +3,7 @@ class SpotsController < ApplicationController
   require "json"
   require "optparse"
   require "http"
+  require "byebug"
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -10,33 +11,41 @@ class SpotsController < ApplicationController
 
     term = params[:query]
 
-    # search in database
+    # search in database first
 
     @spots_db = Spot.where('name ILIKE ?', "%#{term}%")
 
-    # search in zomato (don't show doubles)
-
+    # search in zomato
 
     @client = Romato::Zomato.new(ENV["ZOMATO_API"])
     results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
-    @spots = results["restaurants"]
+    @zom_results = results["restaurants"]
 
+    # if zomato result is in DB don't show it
 
+    # if spots_db and spots_zom results have same res_id, only show spot_db
 
+    @spots_zom = []
 
+    # check if any zomato results are in db
 
+    @zom_results.each do |spot|
+      zom_res_id = spot["restaurant"]["R"]["res_id"]
+      result = Spot.exists?(res_id: zom_res_id)
+      if result == false
+        @spots_zom.push(spot)
+      end
 
+    end
 
+    @spots_zom
+    @spots_db
 
   end
 
   def create
 
-
-
-
-
-
+    # for the zomato results
 
       @spot = Spot.new(
         res_id: params[:res_id],

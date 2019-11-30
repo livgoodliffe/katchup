@@ -19,8 +19,8 @@
 
         <div id="search-results" class="discover-search-results">
 
-          <!-- for zomato search results to create new spot -->
-          <% @spots.each do |spot| %>
+          <!-- zomato results -->
+          <% @spots_zom.each do |spot| %>
             <% res_id = spot["restaurant"]["R"]["res_id"] %>
             <% thumbnail = spot["restaurant"]["thumb"] %>
             <% name = spot["restaurant"]["name"] %>
@@ -28,6 +28,21 @@
             <% city = spot["restaurant"]["location"]["city"] %>
             <% latitude = spot["restaurant"]["location"]["latitude"] %>
             <% longitude = spot["restaurant"]["location"]["longitude"] %>
+
+            <div class="spot-card mx-auto">
+                <div class=spot-image>
+                  <%= image_tag("#{thumbnail}") %>
+                </div>
+                <div class="spot-details">
+                  <div class="spot-name">
+                    <%= name %>
+                  </div>
+                  <div class="spot-location">
+                    <%= suburb %>, <%= city %>
+                  </div>
+                </div>
+            </div>
+
           <% end %>
 
           <% @spots_db.each do |spot| %>
