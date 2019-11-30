@@ -9,18 +9,5 @@
     </div>
   </div>
 
-
-
-
-  <div class="container reviews-container">
-    <!-- Number of reviews -->
-    <div id="num-review">
-      <%= render('spots/show/spot-show-num-reviews', total: @spot.reviews.count) %>
-    </div>
-    <!-- Listing reviews -->
-    <%= render 'spots/show/spot-show-reviews-list' %>
-    <div id="review-form">
-      <%= render 'spots/show/spots-show-review-form', review: @review %>
-    </div>
-  </div>
 </div>
+

@@ -1,7 +1,7 @@
   <% @spots.each do |spot|%>
   <div class="modal-content-card">
     <div>
-      <%= image_tag("#{spot.images.first.image}", id: "image_spot_#{spot.id}") %>
+      <%= image_tag("#{spot.thumbnail}", id: "image_spot_#{spot.id}") %>
     </div>
     <div class="modal-content-card-details">
       <p><%= spot.name %></p>
