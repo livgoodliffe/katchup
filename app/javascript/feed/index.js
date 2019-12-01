@@ -6,7 +6,7 @@ export default () => {
   const searchSelect = document.querySelector('#spots-search');
 
   const searchPage = document.querySelector('#search-page');
-  const exit = document.querySelector('#search-exit');
+  const back = document.querySelector('#search-exit');
 
   const bringInSearch = (callback) => {
     animateCSS(searchPage, 'slideInRight', callback, alwaysVisible);
@@ -17,11 +17,11 @@ export default () => {
   };
 
   const bringInX = (callback) => {
-    animateCSS(exit, 'fadeIn', callback, alwaysVisible);
+    animateCSS(back, 'fadeIn', callback, alwaysVisible);
   };
 
   const takeOutX = (callback) => {
-    animateCSS(exit, 'fadeOut', callback, willHideAfterwards);
+    animateCSS(back, 'fadeOut', callback, willHideAfterwards);
   };
 
   if (searchSelect) {
@@ -33,10 +33,11 @@ export default () => {
   };
 
   if (back) {
-    exit.addEventListener('click', () => {
+    back.addEventListener('click', () => {
         feed.classList.remove('hidden');
         takeOutSearch();
         takeOutX();
+        searchSelect.value = "";
     });
   }
 };
