@@ -38,8 +38,6 @@ Rails.application.routes.draw do
     resources :favourites, only: :create
   end
 
-  resources :feeds, only: [:index]
-
   resources :maps, only: [:index]
 
   resources :lists, only: [:index]

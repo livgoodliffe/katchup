@@ -1,0 +1,48 @@
+<!-- database results -->
+
+<% spots_db.each do |spot| %>
+
+  <div class="spot-card mx-auto">
+    <%= link_to spot_path(spot) do %>
+      <%= render "spot_card_inside",
+        name: spot.name,
+        thumbnail: spot.thumbnail,
+        suburb: spot.suburb,
+        city: spot.city
+      %>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- zomato results -->
+
+<% spots_zom.each do |spot| %>
+  <!-- definitions -->
+    <% res_id = spot["restaurant"]["R"]["res_id"] %>
+    <% thumbnail = spot["restaurant"]["thumb"] %>
+    <% name = spot["restaurant"]["name"] %>
+    <% suburb = spot["restaurant"]["location"]["locality"] %>
+    <% city = spot["restaurant"]["location"]["city"] %>
+    <% latitude = spot["restaurant"]["location"]["latitude"] %>
+    <% longitude = spot["restaurant"]["location"]["longitude"] %>
+
+    <div class="spot-card mx-auto">
+
+
+      <%= link_to spots_path(
+        res_id: res_id,
+        thumbnail: thumbnail,
+        name: name,
+        suburb: suburb,
+        city: city,
+        latitude: latitude,
+        longitude: longitude ), :method => :post do %>
+        <%= render "spot_card_inside",
+          name: name,
+          thumbnail: thumbnail,
+          suburb: suburb,
+          city: city
+        %>
+      <% end %>
+    </div>
+<% end %>

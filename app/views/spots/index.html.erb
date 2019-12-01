@@ -1,78 +1,27 @@
-<%= form_tag spots_path, method: :get do %>
-  <div class="search-field mr-2 ml-2">
-
-  <i class="fas fa-search search-icon"></i>
-
-  <%= text_field_tag :query,
-    params[:query],
-    class: "search-text",
-    placeholder: "Find a spot",
-    id: "spots-search"
-  %>
-  </div>
-<% end %>
-
+<!-- Search bar -->
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8 offset-sm-2">
-      <div id="spots">
+  <div class="search-bar grow" id="search-search">
 
-        <div id="search-results" class="discover-search-results">
+    <i id='search-back-button' class="fas fa-arrow-left red-arrow hidden"></i>
+    <%= render 'spots/search/search-bar', placeholder: 'Search for a spot...' %>
 
-          <!-- database results -->
-
-          <% @spots_db.each do |spot| %>
-
-            <div class="spot-card mx-auto">
-              <%= link_to spot_path(spot) do %>
-                <%= render "spot_card_inside",
-                  name: spot.name,
-                  thumbnail: spot.thumbnail,
-                  suburb: spot.suburb,
-                  city: spot.city
-                %>
-              <% end %>
-            </div>
-          <% end %>
-
-
-
-          <!-- zomato results -->
-
-          <% @spots_zom.each do |spot| %>
-            <!-- definitions -->
-              <% res_id = spot["restaurant"]["R"]["res_id"] %>
-              <% thumbnail = spot["restaurant"]["thumb"] %>
-              <% name = spot["restaurant"]["name"] %>
-              <% suburb = spot["restaurant"]["location"]["locality"] %>
-              <% city = spot["restaurant"]["location"]["city"] %>
-              <% latitude = spot["restaurant"]["location"]["latitude"] %>
-              <% longitude = spot["restaurant"]["location"]["longitude"] %>
-
-              <div class="spot-card mx-auto">
-
-
-                <%= link_to spots_path(
-                  res_id: res_id,
-                  thumbnail: thumbnail,
-                  name: name,
-                  suburb: suburb,
-                  city: city,
-                  latitude: latitude,
-                  longitude: longitude ), :method => :post do %>
-                  <%= render "spot_card_inside",
-                    name: name,
-                    thumbnail: thumbnail,
-                    suburb: suburb,
-                    city: city
-                  %>
-                <% end %>
-              </div>
-          <% end %>
-
-        </div>
-
-      </div>
-    </div>
   </div>
-</div>  </div>
+</div>
+
+<!-- Feed page -->
+
+<div id="feed-page">
+  <%= render "spots/feed/feed-page" %>
+  <div id="infinite-scrolling">
+    <%= will_paginate @activities%>
+  </div>
+</div>
+
+<!-- Search results -->
+
+<div id="search-page" class="hidden container">
+
+  <div id="search-results" class="discover-search-results">
+    <%= render 'spots/search/search-results', spots_db: @spots_db, spots_zom: @spots_zom %>\
+  </div>
+</div>

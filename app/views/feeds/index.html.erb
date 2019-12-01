@@ -2,8 +2,10 @@
 
 <div class="container">
   <div class="search-bar grow" id="search-search">
+
     <i id='search-back-button' class="fas fa-arrow-left red-arrow hidden"></i>
-    <%= render 'search/search_form', search_type: 'all_spots', placeholder: 'Search for a spot...' %>
+    <%= render 'spots/search-bar', placeholder: 'Search for a spot...' %>
+
   </div>
 </div>
 
@@ -22,10 +24,9 @@
 <div id="search-page" class="hidden container">
 
   <div id="search-results" class="discover-search-results">
-    <% @spots.first(25).each do |spot| %>
-        <%= render "spots/spot_card", spot: spot %>
-    <% end %>
+
   </div>
+
 </div>
 
 

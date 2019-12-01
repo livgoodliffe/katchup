@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   # redirects user after sign in
   def after_sign_in_path_for(resource)
-    feeds_path
+    spots_path
   end
 
 end

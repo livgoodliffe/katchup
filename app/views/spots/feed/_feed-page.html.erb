@@ -1,12 +1,11 @@
-<!-- <img src="../../assets/810.gif" alt="Loading..." title="Loading..." /> -->
 <div class="feed-index">
   <% @activities.each do |activity|  %>
     <% if activity.trackable_type == "Favourite" && activity.trackable != nil %>
-      <%= render 'feed-standard-card', activity: activity %>
+      <%= render 'spots/feed/feed-card', activity: activity %>
     <% elsif activity.trackable_type == "Wishlist"  && activity.trackable != nil %>
-      <%= render 'feed-standard-card', activity: activity %>
+      <%= render 'spots/feed/feed-card', activity: activity %>
     <% elsif activity.trackable_type == "Review"  && activity.trackable != nil %>
-      <%= render 'feed-standard-card', activity: activity %>
+      <%= render 'spots/feed/feed-card', activity: activity %>
     <% end %>
   <% end %>
 </div>
