@@ -12,3 +12,12 @@
     <% end %>
   </div>
 </div>
+
+<!-- Search results -->
+
+<div id="search-page" class="hidden container">
+
+  <div id="search-results" class="discover-search-results">
+    <%= render 'spots/search/search-results', spots_db: @spots_db, spots_zom: @spots_zom %>
+  </div>
+</div>
