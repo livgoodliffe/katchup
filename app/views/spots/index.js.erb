@@ -1,7 +1,29 @@
-$('.feed-index').append('<%= j render "feed-page", activities: @activities %>');
+$('.feed-index').append('<%= j render "spots/feed/feed-page", activities: @activities %>');
 <% if @activities.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @activities %>');
 <% else %>
   $(window).off('scroll');
   $('.pagination').replaceWith("<h4>All caught up!</h4>");
+<% end %>
+
+timestamp = parseInt(document.getElementById('timestamp').value);
+
+function clearResults() {
+  const resultsContainer = document.getElementById('search-results')
+  resultsContainer.innerHTML = ""
+}
+
+function addResults(resultHTML) {
+  const resultsContainer = document.getElementById('search-results')
+  resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
+}
+
+if (timestamp === <%= @timestamp %>) {
+  clearResults();
+}
+
+<% @spots.each do |spot| %>
+if (timestamp === <%= @timestamp %>) {
+  addResults(`<%= render("spots/search/search-results", spot:spot) %>`)
+}
 <% end %>

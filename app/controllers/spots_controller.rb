@@ -8,6 +8,8 @@ class SpotsController < ApplicationController
 
   def index
 
+    @timestamp = params[:timestamp]
+
     term = params[:query]
     # search in database first
     @spots_db = Spot.where('name ILIKE ?', "%#{term}%")

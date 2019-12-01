@@ -1,13 +1,18 @@
-<%= form_tag spots_path, method: :get do %>
-  <div class="search-field mr-2 ml-2">
+<script>
+  function addSearchTimeStamp() {
+    document.getElementById('timestamp').value=Date.now();
+  }
+</script>
 
-  <i class="fas fa-search search-icon"></i>
+<%= form_tag spots_path, method: :get, remote: true, onsubmit: "addSearchTimeStamp()" do %>
 
-  <%= text_field_tag :query,
-    params[:query],
-    class: "search-text",
-    placeholder: placeholder,
-    id: "spots-search"
-  %>
+  <%= hidden_field_tag :timestamp %>
+
+  <div style="position:relative">
+    <div class="search-field">
+      <i class="fas fa-search search-icon"></i>
+      <%= text_field_tag :query, params[:query], class: "search-text", placeholder: placeholder, id: "spots-search" %>
+    </div>
+
   </div>
 <% end %>

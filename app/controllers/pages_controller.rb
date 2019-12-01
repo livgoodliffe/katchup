@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
 
   def home
-    # checks if user is signed in and redirect root to feeds_path
+    # checks if user is signed in and redirect root to spots_path
     if user_signed_in?
       redirect_to spots_path
     else

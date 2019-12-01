@@ -1,6 +1,6 @@
 <!-- database results -->
 
-<% spots_db.each do |spot| %>
+<% @spots_db.each do |spot| %>
 
   <div class="spot-card mx-auto">
     <%= link_to spot_path(spot) do %>
@@ -16,7 +16,7 @@
 
 <!-- zomato results -->
 
-<% spots_zom.each do |spot| %>
+<% @spots_zom.each do |spot| %>
   <!-- definitions -->
     <% res_id = spot["restaurant"]["R"]["res_id"] %>
     <% thumbnail = spot["restaurant"]["thumb"] %>
