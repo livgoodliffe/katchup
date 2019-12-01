@@ -7,29 +7,23 @@ class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+      term = params[:query]
 
-    @timestamp = params[:timestamp]
+      @spots_db = Spot.where('name ILIKE ?', "%#{term}%")
 
-    term = params[:query]
-    # search in database first
-    @spots_db = Spot.where('name ILIKE ?', "%#{term}%")
-    # search in zomato
-    @client = Romato::Zomato.new(ENV["ZOMATO_API"])
-    results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
-    @zom_results = results["restaurants"]
-    # if zomato result is in DB don't show it
-    # if spots_db and spots_zom results have same res_id, only show spot_db
-    @spots_zom = []
-    # check if any zomato results are in db
-    @zom_results.each do |spot|
-      zom_res_id = spot["restaurant"]["R"]["res_id"]
-      result = Spot.exists?(res_id: zom_res_id)
-      if result == false
-        @spots_zom.push(spot)
+      @client = Romato::Zomato.new(ENV["ZOMATO_API"])
+      results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
+      @zom_results = results["restaurants"]
+      @spots_zom = []
+
+      @zom_results.each do |spot|
+        zom_res_id = spot["restaurant"]["R"]["res_id"]
+        result = Spot.exists?(res_id: zom_res_id)
+        if result == false
+          @spots_zom.push(spot)
+        end
       end
-    end
-    @spots_zom
-    @spots_db
+
 
     # News feed
 

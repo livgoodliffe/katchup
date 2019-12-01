@@ -1,0 +1,35 @@
+
+  <!-- Search bar -->
+
+  <div class="search-bar grow" id="search-search">
+
+    <%= form_tag spots_path, method: :get do %>
+
+      <div style="position:relative">
+        <div class="search-field search-bar">
+          <i class="fas fa-search search-icon"></i>
+
+          <%= text_field_tag :query,
+          params[:query],
+          class: "search-text",
+          placeholder: placeholder,
+          id: "spots-search" %>
+
+          <i id='search-back-button' class="fal fa-times-circle red-arrow hidden"></i>
+
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <!-- Search results -->
+
+  <div id="search-page" class="hidden container">
+
+    <div id="search-results" class="d-flex flex-wrap">
+      <%= render 'spots/search/search-results', spots_db: @spots_db, spots_zom: @spots_zom %>
+    </div>
+
+  </div>
+

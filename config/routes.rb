@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   # WEBSITE
 
+  # notifications:
+
   mount ActionCable.server => '/cable'
 
   root to: 'pages#home'

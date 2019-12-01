@@ -6,24 +6,24 @@ $('.feed-index').append('<%= j render "spots/feed/feed-page", activities: @activ
   $('.pagination').replaceWith("<h4>All caught up!</h4>");
 <% end %>
 
-timestamp = parseInt(document.getElementById('timestamp').value);
-
-function clearResults() {
-  const resultsContainer = document.getElementById('search-results')
-  resultsContainer.innerHTML = ""
-}
-
-function addResults(resultHTML) {
-  const resultsContainer = document.getElementById('search-results')
-  resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
-}
-
-if (timestamp === <%= @timestamp %>) {
-  clearResults();
-}
-
-<% @spots.each do |spot| %>
-if (timestamp === <%= @timestamp %>) {
-  addResults(`<%= render("spots/search/search-results", spot:spot) %>`)
-}
-<% end %>
+// timestamp = parseInt(document.getElementById('timestamp').value);
+//
+// function clearResults() {
+//   const resultsContainer = document.getElementById('search-results')
+//   resultsContainer.innerHTML = ""
+// }
+//
+// function addResults(resultHTML) {
+//   const resultsContainer = document.getElementById('search-results')
+//   resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
+// }
+//
+// if (timestamp === <%= @timestamp %>) {
+//   clearResults();
+// }
+//
+// <% @spots.each do |spot| %>
+// if (timestamp === <%= @timestamp %>) {
+//   addResults(`<%= render("spots/search/search-results", spot:spot) %>`)
+// }
+// <% end %>

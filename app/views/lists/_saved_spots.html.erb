@@ -1,15 +1,5 @@
-<!-- Search Bar -->
-
-<div class="container pt-3">
-  <%= render('search/search_form', search_type: 'wishlist_spots', placeholder: "Search through my saved spots") %>
-</div>
-
-<!-- Cards -->
-
 <div class="container">
-  <div id="search-results" class="discover-search-results">
-    <% @wishlist_spots.each do |spot| %>
-      <%= render "spots/spot_card", spot: spot %>
-    <% end %>
-  </div>
+  <% @wishlist_spots.each do |spot| %>
+    <%= render "spots/spot_card", spot: spot %>
+  <% end %>
 </div>

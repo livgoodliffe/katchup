@@ -14,7 +14,7 @@
 <!-- WANT TO TRY -->
 <div id="want_to_try_list">
 
-  <div id="search-results" class="discover-search-results flex-wrap">
+  <div class="d-flex flex-wrap">
     <% @wishlist_spots.each do |spot| %>
       <%= render "spots/spot_card", spot: spot %>
     <% end %>
@@ -23,7 +23,7 @@
 <!-- BEEN THERE -->
 <div id="been_there_list" class="hidden">
 
-  <div id="search-results" class="discover-search-results">
+  <div class="d-flex flex-wrap">
     <% @favourite_spots.each do |spot| %>
       <%= render "spots/spot_card", spot: spot %>
     <% end %>

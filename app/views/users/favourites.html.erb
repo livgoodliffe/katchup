@@ -1,14 +1,5 @@
-<!-- Search Bar -->
-
-<div class="container pt-3">
-  <%= render('search/search_form', search_type: 'favourite_spots', placeholder: "Search through places I've been") %>
-</div>
-
-<!-- Cards -->
 <div class="container">
-  <div id="search-results" class="discover-search-results">
-    <% @favourite_spots.each do |spot| %>
-      <%= render "spots/spot_card", spot: spot %>
-    <% end %>
-  </div>
+  <% @favourite_spots.each do |spot| %>
+    <%= render "spots/spot_card", spot: spot %>
+  <% end %>
 </div>
