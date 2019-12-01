@@ -6,7 +6,7 @@
   animation-duration: .5s;
 }
 
-#search-back-button {
+#search-exit {
   animation-duration: .5s;
 }
 
@@ -33,25 +33,43 @@
   background-color: #f1f3f4;
   border: none;
   border-radius: 5px;
-  padding-left: 15px;
+  padding-left: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   font-weight: lighter;
+  height: 30px;
   position: relative;
 
   input::placeholder {
     color: $medium-grey;
-    padding-left: 7px;
+    position: absolute;
+    left: 35px
+  }
+
+  input:focus {
+    outline:none;
   }
 
   .search-text {
     background: none;
     border: none;
-    width: 90%
+    width: 90%;
+    outline:none;
+    position: absolute;
+    left: 35px
   }
 
   .search-icon {
     color: $medium-grey;
-    font-size: 16px;
+    font-size: 18px;
+    position: absolute;
+    left: 8px;
+  }
+
+  .exit {
+    color: $katchup;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
   }
 }
