@@ -3,6 +3,7 @@ class SpotsController < ApplicationController
   require "json"
   require "optparse"
   require "http"
+  require "byebug"
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -15,6 +16,7 @@ class SpotsController < ApplicationController
     @client = Romato::Zomato.new(ENV["ZOMATO_API"])
     results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
     @zom_results = results["restaurants"]
+
     @spots_zom = []
 
     @zom_results.each do |spot|
@@ -24,6 +26,8 @@ class SpotsController < ApplicationController
         @spots_zom.push(spot)
       end
     end
+
+    @spots_zom
 
     if params[:query]
       respond_to do |format|
