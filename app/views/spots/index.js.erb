@@ -13,5 +13,4 @@ function addResults(resultHTML) {
   resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
 }
 
-
 addResults(`<%= render 'spots/search/search-results', spots_db: @spots_db, spots_zom: @spots_zom %>`)

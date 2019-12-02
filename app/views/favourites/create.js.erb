@@ -1,3 +1,6 @@
 var spotHeart = document.getElementById("<%= @spot.id %>");
 spotHeart.innerHTML = '<%= j render "shared/been_there_icon", spot: @spot %>'
 $('#reviewModal').modal('show')
+
+var spotWish = document.getElementById("w<%= @spot.id %>");
+spotWish.innerHTML = '<%= j render "shared/want-to-try", spot: @spot %>'

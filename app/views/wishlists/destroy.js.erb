@@ -1,2 +1,5 @@
-var spotBookmark = document.getElementById("w<%= @spot.id %>");
-spotBookmark.innerHTML = '<%= j render "shared/bookmark_icon", spot: @spot %>'
+var spotWish = document.getElementById("w<%= @spot.id %>");
+spotWish.innerHTML = '<%= j render "shared/want-to-try", spot: @spot %>'
+
+// var spotBookmark = document.getElementById("b<%= @spot.id %>");
+// spotBookmark.innerHTML = '<%= j render "shared/want-to-try", spot: @spot %>'

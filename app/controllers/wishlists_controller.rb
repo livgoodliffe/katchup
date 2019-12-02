@@ -11,6 +11,8 @@ class WishlistsController < ApplicationController
 
   def create
     @spot = Spot.find(params[:spot_id])
+    # remove from favourite if you are adding it to your 'wishlist'
+    current_user.favourites.destroy(in_favourite?(@spot)) if in_favourite?(@spot)
     current_user.wishlists.create(spot: @spot)
 
     respond_to do |format|
@@ -42,5 +44,9 @@ class WishlistsController < ApplicationController
 
   def wishlist_params
     params.require(:wishlist).permit(:spot_id)
+  end
+
+  def in_favourite?(spot)
+    current_user.favourites.find_by spot_id: spot[:id]
   end
 end

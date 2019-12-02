@@ -94,15 +94,4 @@ class SpotsController < ApplicationController
   #   end
   # end
 
-  # def show
-  #   @spot = Spot.find(params[:id])
-  #   @review = Review.new
-  #   @marker = [{
-  #     lat: @spot.latitude,
-  #     lng: @spot.longitude,
-  #     infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: @spot })
-  #   }]
-
-  #   render :layout => 'without_navbar'
-  # end
 end

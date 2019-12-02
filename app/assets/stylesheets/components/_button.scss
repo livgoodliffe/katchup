@@ -1,4 +1,6 @@
-.been-there-button {
+ // Want to try button
+
+.want-to-try {
   color: $dark-grey;
   border-radius: 10px;
   padding: 10px;
@@ -19,8 +21,8 @@
   }
 }
 
-.been-there-button-active {
-  color: $been-there;
+.want-to-try-active {
+  color: $katchup;
   border-radius: 10px;
   padding: 10px;
   background-color: white;
@@ -42,6 +44,53 @@
 .been-there-tick {
   padding-left: 5px;
 }
+
+// Been there button
+
+  .been-there-button {
+    color: $dark-grey;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+
+    &:active,
+    &:focus {
+      color: $been-there;
+      font-weight: bold;
+    }
+  }
+
+  .been-there-button-active {
+    color: $been-there;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+
+    i {
+      padding-left: 5px;
+    }
+  }
+
+  .been-there-tick {
+    padding-left: 5px;
+  }
 
 .requests-link {
   color: $katchup
@@ -124,9 +173,10 @@ a {
 }
 
 .simple-button-container {
-  margin: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  margin: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  width: 50%
 }
 
 .red-button {

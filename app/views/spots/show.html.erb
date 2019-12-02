@@ -1,13 +1,23 @@
 <div class="spot-show-wrapper">
   <%= render 'spots/show/spot-show-banner' %>
 
-  <!-- Been there -->
+  <div class="d-flex justify-content-between">
 
-  <div class="simple-button-container">
-    <div id="<%= @spot.id %>" >
-      <%= render 'shared/been_there_icon', spot: @spot %>
+    <!-- Want to try -->
+
+    <div class="simple-button-container">
+      <div id="w<%= @spot.id %>">
+        <%= render 'shared/want-to-try', spot: @spot %>
+      </div>
+    </div>
+
+    <!-- Been there -->
+
+    <div class="simple-button-container">
+      <div id="<%= @spot.id %>">
+        <%= render 'shared/been_there_icon', spot: @spot %>
+      </div>
     </div>
   </div>
 
 </div>
-

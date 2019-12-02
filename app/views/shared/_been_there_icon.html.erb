@@ -1,14 +1,17 @@
-<!-- Working been there button -->
 
 <% if user_signed_in? %>
-  <div class="d-flex flex-column">
+
+  <div>
+
     <% if current_user.favourited_spot?(spot) %>
+
       <%= link_to favourite_path(current_user.find_favourite(spot)), method: :delete, remote: true do %>
         <div class="been-there-button-active">
           <p>I've been here</p>
           <i class="fas fa-check"></i>
         </div>
       <% end %>
+
     <% else %>
 
       <%= link_to spot_favourites_path(spot), method: :post, remote: true do %>
@@ -17,6 +20,7 @@
           <i class="fas fa-check"></i>
         </div>
       <% end %>
+
     <% end %>
   </div>
 <% end %>

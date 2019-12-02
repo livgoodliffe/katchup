@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+
+  <div>
+
+    <% if current_user.wishlisted_spot?(spot) %>
+
+      <%= link_to wishlist_path(current_user.find_wishlist(spot)), method: :delete, remote: true do %>
+        <div class="want-to-try-active">
+          <p>Want to try</p>
+          <i class="fas fa-bookmark"></i>
+        </div>
+      <% end %>
+
+    <% else %>
+
+      <%= link_to spot_wishlists_path(spot), method: :post, remote: true do %>
+        <div class="want-to-try">
+          <p>Want to try</p>
+          <i class="fas fa-bookmark"></i>
+        </div>
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+<% end %>
