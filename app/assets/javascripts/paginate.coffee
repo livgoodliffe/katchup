@@ -1,3 +1,4 @@
+
 $ ->
   if $('.pagination').length
     $(window).scroll ->

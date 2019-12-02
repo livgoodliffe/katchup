@@ -21,5 +21,5 @@ reviewImageHandler();
 feedAnimations();
 listsAnimations();
 scrollInfinitely();
-friendChannel();
-catchupChannel();
+// friendChannel();
+// catchupChannel();

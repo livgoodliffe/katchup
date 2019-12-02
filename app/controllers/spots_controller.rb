@@ -31,7 +31,7 @@ class SpotsController < ApplicationController
     if params[:query]
       respond_to do |format|
         format.html
-        format.js{}
+        format.js
       end
     end
 
