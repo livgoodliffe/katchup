@@ -15,7 +15,6 @@ class SpotsController < ApplicationController
     @client = Romato::Zomato.new(ENV["ZOMATO_API"])
     results = @client.get_search( { q: term, lat: current_user.latitude, lon: current_user.longitude } )
     @zom_results = results["restaurants"]
-
     @spots_zom = []
 
     @zom_results.each do |spot|
@@ -26,12 +25,10 @@ class SpotsController < ApplicationController
       end
     end
 
-    @spots_zom
-
     if params[:query]
       respond_to do |format|
         format.html
-        format.js
+        format.js{}
       end
     end
 
@@ -97,4 +94,15 @@ class SpotsController < ApplicationController
   #   end
   # end
 
+  # def show
+  #   @spot = Spot.find(params[:id])
+  #   @review = Review.new
+  #   @marker = [{
+  #     lat: @spot.latitude,
+  #     lng: @spot.longitude,
+  #     infoWindow: render_to_string(partial: "maps/map_marker_info", locals: { spot: @spot })
+  #   }]
+
+  #   render :layout => 'without_navbar'
+  # end
 end

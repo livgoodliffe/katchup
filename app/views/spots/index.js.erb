@@ -1,3 +1,4 @@
+
 $('.feed-index').append('<%= j render "spots/feed/feed-page", activities: @activities %>');
 <% if @activities.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @activities %>');
@@ -12,5 +13,6 @@ function addResults(resultHTML) {
   const resultsContainer = document.getElementById('search-results')
   resultsContainer.insertAdjacentHTML('beforeend', resultHTML)
 }
+
 
 addResults(`<%= render 'spots/search/search-results', spots_db: @spots_db, spots_zom: @spots_zom %>`)

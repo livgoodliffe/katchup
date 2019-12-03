@@ -1,10 +1,33 @@
+<!-- search bar -->
+
+<div class="search-bar grow" id="search-search">
+
+  <%= form_tag(search_path, method: :get, remote: true) do %>
+
+    <div style="position:relative">
+      <div class="search-field search-bar">
+        <i class="far fa-search search-icon"></i>
+
+        <%= text_field_tag :query,
+        params[:query],
+        class: "search-text",
+        placeholder: "Search" %>
+
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<div id="search-results" class="d-flex flex-wrap">
+
 <!-- database results -->
 
 <% @spots_db.each do |spot| %>
 
   <div class="spot-card mx-auto">
     <%= link_to spot_path(spot) do %>
-      <%= render "spot_card_inside",
+      <%= render "spots/spot_card_inside",
         name: spot.name,
         thumbnail: spot.thumbnail,
         suburb: spot.suburb,
@@ -37,7 +60,7 @@
         latitude: latitude,
         longitude: longitude ), :method => :post do %>
 
-        <%= render "spot_card_inside",
+        <%= render "spots/spot_card_inside",
           name: name,
           thumbnail: thumbnail,
           suburb: suburb,
@@ -46,3 +69,5 @@
       <% end %>
     </div>
 <% end %>
+
+</div>
